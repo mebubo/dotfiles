@@ -1,15 +1,3 @@
-(custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(case-fold-search t)
- '(ecb-directories-menu-user-extension-function nil)
- '(ecb-history-menu-user-extension-function nil)
- '(ecb-methods-menu-user-extension-function nil)
- '(ecb-options-version "2.27")
- '(ecb-sources-menu-user-extension-function nil)
- '(load-home-init-file t t))
 ;; --require--
 ;;(require 'doremi-cmd)
 (require 'mercurial)
@@ -67,12 +55,21 @@
 (setq-default TeX-master nil)
 (global-set-key "\C-c\C-z" 'TeX-insert-dollar)
 ;; --uniquify--
-(setq uniquify-buffer-name-style "reverse")
+(require 'uniquify)
 ;; --indentation--
 ;;(setq-default indent-tabs-mode nil)
 ;;(setq-default c-basic-offset 3)
 ;; --actions--
 ;;(split-window-horizontally)
+
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(case-fold-search t)
+ '(load-home-init-file t t)
+ '(uniquify-buffer-name-style (quote reverse) nil (uniquify)))
 
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
