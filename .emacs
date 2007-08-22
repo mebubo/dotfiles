@@ -9,7 +9,7 @@
 (define-key ctl-x-map "\C-q" 'view-mode)
 ;; -vars--
 ;;(tool-bar-mode nil)
-(setq transient-mark-mode nil)
+(setq transient-mark-mode t)
 (setq view-read-only t)
 (setq font-lock-maximum-decoration t)
 (setq default-input-method "russian-computer")
@@ -56,6 +56,12 @@
 (global-set-key "\C-c\C-z" 'TeX-insert-dollar)
 ;; --uniquify--
 (require 'uniquify)
+;;  key defs
+;; (setq skeleton-pair t)
+;; (define-key global-map "(" 'skeleton-pair-insert-maybe)
+;; (define-key global-map "[" 'skeleton-pair-insert-maybe)
+;; (define-key global-map "{" 'skeleton-pair-insert-maybe)
+;; (define-key global-map "<" 'skeleton-pair-insert-maybe)
 ;; --indentation--
 ;;(setq-default indent-tabs-mode nil)
 ;;(setq-default c-basic-offset 3)
