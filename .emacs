@@ -56,6 +56,29 @@
 (global-set-key "\C-c\C-z" 'TeX-insert-dollar)
 ;; --uniquify--
 (require 'uniquify)
+;; --totd--
+(defun totd ()
+  (interactive)
+  (with-output-to-temp-buffer "*Tip of the day*"
+    (let* ((commands (loop for s being the symbols
+                           when (commandp s) collect s))
+           (command (nth (random (length commands)) commands)))
+      (princ
+       (concat "Your tip for the day is:\n"
+               "========================\n\n"
+               (describe-function command)
+               "\n\nInvoke with:\n\n"
+               (with-temp-buffer
+                 (where-is command t)
+                 (buffer-string)))))))
+;; --server-new-frame--
+(add-hook 'server-switch-hook
+	  (lambda nil
+	    (let ((server-buf (current-buffer)))
+	      (bury-buffer)
+	      (switch-to-buffer-other-frame server-buf))))
+(setq server-kill-new-buffers t)
+(add-hook 'server-done-hook (lambda () (delete-frame)))
 ;;  key defs
 ;; (setq skeleton-pair t)
 ;; (define-key global-map "(" 'skeleton-pair-insert-maybe)
