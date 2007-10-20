@@ -79,6 +79,11 @@
 	      (switch-to-buffer-other-frame server-buf))))
 (setq server-kill-new-buffers t)
 (add-hook 'server-done-hook (lambda () (delete-frame)))
+;; --brm--
+;(autoload 'pymacs-call "pymacs")
+;(pymacs-load "bikeemacs" "brm-")
+;(brm-init)
+
 ;;  key defs
 ;; (setq skeleton-pair t)
 ;; (define-key global-map "(" 'skeleton-pair-insert-maybe)
