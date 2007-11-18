@@ -83,6 +83,8 @@
 ;(autoload 'pymacs-call "pymacs")
 ;(pymacs-load "bikeemacs" "brm-")
 ;(brm-init)
+;; --no-splash-screen--
+(setq inhibit-startup-message t)
 
 ;;  key defs
 ;; (setq skeleton-pair t)
