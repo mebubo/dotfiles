@@ -81,3 +81,11 @@ Pin-Priority: 999
 Package: rtorrent
 Pin: release a=unstable
 Pin-Priority: 999
+
+Package: wpasupplicant
+Pin: release a=unstable
+Pin-Priority: 999
+
+Package: wireless-tools
+Pin: release a=unstable
+Pin-Priority: 999
