@@ -1,0 +1,65 @@
+include "/usr/share/themes/fishing-the-sky/gtk-2.0/gtkrc"
+
+style "user-font"
+{
+  font_name="Sans 8"
+}
+widget_class "*" style "user-font"
+
+gtk-font-name="Sans 8"
+
+gtk-theme-name="fishing-the-sky"
+
+gtk-icon-theme-name = "Tango"
+
+gtk-icon-sizes = "panel-menu=16,16:panel=16,16:gtk-menu=16,16:gtk-small-toolbar=16,16:gtk-large-
+toolbar=16,16:gtk-button=16,16:gtk-dialog=16,16:gtk-dnd=16,16"
+
+gtk-toolbar-icon-size = GTK_ICON_SIZE_SMALL_TOOLBAR
+
+style "thickness_o" = "theme-default"                                                                                                                        
+{                                                                                                                                                            
+  xthickness = 0                                                                                                                                             
+  ythickness = 0                                                                                                                                             
+  GtkNotebook::tab-border = 0                                                                                                                                
+  GtkNotebook::tab-hborder = 0                                                                                                                               
+  GtkNotebook::tab-vborder = 0                                                                                                                               
+  GtkNotebook::show-border = 0                                                                                                                               
+  GtkNotebook::gtk-button-images = 0                                                                                                                         
+  GtkNotebook::gtk-menu-images = 0                                                                                                                           
+  GtkNotebook::arrow-spacing = 0                                                                                                                             
+  GtkNotebook::tab-curvature = 0                                                                                                                             
+  GtkNotebook::tab-overlap = 0                                                                                                                               
+  GtkNotebook::focus-line-width = 0                                                                                                                          
+
+# gtk-icon-sizes = 0                                                                                                                                        
+#  bg[NORMAL]      = "#FF0000"                                                                                                                              
+#  bg[INSENSITIVE] = "#FF0000"                                                                                                                               
+
+}                                                                                                                                                            
+class "GtkNotebook"    style "thickness_o"                                                                                                                   
+                                                                                                                                                             
+style "thickness_1" = "theme-default"                                                                                                                        
+{                                                                                                                                                            
+  xthickness = 0                                                                                                                                             
+  ythickness = 0                                                                                                                                             
+}                                                                                                                                                            
+
+style "thickness_2" = "theme-default"                                                                                                                        
+{                                                                                                                                                            
+    GtkTreeView::expander-size = 0
+    GtkTreeView::expander-indent = 0
+    GtkTreeView::horizontal-separator = 0
+    GtkTreeView::vertical-separator = 0	  
+    GtkTreeView::row-ending-details = 0
+    GtkTreeView::passive_focus = 0
+    GtkTreeView::separator-height = 0                                                                                         
+}                                                                                                                                                                                   
+
+class "GtkButton" style "thickness_1"    
+
+class "GtkTreeView"    style "thickness_2"         
+class "GtkListView" style "thickness_2"
+widget_class "*.GtkTreeView.GtkButton" style "thickness_1"
+
+
