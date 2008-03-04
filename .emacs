@@ -2,6 +2,9 @@
 ;;(require 'doremi-cmd)
 (require 'mercurial)
 (require 'xcscope)
+;; --viper--
+(setq viper-mode nil)
+(require 'viper)
 ;; --keys--
 (global-set-key "\C-z" nil)
 (global-set-key "\C-x\C-b" 'bs-show)
@@ -85,6 +88,10 @@
 ;(brm-init)
 ;; --no-splash-screen--
 (setq inhibit-startup-message t)
+;; --org-mode--
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
 
 ;;  key defs
 ;; (setq skeleton-pair t)
