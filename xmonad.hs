@@ -76,7 +76,7 @@ myFocusedBorderColor = "#ff0000"
 --
 -- Fields are: top, bottom, left, right.
 --
-myDefaultGaps   = [(18,0,0,0)]
+myDefaultGaps   = [(15,0,0,0)]
  
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
