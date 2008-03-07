@@ -151,7 +151,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
                              in if n == x then (0,0,0,0) else x))
  
     -- Quit xmonad
-    , ((modMask .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
+    , ((modMask .|. shiftMask, xK_r     ), io (exitWith ExitSuccess))
  
     -- Restart xmonad
     , ((modMask              , xK_r     ),
