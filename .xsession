@@ -1,6 +1,6 @@
 . ~/.environment
 
-xsetroot -solid darkgray
+xsetroot -solid \#3E71AA
 xmodmap .xmodmaprc &
 xautolock -time 5 -locker xlock &
 
