@@ -13,6 +13,7 @@ import XMonad.Layout.Tabbed
 import XMonad.Layout.Accordion
 import XMonad.Hooks.DynamicLog
 import XMonad.Util.Run
+-- import System.Posix.Unistd
  
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -153,7 +154,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
  
     -- Restart xmonad
-    , ((modMask              , xK_q     ),
+    , ((modMask              , xK_r     ),
           broadcastMessage ReleaseResources >> restart "xmonad" True)
     ]
     ++
@@ -168,11 +169,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     ++
  
     --
-    -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
-    -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
+    -- mod-{q,w,e}, Switch to physical/Xinerama screens 1, 2, or 3
+    -- mod-shift-{q,w,e}, Move client to screen 1, 2, or 3
     --
     [((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
+        | (key, sc) <- zip [xK_q, xK_w, xK_e] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
  
  
@@ -260,7 +261,9 @@ myLogHook = dynamicLogDzen
  
 -- Run xmonad with the settings you specify. No need to modify this.
 --
-main = xmonad defaults
+main = do
+--  host <- fmap nodeName getSystemID
+  xmonad defaults
  
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will 
