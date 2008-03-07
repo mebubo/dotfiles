@@ -86,6 +86,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- launch a terminal
     [ ((modMask .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
  
+    -- launch a terminal
+    , ((modMask,               xK_t     ), spawn "urxvt")
+ 
     -- launch dmenu
     , ((modMask,               xK_p     ), spawn "exe=`dmenu_path | dmenu -fn fixed` && eval \"exec $exe\"")
  
@@ -95,8 +98,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- close focused window 
     , ((modMask .|. shiftMask, xK_c     ), kill)
  
-     -- Rotate through the available layout algorithms
-    , ((modMask,               xK_space ), sendMessage NextLayout)
+    -- Rotate through the available layout algorithms
+    -- , ((modMask,               xK_space ), sendMessage NextLayout)
+    , ((modMask,               xK_v ), sendMessage NextLayout)
  
     --  Reset the layouts on the current workspace to default
     , ((modMask .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
@@ -132,7 +136,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask,               xK_l     ), sendMessage Expand)
  
     -- Push window back into tiling
-    , ((modMask,               xK_t     ), withFocused $ windows . W.sink)
+    , ((modMask .|. shiftMask, xK_t     ), withFocused $ windows . W.sink)
  
     -- Increment the number of windows in the master area
     , ((modMask              , xK_comma ), sendMessage (IncMasterN 1))
@@ -285,29 +289,4 @@ defaults = defaultConfig {
         manageHook         = myManageHook,
         logHook            = myLogHook
     }
-
--- import XMonad
--- import XMonad.Layout.ResizableTile
--- import XMonad.Layout.Tabbed
--- import XMonad.Layout.Accordion
-
--- mylayoutHook = tiled ||| tabbed shrinkText defaultTheme ||| Accordion
-
--- main = xmonad $ defaultConfig { 
---          layoutHook = mylayoutHook,
---          modMask = mod3Mask
---        }
---     where
---       -- default tiling algorithm partitions the screen into two panes
---       -- tiled   = Tall nmaster delta ratio
---       tiled   = Tall nmaster delta ratio
-          
---       -- The default number of windows in the master pane
---       nmaster = 2
-                                 
---       -- Default proportion of screen occupied by master pane
---       ratio   = 0.618034
-                                           
---       -- Percent of screen to increment by when resizing panes
---       delta   = 3/100 
 
