@@ -2,7 +2,7 @@
 
 xsetroot -solid \#3E71AA
 xmodmap .xmodmaprc &
-xautolock -time 5 -locker xlock &
+xautolock -time 30 -locker xlock &
 
 xmonad | dzen2 -ta l -fn fixed -w 600 -e 'button3=raise' &
 wmpid=$!
