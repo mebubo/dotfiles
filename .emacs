@@ -1,6 +1,6 @@
 ;; --require--
 ;;(require 'doremi-cmd)
-(require 'mercurial)
+;;(require 'mercurial)
 (require 'xcscope)
 ;; --viper--
 (setq viper-mode nil)
@@ -29,8 +29,9 @@
 (require 'color-theme)
 (color-theme-dark-laptop)
 ;; --desktop--
-(setq desktop-save-mode t)
-(desktop-read)
+;;(setq desktop-save-mode t)
+(desktop-save-mode 1)
+;;(desktop-read)
 ;; --server--
 (server-start)
 ;; --misc--
@@ -92,6 +93,13 @@
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
+
+(setq org-directory "~/org/")
+(setq org-default-notes-file "~/.notes")
+(setq remember-annotation-functions '(org-remember-annotation))
+(setq remember-handler-functions '(org-remember-handler))
+(add-hook 'remember-mode-hook 'org-remember-apply-template)
+(setq org-log-done t)
 
 ;;  key defs
 ;; (setq skeleton-pair t)
