@@ -77,7 +77,7 @@ myFocusedBorderColor = "#ff0000"
 --
 -- Fields are: top, bottom, left, right.
 --
-myDefaultGaps   = [(15,0,0,0)]
+myDefaultGaps   = [(16,0,0,0)]
  
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -238,7 +238,10 @@ myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
     , resource  =? "desktop_window" --> doIgnore
-    , resource  =? "kdesktop"       --> doIgnore ]
+    , resource  =? "kdesktop"       --> doIgnore 
+    , className =? "stalonetray"    --> doIgnore
+    , className =? "trayer"         --> doIgnore
+    ]
  
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
