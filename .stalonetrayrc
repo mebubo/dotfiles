@@ -1,0 +1,6 @@
+icon_size 16
+background "#111111"
+icon_gravity E
+geometry 0x16-680+0
+sticky true
+skip_taskbar true
