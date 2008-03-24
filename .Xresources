@@ -1,15 +1,14 @@
-	UXTerm*font: terminus-14
     XTerm*saveLines: 5000
    XTerm*background: black
    XTerm*foreground: white
     XTerm*scrollBar: off
-	  Rxvt*font: terminus-koi8-r-14
+	UXTerm*font: terminus-14
      Rxvt*saveLines: 5000
     Rxvt*background: black
     Rxvt*foreground: white
      Rxvt*scrollBar: off
-	 URxvt.font: terminus-14
-    Aterm*scrollBar: off
+!	 URxvt.font: terminus-14
+	 URxvt.font: xft:DejaVu Sans Mono:pixelsize=15
 	 XLock.mode: space
    XLock.background: black
    XLock.foreground: white
@@ -17,9 +16,6 @@
 !	 Emacs.Font: terminus-14
 	 Emacs.Font: DejaVu Sans Mono-10
       Emacs.toolBar: 0
-    Alicq*Text.font: terminus-14
-   Alicq*Entry.font: terminus-14
-Alicq*TreeNode.font: terminus-bold-14
 	     *.font: terminus-14
       xpdf*fontList: terminus-koi8-r-12
     xpdf*background: white
