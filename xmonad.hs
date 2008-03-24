@@ -97,7 +97,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, xK_p     ), spawn "gmrun")
  
     -- close focused window 
-    , ((modMask .|. shiftMask, xK_c     ), kill)
+    -- , ((modMask .|. shiftMask, xK_c     ), kill)
+    , ((modMask, xK_c     ), kill)
  
     -- Rotate through the available layout algorithms
     -- , ((modMask,               xK_space ), sendMessage NextLayout)
@@ -205,7 +206,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = tabbed shrinkText defaultTheme ||| tiled ||| Mirror tiled ||| Accordion
+myLayout = tabbed shrinkText defaultTheme ||| tiled ||| Mirror tiled
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
