@@ -15,7 +15,8 @@ root-tail -g 970x700 -font fixed /var/log/syslog,gray &
 nice -14 ~/bin/status.sh | dzen2 -ta r -fn fixed -w 680 -x 600 -e 'button3=raise' -h 16 &
 statuspid=$!
 
-urxvtd -q -f -o
+stalonetray &
+#urxvtd -q -f -o
 xbindkeys
 
 wait $wmpid
