@@ -98,7 +98,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
  
     -- close focused window 
     -- , ((modMask .|. shiftMask, xK_c     ), kill)
-    , ((modMask .|. shiftMask, xK_c     ), kill)
+    , ((modMask, xK_c     ), kill)
  
     -- Rotate through the available layout algorithms
     -- , ((modMask,               xK_space ), sendMessage NextLayout)
