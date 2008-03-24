@@ -205,7 +205,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = tabbed shrinkText defaultTheme ||| tiled ||| Mirror tiled ||| Accordion
+myLayout = tabbed shrinkText defaultTheme ||| tiled ||| Mirror tiled
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
