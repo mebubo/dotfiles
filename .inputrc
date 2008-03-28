@@ -1,0 +1,12 @@
+set bell-style visible
+set match-hidden-files off
+#set completion-ignore-case on
+set visible-stats on
+set show-all-if-ambiguous on
+"\M-s": menu-complete
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+"\C-^": "\C-p\C-a\M-f "
+$if Bash
+  Space: magic-space
+$endif

@@ -158,7 +158,7 @@
 (define-key global-map (kbd "<f9> r") 'remember)
 (define-key global-map (kbd "<f9> R") 'remember-region)
 ;; --org--
-(require 'org-install)
+;(require 'org-install)
 (require 'org-mouse)
 (org-remember-insinuate)
 (setq org-directory "~/org/")
