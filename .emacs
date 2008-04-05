@@ -176,7 +176,7 @@
 (setq tabbar-use-images nil)
 (tabbar-mode 1)
 ;; --ido--
-(ido-mode t)
+;(ido-mode t)
 ;; --host-specific-config--
 (load-file "~/.emacs.host")
 
