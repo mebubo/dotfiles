@@ -18,8 +18,10 @@
 ;; --iswitchb--
 (iswitchb-mode t)
 ;; --color-theme--
-(require 'color-theme)
-(color-theme-dark-laptop)
+;(require 'color-theme)
+;(color-theme-dark-laptop)
+(require 'zenburn)
+(color-theme-zenburn)
 ;; --desktop--
 (desktop-save-mode 1)
 (setq desktop-buffers-not-to-save
