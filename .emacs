@@ -165,16 +165,6 @@
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 (define-key global-map "\C-cr" 'org-remember)
 (setq org-log-done t)
-;; --tabbar--
-(require 'tabbar)
-(set-face-attribute 'tabbar-default nil :background "gray60")
-(set-face-attribute 'tabbar-unselected nil :background "gray85" :foreground "gray30" :box nil)
-(set-face-attribute 'tabbar-selected nil :background "#f2f2f6" :foreground "black" :box nil)
-(set-face-attribute 'tabbar-button nil :box nil)
-(set-face-attribute 'tabbar-separator nil :background "gray60")
-(setq tabbar-separator (quote (0.3)))
-(setq tabbar-use-images nil)
-(tabbar-mode 1)
 ;; --ido--
 ;(ido-mode t)
 ;; --host-specific-config--
