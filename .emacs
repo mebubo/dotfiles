@@ -162,7 +162,7 @@
 ;; --org--
 ;(require 'org-install)
 (require 'org-mouse)
-(org-remember-insinuate)
+;(org-remember-insinuate)
 (setq org-directory "~/org/")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 (define-key global-map "\C-cr" 'org-remember)
