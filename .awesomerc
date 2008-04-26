@@ -37,7 +37,7 @@ styles
         tag 6 { layout = "max" }
         tag 7 { layout = "max" }
         tag 8 { layout = "max" }
-        tag 9 { layout = "tile" }
+        tag 9 { layout = "tile" mwfact = 0.7 }
     }
     layouts
     {
