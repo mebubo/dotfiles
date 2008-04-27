@@ -171,6 +171,15 @@
 ;(ido-mode t)
 ;; --host-specific-config--
 (load-file "~/.emacs.host")
+;; --dictionary--
+(setq dictionary-server "localhost")
+(setq dictionary-default-dictionary "mueller7")
+(setq dictionary-create-buttons nil)
+(setq dictionary-use-single-buffer t)
+(global-dictionary-tooltip-mode 1)
+;(global-set-key "\C-cs" 'dictionary-search)
+(global-set-key "\C-cm" 'dictionary-match-words)
+(global-set-key "\C-cs" 'dictionary-lookup-definition)
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
