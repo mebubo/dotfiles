@@ -6,7 +6,7 @@
 (define-key ctl-x-map "\C-q" 'view-mode)
 ;; -vars--
 (setq transient-mark-mode t)
-(setq view-read-only t)
+;(setq view-read-only t)
 (setq font-lock-maximum-decoration t)
 (setq default-input-method "russian-computer")
 (setq compilation-read-command nil)
