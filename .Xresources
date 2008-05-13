@@ -20,3 +20,23 @@
 	     *.font: terminus-14
       xpdf*fontList: terminus-koi8-r-12
     xpdf*background: white
+
+URxvt*background: #1d1d1d
+URxvt*foreground: #d0d0d0
+
+! URxvt*color0: #101010
+! URxvt*color1: #dc2f2f
+! URxvt*color2: #5ca84f
+! URxvt*color3: #cd8b00
+! URxvt*color4: #6b96cb
+! URxvt*color5: #817bbb
+! URxvt*color6: #52b1a2
+! URxvt*color7: #d0d0d0
+! URxvt*color8: #242424
+! URxvt*color9: #f18983
+! URxvt*color10: #71e45e
+! URxvt*color11: #eaeb70
+! URxvt*color12: #88b6dd
+! URxvt*color13: #b598ca
+! URxvt*color14: #84e9e8
+! URxvt*color15: #f0f0f0
