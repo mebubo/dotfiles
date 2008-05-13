@@ -23,7 +23,7 @@ statuspid=$!
 #urxvtd -q -f -o
 
 xbindkeys
-xcompmgr -c -t-5 -l-5 -r4.2 -o.55 &
+#xcompmgr -c -t-5 -l-5 -r4.2 -o.55 &
 
 wait $wmpid
 kill -9 $statuspid
