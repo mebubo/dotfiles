@@ -21,8 +21,8 @@
       xpdf*fontList: terminus-koi8-r-12
     xpdf*background: white
 
-URxvt*background: #1d1d1d
-URxvt*foreground: #d0d0d0
+!URxvt*background: #1d1d1d
+!URxvt*foreground: #d0d0d0
 
 ! URxvt*color0: #101010
 ! URxvt*color1: #dc2f2f
