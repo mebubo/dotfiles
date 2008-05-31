@@ -16,7 +16,7 @@ xset s 3600
 #root-tail -g 970x700 -font fixed /var/log/syslog,gray &
 
 #nice -14 ~/bin/status.sh | dzen2 -ta r -fn fixed -w 680 -x 600 -e 'button3=raise' -h 16 &
-nice -14 ~/proj/scriplets/awesome-status.sh &
+nice -14 ~/proj/scriplets/status-eee.py awesome | awesome-client &
 statuspid=$!
 
 #stalonetray &
