@@ -166,6 +166,9 @@
 (setq org-directory "~/org/")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 (define-key global-map "\C-cr" 'org-remember)
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
 (setq org-log-done t)
 ;; --ido--
 ;(ido-mode t)
