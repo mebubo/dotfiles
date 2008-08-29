@@ -78,11 +78,11 @@
                  (where-is command t)
                  (buffer-string)))))))
 ;; --server-new-frame--
-(add-hook 'server-switch-hook
-         (lambda nil
-           (let ((server-buf (current-buffer)))
-             (bury-buffer)
-             (switch-to-buffer-other-frame server-buf))))
+;; (add-hook 'server-switch-hook
+;;          (lambda nil
+;;            (let ((server-buf (current-buffer)))
+;;              (bury-buffer)
+;;              (switch-to-buffer-other-frame server-buf))))
 (setq server-kill-new-buffers t)
 (add-hook 'server-done-hook (lambda () (delete-frame)))
 ;; --no-splash-screen--
