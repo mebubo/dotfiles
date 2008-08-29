@@ -1,42 +1,31 @@
 	UXTerm*font: terminus-14
+!        XTerm*faceName: DejaVu Sans Mono
+        XTerm*faceName: monospace
+	XTerm*faceSize: 10
+!	XTerm*termName: xterm-color
+	XTerm*termName: xterm
+      XTerm*altSendsEscape: true
+      XTerm*metaSendsEscape: true
+      XTerm*altIsNotMeta: true
     XTerm*saveLines: 5000
    XTerm*background: black
    XTerm*foreground: white
     XTerm*scrollBar: off
-	  Rxvt*font: terminus-koi8-r-14
+!	 URxvt.font: terminus-14
+!	 URxvt.font: xft:DejaVu Sans Mono:size=10
+	 URxvt.font: xft:monospace:size=10
      Rxvt*saveLines: 5000
     Rxvt*background: black
     Rxvt*foreground: white
      Rxvt*scrollBar: off
-!	 URxvt.font: terminus-14
-	 URxvt.font: xft:DejaVu Sans Mono:size=10
 	 XLock.mode: space
    XLock.background: black
    XLock.foreground: white
 	 XLock.font: terminus-14
 !	 Emacs.Font: terminus-14
-	 Emacs.Font: DejaVu Sans Mono-10
-      Emacs.toolBar: 0
-	     *.font: terminus-14
-      xpdf*fontList: terminus-koi8-r-12
+!	 Emacs.Font: DejaVu Sans Mono-10
+!	 emacs.font: DejaVu Sans Mono-10
+	 emacs.font: monospace-10
+      emacs.toolBar: 0
+!      xpdf*fontList: terminus-koi8-r-12
     xpdf*background: white
-
-!URxvt*background: #1d1d1d
-!URxvt*foreground: #d0d0d0
-
-! URxvt*color0: #101010
-! URxvt*color1: #dc2f2f
-! URxvt*color2: #5ca84f
-! URxvt*color3: #cd8b00
-! URxvt*color4: #6b96cb
-! URxvt*color5: #817bbb
-! URxvt*color6: #52b1a2
-! URxvt*color7: #d0d0d0
-! URxvt*color8: #242424
-! URxvt*color9: #f18983
-! URxvt*color10: #71e45e
-! URxvt*color11: #eaeb70
-! URxvt*color12: #88b6dd
-! URxvt*color13: #b598ca
-! URxvt*color14: #84e9e8
-! URxvt*color15: #f0f0f0
