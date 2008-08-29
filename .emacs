@@ -84,7 +84,7 @@
 ;;              (bury-buffer)
 ;;              (switch-to-buffer-other-frame server-buf))))
 (setq server-kill-new-buffers t)
-(add-hook 'server-done-hook (lambda () (delete-frame)))
+;; (add-hook 'server-done-hook (lambda () (delete-frame)))
 ;; --no-splash-screen--
 (setq inhibit-startup-message t)
 ;; --uniquify--
