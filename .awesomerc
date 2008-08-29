@@ -239,7 +239,7 @@ keys
         modkey = {"Mod3"}
         key = "p"
         command = "spawn"
-        arg = "exe=`dmenu_path | dmenu -fn fixed` && eval \"exec $exe\""
+        arg = "exe=`dmenu_path | dmenu -fn terminus-iso8859-1-14` && eval \"exec $exe\""
     }
     key
     {
