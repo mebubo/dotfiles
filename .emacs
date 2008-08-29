@@ -183,6 +183,8 @@
 ;(global-set-key "\C-cs" 'dictionary-search)
 (global-set-key "\C-cm" 'dictionary-match-words)
 (global-set-key "\C-cs" 'dictionary-lookup-definition)
+;; --mouse-select-buffer--
+(msb-mode)
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
