@@ -7,10 +7,12 @@ require("beautiful")
 
 -- {{{ Variable definitions
 -- This is a file path to a theme file which will defines colors.
-theme_path = "/usr/local/share/awesome/themes/default"
+-- theme_path = "/usr/local/share/awesome/themes/default"
+theme_path = os.getenv("HOME") .. "/.config/awesome/themes/slk"
 
 -- This is used later as the default terminal to run.
-terminal = "xterm"
+-- terminal = "xterm"
+terminal = "urxvt"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -214,7 +216,8 @@ keybinding({ modkey, "Shift" }, "q", awesome.quit):add()
 
 -- Client manipulation
 keybinding({ modkey }, "m", awful.client.maximize):add()
-keybinding({ modkey, "Shift" }, "c", function () client.focus:kill() end):add()
+-- keybinding({ modkey, "Shift" }, "c", function () client.focus:kill() end):add()
+keybinding({ modkey }, "c", function () client.focus:kill() end):add()
 keybinding({ modkey }, "j", function () awful.client.focusbyidx(1); client.focus:raise() end):add()
 keybinding({ modkey }, "k", function () awful.client.focusbyidx(-1);  client.focus:raise() end):add()
 keybinding({ modkey, "Shift" }, "j", function () awful.client.swap(1) end):add()
@@ -235,11 +238,14 @@ keybinding({ modkey, "Shift" }, "h", function () awful.tag.incnmaster(1) end):ad
 keybinding({ modkey, "Shift" }, "l", function () awful.tag.incnmaster(-1) end):add()
 keybinding({ modkey, "Control" }, "h", function () awful.tag.incncol(1) end):add()
 keybinding({ modkey, "Control" }, "l", function () awful.tag.incncol(-1) end):add()
-keybinding({ modkey }, "space", function () awful.layout.inc(layouts, 1) end):add()
-keybinding({ modkey, "Shift" }, "space", function () awful.layout.inc(layouts, -1) end):add()
+-- keybinding({ modkey }, "space", function () awful.layout.inc(layouts, 1) end):add()
+-- keybinding({ modkey, "Shift" }, "space", function () awful.layout.inc(layouts, -1) end):add()
+keybinding({ modkey }, "v", function () awful.layout.inc(layouts, 1) end):add()
+keybinding({ modkey, "Shift" }, "v", function () awful.layout.inc(layouts, -1) end):add()
 
 -- Prompt
-keybinding({ modkey }, "F1", function ()
+-- keybinding({ modkey }, "F1", function ()
+keybinding({ modkey }, "p", function ()
                                  awful.prompt.run({ prompt = "Run: " }, mypromptbox, awful.spawn, awful.completion.bash,
 os.getenv("HOME") .. "/.cache/awesome/history") end):add()
 keybinding({ modkey }, "F4", function ()
@@ -395,7 +401,7 @@ function hook_manage(c)
     end
 
     -- Honor size hints
-    c.honorsizehints = true
+    c.honorsizehints = false
 end
 
 -- Hook function to execute when arranging the screen
