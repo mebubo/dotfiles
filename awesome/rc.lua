@@ -17,20 +17,21 @@ terminal = "xterm"
 -- If you do not like this or do not have such a key,
 -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
 -- However, you can use another modifier like Mod1, but it may interact with others.
-modkey = "Mod4"
+-- modkey = "Mod4"
+modkey = "Mod3"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 layouts =
 {
-    "tile",
-    "tileleft",
-    "tilebottom",
-    "tiletop",
-    "magnifier",
     "max",
-    "spiral",
-    "dwindle",
-    "floating"
+    "tile",
+    -- "tileleft",
+    -- "tilebottom",
+    -- "tiletop",
+    "magnifier",
+    -- "spiral",
+    -- "dwindle",
+    -- "floating"
 }
 
 -- Table of clients that should be set floating. The index may be either
@@ -51,7 +52,7 @@ floatapps =
 -- Use the screen and tags indices.
 apptags =
 {
-    -- ["Firefox"] = { screen = 1, tag = 2 },
+    ["Firefox"] = { screen = 1, tag = 1 },
     -- ["mocp"] = { screen = 2, tag = 4 },
 }
 
@@ -434,9 +435,9 @@ end
 -- Hook called every second
 function hook_timer ()
     -- For unix time_t lovers
-    mytextbox.text = " " .. os.time() .. " time_t "
+    -- mytextbox.text = " " .. os.time() .. " time_t "
     -- Otherwise use:
-    -- mytextbox.text = " " .. os.date() .. " "
+    mytextbox.text = " " .. os.date() .. " "
 end
 
 -- Set up some hooks
