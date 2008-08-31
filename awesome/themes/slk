@@ -8,12 +8,13 @@ bg_normal     = #222222
 bg_focus      = #535d6c
 bg_urgent     = #ff0000
 
-fg_normal     = #aaaaaa
+#fg_normal     = #aaaaaa
+fg_normal     = #eeeeee
 fg_focus      = #ffffff
 fg_urgent     = #ffffff
 
 border_width  = 1
-border_normal = #000000
+border_normal = #222222
 #border_focus  = #535d6c
 border_focus  = #d53737
 #border_marked = #91231c
