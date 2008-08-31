@@ -185,6 +185,19 @@
 (global-set-key "\C-cs" 'dictionary-lookup-definition)
 ;; --mouse-select-buffer--
 (msb-mode)
+;; --ropemacs--
+(require 'pymacs)
+(pymacs-load "ropemacs" "rope-") 
+;; --yasnippet--
+(require 'yasnippet-bundle)
+;; Emacs 23: bundled EasyPG
+(require 'epa)
+;;(epa-file-enable)
+;; --windmove--
+(windmove-default-keybindings 'meta)
+;; --tramp--
+;(require 'tramp)
+(setq tramp-default-method "ssh")
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
