@@ -59,6 +59,7 @@ apptags =
     ["Emacs"] = { screen = 1, tag = 5 },
     ["Pidgin"] = { screen = screen.count(), tag = 9 },
     ["Stardict"] = { screen = screen.count(), tag = 9 },
+    ["Quodlibet"] = { screen = screen.count(), tag = 8 },
     -- ["mocp"] = { screen = 2, tag = 4 },
 }
 
@@ -154,9 +155,9 @@ for s = 1, screen.count() do
         mytasklist,
         -- myiconbox,
         mypromptbox,
+        s == screen.count() and mysystray or nil,
         mytextbox,
         mylayoutbox[s],
-        s == screen.count() and mysystray or nil
     })
     mystatusbar[s].screen = s
 end
@@ -217,7 +218,7 @@ keybinding({ modkey }, "Right", awful.tag.viewnext):add()
 keybinding({ modkey }, "Escape", awful.tag.history.restore):add()
 
 -- Standard program
-keybinding({ modkey }, "Return", function () awful.spawn(terminal) end):add()
+keybinding({ modkey }, "t", function () awful.spawn(terminal) end):add()
 
 keybinding({ modkey, "Control" }, "r", awesome.restart):add()
 keybinding({ modkey, "Shift" }, "q", awesome.quit):add()
@@ -307,8 +308,8 @@ keybinding({ modkey }, "y", function ()
 end):add()
 
 -- Client awful tagging: this is useful to tag some clients and then do stuff like move to tag on them
-keybinding({ modkey }, "t", awful.client.togglemarked):add()
-keybinding({ modkey, 'Shift' }, "t", function ()
+keybinding({ modkey }, "Return", awful.client.togglemarked):add()
+keybinding({ modkey, 'Shift' }, "Return", function ()
     local tabbedview = tabulous.tabindex_get()
     local clients = awful.client.getmarked()
 
