@@ -55,6 +55,10 @@ floatapps =
 apptags =
 {
     ["Firefox"] = { screen = 1, tag = 1 },
+    ["Iceweasel"] = { screen = 1, tag = 1 },
+    ["Emacs"] = { screen = 1, tag = 5 },
+    ["Pidgin"] = { screen = screen.count(), tag = 9 },
+    ["Stardict"] = { screen = screen.count(), tag = 9 },
     -- ["mocp"] = { screen = 2, tag = 4 },
 }
 
@@ -92,6 +96,10 @@ for s = 1, screen.count() do
 end
 -- }}}
 
+-- Set tile layout for the 9th tag on the rightemost screen
+tags[screen.count()][9].layout = "tile"
+tags[screen.count()][9].mwfact = 0.7
+
 -- {{{ Statusbar
 -- Create a taglist widget
 mytaglist = widget({ type = "taglist", name = "mytaglist" })
@@ -127,7 +135,7 @@ mysystray = widget({ type = "systray", name = "mysystray", align = "right" })
 -- We need one layoutbox per screen.
 mylayoutbox = {}
 for s = 1, screen.count() do
-    mylayoutbox[s] = widget({ type = "textbox", name = "mylayoutbox", align = "right" })
+    mylayoutbox[s] = widget({ type = "textbox", name = "mylayoutbox", align = "left" })
     mylayoutbox[s]:mouse_add(mouse({ }, 1, function () awful.layout.inc(layouts, 1) end))
     mylayoutbox[s]:mouse_add(mouse({ }, 3, function () awful.layout.inc(layouts, -1) end))
     mylayoutbox[s]:mouse_add(mouse({ }, 4, function () awful.layout.inc(layouts, 1) end))
@@ -144,7 +152,7 @@ for s = 1, screen.count() do
     mystatusbar[s]:widgets({
         mytaglist,
         mytasklist,
-        myiconbox,
+        -- myiconbox,
         mypromptbox,
         mytextbox,
         mylayoutbox[s],
