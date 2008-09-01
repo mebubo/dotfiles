@@ -156,8 +156,148 @@ styles
          {
                 text_align = "right"
                 align = "right" 
-                width = "400"
+                width = "395"
          }
+    }
+}
+
+screen 1
+{
+general 
+{
+     resize_hints = false
+}
+styles
+   {
+       normal
+       {
+           font = "monospace 9"
+           fg = "#FFFFFF"
+           bg = "#606060"
+           border = "#222222"
+       }
+       focus
+       {
+           fg = "#FFFFFF"
+           bg = "#3E71AA"
+           border = "#D53737"
+       }
+       urgent
+       {
+           fg = "#FFFFFF"
+           bg = "#D53737"
+       }
+    }
+
+    tags
+    {
+        tag 1 { layout = "max" }
+        tag 2 { layout = "max" }
+        tag 3 { layout = "max" }
+        tag 4 { layout = "max" }
+        tag 5 { layout = "max" }
+        tag 6 { layout = "max" }
+        tag 7 { layout = "max" }
+        tag 8 { layout = "max" }
+        tag 9 { layout = "tile" mwfact = 0.7 }
+    }
+    layouts
+    {
+         layout max { image = "/usr/share/awesome/icons/layouts/maxw.png" }
+         layout tile { image = "/usr/share/awesome/icons/layouts/tilew.png" }
+    }
+    statusbar mystatusbar
+    {
+        position = "top"
+        height = 20
+
+        taglist mytaglist
+        {
+            mouse
+            {
+                button = "1"
+                command = "tag_view"
+            }
+            mouse
+            {
+                button = "1"
+                modkey = {"Mod3"}
+                command = "client_tag"
+            }
+            mouse
+            {
+                button = "3"
+                command = "tag_toggleview"
+            }
+            mouse
+            {
+                button = "3"
+                modkey = {"Mod3"}
+                command = "client_toggletag"
+            }
+            mouse
+            {
+                button = "4"
+                command = "tag_viewnext"
+            }
+            mouse
+            {
+                button = "5"
+                command = "tag_viewprev"
+            }
+        }
+        layoutinfo mylayoutinfo
+        {
+            mouse
+            {
+                button = "1"
+                command = "tag_setlayout"
+                arg = "+1"
+            }
+            mouse
+            {
+                button = "4"
+                command = "tag_setlayout"
+                arg = "+1"
+            }
+            mouse
+            {
+                button = "3"
+                command = "tag_setlayout"
+                arg = "-1"
+            }
+            mouse
+            {
+                button = "5"
+                command = "tag_setlayout"
+                arg = "-1"
+            }
+        }
+        tasklist mytasklist
+        {
+            mouse
+            {
+                button = "4"
+                command = "client_focusnext"
+            }
+            mouse
+            {
+                button = "5"
+                command = "client_focusprev"
+            }
+            mouse
+            {
+                modkey = {"Mod3"}
+                button = "4"
+                command = "client_swapnext"
+            }
+            mouse
+            {
+                modkey = {"Mod3"}
+                button = "5"
+                command = "client_swapprev"
+            }
+        }
     }
 }
 
@@ -168,6 +308,7 @@ rules
     rule { name = "Acroread" float = true }
     rule { name = "pinentry" float = true }
     rule { name = "Firefox" tags = "1" }
+    rule { name = "pidgin" tags = "im" }
 }
 
 mouse
@@ -323,6 +464,34 @@ keys
     key
     {
         modkey = {"Mod3"}
+        key = "q"
+        command = "screen_focus"
+        arg = "0"
+    }
+    key
+    {
+        modkey = {"Mod3"}
+        key = "w"
+        command = "screen_focus"
+        arg = "1"
+    }
+    key
+    {
+        modkey = {"Mod3", "Shift"}
+        key = "w"
+        command = "client_movetoscreen"
+        arg = "1"
+    }
+    key
+    {
+        modkey = {"Mod3", "Shift"}
+        key = "q"
+        command = "client_movetoscreen"
+        arg = "0"
+    }
+    key
+    {
+        modkey = {"Mod3"}
         key = "h"
         command = "tag_setmwfact"
         arg = "-0.05"
@@ -418,15 +587,15 @@ keys
     }
     key
     {
-        modkey = {"Mod3", "Shift"}
-        key = "q"
-        command = "quit"
-    }
-    key
-    {
         modkey = {"Mod3", "Control"}
         key = "r"
         command = "restart"
+    }
+    key
+    {
+        modkey = {"Mod3", "Shift"}
+        key = "y"
+        command = "quit"
     }
     key
     {
