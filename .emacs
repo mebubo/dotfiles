@@ -95,6 +95,7 @@
 (setq mail-user-agent 'gnus-user-agent)
 ;; --no-tabs--
 (setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
 ;; --muse--
 (require 'muse-mode)                    ; load authoring mode
 (require 'muse-html)                    ; load publishing styles I use
