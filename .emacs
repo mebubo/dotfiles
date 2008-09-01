@@ -188,7 +188,8 @@
 (msb-mode)
 ;; --ropemacs--
 (require 'pymacs)
-(pymacs-load "ropemacs" "rope-") 
+(pymacs-load "ropemacs" "rope-")
+(setq ropemacs-enable-autoimport 't)
 ;; --yasnippet--
 (require 'yasnippet-bundle)
 ;; Emacs 23: bundled EasyPG
