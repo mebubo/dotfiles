@@ -1,6 +1,5 @@
 	UXTerm*font: terminus-14
-        XTerm*faceName: monospace
-	XTerm*faceSize: 8
+         XTerm*faceName: monospace:pixelsize=15
 !	XTerm*termName: xterm-color
 	XTerm*termName: xterm
       XTerm*altSendsEscape: true
@@ -10,7 +9,7 @@
    XTerm*background: black
    XTerm*foreground: white
     XTerm*scrollBar: off
-	 URxvt.font: xft:monospace:size=8
+	 URxvt.font: xft:monospace:pixelsize=15
      Rxvt*saveLines: 5000
     Rxvt*background: black
     Rxvt*foreground: white
@@ -19,6 +18,6 @@
    XLock.background: black
    XLock.foreground: white
 	 XLock.font: terminus-14
-	 emacs.font: monospace-8
+	 emacs.font: monospace:pixelsize=15
       emacs.toolBar: 0
     xpdf*background: white
