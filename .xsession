@@ -13,8 +13,9 @@ sleep 1
 #xgamma -rgamma 1.2 -bgamma 0.8
 xset dpms 3600 3700 3800 
 xset s 3600
-#root-tail -g 970x700 -font fixed /var/log/syslog,gray &
+xset m 1 1
 
+#root-tail -g 970x700 -font fixed /var/log/syslog,gray &
 #nice -14 ~/bin/status.sh | dzen2 -ta r -fn fixed -w 680 -x 600 -e 'button3=raise' -h 16 &
 #nice -14 ~/proj/scriplets/awesome-status.sh &
 #statuspid=$!
