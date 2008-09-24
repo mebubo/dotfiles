@@ -219,6 +219,11 @@ keybinding({ modkey }, "Escape", awful.tag.history.restore):add()
 
 -- Standard program
 keybinding({ modkey }, "t", function () awful.spawn(terminal) end):add()
+keybinding({ modkey }, "space", function () awful.spawn("quodlibet --play-pause") end):add()
+keybinding({ modkey }, "F4", function () awful.spawn("quodlibet --previous") end):add()
+keybinding({ modkey }, "F5", function () awful.spawn("quodlibet --next") end):add()
+keybinding({ modkey }, "F8", function () awful.spawn("amixer set PCM 2dB-") end):add()
+keybinding({ modkey }, "F9", function () awful.spawn("amixer set PCM 2dB+") end):add()
 
 keybinding({ modkey, "Control" }, "r", awesome.restart):add()
 keybinding({ modkey, "Shift" }, "q", awesome.quit):add()
