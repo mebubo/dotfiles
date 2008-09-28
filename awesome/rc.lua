@@ -220,10 +220,15 @@ keybinding({ modkey }, "Escape", awful.tag.history.restore):add()
 -- Standard program
 keybinding({ modkey }, "t", function () awful.spawn(terminal) end):add()
 keybinding({ modkey }, "space", function () awful.spawn("quodlibet --play-pause") end):add()
-keybinding({ modkey }, "F4", function () awful.spawn("quodlibet --previous") end):add()
-keybinding({ modkey }, "F5", function () awful.spawn("quodlibet --next") end):add()
+keybinding({ modkey }, "F1", function () awful.spawn("eee2ram.sh") end):add()
+keybinding({ modkey }, "F3", function () awful.spawn("quodlibet --previous") end):add()
+keybinding({ modkey }, "F4", function () awful.spawn("quodlibet --next") end):add()
+keybinding({ modkey }, "F5", function () awful.spawn("xrandr-eee.py auto") end):add()
+toggle_mute_cmd = "amixer get LineOut | grep off && amixer set LineOut unmute || amixer set LineOut mute"
+keybinding({ modkey }, "F7", function () awful.spawn(toggle_mute_cmd) end):add()
 keybinding({ modkey }, "F8", function () awful.spawn("amixer set PCM 2dB-") end):add()
 keybinding({ modkey }, "F9", function () awful.spawn("amixer set PCM 2dB+") end):add()
+keybinding({ modkey }, "F12", function () awful.spawn('xlock') end):add()
 
 keybinding({ modkey, "Control" }, "r", awesome.restart):add()
 keybinding({ modkey, "Shift" }, "q", awesome.quit):add()
@@ -262,7 +267,7 @@ keybinding({ modkey, "Shift" }, "v", function () awful.layout.inc(layouts, -1) e
 keybinding({ modkey }, "p", function ()
                                  awful.prompt.run({ prompt = "Run: " }, mypromptbox, awful.spawn, awful.completion.bash,
 os.getenv("HOME") .. "/.cache/awesome/history") end):add()
-keybinding({ modkey }, "F4", function ()
+keybinding({ modkey }, "F10", function ()
                                  awful.prompt.run({ prompt = "Run Lua code: " }, mypromptbox, awful.eval, awful.prompt.bash,
 os.getenv("HOME") .. "/.cache/awesome/history_eval") end):add()
 keybinding({ modkey, "Ctrl" }, "i", function ()
@@ -470,3 +475,63 @@ awful.hooks.mouseover.register(hook_mouseover)
 awful.hooks.arrange.register(hook_arrange)
 awful.hooks.timer.register(1, hook_timer)
 -- }}}
+
+
+-- Create a list of keybindings to be added when mod-u is pressed 
+keybind_mod_u = {} 
+ 
+function keychain_mod_u_add() 
+    for k, v in pairs(keybind_mod_u) do 
+        v:add() 
+    end 
+end 
+
+function keychain_mod_u_remove() 
+    for k, v in pairs(keybind_mod_u) do 
+        v:remove() 
+    end
+end
+
+table.insert(keybind_mod_u, keybinding({}, "q", function () 
+    awful.spawn("quodlibet")
+    keychain_mod_u_remove()
+end)) 
+
+table.insert(keybind_mod_u, keybinding({}, "m", function () 
+    awful.spawn(terminal .. " -e mutt")
+    keychain_mod_u_remove()
+end)) 
+
+table.insert(keybind_mod_u, keybinding({}, "a", function () 
+    awful.spawn("xterm -e alpine")
+    keychain_mod_u_remove()
+end)) 
+
+table.insert(keybind_mod_u, keybinding({}, "e", function () 
+    awful.spawn("emacs")
+    keychain_mod_u_remove()
+end))
+
+table.insert(keybind_mod_u, keybinding({}, "p", function () 
+    awful.spawn("pidgin")
+    keychain_mod_u_remove()
+end))
+
+table.insert(keybind_mod_u, keybinding({}, "f", function () 
+    awful.spawn("firefox")
+    keychain_mod_u_remove()
+end))
+
+table.insert(keybind_mod_u, keybinding({}, "d", function () 
+    awful.spawn(terminal .. " -e sudo aptitude")
+    keychain_mod_u_remove()
+end))
+
+table.insert(keybind_mod_u, keybinding({ "Mod4" }, "b", function () 
+    mytextbox.text = "You pressed Mod4 + b!"
+    keychain_mod_u_remove()
+end)) 
+
+table.insert(keybind_mod_u, keybinding({}, "Escape", keychain_mod_u_remove)) 
+
+keybinding({ modkey }, "u", keychain_mod_u_add):add()
