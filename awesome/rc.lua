@@ -492,46 +492,29 @@ function keychain_mod_u_remove()
     end
 end
 
-table.insert(keybind_mod_u, keybinding({}, "q", function () 
-    awful.spawn("quodlibet")
-    keychain_mod_u_remove()
-end)) 
+mod_u_commands = {q = "quodlibet",
+                  m = terminal .. " -e mutt",
+                  a = "xterm -e alpine",
+                  e = "emacs",
+                  p = "pidgin",
+                  f = "firefox",
+                  d = terminal .. " -e sudo aptitude"}
 
-table.insert(keybind_mod_u, keybinding({}, "m", function () 
-    awful.spawn(terminal .. " -e mutt")
-    keychain_mod_u_remove()
-end)) 
+for key, cmd in pairs(mod_u_commands) do
+   table.insert(keybind_mod_u, 
+                keybinding({}, key, function () 
+                                       awful.spawn(cmd)
+                                       keychain_mod_u_remove()
+                                    end))
+end
 
-table.insert(keybind_mod_u, keybinding({}, "a", function () 
-    awful.spawn("xterm -e alpine")
-    keychain_mod_u_remove()
-end)) 
-
-table.insert(keybind_mod_u, keybinding({}, "e", function () 
-    awful.spawn("emacs")
-    keychain_mod_u_remove()
-end))
-
-table.insert(keybind_mod_u, keybinding({}, "p", function () 
-    awful.spawn("pidgin")
-    keychain_mod_u_remove()
-end))
-
-table.insert(keybind_mod_u, keybinding({}, "f", function () 
-    awful.spawn("firefox")
-    keychain_mod_u_remove()
-end))
-
-table.insert(keybind_mod_u, keybinding({}, "d", function () 
-    awful.spawn(terminal .. " -e sudo aptitude")
-    keychain_mod_u_remove()
-end))
-
+-- This is an example keybinding with an additional modifier
 table.insert(keybind_mod_u, keybinding({ "Mod4" }, "b", function () 
     mytextbox.text = "You pressed Mod4 + b!"
     keychain_mod_u_remove()
 end)) 
 
+-- Escape key cancels
 table.insert(keybind_mod_u, keybinding({}, "Escape", keychain_mod_u_remove)) 
 
 keybinding({ modkey }, "u", keychain_mod_u_add):add()
