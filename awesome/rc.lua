@@ -498,7 +498,11 @@ mod_u_commands = {q = "quodlibet",
                   e = "emacs",
                   p = "pidgin",
                   f = "firefox",
-                  d = terminal .. " -e sudo aptitude"}
+                  d = terminal .. " -e sudo aptitude",
+                  v = "vagalume",
+                  i = "icedove",
+                  s = "stardict",
+                  y = terminal .. " -e ipython"}
 
 for key, cmd in pairs(mod_u_commands) do
    table.insert(keybind_mod_u, 
