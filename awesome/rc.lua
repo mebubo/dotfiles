@@ -8,8 +8,9 @@ require("naughty")
 -- {{{ Variable definitions
 -- This is a file path to a theme file which will defines colors.
 -- theme_path = "/usr/local/share/awesome/themes/default"
-theme_path = "/usr/local/share/awesome/themes/default/theme"
--- theme_path = os.getenv("HOME") .. "/.config/awesome/themes/slk"
+-- theme_path = "/usr/local/share/awesome/themes/default/theme"
+-- theme_path = "/usr/local/share/awesome/themes/sky/theme"
+theme_path = os.getenv("HOME") .. "/.config/awesome/themes/slk-3.1"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
