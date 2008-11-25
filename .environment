@@ -1,0 +1,17 @@
+# environment variables common to all apps
+# sourced by ~/.xsession and ~/.bash_profile
+# non-login shells should get this values thru login ones or window manager 
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_CTYPE=ru_RU.UTF-8
+export EDITOR="emacsclient -a nano"
+export MAIL=~/mail/inbox
+export LD_LIBRARY_PATH=/usr/local/lib
+export PATH=/home/solka/bin:$PATH
+export OOO_FORCE_DESKTOP=gnome
+
+#export PYTHONPATH=$HOME/usr/local/lib/python:$HOME/usr/local/lib/python2.5/site-packages:$PYTHONPATH
+#export AWT_TOOLKIT=MToolkit
+#export EDITOR="emacs -nw -q -no-site-file"
+#export JAVA_HOME=/opt/jdk1.7.0/
