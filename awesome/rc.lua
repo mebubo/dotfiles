@@ -373,7 +373,6 @@ function hook_manage(c)
     -- if they're not focusable, so set border anyway.
     c.border_width = beautiful.border_width
     c.border_color = beautiful.border_normal
-    client.focus = c
 
     -- Check if the application should be floating.
     local cls = c.class
@@ -398,6 +397,9 @@ function hook_manage(c)
 
     -- Honor size hints
     c.honorsizehints = false
+
+    -- Moved here to avoid flicker caused by apptags clients moves
+    client.focus = c
 end
 
 -- Hook function to execute when arranging the screen
