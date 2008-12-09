@@ -71,7 +71,7 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 ;; --cscope-- 
-;(require 'xcscope)
+(require 'xcscope)
 ;(setq cscope-command-args "-q")
 ;; --kernel-indentation--
 (add-hook 'c-mode-common-hook
