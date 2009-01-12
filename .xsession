@@ -3,7 +3,7 @@
 xmodmap .xmodmaprc &
 xautolock -time 30 -locker xlock &
 
-eval `gpg-agent --daemon`
+#eval `gpg-agent --daemon`
 
 awesome &
 wmpid=$!
