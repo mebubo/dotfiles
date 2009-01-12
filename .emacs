@@ -113,7 +113,7 @@
 (pymacs-load "ropemacs" "rope-")
 (setq ropemacs-enable-autoimport 't)
 ;; --yasnippet--
-(require 'yasnippet-bundle)
+;; (require 'yasnippet-bundle)
 ;; Emacs 23: bundled EasyPG
 (require 'epa)
 ;;(epa-file-enable)
