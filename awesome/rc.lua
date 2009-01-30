@@ -321,6 +321,23 @@ for i = 1, keynumber do
                        end
                    end):add()
 end
+
+function execute_command(cmd)
+   local f = io.popen(cmd)
+   local out = f:read("*a")
+   f:close()
+   return out
+end
+
+function translate()
+   local clip = execute_command("xclip -o")
+   local output = execute_command('dict -d mueller7 ' .. clip .. '| tail -n+6')
+   naughty.notify({ title = clip,
+                    text = "<tt>" .. output .. "</tt>",
+                    timeout = 10, width = 600, fg='#FFFFFF' })
+end
+
+keybinding({ modkey }, "F2", translate):add()
 -- }}}
 
 -- {{{ Hooks
