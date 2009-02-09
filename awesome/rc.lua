@@ -338,6 +338,17 @@ function translate()
 end
 
 keybinding({ modkey }, "F2", translate):add()
+
+function open_link()
+   local clip = execute_command("xclip -o")
+   naughty.notify({ title="Opening link",
+                    text=clip,
+                    timeout = 3 })
+   awful.util.spawn("firefox -new-tab " .. clip)
+end
+
+keybinding({ modkey }, "F11", open_link):add()
+
 -- }}}
 
 -- {{{ Hooks
