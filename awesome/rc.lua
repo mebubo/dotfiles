@@ -282,7 +282,7 @@ table.insert(globalkeys, key({ modkey, "Control" }, "l", function () awful.tag.i
 --table.insert(globalkeys, key({ modkey }, "space", function () awful.layout.inc(layouts, 1) end))
 --table.insert(globalkeys, key({ modkey, "Shift" }, "space", function () awful.layout.inc(layouts, -1) end))
 table.insert(globalkeys, key({ modkey }, "v", function () awful.layout.inc(layouts, 1) end))
-table.insert(globalkeys, key({ modkey, "v" }, "space", function () awful.layout.inc(layouts, -1) end))
+table.insert(globalkeys, key({ modkey, "Shift" }, "v", function () awful.layout.inc(layouts, -1) end))
 
 
 -- Prompt
