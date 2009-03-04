@@ -17,6 +17,7 @@
 	 XLock.mode: space
    XLock.background: black
    XLock.foreground: white
+   XLock.erasedelay: 0
 	 XLock.font: terminus-14
 	 emacs.font: monospace:pixelsize=15
       emacs.toolBar: 0
