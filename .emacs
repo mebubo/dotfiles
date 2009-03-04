@@ -21,7 +21,7 @@
 (desktop-save-mode 1)
 (setq desktop-buffers-not-to-save
       (concat "\\(" "^nn\\.a[0-9]+\\|\\.log\\|(ftp)\\|^tags\\|^TAGS"
-              "\\|\\.diary\\|\\.newsrc-dribble\\|\\.bbdb" 
+              "\\|\\.diary\\|\\.newsrc-dribble\\|\\.bbdb"
               "\\)$"))
 (add-to-list 'desktop-modes-not-to-save 'dired-mode)
 (add-to-list 'desktop-modes-not-to-save 'Info-mode)
@@ -70,7 +70,7 @@
 ;; --no-tabs--
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
-;; --cscope-- 
+;; --cscope--
 (require 'xcscope)
 ;(setq cscope-command-args "-q")
 ;; --kernel-indentation--
@@ -122,6 +122,20 @@
 ;; --tramp--
 ;(require 'tramp)
 (setq tramp-default-method "ssh")
+;; --trailing whitespace--
+(setq default-indicate-empty-lines t)
+(setq-default show-trailing-whitespace t)
+;; --hippie-expand--
+(global-set-key (kbd "M-/") 'hippie-expand)
+(setq hippie-expand-try-functions-list
+      '(try-expand-dabbrev
+        try-expand-dabbrev-all-buffers
+        try-expand-dabbrev-from-kill
+        try-complete-file-name-partially
+        try-complete-file-name try-expand-all-abbrevs
+        try-expand-list try-expand-line
+        try-complete-lisp-symbol-partially
+        try-complete-lisp-symbol))
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
@@ -130,4 +144,3 @@
   ;; If there is more than one, they won't work right.
  '(case-fold-search t)
  '(load-home-init-file t t))
-
