@@ -136,11 +136,6 @@
         try-expand-list try-expand-line
         try-complete-lisp-symbol-partially
         try-complete-lisp-symbol))
-
-(custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(case-fold-search t)
- '(load-home-init-file t t))
+;; --make customize use it's own file--
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file 'noerror)
