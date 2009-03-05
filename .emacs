@@ -1,4 +1,4 @@
-(setq load-path (cons "~/usr/local/share/emacs/site-lisp" load-path))
+(setq load-path (cons "~/.emacs.d/plugins" load-path))
 ;; --keys--
 (global-set-key "\C-z" nil)
 (global-set-key "\C-x\C-b" 'bs-show)
