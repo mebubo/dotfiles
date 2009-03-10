@@ -456,19 +456,19 @@ awful.hooks.timer.register(1, function ()
 end)
 -- }}}
 
--- {{{ My custom keybindings 
--- Create a list of keybindings to be added when mod-u is pressed 
-keybind_mod_u = {} 
- 
-function keychain_mod_u_add() 
-    for k, v in pairs(keybind_mod_u) do 
-        v:add() 
-    end 
-end 
+-- {{{ My custom keybindings
+-- Create a list of keybindings to be added when mod-u is pressed
+keybind_mod_u = {}
 
-function keychain_mod_u_remove() 
-    for k, v in pairs(keybind_mod_u) do 
-        v:remove() 
+function keychain_mod_u_add()
+    for k, v in pairs(keybind_mod_u) do
+        v:add()
+    end
+end
+
+function keychain_mod_u_remove()
+    for k, v in pairs(keybind_mod_u) do
+        v:remove()
     end
 end
 
@@ -485,21 +485,21 @@ mod_u_commands = {q = "quodlibet",
                   y = terminal .. " -e ipython"}
 
 for key, cmd in pairs(mod_u_commands) do
-   table.insert(keybind_mod_u, 
-                keybinding({}, key, function () 
+   table.insert(keybind_mod_u,
+                keybinding({}, key, function ()
                                        awful.util.spawn(cmd)
                                        keychain_mod_u_remove()
                                     end))
 end
 
 -- This is an example keybinding with an additional modifier
-table.insert(keybind_mod_u, keybinding({ "Mod4" }, "b", function () 
+table.insert(keybind_mod_u, keybinding({ "Mod4" }, "b", function ()
     mytextbox.text = "You pressed Mod4 + b!"
     keychain_mod_u_remove()
-end)) 
+end))
 
 -- Escape key cancels
-table.insert(keybind_mod_u, keybinding({}, "Escape", keychain_mod_u_remove)) 
+table.insert(keybind_mod_u, keybinding({}, "Escape", keychain_mod_u_remove))
 
 keybinding({ modkey }, "u", keychain_mod_u_add):add()
 
