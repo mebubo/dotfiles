@@ -21,7 +21,7 @@
 (desktop-save-mode 1)
 (setq desktop-buffers-not-to-save
       (concat "\\(" "^nn\\.a[0-9]+\\|\\.log\\|(ftp)\\|^tags\\|^TAGS"
-              "\\|\\.diary\\|\\.newsrc-dribble\\|\\.bbdb"
+              "\\|\\.diary\\|\\.newsrc-dribble\\|\\.bbdb\\|\\.gpg"
               "\\)$"))
 (add-to-list 'desktop-modes-not-to-save 'dired-mode)
 (add-to-list 'desktop-modes-not-to-save 'Info-mode)
