@@ -332,6 +332,83 @@ for i = 1, keynumber do
                  end))
 end
 
+-- {{{ My custom keybindings
+-- Create a list of keybindings to be added when mod-u is pressed
+keybind_mod_u = {}
+
+function keychain_mod_u_add()
+    for k, v in pairs(keybind_mod_u) do
+        v:add()
+    end
+end
+
+function keychain_mod_u_remove()
+    for k, v in pairs(keybind_mod_u) do
+        v:remove()
+    end
+end
+
+mod_u_commands = {q = "quodlibet",
+                  m = terminal .. " -e mutt",
+                  a = "xterm -e alpine",
+                  e = "emacs",
+                  p = "pidgin",
+                  f = "firefox",
+                  d = terminal .. " -e sudo aptitude",
+                  v = "vagalume",
+                  i = "icedove",
+                  s = "stardict",
+                  y = terminal .. " -e ipython"}
+
+for key, cmd in pairs(mod_u_commands) do
+   table.insert(keybind_mod_u,
+                keybinding({}, key, function ()
+                                       awful.util.spawn(cmd)
+                                       keychain_mod_u_remove()
+                                    end))
+end
+
+-- This is an example keybinding with an additional modifier
+table.insert(keybind_mod_u, keybinding({ "Mod4" }, "b", function ()
+    mytextbox.text = "You pressed Mod4 + b!"
+    keychain_mod_u_remove()
+end))
+
+-- Escape key cancels
+table.insert(keybind_mod_u, keybinding({}, "Escape", keychain_mod_u_remove))
+
+keybinding({ modkey }, "u", keychain_mod_u_add):add()
+
+-- Execute a shell command and return it's output
+function execute_command(cmd)
+   local f = io.popen(cmd)
+   local out = f:read("*a")
+   f:close()
+   return out
+end
+
+-- Translate current selection using dict and naughty
+function translate()
+   local clip = execute_command("xclip -o")
+   local output = execute_command('dict -d mueller7 ' .. clip .. '| tail -n+6')
+   naughty.notify({ title = clip,
+                    text = "<tt>" .. output .. "</tt>",
+                    timeout = 10, width = 600, fg='#FFFFFF' })
+end
+table.insert(globalkeys, key({ modkey }, "F2", translate))
+
+-- Open selected link in a browser
+function open_link()
+   local clip = execute_command("xclip -o")
+   naughty.notify({ title="Opening link",
+                    text=clip,
+                    timeout = 3 })
+   awful.util.spawn("firefox -new-tab " .. clip)
+end
+table.insert(globalkeys, key({ modkey }, "F11", open_link))
+
+-- }}}
+
 -- Set keys
 root.keys(globalkeys)
 -- }}}
@@ -454,81 +531,4 @@ awful.hooks.timer.register(1, function ()
     -- Otherwise use:
     mytextbox.text = " " .. os.date() .. " "
 end)
--- }}}
-
--- {{{ My custom keybindings
--- Create a list of keybindings to be added when mod-u is pressed
-keybind_mod_u = {}
-
-function keychain_mod_u_add()
-    for k, v in pairs(keybind_mod_u) do
-        v:add()
-    end
-end
-
-function keychain_mod_u_remove()
-    for k, v in pairs(keybind_mod_u) do
-        v:remove()
-    end
-end
-
-mod_u_commands = {q = "quodlibet",
-                  m = terminal .. " -e mutt",
-                  a = "xterm -e alpine",
-                  e = "emacs",
-                  p = "pidgin",
-                  f = "firefox",
-                  d = terminal .. " -e sudo aptitude",
-                  v = "vagalume",
-                  i = "icedove",
-                  s = "stardict",
-                  y = terminal .. " -e ipython"}
-
-for key, cmd in pairs(mod_u_commands) do
-   table.insert(keybind_mod_u,
-                keybinding({}, key, function ()
-                                       awful.util.spawn(cmd)
-                                       keychain_mod_u_remove()
-                                    end))
-end
-
--- This is an example keybinding with an additional modifier
-table.insert(keybind_mod_u, keybinding({ "Mod4" }, "b", function ()
-    mytextbox.text = "You pressed Mod4 + b!"
-    keychain_mod_u_remove()
-end))
-
--- Escape key cancels
-table.insert(keybind_mod_u, keybinding({}, "Escape", keychain_mod_u_remove))
-
-keybinding({ modkey }, "u", keychain_mod_u_add):add()
-
--- Execute a shell command and return it's output
-function execute_command(cmd)
-   local f = io.popen(cmd)
-   local out = f:read("*a")
-   f:close()
-   return out
-end
-
--- Translate current selection using dict and naughty
-function translate()
-   local clip = execute_command("xclip -o")
-   local output = execute_command('dict -d mueller7 ' .. clip .. '| tail -n+6')
-   naughty.notify({ title = clip,
-                    text = "<tt>" .. output .. "</tt>",
-                    timeout = 10, width = 600, fg='#FFFFFF' })
-end
-table.insert(globalkeys, key({ modkey }, "F2", translate))
-
--- Open selected link in a browser
-function open_link()
-   local clip = execute_command("xclip -o")
-   naughty.notify({ title="Opening link",
-                    text=clip,
-                    timeout = 3 })
-   awful.util.spawn("firefox -new-tab " .. clip)
-end
-table.insert(globalkeys, key({ modkey }, "F11", open_link))
-
 -- }}}
