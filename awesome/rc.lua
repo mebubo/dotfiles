@@ -504,6 +504,10 @@ awful.hooks.manage.register(function (c, startup)
 
     -- Honor size hints: if you want to drop the gaps between windows, set this to false.
     c.size_hints_honor = false
+
+    awful.placement.centered(c, c.transient_for)
+    awful.placement.no_offscreen(c)
+
 end)
 
 -- Hook function to execute when arranging the screen.
