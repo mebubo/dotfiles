@@ -27,6 +27,10 @@
 (add-to-list 'desktop-modes-not-to-save 'Info-mode)
 (add-to-list 'desktop-modes-not-to-save 'info-lookup-mode)
 (add-to-list 'desktop-modes-not-to-save 'fundamental-mode)
+;; --recentf--
+(recentf-mode t)
+;; --savehist--
+(savehist-mode t)
 ;; --server--
 (server-start)
 ;; --winner--
