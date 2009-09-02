@@ -1,24 +1,25 @@
-	UXTerm*font: terminus-14
-         XTerm*faceName: monospace:pixelsize=15
-!	XTerm*termName: xterm-color
-	XTerm*termName: xterm
-      XTerm*altSendsEscape: true
-      XTerm*metaSendsEscape: true
-      XTerm*altIsNotMeta: true
-    XTerm*saveLines: 5000
-   XTerm*background: black
-   XTerm*foreground: white
-    XTerm*scrollBar: off
-	 URxvt.font: xft:monospace:pixelsize=15
-     Rxvt*saveLines: 5000
-    Rxvt*background: black
-    Rxvt*foreground: white
-     Rxvt*scrollBar: off
-	 XLock.mode: space
-   XLock.background: black
-   XLock.foreground: white
-   XLock.erasedelay: 0
-	 XLock.font: terminus-14
-	 emacs.font: monospace:pixelsize=15
-      emacs.toolBar: 0
-    xpdf*background: white
+!UXTerm*font: terminus-14
+UXTerm*faceName: monospace:pixelsize=15
+XTerm*faceName: monospace:pixelsize=15
+!XTerm*termName: xterm-color
+XTerm*termName: xterm
+XTerm*altSendsEscape: true
+XTerm*metaSendsEscape: true
+XTerm*altIsNotMeta: true
+XTerm*saveLines: 5000
+XTerm*background: black
+XTerm*foreground: white
+XTerm*scrollBar: off
+URxvt.font: xft:monospace:pixelsize=15
+Rxvt*saveLines: 5000
+Rxvt*background: black
+Rxvt*foreground: white
+Rxvt*scrollBar: off
+XLock.mode: space
+XLock.background: black
+XLock.foreground: white
+XLock.erasedelay: 0
+XLock.font: terminus-14
+emacs.font: monospace:pixelsize=15
+emacs.toolBar: 0
+xpdf*background: white
