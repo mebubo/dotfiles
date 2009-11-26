@@ -1,4 +1,7 @@
 (setq load-path (cons "~/.emacs.d/plugins" load-path))
+(defmacro with-library (symbol &rest body)
+  `(when (require ,symbol nil t)
+     ,@body))
 ;; --keys--
 (global-set-key "\C-z" nil)
 (global-set-key "\C-x\C-b" 'bs-show)
@@ -15,8 +18,8 @@
 ;; --iswitchb--
 (iswitchb-mode t)
 ;; --color-theme--
-(require 'color-theme)
-(color-theme-dark-laptop)
+(with-library 'color-theme
+	      (color-theme-dark-laptop))
 ;; --desktop--
 (desktop-save-mode 1)
 (setq desktop-buffers-not-to-save
