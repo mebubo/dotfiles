@@ -1,4 +1,4 @@
-. ~/.environment
+#. ~/.environment
 
 xmodmap .xmodmaprc &
 xautolock -time 30 -locker xlock &
