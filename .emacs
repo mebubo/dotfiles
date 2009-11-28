@@ -203,3 +203,6 @@
    (if mark-active (list (region-beginning) (region-end))
      (list (line-beginning-position)
            (line-beginning-position 2)))))
+
+;; typing-practice
+(with-library 'typing-practice)
