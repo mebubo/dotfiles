@@ -286,6 +286,36 @@ clientbuttons = awful.util.table.join(
     awful.button({ modkey }, 1, awful.mouse.client.move),
     awful.button({ modkey }, 3, awful.mouse.client.resize))
 
+-- {{{ My keybindings
+function execute_command(cmd)
+   local f = io.popen(cmd)
+   local out = f:read("*a")
+   f:close()
+   return out
+end
+
+function translate()
+   local clip = execute_command("xsel")
+   local output = execute_command('dict -d mueller7 ' .. clip .. '| tail -n+6')
+   naughty.notify({ title = clip,
+                    text = "<tt>" .. output .. "</tt>",
+                    timeout = 10, width = 600, fg='#FFFFFF' })
+end
+
+function browse_url()
+   local clip = execute_command("xsel")
+   naughty.notify({ title="Opening link",
+                    text=clip,
+                    timeout = 3 })
+   awful.util.spawn("firefox -new-tab " .. clip)
+end
+
+globalkeys = awful.util.table.join(globalkeys,
+   awful.key({ modkey }, "F12", translate),
+   awful.key({ modkey }, "F11", browse_url)
+)
+-- }}}
+
 -- Set keys
 root.keys(globalkeys)
 -- }}}
@@ -311,6 +341,8 @@ awful.rules.rules = {
     { rule = { class = "Iceweasel" },
       properties = { tag = tags[1][1] } },
     { rule = { class = "Pidgin" },
+      properties = { tag = tags[1][9] } },
+    { rule = { class = "Gajim.py" },
       properties = { tag = tags[1][9] } },
 }
 -- }}}
