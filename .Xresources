@@ -3,9 +3,9 @@ UXTerm*faceName: monospace:pixelsize=15
 XTerm*faceName: monospace:pixelsize=15
 !XTerm*termName: xterm-color
 XTerm*termName: xterm
-XTerm*altSendsEscape: true
-XTerm*metaSendsEscape: true
-XTerm*altIsNotMeta: true
+UTerm*altSendsEscape: true
+UXTerm*metaSendsEscape: true
+UXTerm*altIsNotMeta: true
 XTerm*saveLines: 5000
 XTerm*background: black
 XTerm*foreground: white
