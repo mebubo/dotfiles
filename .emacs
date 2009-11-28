@@ -8,6 +8,7 @@
 (load custom-file 'noerror)
 
 ;; for safely loading libraries
+;; http://www.emacswiki.org/emacs/LoadingLispFiles
 (defmacro with-library (symbol &rest body)
   `(when (require ,symbol nil t)
      ,@body))
@@ -132,25 +133,26 @@
 (setq org-log-done t)
 
 ;; dictionary
-;(setq dictionary-server "localhost")
-;(setq dictionary-default-dictionary "mueller7")
-;(setq dictionary-create-buttons nil)
-;(setq dictionary-use-single-buffer t)
-;(global-dictionary-tooltip-mode 1)
-;(global-set-key "\C-cs" 'dictionary-search)
-;(global-set-key "\C-cm" 'dictionary-match-words)
-;(global-set-key "\C-cs" 'dictionary-lookup-definition)
+(with-library 'dictionary
+              (setq dictionary-server "localhost")
+              (setq dictionary-default-dictionary "mueller7")
+              (setq dictionary-create-buttons nil)
+              (setq dictionary-use-single-buffer t)
+              (global-dictionary-tooltip-mode 1)
+              (global-set-key "\C-cs" 'dictionary-search)
+              (global-set-key "\C-cm" 'dictionary-match-words)
+              (global-set-key "\C-cs" 'dictionary-lookup-definition))
 
 ;; mouse-select-buffer
 (msb-mode)
 
 ;; ropemacs
-;(require 'pymacs)
-;(pymacs-load "ropemacs" "rope-")
-;(setq ropemacs-enable-autoimport 't)
+(with-library 'pymacs
+              (pymacs-load "ropemacs" "rope-")
+              (setq ropemacs-enable-autoimport 't))
 
 ;; yasnippet
-;(require 'yasnippet-bundle)
+(with-library 'yasnippet-bundle)
 
 ;; Emacs 23: bundled EasyPG
 (require 'epa)
@@ -182,7 +184,8 @@
 ;; rcirc
 (setq rcirc-server-alist
       '(("irc.oftc.net" :channels ("#debian" "#awesome" "#suckless" "#debian-eeepc"))
-        ("irc.freenode.net" :channels ("#emacs" "#mer" "#couchdb"))))
+        ("irc.freenode.net" :channels ("#emacs" "#mer" "#couchdb" "#ubuntuone"))))
+(rcirc-track-minor-mode 1)
 
 ;; copying lines without selecting them
 (defadvice kill-ring-save (before slick-copy activate compile)
