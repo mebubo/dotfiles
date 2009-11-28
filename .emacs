@@ -186,6 +186,7 @@
       '(("irc.oftc.net" :channels ("#debian" "#awesome" "#suckless" "#debian-eeepc"))
         ("irc.freenode.net" :channels ("#emacs" "#mer" "#couchdb" "#ubuntuone"))))
 (rcirc-track-minor-mode 1)
+(setq rcirc-omit-responses '("JOIN" "PART" "QUIT" "NICK" "AWAY"))
 
 ;; copying lines without selecting them
 (defadvice kill-ring-save (before slick-copy activate compile)
