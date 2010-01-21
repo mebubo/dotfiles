@@ -182,11 +182,15 @@
         try-complete-lisp-symbol))
 
 ;; rcirc
+(setq rcirc-default-nick "solka")
+(setq rcirc-authinfo
+      '(("freenode" nickserv "solka" "Loh7ieph")
+        ("oftc" nickserv "solka" "uPee1thu")))
 (setq rcirc-server-alist
-      '(("irc.oftc.net" :channels ("#debian" "#awesome" "#suckless" "#debian-eeepc"))
+      '(("irc.oftc.net" :channels ("#awesome" "#suckless"))
         ("irc.freenode.net" :channels ("#emacs" "#mer" "#couchdb" "#ubuntuone"))))
-(rcirc-track-minor-mode 1)
 (setq rcirc-omit-responses '("JOIN" "PART" "QUIT" "NICK" "AWAY"))
+(rcirc-track-minor-mode 1)
 
 ;; copying lines without selecting them
 (defadvice kill-ring-save (before slick-copy activate compile)
