@@ -32,17 +32,17 @@ modkey = "Mod4"
 layouts =
 {
     awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
+    -- awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
+    -- awful.layout.suit.tile.top,
     awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
+    -- awful.layout.suit.spiral,
+    -- awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier,
-    awful.layout.suit.floating
+    -- awful.layout.suit.max.fullscreen,
+    -- awful.layout.suit.magnifier,
+    -- awful.layout.suit.floating
 }
 -- }}}
 
@@ -294,9 +294,9 @@ function execute_command(cmd)
    return out
 end
 
-function translate()
+function translate(db)
    local clip = execute_command("xsel")
-   local output = execute_command('dict -d mueller7 ' .. clip .. '| tail -n+6')
+   local output = execute_command('dict -d ' .. db .. " " .. clip .. '| tail -n+6')
    naughty.notify({ title = clip,
                     text = "<tt>" .. output .. "</tt>",
                     timeout = 10, width = 600, fg='#FFFFFF' })
@@ -311,7 +311,12 @@ function browse_url()
 end
 
 globalkeys = awful.util.table.join(globalkeys,
-   awful.key({ modkey }, "F12", translate),
+                                   awful.key({ modkey }, "F12", function()
+                                                                   translate("mueller7")
+                                                                end),
+                                   awful.key({ modkey, "Shift" }, "F12", function()
+                                                                   translate("gcide")
+                                                                end),
    awful.key({ modkey }, "F11", browse_url)
 )
 -- }}}
