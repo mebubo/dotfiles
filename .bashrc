@@ -60,7 +60,7 @@ case $TERM in
 	    PROMPT_COMMAND="${my_hist_comm}; history -a; "'echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
 	    ;;
     *)
-	    PROMPT_COMMAND=${my_hist_comm}
+	    PROMPT_COMMAND="${my_hist_comm}; history -a;"
 	    ;;
 esac
 
