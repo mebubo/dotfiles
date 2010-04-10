@@ -7,8 +7,6 @@ if [ `tty` = "/dev/tty6" ]; then
     exit
 fi
 
-. ~/.environment
-
 # include .bashrc if it exists
 if [ -f ~/.bashrc ]; then
     . ~/.bashrc

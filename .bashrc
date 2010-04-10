@@ -64,6 +64,8 @@ case $TERM in
 	    ;;
 esac
 
+. ~/.environment
+
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CFhla'
