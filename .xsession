@@ -21,4 +21,6 @@ blueman-applet &
 #pulseaudio --daemonize
 #padevchooser &
 
+setxkbmap -layout us,ru -variant ,winkeys -option grp:toggle,grp_led:scroll,terminate:ctrl_alt_bksp
+
 wait $wmpid
