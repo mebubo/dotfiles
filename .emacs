@@ -191,6 +191,9 @@
         ("irc.freenode.net" :channels ("#emacs" "#mer" "#couchdb" "#ubuntuone"))))
 (setq rcirc-omit-responses '("JOIN" "PART" "QUIT" "NICK" "AWAY"))
 (rcirc-track-minor-mode 1)
+(add-hook 'window-configuration-change-hook
+          '(lambda ()
+             (setq rcirc-fill-column (- (window-width) 2))))
 
 ;; copying lines without selecting them
 (defadvice kill-ring-save (before slick-copy activate compile)
