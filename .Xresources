@@ -1,4 +1,4 @@
-UXTerm*faceName: monospace:pixelsize=17
+UXTerm*faceName: monospace:pixelsize=15
 UXTerm*termName: xterm-256color
 UXTerm*altSendsEscape: true
 UXTerm*metaSendsEscape: true
@@ -7,7 +7,7 @@ UXTerm*saveLines: 5000
 UXTerm*background: black
 UXTerm*foreground: white
 
-URxvt.font: xft:monospace:pixelsize=17
+URxvt.font: xft:monospace:pixelsize=15
 Rxvt*saveLines: 5000
 Rxvt*background: black
 Rxvt*foreground: white
@@ -19,7 +19,7 @@ XLock.foreground: white
 XLock.erasedelay: 0
 XLock.font: terminus-14
 
-emacs.font: monospace:pixelsize=17
+emacs.font: monospace:pixelsize=15
 emacs.toolBar: 0
 
 xpdf*background: white
