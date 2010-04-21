@@ -214,3 +214,6 @@
 
 ;; typing-practice
 (with-library 'typing-practice)
+
+;; mouse yank
+(setq mouse-yank-at-point t)
