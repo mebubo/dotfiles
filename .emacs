@@ -188,7 +188,8 @@
         ("oftc" nickserv "solka" "uPee1thu")))
 (setq rcirc-server-alist
       '(("irc.oftc.net" :channels ("#awesome" "#suckless"))
-        ("irc.freenode.net" :channels ("#emacs" "#mer" "#couchdb" "#ubuntuone"))))
+        ("irc.freenode.net" :channels ("#emacs" "#uzbl" "#notmuch"))
+        ("localhost")))
 (setq rcirc-omit-responses '("JOIN" "PART" "QUIT" "NICK" "AWAY"))
 (rcirc-track-minor-mode 1)
 (add-hook 'window-configuration-change-hook
