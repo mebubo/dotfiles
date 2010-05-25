@@ -46,6 +46,7 @@
 
 ;; color-theme
 (with-library 'color-theme
+	      (color-theme-initialize)
 	      (color-theme-dark-laptop))
 
 ;; desktop
