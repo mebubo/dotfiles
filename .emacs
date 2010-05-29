@@ -231,3 +231,6 @@
 
 ;; dired
 (setq dired-auto-revert-buffer t)
+
+;; blink-cursor
+(blink-cursor-mode nil)
