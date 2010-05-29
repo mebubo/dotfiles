@@ -1,3 +1,0 @@
-;; --typing--
-(load-library "typing-practice")
-(setq typing-practice-time-threshold 10)
