@@ -223,3 +223,10 @@
 
 ;; mouse yank
 (setq mouse-yank-at-point t)
+
+;; scheme
+(with-library 'quack
+              (setq quack-default-program "scheme"))
+
+;; dired
+(setq dired-auto-revert-buffer t)
