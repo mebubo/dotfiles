@@ -136,13 +136,18 @@
 ;; dictionary
 (with-library 'dictionary
               (setq dictionary-server "localhost")
-              (setq dictionary-default-dictionary "mueller7")
+              (setq dictionary-default-dictionary "wn")
               (setq dictionary-create-buttons nil)
               (setq dictionary-use-single-buffer t)
               (global-dictionary-tooltip-mode 1)
+              (defun my-dictionary-lookup-definition ()
+                (interactive)
+                (dictionary-lookup-definition)
+                (other-window 1)
+                )
               (global-set-key "\C-cs" 'dictionary-search)
               (global-set-key "\C-cm" 'dictionary-match-words)
-              (global-set-key "\C-cs" 'dictionary-lookup-definition))
+              (global-set-key "\C-cd" 'my-dictionary-lookup-definition))
 
 ;; mouse-select-buffer
 (msb-mode)
