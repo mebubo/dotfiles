@@ -312,10 +312,10 @@ end
 
 globalkeys = awful.util.table.join(globalkeys,
                                    awful.key({ modkey }, "F12", function()
-                                                                   translate("mueller7")
+                                                                   translate("wn")
                                                                 end),
                                    awful.key({ modkey, "Shift" }, "F12", function()
-                                                                   translate("gcide")
+                                                                   translate("mueller7")
                                                                 end),
    awful.key({ modkey }, "F11", browse_url)
 )
