@@ -219,7 +219,8 @@
            (line-beginning-position 2)))))
 
 ;; typing-practice
-(with-library 'typing-practice)
+(with-library 'typing-practice
+              (setq typing-practice-time-threshold 10))
 
 ;; mouse yank
 (setq mouse-yank-at-point t)
