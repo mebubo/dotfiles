@@ -307,7 +307,7 @@ function browse_url()
    naughty.notify({ title="Opening link",
                     text=clip,
                     timeout = 3 })
-   awful.util.spawn("firefox -new-tab " .. clip)
+   awful.util.spawn("iceweasel -new-tab " .. clip)
 end
 
 globalkeys = awful.util.table.join(globalkeys,
