@@ -56,8 +56,6 @@
               "\\|\\.diary\\|\\.newsrc-dribble\\|\\.bbdb\\|\\.gpg"
               "\\)$"))
 (add-to-list 'desktop-modes-not-to-save 'dired-mode)
-(add-to-list 'desktop-modes-not-to-save 'info-lookup-mode)
-(add-to-list 'desktop-modes-not-to-save 'fundamental-mode)
 
 ;; recentf
 (recentf-mode t)
