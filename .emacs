@@ -307,3 +307,17 @@
 
 ;; blink-cursor
 (blink-cursor-mode nil)
+
+;; SMTP
+(setq send-mail-function 'smtpmail-send-it)
+(setq message-send-mail-function 'smtpmail-send-it)
+(setq smtpmail-default-smtp-server "mail-emea.sun.com")
+;(setq smtpmail-smtp-server "mail-emea.sun.com")
+;(setq smtpmail-smtp-service 465)
+(setq smtpmail-starttls-credentials
+      '(("mail-emea.sun.com" 25 nil nil)))
+(setq smtpmail-auth-credentials
+      '(("mail-emea.sun.com" 25 "sd208054" nil)))
+(setq smtpmail-debug-info t)
+ @@ -235,0 +310,10 @@
+
