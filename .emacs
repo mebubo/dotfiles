@@ -20,7 +20,13 @@
 (global-set-key "\C-z" nil)
 
 ;; select buffer
+(require 'bs)
 (global-set-key "\C-x\C-b" 'bs-show)
+(add-to-list 'bs-configurations
+             '("dired" nil nil nil
+               (lambda (buf)
+                 (with-current-buffer buf
+                   (not (eq major-mode 'dired-mode)))) nil))
 
 ;; switch to buffer
 (iswitchb-mode t)
@@ -59,6 +65,14 @@
 
 ;; recentf
 (recentf-mode t)
+(defun recentf-open-files-compl ()
+  (interactive)
+  (let* ((tocpl (mapcar (lambda (x) (cons (file-name-nondirectory x) x))
+                        recentf-list))
+         (fname (completing-read "File name: " tocpl nil nil)))
+    (when fname
+      (find-file (cdr (assoc-string fname tocpl))))))
+(global-set-key "\C-x\C-r" 'recentf-open-files-compl)
 
 ;; savehist
 (savehist-mode t)
@@ -68,7 +82,11 @@
 (setq server-kill-new-buffers t)
 
 ;; winner
-(winner-mode)
+(require 'winner)
+(setq winner-dont-bind-my-keys t) ;; default bindings conflict with org-mode
+(global-set-key (kbd "<C-s-left>") 'winner-undo)
+(global-set-key (kbd "<C-s-right>") 'winner-redo)
+(winner-mode t)
 
 ;; paren
 (show-paren-mode)
@@ -192,13 +210,40 @@
         ("oftc" nickserv "solka" "uPee1thu")))
 (setq rcirc-server-alist
       '(("irc.oftc.net" :channels ("#awesome" "#suckless"))
-        ("irc.freenode.net" :channels ("#emacs" "#uzbl" "#notmuch"))
-        ("localhost")))
+        ("irc.freenode.net" :channels ("#emacs" "#notmuch"))))
 (setq rcirc-omit-responses '("JOIN" "PART" "QUIT" "NICK" "AWAY"))
 (rcirc-track-minor-mode 1)
 (add-hook 'window-configuration-change-hook
           '(lambda ()
              (setq rcirc-fill-column (- (window-width) 2))))
+
+(add-to-list 'bs-configurations
+             '("rcirc" nil nil nil
+               (lambda (buf)
+                 (with-current-buffer buf
+                   (not (eq major-mode 'rcirc-mode))))
+               rcirc-sort-buffers))
+
+(defun rcirc-sort-name (buf)
+  "Return server process and buffer name as a string."
+  (with-current-buffer buf
+    (downcase (concat (if rcirc-server-buffer
+                          (buffer-name rcirc-server-buffer)
+                        " ")
+                      " "
+                      (or rcirc-target "")))))
+
+(defun rcirc-sort-buffers (a b)
+  "Sort buffers A and B using `rcirc-sort-name'."
+  (string< (rcirc-sort-name a)
+           (rcirc-sort-name b)))
+
+(add-hook 'rcirc-mode-hook
+          (lambda ()
+            (define-key rcirc-mode-map (kbd "C-x C-b")
+              (lambda ()
+                (interactive)
+                (bs--show-with-configuration "rcirc")))))
 
 ;; copying lines without selecting them
 (defadvice kill-ring-save (before slick-copy activate compile)
@@ -213,8 +258,38 @@
   "When called interactively with no active region, kill a single line instead."
   (interactive
    (if mark-active (list (region-beginning) (region-end))
+;; bookmarks
+(setq bookmark-default-file "~/.emacs.d/bookmarks"
+      bookmark-save-flag 1)
+
      (list (line-beginning-position)
            (line-beginning-position 2)))))
+
+;; dired open marked files
+(eval-after-load "dired"
+  '(progn
+     (define-key dired-mode-map "F" 'my-dired-find-file)
+     (defun my-dired-find-file (&optional arg)
+       "Open each of the marked files, or the file under the point, or when prefix arg, the next N files "
+       (interactive "P")
+       (let* ((fn-list (dired-get-marked-files nil arg)))
+         (mapc 'find-file fn-list)))))
+;; notmuch
+(with-library 'notmuch
+              (setq notmuch-folders '(("inbox" . "tag:inbox")
+                                      ("personal" . "tag:personal AND tag:unread")
+                                      ("sent" . "tag:sent AND tag:unread")
+                                      ("phare" . "phare and tag:unread")
+                                      ("imp" . "tag:imp")
+                                      ("int" . "tag:int")
+                                      ("todo" . "tag:todo")
+                                      ("oj" . "tag:inbox AND tag:oj")
+                                      ("oj-test" . "tag:inbox AND tag:oj-test")
+                                      ("vm-sqe-spb" . "tag:inbox AND tag:vm-sqe-spb")
+                                      ("spb-all" . "tag:inbox AND tag:spb-all")
+                                      ("vm-sqe" . "tag:inbox AND tag:vm-sqe")
+                                      ))
+)
 
 ;; typing-practice
 (with-library 'typing-practice
@@ -241,4 +316,37 @@
                                            ;;(:port . 443)
                                            (:connection-type . ssl))
                                           )))
+;; SMTP
+(setq send-mail-function 'smtpmail-send-it)
+(setq message-send-mail-function 'smtpmail-send-it)
+(setq smtpmail-default-smtp-server "mail-emea.sun.com")
+;(setq smtpmail-smtp-server "mail-emea.sun.com")
+;(setq smtpmail-smtp-service 465)
+(setq smtpmail-starttls-credentials
+      '(("mail-emea.sun.com" 25 nil nil)))
+(setq smtpmail-auth-credentials
+      '(("mail-emea.sun.com" 25 "sd208054" nil)))
+(setq smtpmail-debug-info t)
 
+;; disable arrow keys
+(global-unset-key [(up)])
+(global-unset-key [(down)])
+(global-unset-key [(left)])
+(global-unset-key [(right)])
+(global-unset-key [(prior)])
+(global-unset-key [(next)])
+(global-unset-key [(home)])
+(global-unset-key [(end)])
+
+;; highlight-symbol
+(with-library 'highlight-symbol
+              (global-set-key [(control f3)] 'highlight-symbol-at-point)
+              (global-set-key (kbd "C-x *") 'highlight-symbol-next)
+              (global-set-key (kbd "C-*") 'highlight-symbol-prev))
+
+;; browse-kill-ring
+(when (require 'browse-kill-ring nil 'noerror)
+  (browse-kill-ring-default-keybindings))
+(global-set-key "\C-cy" '(lambda ()
+                           (interactive)
+                           (popup-menu 'yank-menu)))
