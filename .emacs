@@ -329,3 +329,10 @@
 (global-unset-key [(next)])
 (global-unset-key [(home)])
 (global-unset-key [(end)])
+
+;; highlight-symbol
+(with-library 'highlight-symbol
+              (global-set-key [(control f3)] 'highlight-symbol-at-point)
+              (global-set-key (kbd "C-x *") 'highlight-symbol-next)
+              (global-set-key (kbd "C-*") 'highlight-symbol-prev))
+
