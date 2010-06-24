@@ -217,6 +217,34 @@
           '(lambda ()
              (setq rcirc-fill-column (- (window-width) 2))))
 
+(add-to-list 'bs-configurations
+             '("rcirc" nil nil nil
+               (lambda (buf)
+                 (with-current-buffer buf
+                   (not (eq major-mode 'rcirc-mode))))
+               rcirc-sort-buffers))
+
+(defun rcirc-sort-name (buf)
+  "Return server process and buffer name as a string."
+  (with-current-buffer buf
+    (downcase (concat (if rcirc-server-buffer
+                          (buffer-name rcirc-server-buffer)
+                        " ")
+                      " "
+                      (or rcirc-target "")))))
+
+(defun rcirc-sort-buffers (a b)
+  "Sort buffers A and B using `rcirc-sort-name'."
+  (string< (rcirc-sort-name a)
+           (rcirc-sort-name b)))
+
+(add-hook 'rcirc-mode-hook
+          (lambda ()
+            (define-key rcirc-mode-map (kbd "C-x C-b")
+              (lambda ()
+                (interactive)
+                (bs--show-with-configuration "rcirc")))))
+
 ;; copying lines without selecting them
 (defadvice kill-ring-save (before slick-copy activate compile)
   "When called interactively with no active region, copy a single line instead."
