@@ -258,6 +258,10 @@
   "When called interactively with no active region, kill a single line instead."
   (interactive
    (if mark-active (list (region-beginning) (region-end))
+;; bookmarks
+(setq bookmark-default-file "~/.emacs.d/bookmarks"
+      bookmark-save-flag 1)
+
      (list (line-beginning-position)
            (line-beginning-position 2)))))
 
