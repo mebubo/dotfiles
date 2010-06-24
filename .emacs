@@ -319,5 +319,13 @@
 (setq smtpmail-auth-credentials
       '(("mail-emea.sun.com" 25 "sd208054" nil)))
 (setq smtpmail-debug-info t)
- @@ -235,0 +310,10 @@
 
+;; disable arrow keys
+(global-unset-key [(up)])
+(global-unset-key [(down)])
+(global-unset-key [(left)])
+(global-unset-key [(right)])
+(global-unset-key [(prior)])
+(global-unset-key [(next)])
+(global-unset-key [(home)])
+(global-unset-key [(end)])
