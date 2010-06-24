@@ -336,3 +336,9 @@
               (global-set-key (kbd "C-x *") 'highlight-symbol-next)
               (global-set-key (kbd "C-*") 'highlight-symbol-prev))
 
+;; browse-kill-ring
+(when (require 'browse-kill-ring nil 'noerror)
+  (browse-kill-ring-default-keybindings))
+(global-set-key "\C-cy" '(lambda ()
+                           (interactive)
+                           (popup-menu 'yank-menu)))
