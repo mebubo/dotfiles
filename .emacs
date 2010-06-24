@@ -82,7 +82,11 @@
 (setq server-kill-new-buffers t)
 
 ;; winner
-(winner-mode)
+(require 'winner)
+(setq winner-dont-bind-my-keys t) ;; default bindings conflict with org-mode
+(global-set-key (kbd "<C-s-left>") 'winner-undo)
+(global-set-key (kbd "<C-s-right>") 'winner-redo)
+(winner-mode t)
 
 ;; paren
 (show-paren-mode)
