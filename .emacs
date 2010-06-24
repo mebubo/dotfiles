@@ -274,6 +274,22 @@
        (interactive "P")
        (let* ((fn-list (dired-get-marked-files nil arg)))
          (mapc 'find-file fn-list)))))
+;; notmuch
+(with-library 'notmuch
+              (setq notmuch-folders '(("inbox" . "tag:inbox")
+                                      ("personal" . "tag:personal AND tag:unread")
+                                      ("sent" . "tag:sent AND tag:unread")
+                                      ("phare" . "phare and tag:unread")
+                                      ("imp" . "tag:imp")
+                                      ("int" . "tag:int")
+                                      ("todo" . "tag:todo")
+                                      ("oj" . "tag:inbox AND tag:oj")
+                                      ("oj-test" . "tag:inbox AND tag:oj-test")
+                                      ("vm-sqe-spb" . "tag:inbox AND tag:vm-sqe-spb")
+                                      ("spb-all" . "tag:inbox AND tag:spb-all")
+                                      ("vm-sqe" . "tag:inbox AND tag:vm-sqe")
+                                      ))
+)
 
 ;; typing-practice
 (with-library 'typing-practice
