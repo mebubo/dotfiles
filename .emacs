@@ -20,7 +20,13 @@
 (global-set-key "\C-z" nil)
 
 ;; select buffer
+(require 'bs)
 (global-set-key "\C-x\C-b" 'bs-show)
+(add-to-list 'bs-configurations
+             '("dired" nil nil nil
+               (lambda (buf)
+                 (with-current-buffer buf
+                   (not (eq major-mode 'dired-mode)))) nil))
 
 ;; switch to buffer
 (iswitchb-mode t)
