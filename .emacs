@@ -232,3 +232,13 @@
 
 ;; blink-cursor
 (blink-cursor-mode nil)
+
+;; jabber
+(with-library 'jabber
+              (setq jabber-account-list '(
+                                          ("dolgovs@gmail.com"
+                                           (:network-server . "talk.google.com")
+                                           ;;(:port . 443)
+                                           (:connection-type . ssl))
+                                          )))
+
