@@ -1,5 +1,6 @@
 UXTerm*faceName: monospace:size=11
 UXTerm*termName: xterm-256color
+XTerm*termName: xterm-256color
 UXTerm*altSendsEscape: true
 UXTerm*metaSendsEscape: true
 UXTerm*altIsNotMeta: true
