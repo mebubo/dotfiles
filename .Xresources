@@ -6,6 +6,7 @@ UXTerm*altIsNotMeta: true
 UXTerm*saveLines: 5000
 UXTerm*background: black
 UXTerm*foreground: white
+UXTerm*fastScroll: true
 
 URxvt.font: xft:monospace:size=11
 Rxvt*saveLines: 5000
