@@ -7,6 +7,9 @@ UXTerm*saveLines: 5000
 UXTerm*background: black
 UXTerm*foreground: white
 UXTerm*fastScroll: true
+UXTerm*highlightSelection: true
+UXTerm*trimSelection: true
+UXTerm*cutNewline: false
 
 URxvt.font: xft:monospace:size=11
 Rxvt*saveLines: 5000
