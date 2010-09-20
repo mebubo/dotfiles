@@ -342,8 +342,10 @@
 ;; highlight-symbol
 (with-library 'highlight-symbol
               (global-set-key [(control f3)] 'highlight-symbol-at-point)
-              (global-set-key (kbd "C-x *") 'highlight-symbol-next)
-              (global-set-key (kbd "C-*") 'highlight-symbol-prev))
+              (global-set-key [(control f4)] 'highlight-symbol-remove-all)
+              (global-set-key (kbd "C-x *") 'highlight-symbol-prev)
+              (global-set-key (kbd "C-*") 'highlight-symbol-next)
+              (setq highlight-symbol-on-navigation-p t))
 
 ;; browse-kill-ring
 (when (require 'browse-kill-ring nil 'noerror)
@@ -351,3 +353,5 @@
 (global-set-key "\C-cy" '(lambda ()
                            (interactive)
                            (popup-menu 'yank-menu)))
+;; other-window
+(global-set-key "\M-`" 'other-window)
