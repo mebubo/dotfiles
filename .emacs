@@ -355,3 +355,6 @@
                            (popup-menu 'yank-menu)))
 ;; other-window
 (global-set-key "\M-`" 'other-window)
+
+;; yes-or-no
+(defalias 'yes-or-no-p 'y-or-n-p)
