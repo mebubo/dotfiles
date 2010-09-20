@@ -315,6 +315,7 @@
                                            (:network-server . "talk.google.com")
                                            ;;(:port . 443)
                                            (:connection-type . ssl))
+                                          ;;"sd208054@im.sun.com")
                                           )))
 ;; SMTP
 (setq send-mail-function 'smtpmail-send-it)
