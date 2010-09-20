@@ -1,6 +1,8 @@
 export EDITOR="emacsclient -t"
 export ALTERNATE_EDITOR=""
 export OOO_FORCE_DESKTOP=gnome
+export _JAVA_AWT_WM_NONREPARENTING=1
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
 
 # export MAIL=~/mail/inbox
 # export LD_LIBRARY_PATH=/usr/local/lib
