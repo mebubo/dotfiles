@@ -274,21 +274,25 @@
        (interactive "P")
        (let* ((fn-list (dired-get-marked-files nil arg)))
          (mapc 'find-file fn-list)))))
+
 ;; notmuch
 (with-library 'notmuch
-              (setq notmuch-folders '(("inbox" . "tag:inbox")
-                                      ("personal" . "tag:personal AND tag:unread")
-                                      ("sent" . "tag:sent AND tag:unread")
-                                      ("phare" . "phare and tag:unread")
+              (setq notmuch-folders '(
+                                      ("personal" . "tag:personal AND tag:inbox")
+                                      ("vm-sqe-spb" . "tag:inbox AND tag:vm-sqe-spb")
+                                      ("vm-sqe" . "tag:inbox AND tag:vm-sqe")
+                                      ("cr" . "tag:inbox AND tag:cr")
+                                      ("spb-all" . "tag:inbox AND tag:spb-all")
+                                      ("phare" . "phare and tag:inbox")
                                       ("imp" . "tag:imp")
                                       ("int" . "tag:int")
                                       ("todo" . "tag:todo")
-                                      ("oj" . "tag:inbox AND tag:oj")
-                                      ("oj-test" . "tag:inbox AND tag:oj-test")
-                                      ("vm-sqe-spb" . "tag:inbox AND tag:vm-sqe-spb")
-                                      ("spb-all" . "tag:inbox AND tag:spb-all")
-                                      ("vm-sqe" . "tag:inbox AND tag:vm-sqe")
-                                      ))
+                                      ("sent" . "tag:sent AND tag:inbox")
+                                      ("inbox" . "tag:inbox")
+                                      )
+                    notmuch-search-oldest-first nil
+                    notmuch-address-command "addrlookup")
+              (global-set-key [f8] 'notmuch)
 )
 
 ;; typing-practice
@@ -320,14 +324,21 @@
 ;; SMTP
 (setq send-mail-function 'smtpmail-send-it)
 (setq message-send-mail-function 'smtpmail-send-it)
-(setq smtpmail-default-smtp-server "mail-emea.sun.com")
-;(setq smtpmail-smtp-server "mail-emea.sun.com")
-;(setq smtpmail-smtp-service 465)
+(setq smtpmail-default-smtp-server "stbeehive.oracle.com")
+;; (setq smtpmail-smtp-server "stbeehive.oracle.com")
+(setq smtpmail-smtp-service 465)
 (setq smtpmail-starttls-credentials
-      '(("mail-emea.sun.com" 25 nil nil)))
+      '(("stbeehive.oracle.com" 465 nil nil)))
 (setq smtpmail-auth-credentials
-      '(("mail-emea.sun.com" 25 "sd208054" nil)))
+      '(("stbeehive.oracle.com" 465 "sergey.dolgov@oracle.com" nil)))
 (setq smtpmail-debug-info t)
+(setq starttls-use-gnutls t)
+(setq starttls-gnutls-program "gnutls-cli-wrapper.sh")
+(setq starttls-extra-arguments nil)
+
+;; Mail address
+(setq user-mail-address "sergey.dolgov@oracle.com")
+(setq user-full-name "Sergey Dolgov")
 
 ;; disable arrow keys
 (global-unset-key [(up)])
