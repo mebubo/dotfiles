@@ -277,6 +277,8 @@
 
 ;; notmuch
 (with-library 'notmuch
+              (require 'notmuch-address)
+              (require 'notmuch-maildir-fcc)
               (setq notmuch-folders '(
                                       ("personal" . "tag:personal AND tag:inbox")
                                       ("vm-sqe-spb" . "tag:inbox AND tag:vm-sqe-spb")
@@ -291,7 +293,18 @@
                                       ("inbox" . "tag:inbox")
                                       )
                     notmuch-search-oldest-first nil
-                    notmuch-address-command "addrlookup")
+                    notmuch-address-command "addrlookup"
+                    notmuch-fcc-dirs '(("sent"))
+                    notmuch-search-line-faces '(("personal" . '(:foreground "pink"))
+                                                ("imp" . '(:foreground "red"))
+                                                ("unread" . '(:foreground "green")))
+                    notmuch-message-headers '("Subject" "To" "Cc" "Date" "User-Agent")
+                    notmuch-mua-hidden-headers nil
+                    notmuch-search-result-format '(("date" . "%s ") ("count" . "%-7s ")
+                                                   ("authors" . "%-30s ") ("subject" . "%s ") ("tags" . "(%s)"))
+                    notmuch-show-all-tags-list t
+                    )
+
               (global-set-key [f8] 'notmuch)
 )
 
@@ -340,6 +353,9 @@
 (setq user-mail-address "sergey.dolgov@oracle.com")
 (setq user-full-name "Sergey Dolgov")
 
+;; message
+(setq message-directory "~/mail/")
+
 ;; disable arrow keys
 (global-unset-key [(up)])
 (global-unset-key [(down)])
@@ -369,3 +385,6 @@
 
 ;; yes-or-no
 (defalias 'yes-or-no-p 'y-or-n-p)
+
+;; menu-bar
+(menu-bar-mode nil)
