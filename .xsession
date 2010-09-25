@@ -22,9 +22,7 @@ parcellite &
 #pulseaudio --daemonize
 #padevchooser &
 
-#setxkbmap -layout us,ru -variant ,winkeys -option grp:toggle,grp_led:scroll,terminate:ctrl_alt_bksp
-
-# Make Caps Lock a Control key
-setxkbmap -option ctrl:nocaps
+setxkbmap -variant -option
+setxkbmap -layout us,ru -variant ,winkeys -option grp:toggle,grp_led:scroll,terminate:ctrl_alt_bksp,ctrl:nocaps
 
 wait $wmpid
