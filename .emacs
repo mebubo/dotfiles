@@ -295,8 +295,9 @@
                     notmuch-search-oldest-first nil
                     notmuch-address-command "addrlookup"
                     notmuch-fcc-dirs '(("sent"))
-                    notmuch-search-line-faces '(("personal" . '(:foreground "pink"))
-                                                ("imp" . '(:foreground "red"))
+                    notmuch-search-line-faces '(("todo" . '(:foreground "brightred"))
+                                                ("imp" . '(:foreground "brightmagenta"))
+                                                ("personal" . '(:foreground "cyan"))
                                                 ("unread" . '(:foreground "green")))
                     notmuch-message-headers '("Subject" "To" "Cc" "Date" "User-Agent")
                     notmuch-mua-hidden-headers nil
