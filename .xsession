@@ -23,6 +23,6 @@ parcellite &
 #padevchooser &
 
 setxkbmap -variant -option
-setxkbmap -layout us,ru -variant ,winkeys -option grp:toggle,grp_led:scroll,terminate:ctrl_alt_bksp,ctrl:nocaps
+setxkbmap -layout us,ru -variant ,winkeys -option grp:toggle,grp_led:scroll,terminate:ctrl_alt_bksp,ctrl:nocaps,compose:rwin
 
 wait $wmpid
