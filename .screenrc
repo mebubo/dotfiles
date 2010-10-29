@@ -22,3 +22,14 @@ startup_message off
 defscrollback 65536
 # default shell title
 shelltitle ""
+
+# An example of a "screen scraper" which will launch urlview on the current
+# screen window
+#
+bind ^B eval "hardcopy_append off" "hardcopy -h $HOME/.screen-urlview" "screen urlview $HOME/.screen-urlview"
+
+# To get screen to add lines to xterm's scrollback buffer, uncomment the
+# following termcapinfo line which tells xterm to use the normal screen buffer
+# (which has scrollback), not the alternate screen buffer.
+#
+termcapinfo *xterm*|xterms|xs|rxvt ti@:te@
