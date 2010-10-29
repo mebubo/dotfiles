@@ -389,3 +389,10 @@
 
 ;; menu-bar
 (menu-bar-mode nil)
+
+;; auto-config
+(with-library 'auto-complete-config
+              (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+              (setq ac-comphist-file  "~/.emacs.d/ac-comphist.dat")
+              (ac-config-default))
+
