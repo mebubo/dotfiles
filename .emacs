@@ -51,9 +51,10 @@
 (setq kill-whole-line t)
 
 ;; color-theme
-(with-library 'color-theme
-	      (color-theme-initialize)
-	      (color-theme-dark-laptop))
+(when (window-system)
+  (with-library 'color-theme
+                (color-theme-initialize)
+                (color-theme-dark-laptop)))
 
 ;; desktop
 (desktop-save-mode 1)
