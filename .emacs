@@ -27,6 +27,13 @@
 ;                (lambda (buf)
 ;                  (with-current-buffer buf
 ;                    (not (eq major-mode 'dired-mode)))) nil))
+; (add-to-list 'bs-configurations
+;              '("rcirc" nil nil nil
+;                (lambda (buf)
+;                  (with-current-buffer buf
+;                    (not (eq major-mode 'rcirc-mode))))
+;                rcirc-sort-buffers))
+
 
 ;; ibuffer
 (global-set-key (kbd "C-x C-b") 'ibuffer)
@@ -220,13 +227,6 @@
 (add-hook 'window-configuration-change-hook
           '(lambda ()
              (setq rcirc-fill-column (- (window-width) 2))))
-
-(add-to-list 'bs-configurations
-             '("rcirc" nil nil nil
-               (lambda (buf)
-                 (with-current-buffer buf
-                   (not (eq major-mode 'rcirc-mode))))
-               rcirc-sort-buffers))
 
 (defun rcirc-sort-name (buf)
   "Return server process and buffer name as a string."
