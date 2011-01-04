@@ -93,3 +93,7 @@ alias a="acpi"
 alias d="dict"
 
 export GPG_TTY=`tty`
+
+yt () {
+    mplayer -cache 500 $(youtube-dl -g "$1")
+}

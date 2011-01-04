@@ -20,13 +20,16 @@
 (global-set-key "\C-z" nil)
 
 ;; select buffer
-(require 'bs)
-(global-set-key "\C-x\C-b" 'bs-show)
-(add-to-list 'bs-configurations
-             '("dired" nil nil nil
-               (lambda (buf)
-                 (with-current-buffer buf
-                   (not (eq major-mode 'dired-mode)))) nil))
+; (require 'bs)
+; (global-set-key "\C-x\C-b" 'bs-show)
+; (add-to-list 'bs-configurations
+;              '("dired" nil nil nil
+;                (lambda (buf)
+;                  (with-current-buffer buf
+;                    (not (eq major-mode 'dired-mode)))) nil))
+
+;; ibuffer
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;; switch to buffer
 (iswitchb-mode t)
@@ -51,12 +54,13 @@
 (setq kill-whole-line t)
 
 ;; color-theme
-(with-library 'color-theme
-	      (color-theme-initialize)
-	      (color-theme-dark-laptop))
+(when (window-system)
+  (with-library 'color-theme
+                (color-theme-initialize)
+                (color-theme-dark-laptop)))
 
 ;; desktop
-(desktop-save-mode 1)
+(desktop-save-mode nil)
 (setq desktop-buffers-not-to-save
       (concat "\\(" "^nn\\.a[0-9]+\\|\\.log\\|(ftp)\\|^tags\\|^TAGS"
               "\\|\\.diary\\|\\.newsrc-dribble\\|\\.bbdb\\|\\.gpg"
