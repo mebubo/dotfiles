@@ -221,7 +221,7 @@
         ("oftc" nickserv "solka" "uPee1thu")))
 (setq rcirc-server-alist
       '(("irc.oftc.net" :channels ("#awesome" "#suckless"))
-        ("irc.freenode.net" :channels ("#emacs" "#notmuch"))))
+        ("irc.freenode.net" :channels ("#emacs" "#notmuch" "#ac100"))))
 (setq rcirc-omit-responses '("JOIN" "PART" "QUIT" "NICK" "AWAY"))
 (rcirc-track-minor-mode 1)
 (add-hook 'window-configuration-change-hook
@@ -242,12 +242,16 @@
   (string< (rcirc-sort-name a)
            (rcirc-sort-name b)))
 
+; (add-hook 'rcirc-mode-hook
+;           (lambda ()
+;             (define-key rcirc-mode-map (kbd "C-x C-b")
+;               (lambda ()
+;                 (interactive)
+;                 (bs--show-with-configuration "rcirc")))))
+
 (add-hook 'rcirc-mode-hook
           (lambda ()
-            (define-key rcirc-mode-map (kbd "C-x C-b")
-              (lambda ()
-                (interactive)
-                (bs--show-with-configuration "rcirc")))))
+            (setq show-trailing-whitespace nil)))
 
 ;; copying lines without selecting them
 (defadvice kill-ring-save (before slick-copy activate compile)
