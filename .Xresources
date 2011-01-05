@@ -11,6 +11,7 @@ UXTerm*fastScroll: true
 UXTerm*highlightSelection: true
 UXTerm*trimSelection: true
 UXTerm*cutNewline: false
+UXTerm*bellIsUrgent: true
 
 URxvt.font: xft:monospace:size=11
 Rxvt*saveLines: 5000
