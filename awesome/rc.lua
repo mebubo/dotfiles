@@ -121,6 +121,10 @@ textVolume:buttons(awful.util.table.join(
     )
 ))
 
+-- Weather
+weatherwidget = widget({ type = "textbox" })
+-- ICAO code for Pulkovo is ULLI
+vicious.register(weatherwidget, vicious.widgets.weather, ' <span color="#00c000">☼</span> ${tempc}°C ${windkmh} km/h', 1800, 'ULLI')
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -193,6 +197,7 @@ for s = 1, screen.count() do
         },
         mytextclock,
         textVolume,
+        weatherwidget,
         obvious.battery(),
         s == 1 and mysystray or nil,
         mytasklist[s],
