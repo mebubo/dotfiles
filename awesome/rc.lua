@@ -14,7 +14,7 @@ require("obvious.battery")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/home/solka/.config/awesome/themes/zenburn/theme.lua")
+beautiful.init("/home/solka/.config/awesome/themes/cac2s/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
