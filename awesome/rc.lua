@@ -11,6 +11,7 @@ require("naughty")
 require("debian.menu")
 
 require("obvious.battery")
+require("vicious")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
@@ -83,6 +84,44 @@ mytextclock = awful.widget.textclock({ align = "right" })
 -- Create a systray
 mysystray = widget({ type = "systray" })
 
+-- Volume
+colorWidgetFg = "#999999"
+textVolume = widget({ type = "textbox" })
+-- textVolume.bg_image = image(awful.util.getdir("config") .. "/icons/vol.png")
+textVolume.bg_align = "left"
+textVolume.align = "right"
+vicious.cache(vicious.widgets.volume)
+vicious.register(textVolume, vicious.widgets.volume,
+                function (widget, args)
+                    if args[2] == "♫" then
+                        return '<span color="#00c000"> ♫ </span>' .. string.format("%02d", args[1]) .. '<span color="' .. colorWidgetFg .. '">%</span>'
+                    else
+                        return '<span color="' .. theme.bg_urgent .. '"> ♫ ' .. string.format("%02d", args[1]) .. '%</span>'
+                    end
+                end,
+                60, "PCM")
+textVolume:buttons(awful.util.table.join(
+    awful.button({ }, 2,
+        function ()
+            awful.util.spawn("amixer -q sset Master toggle")
+            vicious.force({ textVolume })
+        end
+    ),
+    awful.button({ }, 4,
+        function ()
+            awful.util.spawn("amixer -q sset PCM 1%+")
+            vicious.force({ textVolume })
+        end
+    ),
+    awful.button({ }, 5,
+        function ()
+            awful.util.spawn("amixer -q sset PCM 1%-")
+            vicious.force({ textVolume })
+        end
+    )
+))
+
+
 -- Create a wibox for each screen and add it
 mywibox = {}
 mypromptbox = {}
@@ -153,6 +192,7 @@ for s = 1, screen.count() do
             layout = awful.widget.layout.horizontal.leftright
         },
         mytextclock,
+        textVolume,
         obvious.battery(),
         s == 1 and mysystray or nil,
         mytasklist[s],
