@@ -404,3 +404,20 @@
               (setq ac-comphist-file  "~/.emacs.d/ac-comphist.dat")
               (ac-config-default))
 
+;; column-number
+(column-number-mode t)
+
+;; my stuff
+(defun insert-last-command-line-argument ()
+  ""
+  (interactive)
+  (let ((beg) (end))
+    (save-excursion
+      (beginning-of-line)
+      (comint-previous-prompt 1)
+      (end-of-line)
+      (setq end (point))
+      (backward-sexp)
+      (setq beg (point)))
+    (insert (filter-buffer-substring beg end)))
+)
