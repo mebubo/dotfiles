@@ -61,10 +61,11 @@
 (setq kill-whole-line t)
 
 ;; color-theme
-(when (window-system)
+;(when (window-system)
   (with-library 'color-theme
                 (color-theme-initialize)
-                (color-theme-dark-laptop)))
+                (color-theme-dark-laptop))
+;)
 
 ;; desktop
 (desktop-save-mode nil)
