@@ -426,3 +426,27 @@
       (setq beg (point)))
     (insert (filter-buffer-substring beg end)))
 )
+
+;; comint
+(find-file "~/.emacs.d/comint-history")
+(defun save-comint-history (str)
+  ""
+  (with-current-buffer "comint-history"
+    (goto-char (point-max))
+    (if (not (string-match "\\`\\s *\\'" str))
+        (progn (insert str)
+               (basic-save-buffer)))))
+(add-hook 'comint-input-filter-functions 'save-comint-history)
+
+;; shell-mode
+(add-hook 'shell-mode-hook (lambda () (setq show-trailing-whitespace nil)))
+
+;; start new shell, prompting for buffer name and uniquifying if
+;; necessary
+(defun new-shell ()
+  ""
+  (interactive)
+  (shell
+   (generate-new-buffer-name
+    (read-from-minibuffer "New shell name: " "shell"))))
+(global-set-key [f5] 'new-shell)
