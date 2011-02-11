@@ -316,6 +316,10 @@
                     )
 
               (global-set-key [f8] 'notmuch)
+              (add-hook 'notmuch-search-hook
+                        (lambda ()
+                          (setq show-trailing-whitespace nil)))
+
 )
 
 ;; typing-practice
