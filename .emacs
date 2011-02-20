@@ -446,10 +446,8 @@
 ;; shell-mode
 (add-hook 'shell-mode-hook (lambda () (setq show-trailing-whitespace nil)))
 
-;; start new shell, prompting for buffer name and uniquifying if
-;; necessary
 (defun new-shell ()
-  ""
+  "Start new shell, prompting for buffer name and uniquifying if necessary"
   (interactive)
   (shell
    (generate-new-buffer-name
@@ -457,6 +455,7 @@
 (global-set-key [f5] 'new-shell)
 
 (defun buffer-to-list (name)
+  "Takes buffer name, returns the contents of tha buffer as a list of strings"
   (with-current-buffer name
     (save-excursion
       (let ((l '())
