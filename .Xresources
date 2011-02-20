@@ -12,6 +12,7 @@ UXTerm*highlightSelection: true
 UXTerm*trimSelection: true
 UXTerm*cutNewline: false
 UXTerm*bellIsUrgent: true
+UXTerm*utmpInhibit: true
 
 URxvt.font: xft:monospace:size=11
 Rxvt*saveLines: 5000
