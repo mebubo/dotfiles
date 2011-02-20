@@ -470,12 +470,20 @@
 ;; shell-mode
 (add-hook 'shell-mode-hook (lambda () (setq show-trailing-whitespace nil)))
 
+(defun surround-with-asterisks (string)
+  (unless (equal (substring string 0 1) "*")
+    (setq string (concat "*" string)))
+  (unless (equal (substring string -1) "*")
+    (setq string (concat string "*")))
+  string)
+
 (defun new-shell ()
   "Start new shell, prompting for buffer name and uniquifying if necessary"
   (interactive)
   (shell
    (generate-new-buffer-name
-    (read-from-minibuffer "New shell name: " "shell"))))
+    (surround-with-asterisks
+     (read-from-minibuffer "New shell name: " "shell")))))
 (global-set-key [f5] 'new-shell)
 
 ;; https://gist.github.com/r0man/emacs-starter-kit/raw/personalizations/roman.el
