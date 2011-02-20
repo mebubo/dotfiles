@@ -40,7 +40,7 @@
 
 ;; switch to buffer
 (iswitchb-mode t)
-;(ido-mode t)
+(ido-mode t)
 
 ;; compile by Esc-m
 (global-set-key (kbd "\e\em") 'compile)
