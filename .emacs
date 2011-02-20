@@ -450,3 +450,71 @@
    (generate-new-buffer-name
     (read-from-minibuffer "New shell name: " "shell"))))
 (global-set-key [f5] 'new-shell)
+
+(defun buffer-to-list (name)
+  (with-current-buffer name
+    (let ((l '()))
+      (goto-char (point-min))
+      (while (not (eq (forward-line) 1))
+        (add-to-list 'l (buffer-substring-no-properties
+                         (line-beginning-position) (line-end-position))))
+      l)))
+
+
+;; https://gist.github.com/r0man/emacs-starter-kit/raw/personalizations/roman.el
+
+(defun duplicate-current-line-or-region (arg)
+  "Duplicates the current line or region ARG times.
+If there's no region, the current line will be duplicated. However, if
+there's a region, all lines that region covers will be duplicated."
+  (interactive "p")
+  (let (beg end (origin (point)))
+    (if (and mark-active (> (point) (mark)))
+        (exchange-point-and-mark))
+    (setq beg (line-beginning-position))
+    (if mark-active
+        (exchange-point-and-mark))
+    (setq end (line-end-position))
+    (let ((region (buffer-substring-no-properties beg end)))
+      (dotimes (i arg)
+        (goto-char end)
+        (newline)
+        (insert region)
+        (setq end (point)))
+      (goto-char (+ origin (* (length region) arg) arg)))))
+(global-set-key (kbd "C-c d") 'duplicate-current-line-or-region)
+
+;; Use IDO fro comint history
+;; See: http://paste.lisp.org/display/37129 (modified to remove duplicate)
+(defun ido-complete-comint-input-ring ()
+  "Fetch a previous element from history using ido-like completion.
+This function searches *all* elements in history, not just
+previous or next elements like Comint's normal completion.
+So you can bind it to both M-r and M-s."
+  (interactive)
+  (unless (null comint-input-ring)
+    (let* ((elt (ido-completing-read "History: " (delete "" (remove-duplicates (cddr (ring-elements comint-input-ring)) :test #'string=)) nil t))
+           (pos (comint-previous-matching-input-string-position
+                 (regexp-quote elt) 1)))
+      (unless (null pos)
+        (setq comint-input-ring-index pos)
+        (message "History item: %d" (1+ pos))
+        (comint-delete-input)
+        (insert (ring-ref comint-input-ring pos))))))
+(add-hook 'shell-mode-hook (lambda () (local-set-key (kbd "M-r") 'ido-complete-comint-input-ring)))
+
+;; Enable cut-and-paste between Emacs and X clipboard.
+(setq x-select-enable-clipboard t)
+
+;; Do not add a final newline when saving.
+(setq require-final-newline t)
+
+;;; COMINT MODE
+(custom-set-variables
+ '(comint-scroll-to-bottom-on-input t)  ; always insert at the bottom
+ '(comint-scroll-to-bottom-on-output t) ; always add output at the bottom
+ '(comint-scroll-show-maximum-output t) ; scroll to show max possible output
+ '(comint-completion-autolist t)        ; show completion list when ambiguous
+ '(comint-input-ignoredups t)           ; no duplicates in command history
+ '(comint-completion-addsuffix t)       ; insert space/slash after file completion
+ )
