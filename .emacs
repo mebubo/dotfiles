@@ -435,13 +435,37 @@
 )
 
 ;; comint
+(defvar comint-history-file "~/.emacs.d/comint-history")
 (defun save-comint-history (str)
-  (with-current-buffer (find-file-noselect "~/.emacs.d/comint-history")
+  (with-current-buffer (find-file-noselect comint-history-file)
     (goto-char (point-max))
     (if (not (string-match "\\`\\s *\\'" str))
         (progn (insert str)
                (basic-save-buffer)))))
 (add-hook 'comint-input-filter-functions 'save-comint-history)
+
+(defun buffer-to-list (name)
+  "Takes buffer NAME, returns the contents of tha buffer as a list of strings"
+  (with-current-buffer name
+    (save-excursion
+      (let ((l '())
+            (max-line (line-number-at-pos (point-max))))
+        (goto-char (point-min))
+        (while (not (eq max-line (line-number-at-pos)))
+          (add-to-list 'l (buffer-substring-no-properties
+                           (line-beginning-position) (line-end-position)))
+          (forward-line))
+        l))))
+
+(defun ido-complete-comint-history ()
+  (interactive)
+  (insert
+   (ido-completing-read "comint-history: "
+                        (buffer-to-list
+                         (find-file-noselect comint-history-file)))))
+(add-hook 'shell-mode-hook
+          (lambda ()
+            (local-set-key (kbd "M-s") 'ido-complete-comint-history)))
 
 ;; shell-mode
 (add-hook 'shell-mode-hook (lambda () (setq show-trailing-whitespace nil)))
@@ -453,19 +477,6 @@
    (generate-new-buffer-name
     (read-from-minibuffer "New shell name: " "shell"))))
 (global-set-key [f5] 'new-shell)
-
-(defun buffer-to-list (name)
-  "Takes buffer name, returns the contents of tha buffer as a list of strings"
-  (with-current-buffer name
-    (save-excursion
-      (let ((l '())
-            (max-line (line-number-at-pos (point-max))))
-        (goto-char (point-min))
-        (while (not (eq max-line (line-number-at-pos)))
-          (add-to-list 'l (buffer-substring-no-properties
-                           (line-beginning-position) (line-end-position)))
-          (forward-line))
-        l))))
 
 ;; https://gist.github.com/r0man/emacs-starter-kit/raw/personalizations/roman.el
 
