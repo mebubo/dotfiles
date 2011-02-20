@@ -435,10 +435,8 @@
 )
 
 ;; comint
-(find-file "~/.emacs.d/comint-history")
 (defun save-comint-history (str)
-  ""
-  (with-current-buffer "comint-history"
+  (with-current-buffer (find-file-noselect "~/.emacs.d/comint-history")
     (goto-char (point-max))
     (if (not (string-match "\\`\\s *\\'" str))
         (progn (insert str)
@@ -460,13 +458,15 @@
 
 (defun buffer-to-list (name)
   (with-current-buffer name
-    (let ((l '()))
-      (goto-char (point-min))
-      (while (not (eq (forward-line) 1))
-        (add-to-list 'l (buffer-substring-no-properties
-                         (line-beginning-position) (line-end-position))))
-      l)))
-
+    (save-excursion
+      (let ((l '())
+            (max-line (line-number-at-pos (point-max))))
+        (goto-char (point-min))
+        (while (not (eq max-line (line-number-at-pos)))
+          (add-to-list 'l (buffer-substring-no-properties
+                           (line-beginning-position) (line-end-position)))
+          (forward-line))
+        l))))
 
 ;; https://gist.github.com/r0man/emacs-starter-kit/raw/personalizations/roman.el
 
