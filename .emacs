@@ -46,7 +46,7 @@
 (ad-activate 'ibuffer)
 
 ;; switch to buffer
-(iswitchb-mode t)
+;(iswitchb-mode t)
 
 ;; ido
 (ido-mode t)
