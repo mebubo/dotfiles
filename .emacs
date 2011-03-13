@@ -494,6 +494,14 @@
 
 (global-set-key (kbd "C-c i") 'ido-complete-buffer-viewport)
 
+(ac-define-source buffer-viewport
+  '((candidates . buffer-viewport-to-list)
+    (symbol . "Q")))
+
+(add-hook 'shell-mode-hook
+          (lambda ()
+            (setq ac-sources '(ac-source-buffer-viewport))))
+
 ;; shell-mode
 (add-hook 'shell-mode-hook (lambda () (setq show-trailing-whitespace nil)))
 
