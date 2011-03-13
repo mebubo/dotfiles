@@ -463,12 +463,16 @@
           (forward-line))
         l))))
 
+(defun remove-duplicates-str (list)
+  (remove-duplicates str :test 'equal))
+
 (defun ido-complete-comint-history ()
   (interactive)
   (insert
    (ido-completing-read "comint-history: "
-                        (buffer-to-list
-                         (find-file-noselect comint-history-file)))))
+                        (remove-duplicates-str
+                         (buffer-to-list
+                         (find-file-noselect comint-history-file))))))
 (add-hook 'shell-mode-hook
           (lambda ()
             (local-set-key (kbd "M-s") 'ido-complete-comint-history)))
@@ -485,7 +489,8 @@
   (interactive)
   (insert
    (ido-completing-read "buffer-viewport: "
-                        (buffer-viewport-to-list))))
+                        (remove-duplicates-str
+                         (buffer-viewport-to-list)))))
 
 (global-set-key (kbd "C-c i") 'ido-complete-buffer-viewport)
 
