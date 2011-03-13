@@ -521,6 +521,9 @@
      (read-from-minibuffer "New shell name: " "shell")))))
 (global-set-key [f5] 'new-shell)
 
+;; don't jump around, esp. in shell mode
+(setq split-window-keep-point t)
+
 ;; https://gist.github.com/r0man/emacs-starter-kit/raw/personalizations/roman.el
 
 (defun duplicate-current-line-or-region (arg)
