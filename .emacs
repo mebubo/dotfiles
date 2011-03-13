@@ -473,6 +473,22 @@
           (lambda ()
             (local-set-key (kbd "M-s") 'ido-complete-comint-history)))
 
+(defun buffer-viewport-to-list ()
+  (save-excursion
+    (let ((beg (progn (move-to-window-line 0)
+                      (point)))
+          (end (progn (move-to-window-line -1)
+                      (point))))
+      (split-string (buffer-substring-no-properties beg end)))))
+
+(defun ido-complete-buffer-viewport ()
+  (interactive)
+  (insert
+   (ido-completing-read "buffer-viewport: "
+                        (buffer-viewport-to-list))))
+
+(global-set-key (kbd "C-c i") 'ido-complete-buffer-viewport)
+
 ;; shell-mode
 (add-hook 'shell-mode-hook (lambda () (setq show-trailing-whitespace nil)))
 
