@@ -464,7 +464,7 @@
         l))))
 
 (defun remove-duplicates-str (list)
-  (remove-duplicates str :test 'equal))
+  (remove-duplicates list :test 'equal))
 
 (defun ido-complete-comint-history ()
   (interactive)
