@@ -482,6 +482,8 @@
     (let ((beg (progn (move-to-window-line 0)
                       (point)))
           (end (progn (move-to-window-line -1)
+                      (next-line)
+                      (move-end-of-line)
                       (point))))
       (split-string (buffer-substring-no-properties beg end)))))
 
