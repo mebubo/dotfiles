@@ -483,7 +483,7 @@
                       (point)))
           (end (progn (move-to-window-line -1)
                       (next-line)
-                      (move-end-of-line)
+                      (move-end-of-line 1)
                       (point))))
       (split-string (buffer-substring-no-properties beg end)))))
 
