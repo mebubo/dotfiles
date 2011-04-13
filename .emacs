@@ -504,6 +504,22 @@
           (lambda ()
             (setq ac-sources '(ac-source-buffer-viewport))))
 
+(defun insert-from-viewport ()
+  (interactive)
+  (insert
+   (save-excursion
+     (move-to-window-line 0)
+     (isearch-forward)
+     (let ((beg (save-excursion
+                   (search-backward " ")
+                   (point)))
+            (end (save-excursion
+                   (search-forward " ")
+                   (point))))
+       (buffer-substring-no-properties beg end)))))
+
+(global-set-key (kbd "C-c I") 'insert-from-viewport)
+
 ;; shell-mode
 (add-hook 'shell-mode-hook (lambda () (setq show-trailing-whitespace nil)))
 
