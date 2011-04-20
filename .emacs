@@ -202,7 +202,7 @@
 (with-library 'yasnippet-bundle)
 
 ;; Emacs 23: bundled EasyPG
-(require 'epa)
+(with-library 'epa)
 ;(epa-file-enable)
 
 ;; windmove
@@ -420,7 +420,16 @@
 (with-library 'auto-complete-config
               (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
               (setq ac-comphist-file  "~/.emacs.d/ac-comphist.dat")
-              (ac-config-default))
+              (ac-config-default)
+              (ac-define-source buffer-viewport
+                                '((candidates . buffer-viewport-to-list)
+                                  (symbol . "Q")))
+
+              (add-hook 'shell-mode-hook
+                        (lambda ()
+                          (setq ac-sources '(ac-source-buffer-viewport))))
+
+              )
 
 ;; column-number
 (column-number-mode t)
@@ -495,14 +504,6 @@
                          (buffer-viewport-to-list)))))
 
 (global-set-key (kbd "C-c i") 'ido-complete-buffer-viewport)
-
-(ac-define-source buffer-viewport
-  '((candidates . buffer-viewport-to-list)
-    (symbol . "Q")))
-
-(add-hook 'shell-mode-hook
-          (lambda ()
-            (setq ac-sources '(ac-source-buffer-viewport))))
 
 (defun insert-from-viewport ()
   (interactive)

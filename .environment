@@ -1,8 +1,11 @@
-export EDITOR="emacsclient -t"
-export ALTERNATE_EDITOR=""
+export EDITOR="emacsclient"
 export OOO_FORCE_DESKTOP=gnome
-export _JAVA_AWT_WM_NONREPARENTING=1
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
+export JAVA_HOME=$HOME/opt/jdk1.6.0_24
+export PATH=$PATH:$JAVA_HOME/bin
+
+# export ALTERNATE_EDITOR=""
+# export _JAVA_AWT_WM_NONREPARENTING=1
+# export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
 
 # export MAIL=~/mail/inbox
 # export LD_LIBRARY_PATH=/usr/local/lib
@@ -11,4 +14,3 @@ export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
 # export LANG=en_US.UTF-8
 # export LC_CTYPE=ru_RU.UTF-8
 # export AWT_TOOLKIT=MToolkit
-# export JAVA_HOME=/opt/jdk1.7.0/
