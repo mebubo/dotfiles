@@ -419,6 +419,9 @@
 ;; scroll-bar
 (scroll-bar-mode nil)
 
+;; tool-bar
+(tool-bar-mode nil)
+
 ;; auto-config
 (with-library 'auto-complete-config
               (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
