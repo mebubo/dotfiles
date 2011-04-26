@@ -416,6 +416,9 @@
 ;; menu-bar
 (menu-bar-mode nil)
 
+;; scroll-bar
+(scroll-bar-mode nil)
+
 ;; auto-config
 (with-library 'auto-complete-config
               (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
@@ -471,6 +474,8 @@
                            (line-beginning-position) (line-end-position)))
           (forward-line))
         l))))
+
+(require 'cl)
 
 (defun remove-duplicates-str (list)
   (delete "" (remove-duplicates list :test 'equal :from-end t)))
