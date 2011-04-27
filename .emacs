@@ -420,7 +420,7 @@
 (scroll-bar-mode nil)
 
 ;; tool-bar
-(tool-bar-mode nil)
+(tool-bar-mode -1)
 
 ;; auto-config
 (with-library 'auto-complete-config
