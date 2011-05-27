@@ -384,14 +384,14 @@
 (setq message-directory "~/mail/")
 
 ;; disable arrow keys
-(global-unset-key [(up)])
-(global-unset-key [(down)])
-(global-unset-key [(left)])
-(global-unset-key [(right)])
-(global-unset-key [(prior)])
-(global-unset-key [(next)])
-(global-unset-key [(home)])
-(global-unset-key [(end)])
+;; (global-unset-key [(up)])
+;; (global-unset-key [(down)])
+;; (global-unset-key [(left)])
+;; (global-unset-key [(right)])
+;; (global-unset-key [(prior)])
+;; (global-unset-key [(next)])
+;; (global-unset-key [(home)])
+;; (global-unset-key [(end)])
 
 ;; highlight-symbol
 (with-library 'highlight-symbol

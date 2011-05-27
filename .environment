@@ -1,7 +1,7 @@
 export EDITOR="emacsclient"
 export OOO_FORCE_DESKTOP=gnome
-export JAVA_HOME=$HOME/opt/jdk1.6.0_24
-export PATH=$PATH:$JAVA_HOME/bin
+export JAVA_HOME=$HOME/opt/jdk
+export PATH=$JAVA_HOME/bin:$PATH
 
 # export ALTERNATE_EDITOR=""
 # export _JAVA_AWT_WM_NONREPARENTING=1
