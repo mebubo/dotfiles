@@ -49,7 +49,7 @@
 ;(iswitchb-mode t)
 
 ;; ido
-(ido-mode t)
+(ido-mode 'buffers)
 ;; Display ido results vertically, rather than horizontally
 ;(setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
 ;(defun ido-disable-line-trucation () (set (make-local-variable 'truncate-lines) nil))
