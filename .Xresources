@@ -1,4 +1,4 @@
-UXTerm*faceName: monospace:size=11
+UXTerm*faceName: monospace:pixelsize=12
 UXTerm*termName: xterm-256color
 XTerm*termName: xterm-256color
 UXTerm*altSendsEscape: true
