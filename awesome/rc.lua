@@ -15,7 +15,7 @@ require("vicious")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/home/solka/.config/awesome/themes/cac2s/theme.lua")
+beautiful.init("/home/mebubo/.config/awesome/themes/cac2s/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
@@ -132,7 +132,8 @@ textVolume:buttons(awful.util.table.join(
 -- Weather
 weatherwidget = widget({ type = "textbox" })
 -- ICAO code for Pulkovo is ULLI
-vicious.register(weatherwidget, vicious.widgets.weather, ' <span color="#00c000">☼</span> ${tempc}°C ${windkmh} km/h', 1800, 'ULLI')
+-- ICAO code for Nice is LFMN
+vicious.register(weatherwidget, vicious.widgets.weather, ' <span color="#00c000">☼</span> ${tempc}°C ${windkmh} km/h', 1800, 'LFMN')
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -493,6 +494,6 @@ client.add_signal("manage", function (c, startup)
     end
 end)
 
-client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+--client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
+--client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
