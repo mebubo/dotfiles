@@ -54,6 +54,7 @@
 ;(setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
 ;(defun ido-disable-line-trucation () (set (make-local-variable 'truncate-lines) nil))
 ;(add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
+(add-to-list 'ido-ignore-buffers "^\*")
 
 ;; compile by Esc-m
 (global-set-key (kbd "\e\em") 'compile)
@@ -608,3 +609,18 @@ So you can bind it to both M-r and M-s."
  '(comint-input-ignoredups t)           ; no duplicates in command history
  '(comint-completion-addsuffix t)       ; insert space/slash after file completion
  )
+
+;; project-root
+(require 'project-root)
+(setq project-roots
+      '(("Generic Git Project" :root-contains-files (".git"))
+        ("Generic Mercurial Project" :root-contains-files (".hg"))))
+(global-set-key (kbd "C-c p f") 'project-root-find-file)
+(global-set-key (kbd "C-c p g") 'project-root-grep)
+(global-set-key (kbd "C-c p a") 'project-root-ack)
+(global-set-key (kbd "C-c p d") 'project-root-goto-root)
+(global-set-key (kbd "C-c p l") 'project-root-browse-seen-projects)
+(global-set-key (kbd "C-c p s")
+                (lambda () (interactive)
+                  (with-project-root
+                      (shell (concat (car project-details) "-shell")))))
