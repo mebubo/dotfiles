@@ -597,7 +597,7 @@ So you can bind it to both M-r and M-s."
 ;; Enable cut-and-paste between Emacs and X clipboard.
 (setq x-select-enable-clipboard t)
 
-;; Do not add a final newline when saving.
+;; Add a final newline when saving.
 (setq require-final-newline t)
 
 ;;; COMINT MODE
