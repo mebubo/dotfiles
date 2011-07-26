@@ -624,3 +624,6 @@ So you can bind it to both M-r and M-s."
                 (lambda () (interactive)
                   (with-project-root
                       (shell (concat (car project-details) "-shell")))))
+
+;; nxml
+(setq nxml-child-indent 4)
