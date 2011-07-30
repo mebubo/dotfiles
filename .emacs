@@ -611,19 +611,19 @@ So you can bind it to both M-r and M-s."
  )
 
 ;; project-root
-(require 'project-root)
-(setq project-roots
-      '(("Generic Git Project" :root-contains-files (".git"))
-        ("Generic Mercurial Project" :root-contains-files (".hg"))))
-(global-set-key (kbd "C-c p f") 'project-root-find-file)
-(global-set-key (kbd "C-c p g") 'project-root-grep)
-(global-set-key (kbd "C-c p a") 'project-root-ack)
-(global-set-key (kbd "C-c p d") 'project-root-goto-root)
-(global-set-key (kbd "C-c p l") 'project-root-browse-seen-projects)
-(global-set-key (kbd "C-c p s")
-                (lambda () (interactive)
-                  (with-project-root
-                      (shell (concat (car project-details) "-shell")))))
+(with-library 'project-root
+              (setq project-roots
+                    '(("Generic Git Project" :root-contains-files (".git"))
+                      ("Generic Mercurial Project" :root-contains-files (".hg"))))
+              (global-set-key (kbd "C-c p f") 'project-root-find-file)
+              (global-set-key (kbd "C-c p g") 'project-root-grep)
+              (global-set-key (kbd "C-c p a") 'project-root-ack)
+              (global-set-key (kbd "C-c p d") 'project-root-goto-root)
+              (global-set-key (kbd "C-c p l") 'project-root-browse-seen-projects)
+              (global-set-key (kbd "C-c p s")
+                              (lambda () (interactive)
+                                (with-project-root
+                                    (shell (concat (car project-details) "-shell"))))))
 
 ;; nxml
 (setq nxml-child-indent 4)
@@ -631,6 +631,7 @@ So you can bind it to both M-r and M-s."
 ;; partial-completion-mode
 (partial-completion-mode t)
 
+;; smex
 (with-library 'smex
               (smex-initialize)
               (setq smex-save-file "~/.emacs.d/smex.save")
