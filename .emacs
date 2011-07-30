@@ -633,6 +633,7 @@ So you can bind it to both M-r and M-s."
 
 (with-library 'smex
               (smex-initialize)
+              (setq smex-save-file "~/.emacs.d/smex.save")
               (global-set-key (kbd "M-x") 'smex)
               (global-set-key (kbd "M-X") 'smex-major-mode-commands)
               ;; This is your old M-x.
