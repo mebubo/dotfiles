@@ -432,8 +432,20 @@ globalkeys = awful.util.table.join(globalkeys,
                                    awful.key({ modkey, "Shift" }, "F12", function()
                                                                    translate("mueller7")
                                                                 end),
-   awful.key({ modkey }, "F11", browse_url)
+                                   awful.key({ modkey }, "F11", browse_url),
+                                   awful.key({ modkey }, "F2", function () awful.util.spawn("xlock") end),
+                                   awful.key({ }, "XF86Launch1", function () awful.util.spawn("xlock") end),
+                                   awful.key({ }, "XF86AudioMute", function () awful.util.spawn("amixer -q sset Master toggle") end),
+                                   awful.key({ }, "XF86AudioRaiseVolume", function ()
+                                                                             awful.util.spawn("amixer -q sset PCM 5%+")
+                                                                             vicious.force({ textVolume })
+                                                                          end),
+                                   awful.key({ }, "XF86AudioLowerVolume", function ()
+                                                                             awful.util.spawn("amixer -q sset PCM 5%-")
+                                                                             vicious.force({ textVolume })
+                                                                          end)
 )
+
 -- }}}
 
 -- Set keys
