@@ -1,5 +1,5 @@
 theme = {}
-theme.wallpaper_cmd = { "awsetbg /home/solka/img/emacs.png" }
+theme.wallpaper_cmd = { "awsetbg /home/mebubo/img/misc/emacs.png" }
 
 theme.font          = "monospace 8"
 

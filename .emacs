@@ -351,7 +351,7 @@
 (setq dired-auto-revert-buffer t)
 
 ;; blink-cursor
-(blink-cursor-mode nil)
+(blink-cursor-mode 0)
 
 ;; jabber
 (with-library 'jabber
@@ -629,7 +629,7 @@ So you can bind it to both M-r and M-s."
 (setq nxml-child-indent 4)
 
 ;; partial-completion-mode
-(partial-completion-mode t)
+;(partial-completion-mode t)
 
 ;; smex
 (with-library 'smex
@@ -639,6 +639,19 @@ So you can bind it to both M-r and M-s."
               (global-set-key (kbd "M-X") 'smex-major-mode-commands)
               ;; This is your old M-x.
               (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command))
+
+;; electric in emacs 24
+;(electric-pair-mode)
+;(electric-indent-mode)
+;(electric-layout-mode)
+
+;; http://jblevins.org/projects/deft/
+(with-library 'deft
+              (setq
+               deft-extension "org"
+               deft-directory "~/org/deft/"
+               deft-text-mode 'org-mode)
+              (global-set-key (kbd "<f9>") 'deft))
 
 ;; git-commit
 (with-library 'git-commit

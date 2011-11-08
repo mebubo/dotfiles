@@ -432,8 +432,23 @@ globalkeys = awful.util.table.join(globalkeys,
                                    awful.key({ modkey, "Shift" }, "F12", function()
                                                                    translate("mueller7")
                                                                 end),
-   awful.key({ modkey }, "F11", browse_url)
+                                   awful.key({ modkey }, "F11", browse_url),
+                                   awful.key({ modkey }, "F2", function () awful.util.spawn("xlock") end),
+                                   awful.key({ }, "XF86Launch1", function ()
+                                                                    awful.tag.viewonly(tags[1][5])
+                                                                    run_or_raise("emacs", { class = "Emacs" })
+                                                                 end),
+                                   awful.key({ }, "XF86AudioMute", function () awful.util.spawn("amixer -q sset Master toggle") end),
+                                   awful.key({ }, "XF86AudioRaiseVolume", function ()
+                                                                             awful.util.spawn("amixer -q sset PCM 5%+")
+                                                                             vicious.force({ textVolume })
+                                                                          end),
+                                   awful.key({ }, "XF86AudioLowerVolume", function ()
+                                                                             awful.util.spawn("amixer -q sset PCM 5%-")
+                                                                             vicious.force({ textVolume })
+                                                                          end)
 )
+
 -- }}}
 
 -- Set keys
@@ -461,7 +476,9 @@ awful.rules.rules = {
     -- { rule = { class = "Iceweasel" },
     --   properties = { tag = tags[1][1] } },
     { rule = { class = "Pidgin" },
-      properties = { tag = tags[9] } },
+      properties = { tag = tags[1][9] } },
+    { rule = { class = "Emacs" },
+      properties = { tag = tags[1][5] } },
     -- { rule = { class = "Gajim.py" },
     --   properties = { tag = tags[1][9] } },
 }
@@ -497,3 +514,56 @@ end)
 --client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 --client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+--- Spawns cmd if no client can be found matching properties
+-- If such a client can be found, pop to first tag where it is visible, and give it focus
+-- @param cmd the command to execute
+-- @param properties a table of properties to match against clients.  Possible entries: any properties of the client object
+function run_or_raise(cmd, properties)
+   local clients = client.get()
+   local focused = awful.client.next(0)
+   local findex = 0
+   local matched_clients = {}
+   local n = 0
+   for i, c in pairs(clients) do
+      --make an array of matched clients
+      if match(properties, c) then
+         n = n + 1
+         matched_clients[n] = c
+         if c == focused then
+            findex = n
+         end
+      end
+   end
+   if n > 0 then
+      local c = matched_clients[1]
+      -- if the focused window matched switch focus to next in list
+      if 0 < findex and findex < n then
+         c = matched_clients[findex+1]
+      end
+      local ctags = c:tags()
+      if table.getn(ctags) == 0 then
+         -- ctags is empty, show client on current tag
+         local curtag = awful.tag.selected()
+         awful.client.movetotag(curtag, c)
+      else
+         -- Otherwise, pop to first tag client is visible on
+         awful.tag.viewonly(ctags[1])
+      end
+      -- And then focus the client
+      client.focus = c
+      c:raise()
+      return
+   end
+   awful.util.spawn(cmd)
+end
+
+-- Returns true if all pairs in table1 are present in table2
+function match (table1, table2)
+   for k, v in pairs(table1) do
+      if table2[k] ~= v and not table2[k]:find(v) then
+         return false
+      end
+   end
+   return true
+end

@@ -1,0 +1,12 @@
+[merge]
+	conflictstyle = diff3
+[user]
+	name = Sergei Dolgov
+	email = dolgovs@gmail.com
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	last = log -1 HEAD
+	unstage = reset HEAD --
