@@ -1,4 +1,4 @@
-#. ~/.environment
+. ~/.environment
 
 if [ `hostname` = "slk" ] && xrandr | grep "VGA1 connected"; then
     xrandr --output LVDS1 --off --output VGA1 --auto
