@@ -639,3 +639,7 @@ So you can bind it to both M-r and M-s."
               (global-set-key (kbd "M-X") 'smex-major-mode-commands)
               ;; This is your old M-x.
               (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command))
+
+;; git-commit
+(with-library 'git-commit
+              (add-hook 'git-commit-mode-hook 'turn-on-flyspell))
