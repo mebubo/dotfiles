@@ -93,6 +93,7 @@ alias wpa_gui="/usr/sbin/wpa_gui"
 alias wpa_cli="/sbin/wpa_cli"
 alias a="acpi"
 alias d="dict"
+alias E="EDITOR=\"emacsclient -c -a emacs\" sudoedit"
 
 export GPG_TTY=`tty`
 
