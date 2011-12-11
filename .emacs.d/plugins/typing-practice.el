@@ -167,6 +167,11 @@
 "$i = 0;" "$a = Array();" "function fun($a, $b) {" "$_GET['']" "$_POST['']"
 "$_SERVER['PHP_SELF']" "if (!$i)" "echo $i.\"<br>\";"))
 
+(setq typing-practice-java-code '("abstract" "class" "interface"
+"boolean" "main" "sysout" "Thread" "int" "HashMap" "LinkedList"
+"String" "float" "long" "extends" "implements" "for" "if" "while"
+"Object" "public" "static" "final" "void" "Exception" "throws" "new"
+"char" "byte" "private" "return" "throw" "catch" "null"))
 
 ;; --------------------------
 
@@ -264,6 +269,12 @@ soon thereafter"
 (defun practice-shell-code (&optional number-words starting-point)
   (interactive)
   (set-list typing-practice-shell-code number-words starting-point)
+  (practice-typing t)
+  )
+
+(defun practice-java-code (&optional number-words starting-point)
+  (interactive)
+  (set-list typing-practice-java-code number-words starting-point)
   (practice-typing t)
   )
 
