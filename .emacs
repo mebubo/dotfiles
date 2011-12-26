@@ -174,6 +174,8 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 (setq org-log-done t)
+(setq org-export-html-postamble nil)
+(setq org-export-html-preamble nil)
 
 ;; dictionary
 (with-library 'dictionary
