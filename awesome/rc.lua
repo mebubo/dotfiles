@@ -434,6 +434,7 @@ globalkeys = awful.util.table.join(globalkeys,
                                                                 end),
                                    awful.key({ modkey }, "F11", browse_url),
                                    awful.key({ modkey }, "F2", function () awful.util.spawn("xlock") end),
+                                   awful.key({ }, "XF86Sleep", function () awful.util.spawn("xlock") end),
                                    awful.key({ }, "XF86Launch1", function ()
                                                                     awful.tag.viewonly(tags[1][5])
                                                                     run_or_raise("emacs", { class = "Emacs" })
