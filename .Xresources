@@ -13,7 +13,7 @@ UXTerm*trimSelection: true
 UXTerm*cutNewline: false
 UXTerm*bellIsUrgent: true
 UXTerm*utmpInhibit: true
-UXTerm*on2Clicks: regex [^  \n]+
+UXTerm*on2Clicks: regex [^ \n]+
 
 URxvt.font: xft:monospace:size=11
 Rxvt*saveLines: 5000
