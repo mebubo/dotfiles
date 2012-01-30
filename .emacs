@@ -174,8 +174,8 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 (setq org-log-done t)
-(setq org-export-html-postamble nil)
-(setq org-export-html-preamble nil)
+(setq org-export-html-postamble nil
+      org-export-html-preamble nil)
 
 ;; dictionary
 (with-library 'dictionary
@@ -658,3 +658,25 @@ So you can bind it to both M-r and M-s."
 ;; git-commit
 (with-library 'git-commit
               (add-hook 'git-commit-mode-hook 'turn-on-flyspell))
+
+;; org-googlecl
+(with-library 'org-googlecl
+              (setq
+               googlecl-blogname "mebubo"
+               googlecl-username "dolgovs@gmail.com"
+               googlecl-default-labels ""
+               ))
+
+(defun org-googlecl-post-entry ()
+  (interactive)
+  (save-excursion
+    (set-mark (goto-char (org-entry-beginning-position)))
+    (let ((btitle (nth 4 (org-heading-components))))
+      (org-forward-same-level 1 t)
+      (message "%s" btitle)
+      (let ((tmpfile (make-temp-file "org-googlecl"))
+            (output (org-export-as-html 5 nil nil 'string)))
+        (with-temp-file tmpfile
+          (insert output)
+          (message "%s" tmpfile))))))
+
