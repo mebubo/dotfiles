@@ -10,3 +10,5 @@
 	st = status
 	last = log -1 HEAD
 	unstage = reset HEAD --
+[difftool]
+	prompt = no
