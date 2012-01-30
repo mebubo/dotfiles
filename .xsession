@@ -5,7 +5,7 @@ if [ `hostname` = "slk" ] && xrandr | grep "VGA1 connected"; then
 fi
 
 xmodmap .xmodmaprc &
-xautolock -time 30 -locker xlock &
+xautolock -time 30 -locker "i3lock -c 330033 -b -d" &
 
 #eval `gpg-agent --daemon`
 
