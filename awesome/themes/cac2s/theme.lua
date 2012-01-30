@@ -14,8 +14,10 @@ theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
 theme.border_width  = "1"
-theme.border_normal = "#999999"
-theme.border_focus  = "#4a6e99"
+--theme.border_normal = "#999999"
+theme.border_normal = "#222222"
+--theme.border_focus  = "#4a6e99"
+theme.border_focus  = "#aaaaaa"
 theme.border_marked = "#557fb0"
 
 theme.menu_height = "15"
