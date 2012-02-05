@@ -26,7 +26,7 @@
 ;; ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 ;; POSSIBILITY OF SUCH DAMAGE.
 
-;; Version: 0.3
+;; Version: 0.4
 ;; Author: Jason R. Blevins <jrblevin@sdf.org>
 ;; Keywords: plain text, notes, Simplenote, Notational Velocity
 ;; URL: http://jblevins.org/projects/deft/
@@ -43,8 +43,8 @@
 ;; creating new files and saving files.
 
 ;; Deft is open source software and may be freely distributed and
-;; modified under the BSD license.  Version 0.3 is the latest stable
-;; version, released on September 11, 2011.  You may download it
+;; modified under the BSD license.  Version 0.4 is the latest stable
+;; version, released on December 11, 2011.  You may download it
 ;; directly here:
 
 ;;   * [deft.el](http://jblevins.org/projects/deft/deft.el)
@@ -72,10 +72,10 @@
 ;;     about.txt    browser.txt     directory.txt   operations.txt
 ;;     ack.txt      completion.txt  extensions.txt  text-mode.txt
 ;;     binding.txt  creation.txt    filtering.txt
-;;     
+;;
 ;;     % cat ~/.deft/about.txt
 ;;     About
-;;     
+;;
 ;;     An Emacs mode for slicing and dicing plain text files.
 
 ;; ![Filtering](http://jblevins.org/projects/deft/filter.png)
@@ -161,6 +161,21 @@
 ;; prefer to write notes as LaTeX fragments, for example, you could
 ;; set `deft-extension' to "tex" and `deft-text-mode' to `latex-mode'.
 
+;; If you prefer `org-mode', then simply use
+
+;;     (setq deft-extension "org")
+;;     (setq deft-text-mode 'org-mode)
+
+;; For compatibility with other applications which take the title from
+;; the filename, rather than from first line of the file, set the
+;; `deft-use-filename-as-title' flag to a non-nil value.  This also
+;; changes the default behavior for creating new files when the filter
+;; is non-empty: the filter string will be used as the new filename
+;; rather than inserted into the new file.  To enable this
+;; functionality, simply add the following to your `.emacs` file:
+
+;;     (setq deft-use-filename-as-title t)
+
 ;; You can easily set up a global keyboard binding for Deft.  For
 ;; example, to bind it to F8, add the following code to your `.emacs`
 ;; file:
@@ -183,6 +198,15 @@
 
 ;; History
 ;; -------
+
+;; Version 0.4 (2011-12-11):
+
+;; * Improved filtering performance.
+;; * Optionally take title from filename instead of first line of the
+;;   contents (see `deft-use-filename-as-title').
+;; * Dynamically resize width to fit the entire window.
+;; * Customisable time format (see `deft-time-format').
+;; * Handle `deft-directory' properly with or without a trailing slash.
 
 ;; Version 0.3 (2011-09-11):
 
@@ -228,6 +252,18 @@
   "Idle time in seconds before automatically saving buffers opened by Deft.
 Set to zero to disable."
   :type 'float
+  :group 'deft)
+
+(defcustom deft-time-format " %Y-%m-%d %H:%M"
+  "Format string for modification times in the Deft browser.
+Set to nil to hide."
+  :type '(choice (string :tag "Time format")
+		 (const :tag "Hide" nil))
+  :group 'deft)
+
+(defcustom deft-use-filename-as-title nil
+  "Use filename as title, instead of the first line of the contents."
+  :type 'boolean
   :group 'deft)
 
 ;; Faces
@@ -277,9 +313,6 @@ Set to zero to disable."
 (defconst deft-separator " --- "
   "Text used to separate file titles and summaries.")
 
-(defconst deft-line-width 63
-  "Total width of lines in file browser, not including modified time.")
-
 ;; Global variables
 
 (defvar deft-mode-hook nil
@@ -309,6 +342,9 @@ Set to zero to disable."
 (defvar deft-auto-save-buffers nil
   "List of buffers that will be automatically saved.")
 
+(defvar deft-window-width nil
+  "Width of Deft buffer.")
+
 ;; File processing
 
 (defun deft-chomp (str)
@@ -319,7 +355,9 @@ Set to zero to disable."
 (defun deft-base-filename (file)
   "Strip the path and extension from filename FILE."
   (setq file (file-name-nondirectory file))
-  (setq file (replace-regexp-in-string (concat "\." deft-extension "$") "" file)))
+  (if (> (length deft-extension) 0)
+      (setq file (replace-regexp-in-string (concat "\." deft-extension "$") "" file)))
+  file)
 
 (defun deft-find-all-files ()
   "Return a list of all files in the Deft directory."
@@ -336,26 +374,27 @@ Set to zero to disable."
             (setq result (cons file result))))
         result)))
 
-(defun deft-parse-title (contents)
-  "Parse the given file CONTENTS and determine the title.
-The title is taken to be the first non-empty line of a file."
-  (let ((begin (string-match "^.+$" contents)))
-    (when begin
-      (substring contents begin (min (match-end 0)
-                                 (+ begin deft-line-width))))))
+(defun deft-parse-title (file contents)
+  "Parse the given FILE and CONTENTS and determine the title.
+According to `deft-use-filename-as-title', the title is taken to
+be the first non-empty line of a file or the file name."
+  (if deft-use-filename-as-title
+      (deft-base-filename file)
+    (let ((begin (string-match "^.+$" contents)))
+      (if begin
+        (substring contents begin (match-end 0))
+        (deft-base-filename file)))))
 
 (defun deft-parse-summary (contents title)
   "Parse the file CONTENTS, given the TITLE, and extract a summary.
 The summary is a string extracted from the contents following the
 title."
-  (let* ((contents (replace-regexp-in-string "\n" " " contents))
-         (begin (when title (string-match (regexp-quote title) contents)))
-         (size (- deft-line-width (length deft-separator) (match-end 0))))
-    (when begin
-      (when (< 0 size)
-        (setq contents (substring contents (match-end 0) (length contents)))
-        (setq contents (deft-chomp contents))
-        (substring contents 0 (min size (length contents)))))))
+  (let ((summary (replace-regexp-in-string "[\n\t]" " " contents)))
+    (if (and (not deft-use-filename-as-title) title)
+        (if (string-match (regexp-quote title) summary)
+            (deft-chomp (substring summary (match-end 0) nil))
+          "")
+      summary)))
 
 (defun deft-cache-file (file)
   "Update file cache if FILE exists."
@@ -377,7 +416,7 @@ title."
       (setq contents (concat (buffer-string))))
     (puthash file contents deft-hash-contents)
     ;; Title
-    (setq title (deft-parse-title contents))
+    (setq title (deft-parse-title file contents))
     (puthash file title deft-hash-titles)
     ;; Summary
     (puthash file (deft-parse-summary contents title) deft-hash-summaries))
@@ -437,6 +476,7 @@ title."
 
 (defun deft-buffer-setup ()
   "Render the file browser in the *Deft* buffer."
+  (setq deft-window-width (window-width))
   (let ((inhibit-read-only t))
     (erase-buffer))
   (remove-overlays)
@@ -458,11 +498,19 @@ title."
 (defun deft-file-widget (file)
   "Add a line to the file browser for the given FILE."
   (when file
-    (let ((key (file-name-nondirectory file))
-          (text (deft-file-contents file))
-          (title (deft-file-title file))
-          (summary (deft-file-summary file))
-          (mtime (deft-file-mtime file)))
+    (let* ((key (file-name-nondirectory file))
+	   (text (deft-file-contents file))
+	   (title (deft-file-title file))
+	   (summary (deft-file-summary file))
+	   (mtime (when deft-time-format
+		    (format-time-string deft-time-format (deft-file-mtime file))))
+	   (mtime-width (length mtime))
+	   (line-width (- deft-window-width mtime-width))
+	   (title-width (min line-width (length title)))
+	   (summary-width (min (length summary)
+			       (- line-width
+				  title-width
+				  (length deft-separator)))))
       (widget-create 'link
                      :button-prefix ""
                      :button-suffix ""
@@ -472,24 +520,37 @@ title."
                      :help-echo "Edit this file"
                      :notify (lambda (widget &rest ignore)
                                (deft-open-file (widget-get widget :tag)))
-                     (or title "[Empty file]"))
-      (when summary
+                     (if title (substring title 0 title-width) "[Empty file]"))
+      (when (> summary-width 0)
         (widget-insert (propertize deft-separator 'face 'deft-separator-face))
-        (widget-insert (propertize summary 'face 'deft-summary-face)))
-      (while (< (current-column) deft-line-width)
-        (widget-insert " "))
-      (widget-insert (propertize (format-time-string " %Y-%m-%d %H:%M" mtime)
-                                 'face 'deft-time-face))
+        (widget-insert (propertize (substring summary 0 summary-width)
+				   'face 'deft-summary-face)))
+      (when mtime
+	(while (< (current-column) line-width)
+	  (widget-insert " "))
+	(widget-insert (propertize mtime 'face 'deft-time-face)))
       (widget-insert "\n"))))
 
+(add-hook 'window-configuration-change-hook
+	  (lambda ()
+	    (when (and (eq (current-buffer) (get-buffer deft-buffer))
+                       (not (eq deft-window-width (window-width))))
+              (deft-buffer-setup))))
+
 (defun deft-refresh ()
-  "Refresh the *Deft* buffer in the background."
+  "Update the file cache, reapply the filter, and refresh the *Deft* buffer."
   (interactive)
   (when (get-buffer deft-buffer)
     (set-buffer deft-buffer)
     (deft-cache-update)
     (deft-filter-update)
     (deft-buffer-setup)))
+
+(defun deft-refresh-browser ()
+  "Refresh the *Deft* buffer in the background."
+  (when (get-buffer deft-buffer)
+    (with-current-buffer deft-buffer
+      (deft-buffer-setup))))
 
 (defun deft-no-directory-message ()
   "Return a short message to display when the Deft directory does not exist."
@@ -519,30 +580,38 @@ title."
 
 (defun deft-new-file-named (file)
   "Create a new file named FILE (or interactively prompt for a filename).
-If the filter string is non-nil, use it as the title."
+If the filter string is non-nil and title is not from file name,
+use it as the title."
   (interactive "sNew filename (without extension): ")
   (setq file (concat (file-name-as-directory deft-directory)
                      file "." deft-extension))
   (if (file-exists-p file)
       (message (concat "Aborting, file already exists: " file))
-    (when deft-filter-regexp
+    (when (and deft-filter-regexp (not deft-use-filename-as-title))
       (write-region deft-filter-regexp nil file nil))
     (deft-open-file file)))
 
 (defun deft-new-file ()
-  "Create a new file quickly, with an automatically generated filename.
-If the filter string is non-nil, use it as the title."
+  "Create a new file quickly, with an automatically generated filename
+or the filter string if non-nil and deft-use-filename-as-title is set.
+If the filter string is non-nil and title is not from filename,
+use it as the title."
   (interactive)
-  (let (fmt filename counter temp-buffer)
-    (setq counter 0)
-    (setq fmt (concat "deft-%d." deft-extension))
-    (setq filename (concat deft-directory (format fmt counter)))
-    (while (or (file-exists-p filename)
-               (get-file-buffer filename))
-      (setq counter (1+ counter))
-      (setq filename (concat deft-directory (format fmt counter))))
-    (when deft-filter-regexp
-      (write-region (concat deft-filter-regexp "\n\n") nil filename nil))
+  (let (filename)
+    (if (and deft-use-filename-as-title deft-filter-regexp)
+	(setq filename (concat (file-name-as-directory deft-directory) deft-filter-regexp "." deft-extension))
+      (let (fmt counter temp-buffer)
+	(setq counter 0)
+	(setq fmt (concat "deft-%d." deft-extension))
+	(setq filename (concat (file-name-as-directory deft-directory)
+			       (format fmt counter)))
+	(while (or (file-exists-p filename)
+		   (get-file-buffer filename))
+	  (setq counter (1+ counter))
+	  (setq filename (concat (file-name-as-directory deft-directory)
+				 (format fmt counter))))
+	(when deft-filter-regexp
+	  (write-region (concat deft-filter-regexp "\n\n") nil filename nil))))
     (deft-open-file filename)
     (with-current-buffer (get-file-buffer filename)
       (goto-char (point-max)))))
@@ -598,10 +667,13 @@ If the point is not on a file widget, do nothing."
 
 (defun deft-filter-match-file (file)
   "Return FILE if FILE matches the current filter regexp."
-  (if (or (string-match deft-filter-regexp (deft-file-title file))
-          (string-match deft-filter-regexp file)
-          (string-match deft-filter-regexp (deft-file-contents file)))
-      file))
+  (with-temp-buffer
+    (insert file)
+    (insert (deft-file-title file))
+    (insert (deft-file-contents file))
+    (goto-char (point-min))
+    (if (search-forward deft-filter-regexp nil t)
+        file)))
 
 ;; Filters that cause a refresh
 
@@ -622,7 +694,7 @@ If the point is not on a file widget, do nothing."
     (setq deft-filter-regexp str)
     (setq deft-current-files (mapcar 'deft-filter-match-file deft-all-files))
     (setq deft-current-files (delq nil deft-current-files)))
-  (deft-refresh))
+  (deft-refresh-browser))
 
 (defun deft-filter-increment ()
   "Append character to the filter regexp and update `deft-current-files'."
@@ -634,7 +706,7 @@ If the point is not on a file widget, do nothing."
     (setq deft-filter-regexp (concat deft-filter-regexp char))
     (setq deft-current-files (mapcar 'deft-filter-match-file deft-current-files))
     (setq deft-current-files (delq nil deft-current-files)))
-  (deft-refresh))
+  (deft-refresh-browser))
 
 (defun deft-filter-decrement ()
   "Remove last character from the filter regexp and update `deft-current-files'."
@@ -733,7 +805,6 @@ Otherwise, quick create a new file."
 Turning on `deft-mode' runs the hook `deft-mode-hook'.
 
 \\{deft-mode-map}."
-  (interactive)
   (kill-all-local-variables)
   (setq truncate-lines t)
   (setq buffer-read-only t)
