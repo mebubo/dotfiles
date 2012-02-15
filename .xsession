@@ -29,7 +29,7 @@ wmname compiz
 #padevchooser &
 
 setxkbmap -variant -option
-setxkbmap -layout us,ru -variant ,phonetic -option grp:toggle,grp_led:caps,terminate:ctrl_alt_bksp,ctrl:nocaps,compose:rwin
+setxkbmap -layout us,ru -variant ,phonetic -option grp:toggle,grp_led:caps,terminate:ctrl_alt_bksp,ctrl:nocaps,compose:menu
 
 # trackpoint scrolling according to http://www.thinkwiki.org/wiki/How_to_configure_the_TrackPoint
 if [ `hostname` = "mebub" ]; then
