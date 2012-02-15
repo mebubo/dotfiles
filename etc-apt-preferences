@@ -2,90 +2,14 @@ Package: *
 Pin: release a=testing
 Pin-Priority: 700
 
-Package: python-scipy
+Package: chromium
 Pin: release a=unstable
 Pin-Priority: 999
 
-Package: python-numpy
-Pin: release a=unstable
-Pin-Priority: 999
-
-Package: python-matplotlib
-Pin: release a=unstable
-Pin-Priority: 999
-
-Package: ipython
-Pin: release a=unstable
-Pin-Priority: 999
-
-Package: mutt
-Pin: release a=unstable
-Pin-Priority: 999
-
-Package: dvd+rw-tools
-Pin: release a=unstable
-Pin-Priority: 999
-
-Package: gajim
-Pin: release a=unstable
-Pin-Priority: 999
-
-Package: quodlibet
-Pin: release a=unstable
-Pin-Priority: 999
-
-Package: liferea
-Pin: release a=unstable
-Pin-Priority: 999
-
-Package: linux-image-686
-Pin: release a=unstable
-Pin-Priority: 999
-
-Package: mercurial
-Pin: release a=unstable
-Pin-Priority: 999
-
-Package: python-cherrypy
-Pin: release a=unstable
-Pin-Priority: 999
-
-Package: sun-java6-jdk
-Pin: release a=unstable
-Pin-Priority: 999
-
-Package: linux-image-2.6-686
-Pin: release a=unstable
-Pin-Priority: 999
-
-Package: linux-headers-2.6-686
+Package: shotwell
 Pin: release a=unstable
 Pin-Priority: 999
 
 Package: iceweasel
-Pin: release a=unstable
-Pin-Priority: 999
-
-Package: aptitude
-Pin: release a=unstable
-Pin-Priority: 999
-
-Package: pidgin
-Pin: release a=unstable
-Pin-Priority: 999
-
-Package: alpine
-Pin: release a=unstable
-Pin-Priority: 999
-
-Package: rtorrent
-Pin: release a=unstable
-Pin-Priority: 999
-
-Package: wpasupplicant
-Pin: release a=unstable
-Pin-Priority: 999
-
-Package: wireless-tools
 Pin: release a=unstable
 Pin-Priority: 999
