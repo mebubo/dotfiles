@@ -51,7 +51,9 @@
 ;; ido
 (ido-mode 'buffers)
 ;; Display ido results vertically, rather than horizontally
-;(setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
+;(setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]"
+;                              " [No match]" " [Matched]" " [Not readable]"
+;                              " [Too big]" " [Confirm]")))
 ;(defun ido-disable-line-trucation () (set (make-local-variable 'truncate-lines) nil))
 ;(add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
 (add-to-list 'ido-ignore-buffers "^\*")
@@ -597,7 +599,7 @@ So you can bind it to both M-r and M-s."
 (add-hook 'shell-mode-hook (lambda () (local-set-key (kbd "M-r") 'ido-complete-comint-input-ring)))
 
 ;; Enable cut-and-paste between Emacs and X clipboard.
-(setq x-select-enable-clipboard t)
+(setq x-select-enable-clipboard nil)
 
 ;; Add a final newline when saving.
 (setq require-final-newline t)
@@ -651,7 +653,7 @@ So you can bind it to both M-r and M-s."
 (with-library 'deft
               (setq
                deft-extension "org"
-               deft-directory "~/org/deft/"
+               deft-directory "~/txt/deft/"
                deft-text-mode 'org-mode)
               (global-set-key (kbd "<f9>") 'deft))
 
@@ -688,3 +690,9 @@ So you can bind it to both M-r and M-s."
               (rename-buffer
                (generate-new-buffer-name
                 (concat "*" (buffer-name) "*"))))))
+
+;; markdown
+(with-library 'markdown-mode)
+
+;; minimap
+(with-library 'minimap)
