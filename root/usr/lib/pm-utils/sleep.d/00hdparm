@@ -1,0 +1,15 @@
+#!/bin/sh
+
+PATH=/sbin:/usr/sbin:/bin:/usr/bin
+
+HDPARM="invoke-rc.d hdparm"
+
+case "$1" in
+	resume|thaw)
+		$HDPARM start
+		;;
+esac
+
+touch /tmp/hdparm_pm
+
+exit 0

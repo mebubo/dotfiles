@@ -1,0 +1,2 @@
+APT::Default-Release "testing";
+APT::Install-Recommends "false";
