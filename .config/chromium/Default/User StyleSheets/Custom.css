@@ -1,0 +1,10 @@
+/* GMail messages and textarea should use fixed-width font */
+.gs .ii, textarea.Ak {
+    font-family: DejaVu Sans Mono !important;
+    font-size: 9pt !important;
+}
+
+/* Hide ad pane to maximize mail pane space */
+table.Bs > tr > td + td {
+    display: none;
+}
