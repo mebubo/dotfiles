@@ -2,7 +2,7 @@ Package: *
 Pin: release a=testing
 Pin-Priority: 700
 
-Package: chromium
+Package: chromium*
 Pin: release a=unstable
 Pin-Priority: 999
 
@@ -11,5 +11,9 @@ Pin: release a=unstable
 Pin-Priority: 999
 
 Package: iceweasel
+Pin: release a=unstable
+Pin-Priority: 999
+
+Package: linux-image*
 Pin: release a=unstable
 Pin-Priority: 999
