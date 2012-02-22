@@ -104,3 +104,10 @@ yt () {
 if [ -f /etc/bash_completion.d/git ]; then
     . /etc/bash_completion.d/git
 fi
+
+# from technomancy
+function fix-agent {
+  SOCKETS=`find /tmp/ -uid $UID -path \*ssh\* -type s 2> /dev/null`
+  export SSH_AUTH_SOCK=$(ls --color=never -t1 $SOCKETS | head -1)
+  ssh-add -l
+}
