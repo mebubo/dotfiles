@@ -1,4 +1,4 @@
-(set-frame-font "monospace-11")
+(set-frame-font "monospace-10")
 
 (require 'package)
 (add-to-list 'package-archives
