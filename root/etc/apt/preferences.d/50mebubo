@@ -17,3 +17,11 @@ Pin-Priority: 999
 Package: linux-image*
 Pin: release a=unstable
 Pin-Priority: 999
+
+Package: notmuch*
+Pin: release a=unstable
+Pin-Priority: 999
+
+Package: libnotmuch*
+Pin: release a=unstable
+Pin-Priority: 999
