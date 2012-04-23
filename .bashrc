@@ -111,3 +111,13 @@ function fix-agent {
   export SSH_AUTH_SOCK=$(ls --color=never -t1 $SOCKETS | head -1)
   ssh-add -l
 }
+
+function demo_ps1 {
+    PS1='\[\033[01;36m\]\[\033[01;33m\]\w\[\e[01;$(($??31:37))m\] \$ \[\033[00m\]'
+}
+
+function demo_commit_change {
+    echo "DEMO Change $1" >> RM-README.txt
+    git add RM-README.txt
+    git commit -m "DEMO Change $1"
+}
