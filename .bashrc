@@ -128,3 +128,7 @@ function demo_commit_change {
     git add RM-README.txt
     git commit -m "DEMO Change $1"
 }
+
+function bfmtv {
+    mplayer mms://vipevenement.yacast.net/bfm_bfmtv
+}
