@@ -130,5 +130,5 @@ function demo_commit_change {
 }
 
 function bfmtv {
-    mplayer mms://vipevenement.yacast.net/bfm_bfmtv
+    mplayer -fs mms://vipevenement.yacast.net/bfm_bfmtv
 }
