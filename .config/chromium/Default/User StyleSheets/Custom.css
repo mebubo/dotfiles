@@ -1,10 +1,22 @@
+/*
+
+Firefox:
+
+~/.mozilla/firefox/$PROFILE/chrome/userContent.css
+
+Chromium:
+
+~/.config/chromium/Default/User\ StyleSheets/Custom.css
+
+*/
+
 /* GMail messages and textarea should use fixed-width font */
 .gs .ii, textarea.Ak {
-    font-family: DejaVu Sans Mono !important;
-    font-size: 9pt !important;
+    font-family: monospace !important;
+    font-size: 100% !important;
 }
 
-/* Hide ad pane to maximize mail pane space */
+/* Hide ad pane in GMail to maximize mail pane space */
 table.Bs > tr > td + td {
     display: none;
 }
