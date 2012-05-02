@@ -7,11 +7,31 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
 
+;; font
+(set-frame-font "monospace-10")
+
 ;; for safely loading libraries
 ;; http://www.emacswiki.org/emacs/LoadingLispFiles
 (defmacro with-library (symbol &rest body)
   `(when (require ,symbol nil t)
      ,@body))
+
+(with-library 'package
+              (add-to-list 'package-archives
+                           '("marmalade" . "http://marmalade-repo.org/packages/") t)
+              (package-initialize)
+
+              (when (not package-archive-contents)
+                (package-refresh-contents))
+
+              ;; Add in your own as you wish:
+              (defvar my-packages '(smex markdown-mode git-commit)
+                "A list of packages to ensure are installed at launch.")
+
+              (dolist (p my-packages)
+                (when (not (package-installed-p p))
+                  (package-install p))))
+
 
 ;; no-splash-screen
 (setq inhibit-startup-message t)
@@ -419,7 +439,7 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; menu-bar
-(menu-bar-mode nil)
+(menu-bar-mode -1)
 
 ;; scroll-bar
 (scroll-bar-mode nil)
@@ -696,3 +716,5 @@ So you can bind it to both M-r and M-s."
 
 ;; minimap
 (with-library 'minimap)
+
+(set-register ?i '(file . "~/.emacs.d/init.el"))
