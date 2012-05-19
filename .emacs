@@ -254,10 +254,6 @@
         try-complete-lisp-symbol))
 
 ;; rcirc
-(setq rcirc-default-nick "solka")
-(setq rcirc-authinfo
-      '(("freenode" nickserv "solka" "Loh7ieph")
-        ("oftc" nickserv "solka" "uPee1thu")))
 (setq rcirc-server-alist
       '(("irc.oftc.net" :channels ("#awesome" "#suckless"))
         ("irc.freenode.net" :channels ("#emacs" "#notmuch" "#ac100"))))
