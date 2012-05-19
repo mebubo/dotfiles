@@ -12,3 +12,8 @@
 	unstage = reset HEAD --
 [difftool]
 	prompt = no
+[color]
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
