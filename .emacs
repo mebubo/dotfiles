@@ -662,27 +662,6 @@ So you can bind it to both M-r and M-s."
 (with-library 'git-commit
               (add-hook 'git-commit-mode-hook 'turn-on-flyspell))
 
-;; org-googlecl
-(with-library 'org-googlecl
-              (setq
-               googlecl-blogname "mebubo"
-               googlecl-username "dolgovs@gmail.com"
-               googlecl-default-labels ""
-               ))
-
-(defun org-googlecl-post-entry ()
-  (interactive)
-  (save-excursion
-    (set-mark (goto-char (org-entry-beginning-position)))
-    (let ((btitle (nth 4 (org-heading-components))))
-      (org-forward-same-level 1 t)
-      (message "%s" btitle)
-      (let ((tmpfile (make-temp-file "org-googlecl"))
-            (output (org-export-as-html 5 nil nil 'string)))
-        (with-temp-file tmpfile
-          (insert output)
-          (message "%s" tmpfile))))))
-
 ;; append and prepend asterisks to dired buffer names
 ;; this way they are filtered out from ido-switch-buffer
 (add-hook 'dired-after-readin-hook
