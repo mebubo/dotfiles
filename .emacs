@@ -600,7 +600,7 @@ So you can bind it to both M-r and M-s."
 (add-hook 'shell-mode-hook (lambda () (local-set-key (kbd "M-r") 'ido-complete-comint-input-ring)))
 
 ;; Enable cut-and-paste between Emacs and X clipboard.
-(setq x-select-enable-clipboard nil)
+(setq x-select-enable-clipboard t)
 
 ;; Add a final newline when saving.
 (setq require-final-newline t)
