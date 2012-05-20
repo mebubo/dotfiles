@@ -536,6 +536,7 @@
 
 ;; shell-mode
 (add-hook 'shell-mode-hook (lambda () (setq show-trailing-whitespace nil)))
+(add-hook 'eshell-mode-hook (lambda () (setq show-trailing-whitespace nil)))
 
 (defun surround-with-asterisks (string)
   (unless (equal (substring string 0 1) "*")
