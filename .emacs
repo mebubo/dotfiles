@@ -96,21 +96,6 @@
 ;; kill-whole-line
 (setq kill-whole-line t)
 
-;; color-theme
-;(when (window-system)
-  (with-library 'color-theme
-                (color-theme-initialize)
-                (color-theme-dark-laptop))
-;)
-
-;; desktop
-; (desktop-save-mode nil)
-; (setq desktop-buffers-not-to-save
-;       (concat "\\(" "^nn\\.a[0-9]+\\|\\.log\\|(ftp)\\|^tags\\|^TAGS"
-;               "\\|\\.diary\\|\\.newsrc-dribble\\|\\.bbdb\\|\\.gpg"
-;               "\\)$"))
-; (add-to-list 'desktop-modes-not-to-save 'dired-mode)
-
 ;; recentf
 (recentf-mode t)
 (defun recentf-open-files-compl ()
