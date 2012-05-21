@@ -22,6 +22,12 @@ terminal = "x-terminal-emulator"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
+-- browser = "iceweasel -new-tab"
+browser = "chromium"
+screenlock = "i3lock -c 330033 -b -d"
+screenlock_sleep = "i3lock -c 330033 -b"
+emacs = "emacs-snapshot"
+
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
 -- If you do not like this or do not have such a key,
@@ -422,7 +428,7 @@ function browse_url()
    naughty.notify({ title="Opening link",
                     text=clip,
                     timeout = 3 })
-   awful.util.spawn("iceweasel -new-tab " .. clip)
+   awful.util.spawn(browser .. " " .. clip)
 end
 
 globalkeys = awful.util.table.join(globalkeys,
@@ -433,11 +439,11 @@ globalkeys = awful.util.table.join(globalkeys,
                                                                    translate("mueller7")
                                                                 end),
                                    awful.key({ modkey }, "F11", browse_url),
-                                   awful.key({ modkey }, "F2", function () awful.util.spawn("i3lock -c 330033 -b -d") end),
-                                   awful.key({ }, "XF86Sleep", function () awful.util.spawn("i3lock -c 330033 -b") end),
+                                   awful.key({ modkey }, "F2", function () awful.util.spawn(screenlock) end),
+                                   awful.key({ }, "XF86Sleep", function () awful.util.spawn(screenlock_sleep) end),
                                    awful.key({ }, "XF86Launch1", function ()
                                                                     awful.tag.viewonly(tags[1][5])
-                                                                    run_or_raise("emacs", { class = "Emacs" })
+                                                                    run_or_raise(emacs, { class = "Emacs" })
                                                                  end),
                                    awful.key({ }, "XF86AudioMute", function () awful.util.spawn("amixer -q sset Master toggle") end),
                                    awful.key({ }, "XF86AudioRaiseVolume", function ()
