@@ -536,7 +536,6 @@
 
 ;; shell-mode
 (add-hook 'shell-mode-hook (lambda () (setq show-trailing-whitespace nil)))
-(add-hook 'eshell-mode-hook (lambda () (setq show-trailing-whitespace nil)))
 
 (defun surround-with-asterisks (string)
   (unless (equal (substring string 0 1) "*")
@@ -558,7 +557,6 @@
 (setq split-window-keep-point t)
 
 ;; https://gist.github.com/r0man/emacs-starter-kit/raw/personalizations/roman.el
-
 (defun duplicate-current-line-or-region (arg)
   "Duplicates the current line or region ARG times.
 If there's no region, the current line will be duplicated. However, if
@@ -678,3 +676,12 @@ So you can bind it to both M-r and M-s."
 (with-library 'minimap)
 
 (set-register ?i '(file . "~/.emacs.d/init.el"))
+
+;; eshell
+(add-hook 'eshell-mode-hook (lambda () (setq show-trailing-whitespace nil)))
+(defun kai-eshell-insert-last-word (n)
+  (interactive "p")
+  (insert (car (reverse
+                (split-string
+                 (eshell-previous-input-string (- n 1)))))))
+

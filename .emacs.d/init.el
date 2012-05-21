@@ -18,11 +18,5 @@
 
 (server-start)
 
-(defun kai-eshell-insert-last-word (n)
-  (interactive "p")
-  (insert (car (reverse
-                (split-string
-                 (eshell-previous-input-string (- n 1)))))))
-
 (setq multi-eshell-shell-function '(eshell)
       multi-eshell-name "*eshell*")
