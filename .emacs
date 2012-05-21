@@ -685,3 +685,14 @@ So you can bind it to both M-r and M-s."
                 (split-string
                  (eshell-previous-input-string (- n 1)))))))
 
+;; org-publish
+(setq org-publish-project-alist
+      '(("mebubo.github.com"
+         :base-directory "~/j/mebubo.github.com/org/"
+         :base-extension "org"
+         :publishing-directory "~/j/mebubo.github.com/_posts/"
+         :recursive t
+         :publishing-function org-publish-org-to-html
+         :headline-levels 4
+         :html-extension "html"
+         :body-only t)))
