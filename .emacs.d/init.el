@@ -368,23 +368,18 @@
                                           ;;"sd208054@im.sun.com")
                                           )))
 ;; SMTP
-(setq send-mail-function 'smtpmail-send-it)
-(setq message-send-mail-function 'smtpmail-send-it)
-(setq smtpmail-default-smtp-server "stbeehive.oracle.com")
-;; (setq smtpmail-smtp-server "stbeehive.oracle.com")
-(setq smtpmail-smtp-service 465)
-(setq smtpmail-starttls-credentials
-      '(("stbeehive.oracle.com" 465 nil nil)))
-(setq smtpmail-auth-credentials
-      '(("stbeehive.oracle.com" 465 "sergey.dolgov@oracle.com" nil)))
-(setq smtpmail-debug-info t)
-(setq starttls-use-gnutls t)
-(setq starttls-gnutls-program "gnutls-cli-wrapper.sh")
-(setq starttls-extra-arguments nil)
+(setq send-mail-function 'smtpmail-send-it
+      message-send-mail-function 'smtpmail-send-it
+      smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
+      smtpmail-auth-credentials '(("smtp.gmail.com" 587 "dolgovs@gmail.com" nil))
+      smtpmail-default-smtp-server "smtp.gmail.com"
+      smtpmail-smtp-server "smtp.gmail.com"
+      smtpmail-smtp-service 587
+      smtpmail-debug-info t)
 
 ;; Mail address
-(setq user-mail-address "sergey.dolgov@oracle.com")
-(setq user-full-name "Sergey Dolgov")
+(setq user-mail-address "dolgovs@gmail.com")
+(setq user-full-name "Sergei Dolgov")
 
 ;; message
 (setq message-directory "~/mail/")
