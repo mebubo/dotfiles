@@ -25,7 +25,7 @@
                 (package-refresh-contents))
 
               ;; Add in your own as you wish:
-              (defvar my-packages '(smex markdown-mode git-commit)
+              (defvar my-packages '(smex markdown-mode git-commit expand-region)
                 "A list of packages to ensure are installed at launch.")
 
               (dolist (p my-packages)
@@ -691,3 +691,7 @@ So you can bind it to both M-r and M-s."
          :headline-levels 4
          :html-extension "html"
          :body-only t)))
+
+;; expand-region
+(with-library 'expand-region
+              (global-set-key (kbd "C-=") 'er/expand-region))
