@@ -157,11 +157,11 @@
 "e.style.fontSize='12px';" "if (j < 5 || a == 'something')" "} else {"))
 
 (setq typing-practice-shell-code '("ls" "cd" "grep" "sed" "nano" "sudo" "emacs" "screen"
-"~" "cd /home/afazio" "ls /tmp" "ls /etc" "sudo nano /etc" "cat" "|" ">" "echo" "awk"
+"~" "ls /tmp" "ls /etc" "sudo nano /etc" "cat" "|" ">" "echo" "awk"
 "if [ -z $A ]; then" "nano -w" "ls -l" "ps aux" "grep -R ''" "ln -sf" "rm -rf" "mkdir"
-"rmdir" "./" "make" "make install" "./configure" "emerge" "sudo emerge -p" 
-"sudo /etc/init.d/" "screen -RD" "screen -wipe" "ssh-agent startx &" "ssh-add"
-"scp afazio@galatea.ws:~/somefile ." "find . -name '*s'" "for i in 1 2 3; do" "done"))
+"rmdir" "./" "make" "make install" "./configure" "ssh-agent" "tmux attach"
+"sudo /etc/init.d/" "screen -RD" "screen -wipe" "startx" "ssh-add"
+"scp" "find . -name '*s'" "for i in 1 2 3; do" "done"))
 
 (setq typing-practice-php-code '("<?" "?>" "<?=" "$" "$i" "foreach ($someArray as $a)"
 "$i = 0;" "$a = Array();" "function fun($a, $b) {" "$_GET['']" "$_POST['']"
