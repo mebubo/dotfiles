@@ -1,0 +1,13 @@
+less
+rlwrap
+rsync
+screen
+sudo
+tmux
+tree
+unzip
+
+pm-utils
+notmuch
+notmuch-emacs
+emacs
