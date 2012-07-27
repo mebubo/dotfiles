@@ -133,6 +133,10 @@ function bfmtv {
     mplayer -fs mms://vipevenement.yacast.net/bfm_bfmtv
 }
 
+function france24 {
+    mplayer -fs mms://stream1.france24.yacast.net/f24_livefr
+}
+
 function ta {
     if [ "$TERM" != "screen-256color" ]
     then
