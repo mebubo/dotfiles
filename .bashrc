@@ -132,3 +132,11 @@ function demo_commit_change {
 function bfmtv {
     mplayer -fs mms://vipevenement.yacast.net/bfm_bfmtv
 }
+
+function ta {
+    if [ "$TERM" != "screen-256color" ]
+    then
+        tmux attach-session -t "$USER" || tmux new-session -s "$USER"
+        exit
+    fi
+}
