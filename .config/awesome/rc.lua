@@ -26,7 +26,7 @@ editor_cmd = terminal .. " -e " .. editor
 browser = "chromium"
 screenlock = "i3lock -c 330033 -b -d"
 screenlock_sleep = "i3lock -c 330033 -b"
-emacs = "emacs-snapshot"
+emacs = "emacs24"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -57,8 +57,8 @@ layouts =
 -- Define a tag table which hold all screen tags.
 if screen.count() == 2 then
 tags = awful.util.table.join(
-   awful.tag({1, 2, 3, 4}, 1, awful.layout.suit.max),
-   awful.tag({5, 6, 7, 8, 9}, 2, awful.layout.suit.max))
+   awful.tag({1, 2, 3, 4, 5}, 1, awful.layout.suit.max),
+   awful.tag({6, 7, 8, 9}, 2, awful.layout.suit.max))
    awful.layout.set(awful.layout.suit.tile, tags[9])
    awful.tag.setmwfact(0.7, tags[9])
 else
@@ -232,9 +232,9 @@ root.buttons(awful.util.table.join(
 function move_left ()
    local screen = mouse.screen
    local tag = awful.tag.selected(screen)
-   if tag == tags[5] then
+   if tag == tags[6] then
       awful.screen.focus(1)
-      awful.tag.viewonly(tags[4])
+      awful.tag.viewonly(tags[5])
    else
       awful.tag.viewprev()
    end
@@ -243,9 +243,9 @@ end
 function move_right ()
    local screen = mouse.screen
    local tag = awful.tag.selected(screen)
-   if tag == tags[4] then
+   if tag == tags[5] then
       awful.screen.focus(2)
-      awful.tag.viewonly(tags[5])
+      awful.tag.viewonly(tags[6])
    else
       awful.tag.viewnext()
    end
