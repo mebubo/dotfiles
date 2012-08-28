@@ -17,3 +17,8 @@
     diff = auto
     interactive = auto
     status = auto
+[sendemail]
+	smtpserver = smtp.gmail.com
+	smtpserverport = 587
+	smtpencryption = tls
+	smtpuser = dolgovs@gmail.com
