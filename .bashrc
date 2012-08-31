@@ -72,6 +72,7 @@ case $TERM in
 esac
 
 . ~/.environment
+test -f ~/.environment-private && . ~/.environment-private
 
 alias ll='ls -l'
 alias la='ls -A'
