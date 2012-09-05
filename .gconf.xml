@@ -165,6 +165,12 @@
       <schema_key>/schemas/apps/gnome-terminal/keybindings/set_terminal_title</schema_key>
     </entry>
     <entry>
+      <key>keybindings/set_window_title</key>
+      <value>
+        <string>&lt;Primary&gt;&lt;Alt&gt;t</string>
+      </value>
+    </entry>
+    <entry>
       <key>keybindings/switch_to_tab_1</key>
       <schema_key>/schemas/apps/gnome-terminal/keybindings/switch_to_tab_1</schema_key>
       <value>
