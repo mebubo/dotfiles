@@ -1,0 +1,24 @@
+#!/bin/sh
+
+DOTFILES_DIR=$(dirname $(cd $(dirname $0); pwd))
+DUMP_FILE=$DOTFILES_DIR/.gconf.xml
+
+KEYS=/apps/gnome-terminal
+
+dump () {
+    gconftool --dump $KEYS > $DUMP_FILE
+}
+
+restore () {
+    gconftool --load $DUMP_FILE
+}
+
+case "$1" in
+    dump|restore)
+        $1
+        ;;
+    *)
+        echo "Usage: $0 dump|restore"
+        exit 1
+        ;;
+esac
