@@ -383,7 +383,7 @@
       <key>profiles/Default/font</key>
       <schema_key>/schemas/apps/gnome-terminal/profiles/Default/font</schema_key>
       <value>
-        <string>Monospace 12</string>
+        <string>Monospace 9</string>
       </value>
     </entry>
     <entry>
@@ -502,7 +502,7 @@
       <key>profiles/Default/use_system_font</key>
       <schema_key>/schemas/apps/gnome-terminal/profiles/Default/use_system_font</schema_key>
       <value>
-        <bool>true</bool>
+        <bool>false</bool>
       </value>
     </entry>
     <entry>
