@@ -113,7 +113,7 @@ vicious.register(textVolume, vicious.widgets.volume,
                         return '<span color="' .. theme.bg_urgent .. '"> ♫ ' .. string.format("%02d", args[1]) .. '%</span>'
                     end
                 end,
-                60, "PCM")
+                60, "Master")
 textVolume:buttons(awful.util.table.join(
     awful.button({ }, 2,
         function ()
@@ -123,13 +123,13 @@ textVolume:buttons(awful.util.table.join(
     ),
     awful.button({ }, 4,
         function ()
-            awful.util.spawn("amixer -q sset PCM 1%+")
+            awful.util.spawn("amixer -q sset Master 1%+")
             vicious.force({ textVolume })
         end
     ),
     awful.button({ }, 5,
         function ()
-            awful.util.spawn("amixer -q sset PCM 1%-")
+            awful.util.spawn("amixer -q sset Master 1%-")
             vicious.force({ textVolume })
         end
     )
@@ -447,11 +447,11 @@ globalkeys = awful.util.table.join(globalkeys,
                                                                  end),
                                    awful.key({ }, "XF86AudioMute", function () awful.util.spawn("amixer -q sset Master toggle") end),
                                    awful.key({ }, "XF86AudioRaiseVolume", function ()
-                                                                             awful.util.spawn("amixer -q sset PCM 5%+")
+                                                                             awful.util.spawn("amixer -q sset Master 2%+")
                                                                              vicious.force({ textVolume })
                                                                           end),
                                    awful.key({ }, "XF86AudioLowerVolume", function ()
-                                                                             awful.util.spawn("amixer -q sset PCM 5%-")
+                                                                             awful.util.spawn("amixer -q sset Master 2%-")
                                                                              vicious.force({ textVolume })
                                                                           end)
 )
