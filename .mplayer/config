@@ -1,0 +1,8 @@
+vo=gl
+
+#subcp=utf8
+subcp=latin1
+
+#af=volume=10
+
+sub-fuzziness=2
