@@ -5,7 +5,6 @@ export PATH=$JAVA_HOME/bin:$PATH
 export GEM_HOME=~/gems/
 
 export _JAVA_AWT_WM_NONREPARENTING=1
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
 
 # export CUPS_SERVER=cups-sop.inria.fr
 # export ALTERNATE_EDITOR=""
@@ -16,3 +15,4 @@ export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
 # export LANG=en_US.UTF-8
 # export LC_CTYPE=ru_RU.UTF-8
 # export AWT_TOOLKIT=MToolkit
+# export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
