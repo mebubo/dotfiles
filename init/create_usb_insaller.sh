@@ -11,7 +11,7 @@ case "$1" in
         shift
         ;;
     *)
-        echo "Usage: $0 $PATTERN"
+        echo "Usage: $0 $PATTERN update|all"
         exit 1
         ;;
 esac
@@ -23,15 +23,16 @@ DEBIAN_DIR=$MOUNTPOINT/boot/debian
 
 set_vars () {
     UBUNTU="http://releases.ubuntu.com/12.04/ubuntu-12.04.1-desktop-$ARCH.iso"
-    DEBIAN_KERNEL="http://ftp.debian.org/debian/dists/$RELEASE/main/installer-amd64/current/images/netboot/debian-installer/amd64/linux"
-    DEBIAN_INITRD="http://ftp.debian.org/debian/dists/$RELEASE/main/installer-amd64/current/images/netboot/debian-installer/amd64/initrd.gz"
+    DEBIAN_KERNEL="http://ftp.debian.org/debian/dists/$RELEASE/main/installer-$ARCH/current/images/netboot/debian-installer/$ARCH/linux"
+    DEBIAN_INITRD="http://ftp.debian.org/debian/dists/$RELEASE/main/installer-$ARCH/current/images/netboot/debian-installer/$ARCH/initrd.gz"
 }
 
-UBUNTU_ARCHES="i386 amd64"
-DEBIAN_RELEASES="stable testing unstable"
+UBUNTU_ARCHES=${UBUNTU_ARCHES-"amd64 i386"}
+DEBIAN_ARCHES=${DEBIAN_ARCHES-"amd64 i386"}
+DEBIAN_RELEASES=${DEBIAN_RELEASES-"stable testing unstable"}
 
 install_grub () {
-    sudo grub-install --no-floppy --root-directory=$MOUNTPOINT ${DEVICE::-1}
+    /usr/sbin/grub-install --no-floppy --root-directory=$MOUNTPOINT ${DEVICE::-1}
 }
 
 mount () {
@@ -51,15 +52,17 @@ umount () {
 
 create_grub_cfg () {
     GRUB_CFG=$MOUNTPOINT/boot/grub/grub.cfg
-    mv -f $GRUB_CFG $GRUB_CFG.$(date $DATE_PATTERN)
+    [ -f $GRUB_CFG ] && mv -f $GRUB_CFG $GRUB_CFG.$(date $DATE_PATTERN)
 
-    for RELEASE in $DEBIAN_RELEASES; do
-        cat >> $GRUB_CFG <<EOF
-menuentry "Debian $RELEASE $(date -r $MOUNTPOINT/boot/debian/$RELEASE/linux $DATE_PATTERN) netboot" {
-  linux /boot/debian/$RELEASE/linux priority=low base-installer/install-recommends=false language=en country=FR locale=en_GB.UTF-8
-  initrd /boot/debian/$RELEASE/initrd.gz
+    for ARCH in $DEBIAN_ARCHES; do
+        for RELEASE in $DEBIAN_RELEASES; do
+            cat >> $GRUB_CFG <<EOF
+menuentry "Debian $ARCH $RELEASE  netboot $(date -r $MOUNTPOINT/boot/debian/$ARCH/$RELEASE/linux $DATE_PATTERN)" {
+  linux /boot/debian/$ARCH/$RELEASE/linux priority=low base-installer/install-recommends=false language=en country=FR locale=en_GB.UTF-8
+  initrd /boot/debian/$ARCH/$RELEASE/initrd.gz
 }
 EOF
+        done
     done
 
     for f in $(cd $ISO_DIR; ls *ubuntu*.iso | sort -r); do
@@ -77,17 +80,23 @@ download () {
 
     mkdir -p $ISO_DIR
 
-    for ARCH in $UBUNTU_ARCHES; do
-        set_vars
-        wget -P $ISO_DIR -c $UBUNTU
-    done
+    if [ -n "$UBUNTU_ARCHES" ]; then
+        for ARCH in $UBUNTU_ARCHES; do
+            set_vars
+            wget -P $ISO_DIR -c $UBUNTU
+        done
+    fi
 
-    for RELEASE in $DEBIAN_RELEASES; do
-        mkdir -p $DEBIAN_DIR/$RELEASE
-        set_vars
-        wget -P $DEBIAN_DIR/$RELEASE -N $DEBIAN_KERNEL
-        wget -P $DEBIAN_DIR/$RELEASE -N $DEBIAN_INITRD
-    done
+    if [ -n "$DEBIAN_RELEASES" -a -n "$DEBIAN_ARCHES" ]; then
+        for ARCH in $DEBIAN_ARCHES; do
+            for RELEASE in $DEBIAN_RELEASES; do
+                mkdir -p $DEBIAN_DIR/$ARCH/$RELEASE
+                set_vars
+                wget -P $DEBIAN_DIR/$ARCH/$RELEASE -N $DEBIAN_KERNEL
+                wget -P $DEBIAN_DIR/$ARCH/$RELEASE -N $DEBIAN_INITRD
+            done
+        done
+    fi
 }
 
 all () {
