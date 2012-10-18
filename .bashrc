@@ -71,6 +71,12 @@ case $TERM in
 	    ;;
 esac
 
+case $(tty) in
+    /dev/tty*)
+        TMOUT=300
+        ;;
+esac
+
 . ~/.environment
 test -f ~/.environment-private && . ~/.environment-private
 
@@ -131,11 +137,11 @@ function demo_commit_change {
 }
 
 function bfmtv {
-    mplayer -fs mms://vipevenement.yacast.net/bfm_bfmtv
+    mplayer mms://vipevenement.yacast.net/bfm_bfmtv
 }
 
 function france24 {
-    mplayer -fs mms://stream1.france24.yacast.net/f24_livefr
+    mplayer mms://stream1.france24.yacast.net/f24_livefr
 }
 
 function ta {
