@@ -22,12 +22,13 @@ ISO_DIR=$MOUNTPOINT/boot/iso
 DEBIAN_DIR=$MOUNTPOINT/boot/debian
 
 set_vars () {
-    UBUNTU="http://releases.ubuntu.com/12.04/ubuntu-12.04.1-desktop-$ARCH.iso"
+    UBUNTU="http://releases.ubuntu.com/$RELEASE/ubuntu-$RELEASE-desktop-$ARCH.iso"
     DEBIAN_KERNEL="http://ftp.debian.org/debian/dists/$RELEASE/main/installer-$ARCH/current/images/netboot/debian-installer/$ARCH/linux"
     DEBIAN_INITRD="http://ftp.debian.org/debian/dists/$RELEASE/main/installer-$ARCH/current/images/netboot/debian-installer/$ARCH/initrd.gz"
 }
 
 UBUNTU_ARCHES=${UBUNTU_ARCHES-"amd64 i386"}
+UBUNTU_RELEASES=${DEBIAN_RELEASES-"12.10 12.04.1"}
 DEBIAN_ARCHES=${DEBIAN_ARCHES-"amd64 i386"}
 DEBIAN_RELEASES=${DEBIAN_RELEASES-"stable testing unstable"}
 
@@ -77,15 +78,25 @@ EOF
 }
 
 download () {
+    download_ubuntu
+    download_debian
+}
 
+download_ubuntu () {
     mkdir -p $ISO_DIR
 
-    if [ -n "$UBUNTU_ARCHES" ]; then
+    if [ -n "$UBUNTU_RELEASES" -a -n "$UBUNTU_ARCHES" ]; then
         for ARCH in $UBUNTU_ARCHES; do
-            set_vars
-            wget -P $ISO_DIR -c $UBUNTU
+            for RELEASE in $UBUNTU_RELEASES; do
+                set_vars
+                wget -P $ISO_DIR -c $UBUNTU
+            done
         done
     fi
+}
+
+download_debian () {
+    mkdir -p $ISO_DIR
 
     if [ -n "$DEBIAN_RELEASES" -a -n "$DEBIAN_ARCHES" ]; then
         for ARCH in $DEBIAN_ARCHES; do
