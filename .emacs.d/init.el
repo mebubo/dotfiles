@@ -39,22 +39,6 @@
 ;; don't stop on C-z
 (global-set-key "\C-z" nil)
 
-;; select buffer
-; (require 'bs)
-; (global-set-key "\C-x\C-b" 'bs-show)
-; (add-to-list 'bs-configurations
-;              '("dired" nil nil nil
-;                (lambda (buf)
-;                  (with-current-buffer buf
-;                    (not (eq major-mode 'dired-mode)))) nil))
-; (add-to-list 'bs-configurations
-;              '("rcirc" nil nil nil
-;                (lambda (buf)
-;                  (with-current-buffer buf
-;                    (not (eq major-mode 'rcirc-mode))))
-;                rcirc-sort-buffers))
-
-
 ;; ibuffer
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 ;; Switching to ibuffer puts the cursor on the most recent buffer
@@ -70,12 +54,6 @@
 
 ;; ido
 (ido-mode 'buffers)
-;; Display ido results vertically, rather than horizontally
-;(setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]"
-;                              " [No match]" " [Matched]" " [Not readable]"
-;                              " [Too big]" " [Confirm]")))
-;(defun ido-disable-line-trucation () (set (make-local-variable 'truncate-lines) nil))
-;(add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
 (add-to-list 'ido-ignore-buffers "^\*")
 
 ;; compile by Esc-m
@@ -175,7 +153,6 @@
 
 ;; org
 (require 'org-mouse)
-;(org-remember-insinuate)
 (setq org-directory "~/org/")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 (define-key global-map "\C-cr" 'org-remember)
@@ -215,13 +192,11 @@
 
 ;; Emacs 23: bundled EasyPG
 (with-library 'epa)
-;(epa-file-enable)
 
 ;; windmove
 (windmove-default-keybindings 'meta)
 
 ;; tramp
-;(require 'tramp)
 (setq tramp-default-method "ssh")
 
 ;; trailing whitespace
@@ -263,13 +238,6 @@
   "Sort buffers A and B using `rcirc-sort-name'."
   (string< (rcirc-sort-name a)
            (rcirc-sort-name b)))
-
-; (add-hook 'rcirc-mode-hook
-;           (lambda ()
-;             (define-key rcirc-mode-map (kbd "C-x C-b")
-;               (lambda ()
-;                 (interactive)
-;                 (bs--show-with-configuration "rcirc")))))
 
 (add-hook 'rcirc-mode-hook
           (lambda ()
@@ -365,9 +333,7 @@
               (setq jabber-account-list '(
                                           ("dolgovs@gmail.com"
                                            (:network-server . "talk.google.com")
-                                           ;;(:port . 443)
                                            (:connection-type . ssl))
-                                          ;;"sd208054@im.sun.com")
                                           )))
 ;; SMTP
 (setq send-mail-function 'smtpmail-send-it
@@ -385,16 +351,6 @@
 
 ;; message
 (setq message-directory "~/mail/")
-
-;; disable arrow keys
-;; (global-unset-key [(up)])
-;; (global-unset-key [(down)])
-;; (global-unset-key [(left)])
-;; (global-unset-key [(right)])
-;; (global-unset-key [(prior)])
-;; (global-unset-key [(next)])
-;; (global-unset-key [(home)])
-;; (global-unset-key [(end)])
 
 ;; highlight-symbol
 (with-library 'highlight-symbol
@@ -628,9 +584,6 @@ So you can bind it to both M-r and M-s."
 ;; nxml
 (setq nxml-child-indent 4)
 
-;; partial-completion-mode
-;(partial-completion-mode t)
-
 ;; smex
 (with-library 'smex
               (smex-initialize)
@@ -639,11 +592,6 @@ So you can bind it to both M-r and M-s."
               (global-set-key (kbd "M-X") 'smex-major-mode-commands)
               ;; This is your old M-x.
               (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command))
-
-;; electric in emacs 24
-;(electric-pair-mode)
-;(electric-indent-mode)
-;(electric-layout-mode)
 
 ;; http://jblevins.org/projects/deft/
 (with-library 'deft
