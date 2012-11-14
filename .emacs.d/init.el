@@ -709,3 +709,6 @@ So you can bind it to both M-r and M-s."
  mu4e-update-interval 300
  mu4e-use-fancy-chars t
 )
+
+;; erc
+(setq erc-hide-list '("JOIN" "PART" "QUIT"))
