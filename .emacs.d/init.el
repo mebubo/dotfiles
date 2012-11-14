@@ -697,3 +697,15 @@ So you can bind it to both M-r and M-s."
 ;; expand-region
 (with-library 'expand-region
               (global-set-key (kbd "C-=") 'er/expand-region))
+
+;; mu4e
+(setq
+ mu4e-maildir "~/mail"
+ mu4e-sent-folder "/sent"
+ mu4e-drafts-folder "/drafts"
+ mu4e-trash-folder "/trash"
+ mu4e-refile-folder "/archive"
+ mu4e-get-mail-command "true"
+ mu4e-update-interval 300
+ mu4e-use-fancy-chars t
+)
