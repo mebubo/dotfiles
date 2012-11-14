@@ -50,15 +50,9 @@
     (ibuffer-jump-to-buffer recent-buffer-name)))
 (ad-activate 'ibuffer)
 
-;; switch to buffer
-;(iswitchb-mode t)
-
 ;; ido
 (ido-mode 'buffers)
 (add-to-list 'ido-ignore-buffers "^\*")
-
-;; compile by Esc-m
-(global-set-key (kbd "\e\em") 'compile)
 
 ;; view-mode
 (define-key ctl-x-map "\C-q" 'view-mode)
@@ -164,34 +158,13 @@
 (setq org-export-html-postamble nil
       org-export-html-preamble nil)
 
-;; dictionary
-(with-library 'dictionary
-              (setq dictionary-server "localhost")
-              (setq dictionary-default-dictionary "wn")
-              (setq dictionary-create-buttons nil)
-              (setq dictionary-use-single-buffer t)
-              (global-dictionary-tooltip-mode 1)
-              (defun my-dictionary-lookup-definition ()
-                (interactive)
-                (dictionary-lookup-definition)
-                (other-window 1)
-                )
-              (global-set-key "\C-cs" 'dictionary-search)
-              (global-set-key "\C-cm" 'dictionary-match-words)
-              (global-set-key "\C-cd" 'my-dictionary-lookup-definition))
-
 ;; mouse-select-buffer
 (msb-mode)
-
-;; ropemacs
-(with-library 'pymacs
-              (pymacs-load "ropemacs" "rope-")
-              (setq ropemacs-enable-autoimport 't))
 
 ;; yasnippet
 (with-library 'yasnippet-bundle)
 
-;; Emacs 23: bundled EasyPG
+;; EasyPG
 (with-library 'epa)
 
 ;; windmove
@@ -215,34 +188,6 @@
         try-expand-list try-expand-line
         try-complete-lisp-symbol-partially
         try-complete-lisp-symbol))
-
-;; rcirc
-(setq rcirc-server-alist
-      '(("irc.oftc.net" :channels ("#awesome" "#suckless"))
-        ("irc.freenode.net" :channels ("#emacs" "#notmuch" "#ac100"))))
-(setq rcirc-omit-responses '("JOIN" "PART" "QUIT" "NICK" "AWAY"))
-(rcirc-track-minor-mode 1)
-(add-hook 'window-configuration-change-hook
-          '(lambda ()
-             (setq rcirc-fill-column (- (window-width) 2))))
-
-(defun rcirc-sort-name (buf)
-  "Return server process and buffer name as a string."
-  (with-current-buffer buf
-    (downcase (concat (if rcirc-server-buffer
-                          (buffer-name rcirc-server-buffer)
-                        " ")
-                      " "
-                      (or rcirc-target "")))))
-
-(defun rcirc-sort-buffers (a b)
-  "Sort buffers A and B using `rcirc-sort-name'."
-  (string< (rcirc-sort-name a)
-           (rcirc-sort-name b)))
-
-(add-hook 'rcirc-mode-hook
-          (lambda ()
-            (setq show-trailing-whitespace nil)))
 
 ;; copying lines without selecting them
 (defadvice kill-ring-save (before slick-copy activate compile)
@@ -274,44 +219,6 @@
        (let* ((fn-list (dired-get-marked-files nil arg)))
          (mapc 'find-file fn-list)))))
 
-;; notmuch
-(with-library 'notmuch
-              (require 'notmuch-address)
-              (require 'notmuch-maildir-fcc)
-              (setq notmuch-folders '(
-                                      ("personal" . "tag:personal AND tag:inbox")
-                                      ("vm-sqe-spb" . "tag:inbox AND tag:vm-sqe-spb")
-                                      ("vm-sqe" . "tag:inbox AND tag:vm-sqe")
-                                      ("cr" . "tag:inbox AND tag:cr")
-                                      ("spb-all" . "tag:inbox AND tag:spb-all")
-                                      ("phare" . "phare and tag:inbox")
-                                      ("imp" . "tag:imp")
-                                      ("int" . "tag:int")
-                                      ("todo" . "tag:todo")
-                                      ("sent" . "tag:sent AND tag:inbox")
-                                      ("inbox" . "tag:inbox")
-                                      )
-                    notmuch-search-oldest-first nil
-                    notmuch-address-command "addrlookup"
-                    notmuch-fcc-dirs '(("sent"))
-                    notmuch-search-line-faces '(("todo" . '(:foreground "brightred"))
-                                                ("imp" . '(:foreground "brightmagenta"))
-                                                ("personal" . '(:foreground "cyan"))
-                                                ("unread" . '(:foreground "green")))
-                    notmuch-message-headers '("Subject" "To" "Cc" "Date" "User-Agent")
-                    notmuch-mua-hidden-headers nil
-                    notmuch-search-result-format '(("date" . "%s ") ("count" . "%-7s ")
-                                                   ("authors" . "%-30s ") ("subject" . "%s ") ("tags" . "(%s)"))
-                    notmuch-show-all-tags-list t
-                    )
-
-              (global-set-key [f8] 'notmuch)
-              (add-hook 'notmuch-search-hook
-                        (lambda ()
-                          (setq show-trailing-whitespace nil)))
-
-)
-
 ;; typing-practice
 (with-library 'typing-practice
               (setq typing-practice-time-threshold 10))
@@ -329,13 +236,6 @@
 ;; blink-cursor
 (blink-cursor-mode 0)
 
-;; jabber
-(with-library 'jabber
-              (setq jabber-account-list '(
-                                          ("dolgovs@gmail.com"
-                                           (:network-server . "talk.google.com")
-                                           (:connection-type . ssl))
-                                          )))
 ;; SMTP
 (setq send-mail-function 'smtpmail-send-it
       message-send-mail-function 'smtpmail-send-it
@@ -416,21 +316,6 @@ there's a region, all lines that region covers will be duplicated."
 ;; Add a final newline when saving.
 (setq require-final-newline t)
 
-;; project-root
-(with-library 'project-root
-              (setq project-roots
-                    '(("Generic Git Project" :root-contains-files (".git"))
-                      ("Generic Mercurial Project" :root-contains-files (".hg"))))
-              (global-set-key (kbd "C-c p f") 'project-root-find-file)
-              (global-set-key (kbd "C-c p g") 'project-root-grep)
-              (global-set-key (kbd "C-c p a") 'project-root-ack)
-              (global-set-key (kbd "C-c p d") 'project-root-goto-root)
-              (global-set-key (kbd "C-c p l") 'project-root-browse-seen-projects)
-              (global-set-key (kbd "C-c p s")
-                              (lambda () (interactive)
-                                (with-project-root
-                                    (shell (concat (car project-details) "-shell"))))))
-
 ;; nxml
 (setq nxml-child-indent 4)
 
@@ -442,14 +327,6 @@ there's a region, all lines that region covers will be duplicated."
               (global-set-key (kbd "M-X") 'smex-major-mode-commands)
               ;; This is your old M-x.
               (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command))
-
-;; http://jblevins.org/projects/deft/
-(with-library 'deft
-              (setq
-               deft-extension "org"
-               deft-directory "~/txt/deft/"
-               deft-text-mode 'org-mode)
-              (global-set-key (kbd "<f9>") 'deft))
 
 ;; git-commit
 (with-library 'git-commit
@@ -467,22 +344,7 @@ there's a region, all lines that region covers will be duplicated."
 ;; markdown
 (with-library 'markdown-mode)
 
-;; minimap
-(with-library 'minimap)
-
 (set-register ?i '(file . "~/.emacs.d/init.el"))
-
-;; org-publish
-(setq org-publish-project-alist
-      '(("mebubo.github.com"
-         :base-directory "~/j/mebubo.github.com/org/"
-         :base-extension "org"
-         :publishing-directory "~/j/mebubo.github.com/_posts/"
-         :recursive t
-         :publishing-function org-publish-org-to-html
-         :headline-levels 4
-         :html-extension "html"
-         :body-only t)))
 
 ;; expand-region
 (with-library 'expand-region
