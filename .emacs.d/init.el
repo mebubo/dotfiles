@@ -10,6 +10,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/my-lisp")
 (load-library "my-shell")
+(load-library "my-comm")
 
 ;; make customize use it's own file
 (setq custom-file "~/.emacs.d/custom.el")
@@ -125,9 +126,6 @@
 (setq uniquify-buffer-names t
       uniquify-buffer-name-style 'reverse)
 
-;; mail-client
-(setq mail-user-agent 'gnus-user-agent)
-
 ;; no-tabs
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
@@ -236,23 +234,6 @@
 ;; blink-cursor
 (blink-cursor-mode 0)
 
-;; SMTP
-(setq send-mail-function 'smtpmail-send-it
-      message-send-mail-function 'smtpmail-send-it
-      smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
-      smtpmail-auth-credentials '(("smtp.gmail.com" 587 "dolgovs@gmail.com" nil))
-      smtpmail-default-smtp-server "smtp.gmail.com"
-      smtpmail-smtp-server "smtp.gmail.com"
-      smtpmail-smtp-service 587
-      smtpmail-debug-info t)
-
-;; Mail address
-(setq user-mail-address "dolgovs@gmail.com")
-(setq user-full-name "Sergei Dolgov")
-
-;; message
-(setq message-directory "~/mail/")
-
 ;; highlight-symbol
 (with-library 'highlight-symbol
               (global-set-key [(control f3)] 'highlight-symbol-at-point)
@@ -350,17 +331,3 @@ there's a region, all lines that region covers will be duplicated."
 (with-library 'expand-region
               (global-set-key (kbd "C-=") 'er/expand-region))
 
-;; mu4e
-(setq
- mu4e-maildir "~/mail"
- mu4e-sent-folder "/sent"
- mu4e-drafts-folder "/drafts"
- mu4e-trash-folder "/trash"
- mu4e-refile-folder "/archive"
- mu4e-get-mail-command "true"
- mu4e-update-interval 300
- mu4e-use-fancy-chars t
-)
-
-;; erc
-(setq erc-hide-list '("JOIN" "PART" "QUIT"))
