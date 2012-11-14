@@ -27,14 +27,12 @@
               (when (not package-archive-contents)
                 (package-refresh-contents))
 
-              ;; Add in your own as you wish:
-              (defvar my-packages '(smex markdown-mode git-commit expand-region)
-                "A list of packages to ensure are installed at launch.")
+              (defvar my-packages '(smex markdown-mode git-commit
+                                         expand-region highlight-symbol))
 
               (dolist (p my-packages)
                 (when (not (package-installed-p p))
                   (package-install p))))
-
 
 ;; no-splash-screen
 (setq inhibit-startup-message t)
