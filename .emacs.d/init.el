@@ -1,7 +1,6 @@
 ;; -*- mode: emacs-lisp -*-
 
-;; load plugins from ~/.emacs.d/plugins
-(setq load-path (cons "~/.emacs.d/plugins" load-path))
+(add-to-list 'load-path "~/.emacs.d/site-lisp")
 
 ;; make customize use it's own file
 (setq custom-file "~/.emacs.d/custom.el")
