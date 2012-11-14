@@ -28,8 +28,12 @@
               (when (not package-archive-contents)
                 (package-refresh-contents))
 
-              (defvar my-packages '(smex markdown-mode git-commit
-                                         expand-region highlight-symbol))
+              (defvar my-packages '(smex
+                                    markdown-mode
+                                    git-commit
+                                    expand-region
+                                    highlight-symbol
+                                    browse-kill-ring))
 
               (dolist (p my-packages)
                 (when (not (package-installed-p p))
