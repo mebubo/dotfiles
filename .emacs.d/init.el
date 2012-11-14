@@ -108,13 +108,13 @@
 (setq visible-bell 'top-bottom)
 
 ;; backups
-(setq backup-by-copying t      ; don't clobber symlinks
+(setq backup-by-copying t
       backup-directory-alist
-      '(("." . "~/.emacs.d/backups"))    ; don't litter my fs tree
+      '(("." . "~/.emacs.d/backups"))
       delete-old-versions t
       kept-new-versions 6
       kept-old-versions 2
-      version-control t)       ; use versioned backups
+      version-control t)
 
 ;; reftex
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
