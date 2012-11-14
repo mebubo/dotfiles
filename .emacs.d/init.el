@@ -97,15 +97,17 @@
 (setq kill-whole-line t)
 
 ;; recentf
+;; http://www.masteringemacs.org/articles/2011/01/27/find-files-faster-recent-files-package/
+;; also see recentf-open-files
 (recentf-mode t)
-(defun recentf-open-files-compl ()
+(setq recentf-max-saved-items 200)
+(defun ido-recentf-open ()
+  "Use `ido-completing-read' to \\[find-file] a recent file"
   (interactive)
-  (let* ((tocpl (mapcar (lambda (x) (cons (file-name-nondirectory x) x))
-                        recentf-list))
-         (fname (completing-read "File name: " tocpl nil nil)))
-    (when fname
-      (find-file (cdr (assoc-string fname tocpl))))))
-(global-set-key "\C-x\C-r" 'recentf-open-files-compl)
+  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+      (message "Opening file...")
+    (message "Aborting")))
+(global-set-key (kbd "C-x C-r") 'ido-recentf-open)
 
 ;; savehist
 (savehist-mode t)
