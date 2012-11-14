@@ -43,7 +43,7 @@
 (setq inhibit-startup-message t)
 
 ;; don't stop on C-z
-(global-set-key "\C-z" nil)
+(global-set-key (kbd "C-z") nil)
 
 ;; ibuffer
 (global-set-key (kbd "C-x C-b") 'ibuffer)
@@ -97,8 +97,8 @@
 ;; winner
 (require 'winner)
 (setq winner-dont-bind-my-keys t) ;; default bindings conflict with org-mode
-(global-set-key (kbd "<C-s-left>") 'winner-undo)
-(global-set-key (kbd "<C-s-right>") 'winner-redo)
+(global-set-key (kbd "C-s-<left>") 'winner-undo)
+(global-set-key (kbd "C-s-<right>") 'winner-redo)
 (winner-mode t)
 
 ;; paren
@@ -123,7 +123,7 @@
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
 (setq-default TeX-master nil)
-(global-set-key "\C-c\C-z" 'TeX-insert-dollar)
+(global-set-key (kbd "C-c C-z") 'TeX-insert-dollar)
 
 ;; uniquify buffer names
 (require 'uniquify)
@@ -153,9 +153,9 @@
 (setq org-directory "~/org/")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 (define-key global-map "\C-cr" 'org-remember)
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cb" 'org-iswitchb)
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c b") 'org-iswitchb)
 (setq org-log-done t)
 (setq org-export-html-postamble nil
       org-export-html-preamble nil)
@@ -240,8 +240,8 @@
 
 ;; highlight-symbol
 (with-library 'highlight-symbol
-              (global-set-key [(control f3)] 'highlight-symbol-at-point)
-              (global-set-key [(control f4)] 'highlight-symbol-remove-all)
+              (global-set-key (kbd "C-<f3>") 'highlight-symbol-at-point)
+              (global-set-key (kbd "C-<f4>") 'highlight-symbol-remove-all)
               (global-set-key (kbd "C-x *") 'highlight-symbol-prev)
               (global-set-key (kbd "C-*") 'highlight-symbol-next)
               (setq highlight-symbol-on-navigation-p t))
@@ -249,11 +249,11 @@
 ;; browse-kill-ring
 (when (require 'browse-kill-ring nil 'noerror)
   (browse-kill-ring-default-keybindings))
-(global-set-key "\C-cy" '(lambda ()
-                           (interactive)
-                           (popup-menu 'yank-menu)))
+(global-set-key (kbd "C-c y") '(lambda ()
+                                 (interactive)
+                                 (popup-menu 'yank-menu)))
 ;; other-window
-(global-set-key "\M-`" 'other-window)
+(global-set-key (kbd "M-`") 'other-window)
 
 ;; yes-or-no
 (defalias 'yes-or-no-p 'y-or-n-p)
