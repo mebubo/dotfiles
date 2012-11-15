@@ -58,6 +58,7 @@
 ;; ido
 (ido-mode 'buffers)
 (add-to-list 'ido-ignore-buffers "^\*")
+(setq ido-enable-flex-matching t)
 
 ;; view-mode
 (define-key ctl-x-map "\C-q" 'view-mode)
@@ -335,3 +336,7 @@ there's a region, all lines that region covers will be duplicated."
 (with-library 'expand-region
               (global-set-key (kbd "C-=") 'er/expand-region))
 
+(add-hook 'dired-mode-hook
+          '(lambda ()
+             (define-key dired-mode-map "e" 'wdired-change-to-wdired-mode)
+             (define-key dired-mode-map "/" 'dired-isearch-filenames)))
