@@ -108,6 +108,19 @@ alias wpa_cli="/sbin/wpa_cli"
 alias a="acpi"
 alias d="dict"
 alias E="EDITOR=\"emacsclient -c -a emacs\" sudoedit"
+alias g="git"
+alias gs="git status"
+alias gc="git commit"
+alias gb="git branch"
+
+ff () {
+    WHERE=${2-.}
+    find $WHERE -name "$1"
+}
+rg () {
+    WHERE=${2-.}
+    grep -r "$1" $WHERE
+}
 
 export GPG_TTY=`tty`
 
