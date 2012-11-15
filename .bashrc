@@ -112,6 +112,7 @@ alias g="git"
 alias gs="git status"
 alias gc="git commit"
 alias gb="git branch"
+alias gl="git log"
 
 ff () {
     WHERE=${2-.}
