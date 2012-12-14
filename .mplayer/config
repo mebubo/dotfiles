@@ -8,3 +8,5 @@ subcp=latin1
 sub-fuzziness=2
 
 mixer-channel=Master
+
+fs=yes
