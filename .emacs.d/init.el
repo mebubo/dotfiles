@@ -33,7 +33,8 @@
                                     git-commit
                                     expand-region
                                     highlight-symbol
-                                    browse-kill-ring))
+                                    browse-kill-ring
+                                    back-button))
 
               (dolist (p my-packages)
                 (when (not (package-installed-p p))
@@ -340,3 +341,6 @@ there's a region, all lines that region covers will be duplicated."
           '(lambda ()
              (define-key dired-mode-map "e" 'wdired-change-to-wdired-mode)
              (define-key dired-mode-map "/" 'dired-isearch-filenames)))
+
+(with-library 'back-button
+              (back-button-mode 1))
