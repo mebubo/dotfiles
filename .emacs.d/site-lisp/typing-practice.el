@@ -167,11 +167,12 @@
 "$i = 0;" "$a = Array();" "function fun($a, $b) {" "$_GET['']" "$_POST['']"
 "$_SERVER['PHP_SELF']" "if (!$i)" "echo $i.\"<br>\";"))
 
-(setq typing-practice-java-code '("abstract" "class" "interface"
-"boolean" "main" "sysout" "Thread" "int" "HashMap" "LinkedList"
-"String" "float" "long" "extends" "implements" "for" "if" "while"
-"Object" "public" "static" "final" "void" "Exception" "throws" "new"
-"char" "byte" "private" "return" "throw" "catch" "null"))
+(setq typing-practice-java-code '("while" "void" "true" "toString()" "throws" "throw"
+"sysout" "static" "return" "public" "private" "null" "new" "main" "long" "interface"
+"int" "implements" "if" "for" "float" "finally" "final" "false" "extends" "class"
+"char" "catch" "byte" "boolean" "abstract" "Thread" "String" "Runnable" "Object"
+"Map" "Long" "List<String>()" "LinkedList" "Integer" "HashMap" "Float" "Exception"
+"Double" "Collection" "Arrays" "ArrayList"))
 
 ;; --------------------------
 
@@ -263,7 +264,7 @@ soon thereafter"
 (defun practice-javascript-code (&optional number-words starting-point)
   (interactive)
   (set-list typing-practice-javascript-code number-words starting-point)
-  (practice-typing t)
+  (practice-typing)
   )
 
 (defun practice-shell-code (&optional number-words starting-point)
@@ -275,7 +276,7 @@ soon thereafter"
 (defun practice-java-code (&optional number-words starting-point)
   (interactive)
   (set-list typing-practice-java-code number-words starting-point)
-  (practice-typing t)
+  (practice-typing nil)
   )
 
 (defun set-list (list &optional number-words starting-point)
