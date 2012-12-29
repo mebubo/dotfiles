@@ -344,3 +344,8 @@ there's a region, all lines that region covers will be duplicated."
 
 (with-library 'back-button
               (back-button-mode 1))
+
+;; zap-up-to-char http://irreal.org/blog/?p=1536
+(autoload 'zap-up-to-char "misc"
+  "Kill up to, but not including ARGth occurrence of CHAR.")
+(global-set-key (kbd "M-Z") 'zap-up-to-char)
