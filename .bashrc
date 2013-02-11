@@ -57,17 +57,17 @@ then
     alias egrep='egrep --color=auto'
 fi
 
-my_hist_file=history
-my_hist_comm='echo `date` " -- cd" `pwd`";" `history 1` >> ~/${my_hist_file}'
+MY_HISTORY_FILE=~/history
+MY_HISTORY_CMD='echo "$(date) -- cd $(pwd); $(history 1)" >> $MY_HISTORY_FILE'
 
-# Maintain ~/${my_hist_file} and if this is an xterm set the title to
+# Maintain $MY_HISTORY_FILE and if this is an xterm set the title to
 # user@host:dir
 case $TERM in
     uxterm*|xterm*|rxvt*)
-	    PROMPT_COMMAND="${my_hist_comm}; history -a; "'echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+	    PROMPT_COMMAND="$MY_HISTORY_CMD; history -a; "'echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
 	    ;;
     *)
-	    PROMPT_COMMAND="${my_hist_comm}; history -a;"
+	    PROMPT_COMMAND="$MY_HISTORY_CMD; history -a;"
 	    ;;
 esac
 
