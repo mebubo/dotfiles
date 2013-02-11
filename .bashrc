@@ -58,16 +58,21 @@ then
 fi
 
 MY_HISTORY_FILE=~/history
-MY_HISTORY_CMD='echo "$(date) -- cd $(pwd); $(history 1)" >> $MY_HISTORY_FILE'
+append_my_history () {
+    local LAST_CMD=$(history 1)
+    # strip useless entry number from the beginning
+    LAST_CMD=${LAST_CMD#*  }
+    echo "$(date) -- cd $(pwd); $LAST_CMD" >> $MY_HISTORY_FILE
+}
 
 # Maintain $MY_HISTORY_FILE and if this is an xterm set the title to
 # user@host:dir
 case $TERM in
     uxterm*|xterm*|rxvt*)
-	    PROMPT_COMMAND="$MY_HISTORY_CMD; history -a; "'echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+	    PROMPT_COMMAND="append_my_history; history -a; "'echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
 	    ;;
     *)
-	    PROMPT_COMMAND="$MY_HISTORY_CMD; history -a;"
+	    PROMPT_COMMAND="append_my_history; history -a"
 	    ;;
 esac
 
