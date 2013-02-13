@@ -108,9 +108,18 @@ configure_apt () {
     copy_tree $SYSTEM_DOTFILES_DIR/etc/apt /etc/apt
 }
 
+package_lists_old () {
+    touch -d '-1 hour' /tmp/1h_ago.timestamp
+    test /var/lib/apt/lists -ot /tmp/1h_ago.timestamp
+}
+
 install () {
-    aptitude -y update
-    aptitude -y upgrade
+    if package_lists_old; then
+        aptitude -y update
+        aptitude -y upgrade
+    else
+        echo Package lists are recent, not updating
+    fi
     aptitude -y install $@
 }
 
