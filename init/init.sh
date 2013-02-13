@@ -5,7 +5,7 @@ set -e
 USERNAME=mebubo
 INIT_DIR=$(cd $(dirname $0); pwd)
 DOTFILES_DIR=$(dirname $INIT_DIR)
-DOTFILES_FOR_ROOT_DIR=$DOTFILES_DIR/root
+SYSTEM_DOTFILES_DIR=$DOTFILES_DIR/root
 
 TIMESTAMP=$(date +%Y%m%d%H%M%S)
 
@@ -105,7 +105,7 @@ read_packages () {
 }
 
 configure_apt () {
-    copy_tree $DOTFILES_FOR_ROOT_DIR/etc/apt /etc/apt
+    copy_tree $SYSTEM_DOTFILES_DIR/etc/apt /etc/apt
 }
 
 install () {
@@ -123,7 +123,7 @@ install_all () {
 }
 
 populate_system_configs () {
-    copy_tree $DOTFILES_FOR_ROOT_DIR /
+    copy_tree $SYSTEM_DOTFILES_DIR /
     update-grub
 }
 
@@ -132,7 +132,7 @@ populate_user_configs () {
 }
 
 refresh_system_configs_in_repo () {
-    copy_tree --no-backup --list-files-in-dest / $DOTFILES_FOR_ROOT_DIR
+    copy_tree --no-backup --list-files-in-dest / $SYSTEM_DOTFILES_DIR
 }
 
 system_base () {
