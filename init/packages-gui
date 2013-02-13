@@ -1,13 +1,14 @@
 emacs24
 emacs24-el
 emacs24-common-non-dfsg
-eclipse
+eclipse-jdt
 openjdk-7-jdk
 ant
 maven
 chromium
 awesome
-awesome-extras
+awesome-extra
+lightdm
 quodlibet
 calibre
 mplayer
@@ -16,3 +17,9 @@ gnome-terminal
 xtightvncviewer
 evince-gtk
 meld
+xserver-xorg-input-evdev
+xserver-xorg-video-intel
+xserver-xorg
+xinit
+libgl1-mesa-dri
+desktop-base

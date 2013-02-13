@@ -1,3 +1,4 @@
+curl
 less
 rlwrap
 rsync
@@ -7,11 +8,16 @@ tmux
 tree
 unzip
 pm-utils
+acpi-support
 unp
 git
 mercurial
 ipython
+offlineimap
+emacs24-nox
 mu4e
 smartmontools
 hdparm
 pmount
+openssh-client
+git-annex
