@@ -15,7 +15,7 @@ require("vicious")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/home/mebubo/.config/awesome/themes/cac2s/theme.lua")
+beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/cac2s/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
