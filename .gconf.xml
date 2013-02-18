@@ -354,7 +354,7 @@
       <key>profiles/Default/default_show_menubar</key>
       <schema_key>/schemas/apps/gnome-terminal/profiles/Default/default_show_menubar</schema_key>
       <value>
-        <bool>true</bool>
+        <bool>false</bool>
       </value>
     </entry>
     <entry>
@@ -376,6 +376,13 @@
       <schema_key>/schemas/apps/gnome-terminal/profiles/Default/delete_binding</schema_key>
       <value>
         <string>escape-sequence</string>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Default/encoding</key>
+      <schema_key>/schemas/apps/gnome-terminal/profiles/Default/encoding</schema_key>
+      <value>
+        <string>current</string>
       </value>
     </entry>
     <entry>
@@ -493,6 +500,13 @@
     <entry>
       <key>profiles/Default/use_custom_command</key>
       <schema_key>/schemas/apps/gnome-terminal/profiles/Default/use_custom_command</schema_key>
+      <value>
+        <bool>false</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>profiles/Default/use_custom_default_size</key>
+      <schema_key>/schemas/apps/gnome-terminal/profiles/Default/use_custom_default_size</schema_key>
       <value>
         <bool>false</bool>
       </value>
