@@ -2,6 +2,7 @@ emacs24
 emacs24-el
 emacs24-common-non-dfsg
 openjdk-7-jdk
+openjdk-7-source
 eclipse-jdt
 ant
 maven
@@ -29,3 +30,5 @@ flashplugin-nonfree
 wpagui
 unison-gtk
 ttf-mscorefonts-installer
+visualvm
+scrot

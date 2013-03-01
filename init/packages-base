@@ -38,3 +38,6 @@ i3lock
 
 ppp
 cryptsetup
+
+mc
+bluez-utils
