@@ -41,3 +41,6 @@ cryptsetup
 
 mc
 bluez-utils
+exiv2
+
+ntpdate
