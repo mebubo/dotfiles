@@ -1,5 +1,8 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
+. ~/.environment
+test -f ~/.environment-private && . ~/.environment-private
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -81,9 +84,6 @@ case $(tty) in
         TMOUT=300
         ;;
 esac
-
-. ~/.environment
-test -f ~/.environment-private && . ~/.environment-private
 
 alias ll='ls -l'
 alias la='ls -A'
@@ -170,4 +170,8 @@ function ta {
         tmux attach-session -t "$USER" || tmux new-session -s "$USER"
         exit
     fi
+}
+
+function rsync_mirror {
+    rsync -avzP --inplace -e 'ssh -o ClearAllForwardings=yes' "$@"
 }
