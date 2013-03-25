@@ -60,22 +60,26 @@ then
     alias egrep='egrep --color=auto'
 fi
 
-MY_HISTORY_FILE=~/history
-append_my_history () {
+HISTORY_FILE=~/history
+_append_history () {
     local LAST_CMD=$(history 1)
     # strip useless entry number from the beginning
     LAST_CMD=${LAST_CMD#*  }
-    echo "$(date) -- cd $(pwd); $LAST_CMD" >> $MY_HISTORY_FILE
+    echo "$(date) -- cd $(pwd); $LAST_CMD" >> $HISTORY_FILE
 }
 
-# Maintain $MY_HISTORY_FILE and if this is an xterm set the title to
+_update_window_title () {
+    echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"
+}
+
+# Maintain $HISTORY_FILE and if this is an xterm set the title to
 # user@host:dir
 case $TERM in
     uxterm*|xterm*|rxvt*)
-	    PROMPT_COMMAND="append_my_history; history -a; "'echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+	    PROMPT_COMMAND="_append_history; history -a; _update_window_title"
 	    ;;
     *)
-	    PROMPT_COMMAND="append_my_history; history -a"
+	    PROMPT_COMMAND="_append_history; history -a"
 	    ;;
 esac
 
