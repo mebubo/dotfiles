@@ -26,7 +26,8 @@
       mu4e-refile-folder "/archive"
       mu4e-get-mail-command "true"
       mu4e-update-interval 300
-      mu4e-use-fancy-chars t)
+      mu4e-use-fancy-chars t
+      mu4e-html2text-command "html2text -utf8 -width 72")
 
 ;; erc
 (setq erc-hide-list '("JOIN" "PART" "QUIT"))
