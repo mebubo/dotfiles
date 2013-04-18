@@ -53,6 +53,13 @@ layouts =
 }
 -- }}}
 
+function raise_focused_client()
+   c = awful.client.next(0)
+   if c then
+      c:raise()
+   end
+end
+
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 if screen.count() == 2 then
@@ -147,7 +154,10 @@ mypromptbox = {}
 mylayoutbox = {}
 mytaglist = {}
 mytaglist.buttons = awful.util.table.join(
-                    awful.button({ }, 1, awful.tag.viewonly),
+                    awful.button({ }, 1, function (t)
+                                            awful.tag.viewonly(t)
+                                            raise_focused_client()
+                                         end),
                     awful.button({ modkey }, 1, awful.client.movetotag),
                     awful.button({ }, 3, awful.tag.viewtoggle),
                     awful.button({ modkey }, 3, awful.client.toggletag),
@@ -277,7 +287,10 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
     awful.key({ modkey,           }, "Down", function () awful.screen.focus_relative( 1) end),
-    awful.key({ modkey,           }, "Up", function () awful.screen.focus_relative(-1) end),
+    awful.key({ modkey,           }, "Up", function ()
+                                              awful.screen.focus_relative(-1)
+                                              raise_focused_client()
+                                           end),
     awful.key({ modkey,           }, "n", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey,           }, "p", function () awful.screen.focus_relative(-1) end),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
@@ -367,6 +380,7 @@ if screen.count() == 2 then
                                                          awful.screen.focus(2)
                                                       end
                                                       awful.tag.viewonly(tags[i])
+                                                      raise_focused_client()
                                                    end),
                                          awful.key({ modkey, "Control" }, "#" .. i + 9,
                                                    function ()
