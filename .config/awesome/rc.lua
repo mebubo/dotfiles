@@ -315,8 +315,32 @@ globalkeys = awful.util.table.join(
               end)
 )
 
+-- http://awesome.naquadah.org/wiki/FullScreens
+function fullscreens(c)
+   awful.client.floating.toggle(c)
+   if awful.client.floating.get(c) then
+      local clientX = screen[1].workarea.x
+      local clientY = screen[1].workarea.y
+      local clientWidth = 0
+      -- look at http://www.rpm.org/api/4.4.2.2/llimits_8h-source.html
+      local clientHeight = 2147483640
+      for s = 1, screen.count() do
+         clientHeight = math.min(clientHeight, screen[s].workarea.height)
+         clientWidth = clientWidth + screen[s].workarea.width
+      end
+      local t = c:geometry({x = clientX, y = clientY, width = clientWidth, height = clientHeight})
+   else
+      --apply the rules to this client so he can return to the right tag if there is a rule for that.
+      awful.rules.apply(c)
+   end
+   -- focus our client
+   client.focus = c
+   c:raise()
+end
+
 clientkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
+    awful.key({ modkey, "Control" }, "f",      fullscreens),
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
