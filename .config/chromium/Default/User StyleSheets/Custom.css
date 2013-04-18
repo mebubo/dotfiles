@@ -16,6 +16,12 @@ Chromium:
     font-size: 100% !important;
 }
 
+/* new GMail compose */
+div[class*="LW-avf"] {
+    font-family: monospace !important;
+    font-size: 10pt !important;
+}
+
 /* Hide ad pane in GMail to maximize mail pane space */
 table.Bs > tr > td + td {
     display: none;
