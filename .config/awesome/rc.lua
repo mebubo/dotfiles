@@ -590,22 +590,28 @@ function run_or_raise(cmd, properties)
       if 0 < findex and findex < n then
          c = matched_clients[findex+1]
       end
-      local ctags = c:tags()
-      if table.getn(ctags) == 0 then
-         -- ctags is empty, show client on current tag
-         local curtag = awful.tag.selected()
-         awful.client.movetotag(curtag, c)
-      else
-         -- Otherwise, pop to first tag client is visible on
-         awful.tag.viewonly(ctags[1])
-      end
-      -- And then focus the client
-      client.focus = c
-      c:raise()
+      raise_client(c)
       return
    end
    awful.util.spawn(cmd)
 end
+
+function raise_client(c)
+   local ctags = c:tags()
+   if table.getn(ctags) == 0 then
+      -- ctags is empty, show client on current tag
+      local curtag = awful.tag.selected()
+      awful.client.movetotag(curtag, c)
+   else
+      -- Otherwise, pop to first tag client is visible on
+      awful.tag.viewonly(ctags[1])
+   end
+   -- And then focus the client
+   client.focus = c
+   c:raise()
+end
+
+client.add_signal("focus", function(c) if client.focus then client.focus:raise() end end)
 
 -- Returns true if all pairs in table1 are present in table2
 function match (table1, table2)
