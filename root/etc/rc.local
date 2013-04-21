@@ -13,4 +13,9 @@
 
 echo 255 > /proc/sys/kernel/sysrq
 
+if [ "$(hostname)" == "brioche" ]; then
+    # samsung netbook screen brightness
+    setpci -s 00:02.0 F4.B=FF
+fi
+
 exit 0
