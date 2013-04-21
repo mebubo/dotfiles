@@ -34,7 +34,9 @@
                                     expand-region
                                     highlight-symbol
                                     browse-kill-ring
-                                    back-button))
+                                    back-button
+                                    magit
+                                    ))
 
               (dolist (p my-packages)
                 (when (not (package-installed-p p))
