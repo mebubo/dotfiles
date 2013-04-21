@@ -7,9 +7,8 @@ HDPARM="invoke-rc.d hdparm"
 case "$1" in
 	resume|thaw)
 		$HDPARM start
+		touch /tmp/hdparm_pm
 		;;
 esac
-
-touch /tmp/hdparm_pm
 
 exit 0

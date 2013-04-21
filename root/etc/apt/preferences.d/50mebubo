@@ -4,40 +4,37 @@ Pin-Priority: 700
 
 Package: chromium*
 Pin: release a=unstable
+Pin-Priority: 998
+
+Package: chromium*
+Pin: release a=experimental
 Pin-Priority: 999
 
 Package: shotwell
 Pin: release a=unstable
+Pin-Priority: 998
+
+Package: shotwell
+Pin: release a=experimental
 Pin-Priority: 999
 
 Package: iceweasel
 Pin: release a=unstable
+Pin-Priority: 998
+
+Package: iceweasel
+Pin: release a=experimental
 Pin-Priority: 999
 
 Package: linux-image*
 Pin: release a=unstable
+Pin-Priority: 998
+
+Package: linux-image*
+Pin: release a=experimental
 Pin-Priority: 999
 
-Package: notmuch*
-Pin: release a=unstable
+Package: gnome-terminal*
+Pin: release a=stable
 Pin-Priority: 999
 
-Package: libnotmuch*
-Pin: release a=unstable
-Pin-Priority: 999
-
-Package: eclipse*
-Pin: release a=unstable
-Pin-Priority: 999
-
-Package: mu4e
-Pin: release a=unstable
-Pin-Priority: 999
-
-Package: maildir-utils
-Pin: release a=unstable
-Pin-Priority: 999
-
-Package: git-annex
-Pin: release a=unstable
-Pin-Priority: 999

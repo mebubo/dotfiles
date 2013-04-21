@@ -3,25 +3,18 @@ iface lo inet loopback
 
 allow-hotplug wlan0
 iface wlan0 inet manual
-	wpa-roam /etc/wpa_supplicant/wpa-roam.conf
+    # wpa-debug-level 3
+    wpa-driver nl80211
+    wpa-logfile /var/log/wpa_supplicant
+    wpa-roam /etc/wpa_supplicant/wpa-roam.conf
 
-# for wpa-roam
 iface default inet dhcp
-
-allow-hotplug eth0
-iface eth0 inet dhcp
-
-# useful for bringing up non-dhcp interfaces with dhcp
-# example:
-# ifup eth0=dhcp
 iface dhcp inet dhcp
 
-iface static-88-1 inet static
+allow-hotplug eth0
+iface eth0 inet static
 	address 192.168.88.1
 	netmask 255.255.255.0
 
-iface oxford-38 inet dhcp
-	# wireless-* options are implemented by the wireless-tools package
-	wireless-mode managed
-	wireless-essid Oxford-wifirst-38
-
+allow-hotplug usb0
+iface usb0 inet dhcp
