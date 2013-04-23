@@ -329,3 +329,4 @@ soon thereafter"
   )
 
 (provide 'typing-practice)
+;;; typing-practice.el ends here
