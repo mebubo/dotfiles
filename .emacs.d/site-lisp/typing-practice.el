@@ -2,6 +2,9 @@
 
 ;; Copyright (C) 2006 Alfred J. Fazio
 
+;; Author: Alfred J. Fazio
+;; URL: https://raw.github.com/mebubo/dotfiles/master/.emacs.d/site-lisp/typing-practice.el
+;; Version: 0.1
 ;; Maintainer: Alfred J. Fazio <alfred dot fazio at gmail dot com>
 ;; Keywords: games practice typing
 ;; Created: 2006-01-10
