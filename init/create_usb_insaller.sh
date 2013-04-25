@@ -27,13 +27,15 @@ UBUNTU_SERVER_DIR_REL=boot/ubuntu-server
 UBUNTU_SERVER_DIR=$MOUNTPOINT/$UBUNTU_SERVER_DIR_REL
 
 set_vars () {
-    UBUNTU="http://releases.ubuntu.com/$RELEASE/ubuntu-$RELEASE-desktop-$ARCH.iso"
+    UBUNTU_ISO="http://releases.ubuntu.com/$RELEASE/ubuntu-$RELEASE-desktop-$ARCH.iso"
 
     UBUNTU_SERVER_KERNEL="http://archive.ubuntu.com/ubuntu/dists/$RELEASE/main/installer-$ARCH/current/images/netboot/ubuntu-installer/$ARCH/linux"
     UBUNTU_SERVER_INITRD="http://archive.ubuntu.com/ubuntu/dists/$RELEASE/main/installer-$ARCH/current/images/netboot/ubuntu-installer/$ARCH/initrd.gz"
 
     DEBIAN_KERNEL="http://ftp.debian.org/debian/dists/$RELEASE/main/installer-$ARCH/current/images/netboot/debian-installer/$ARCH/linux"
     DEBIAN_INITRD="http://ftp.debian.org/debian/dists/$RELEASE/main/installer-$ARCH/current/images/netboot/debian-installer/$ARCH/initrd.gz"
+
+    FEDORA_ISO="http://download.fedoraproject.org/pub/fedora/linux/releases/$RELEASE/Live/$ARCH/Fedora-$RELEASE-$ARCH-Live-Desktop.iso"
 }
 
 UBUNTU_ARCHES=${UBUNTU_ARCHES-"amd64 i386"}
@@ -44,6 +46,9 @@ DEBIAN_RELEASES=${DEBIAN_RELEASES-"stable testing unstable"}
 
 UBUNTU_SERVER_ARCHES=${UBUNTU_SERVER_ARCHES-"amd64 i386"}
 UBUNTU_SERVER_RELEASES=${UBUNTU_SERVER_RELEASES-"precise"}
+
+FEDORA_ARCHES=${FEDORA_ARCHES-"x86_64"}
+FEDORA_RELEASES=${FEDORA_RELEASES-"18"}
 
 install_grub () {
     /usr/sbin/grub-install --no-floppy --root-directory=$MOUNTPOINT ${DEVICE::-1}
@@ -68,6 +73,13 @@ create_grub_cfg () {
     GRUB_CFG=$MOUNTPOINT/boot/grub/grub.cfg
     [ -f $GRUB_CFG ] && mv -f $GRUB_CFG $GRUB_CFG.$(date $DATE_PATTERN)
 
+    create_grub_cfg_debian
+    create_grub_cfg_ubuntu_server
+    create_grub_cfg_ubuntu
+    create_grub_cfg_fedora
+}
+
+create_grub_cfg_debian () {
     for ARCH in $DEBIAN_ARCHES; do
         for RELEASE in $DEBIAN_RELEASES; do
             cat >> $GRUB_CFG <<EOF
@@ -78,7 +90,9 @@ menuentry "Debian $ARCH $RELEASE  netboot $(date -r $DEBIAN_DIR/$ARCH/$RELEASE/l
 EOF
         done
     done
+}
 
+create_grub_cfg_ubuntu_server () {
     for ARCH in $UBUNTU_SERVER_ARCHES; do
         for RELEASE in $UBUNTU_SERVER_RELEASES; do
             cat >> $GRUB_CFG <<EOF
@@ -90,7 +104,9 @@ menuentry "Ubuntu server $ARCH $RELEASE  netboot $(date -r $UBUNTU_SERVER_DIR/$A
 EOF
         done
     done
+}
 
+create_grub_cfg_ubuntu () {
     for f in $(cd $ISO_DIR; ls *ubuntu*.iso | sort -r); do
         local KERNEL=vmlinuz
         # for some reason the name of the kernel is different in this
@@ -108,20 +124,43 @@ EOF
     done
 }
 
-download () {
-    download_ubuntu
-    download_debian_like DEBIAN
-    download_debian_like UBUNTU_SERVER
+create_grub_cfg_fedora () {
+    # https://bugzilla.redhat.com/show_bug.cgi?id=650672
+    # http://git.marmotte.net/git/glim/plain/fedora18-fromiso
+    # don't bother with scripts to modify initrd
+    # I can mount it manually once a year
+    for f in $(cd $ISO_DIR; ls Fedora*.iso | sort -r); do
+        cat >> $GRUB_CFG <<EOF
+menuentry "$f (at dracut prompt, manually mount -o loop /path/to/$f /isodevice)" {
+  loopback loop /boot/iso/$f
+  linux (loop)/isolinux/vmlinuz0 root=live:CDLABEL=${f::-1} initrd=initrd0.img rootfstype=auto ro rd.live.image rhgb rd.luks=0 rd.md=0 rd.dm=0
+  initrd (loop)/isolinux/initrd0.img
+}
+EOF
+    done
 }
 
-download_ubuntu () {
+download () {
+    download_iso UBUNTU
+    download_debian_like DEBIAN
+    download_debian_like UBUNTU_SERVER
+    download_iso FEDORA
+}
+
+download_iso () {
     mkdir -p $ISO_DIR
 
-    if [ -n "$UBUNTU_RELEASES" -a -n "$UBUNTU_ARCHES" ]; then
-        for ARCH in $UBUNTU_ARCHES; do
-            for RELEASE in $UBUNTU_RELEASES; do
+    local DISTRO=$1
+
+    local RELEASES=${DISTRO}_RELEASES
+    local ARCHES=${DISTRO}_ARCHES
+    local ISO=${DISTRO}_ISO
+
+    if [ -n "${!RELEASES}" -a -n "${!ARCHES}" ]; then
+        for ARCH in ${!ARCHES}; do
+            for RELEASE in ${!RELEASES}; do
                 set_vars
-                wget -P $ISO_DIR -c $UBUNTU
+                wget -P $ISO_DIR -c ${!ISO}
             done
         done
     fi
