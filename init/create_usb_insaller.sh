@@ -39,7 +39,7 @@ set_vars () {
 }
 
 UBUNTU_ARCHES=${UBUNTU_ARCHES-"amd64 i386"}
-UBUNTU_RELEASES=${UBUNTU_RELEASES-"12.10 12.04.2"}
+UBUNTU_RELEASES=${UBUNTU_RELEASES-"12.10 12.04.2 13.04"}
 
 DEBIAN_ARCHES=${DEBIAN_ARCHES-"amd64 i386"}
 DEBIAN_RELEASES=${DEBIAN_RELEASES-"stable testing unstable"}
@@ -108,12 +108,15 @@ EOF
 
 create_grub_cfg_ubuntu () {
     for f in $(cd $ISO_DIR; ls *ubuntu*.iso | sort -r); do
-        local KERNEL=vmlinuz
-        # for some reason the name of the kernel is different in this
-        # particular iso
-        if [ "$f" = "ubuntu-12.04.2-desktop-amd64.iso" ]; then
-            KERNEL=vmlinuz.efi
-        fi
+        local KERNEL
+        case $f in
+            ubuntu-12.04.2-desktop-amd64.iso|ubuntu-13.04-desktop-amd64.iso)
+                KERNEL=vmlinuz.efi
+                ;;
+            *)
+                KERNEL=vmlinuz
+                ;;
+        esac
         cat >> $GRUB_CFG <<EOF
 menuentry "$f" {
   loopback loop /boot/iso/$f
