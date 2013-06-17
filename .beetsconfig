@@ -1,5 +1,6 @@
 [beets]
 directory: ~/music-beets
+plugins: web
 
 [paths]
 default: $albumartist--$year--$album/$track--$title
