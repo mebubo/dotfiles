@@ -351,3 +351,14 @@ there's a region, all lines that region covers will be duplicated."
 (autoload 'zap-up-to-char "misc"
   "Kill up to, but not including ARGth occurrence of CHAR.")
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
+
+;; http://stackoverflow.com/questions/2416655/file-path-to-clipboard-in-emacs
+(defun kill-ring-save-path ()
+  "Save current buffer path to kill ring"
+  (interactive)
+  (let ((filename (if (equal major-mode 'dired-mode)
+                      default-directory
+                    (buffer-file-name))))
+    (when filename
+      (kill-new filename)
+      (message "Saved path '%s' to kill ring" filename))))
