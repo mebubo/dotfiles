@@ -24,3 +24,5 @@
 	smtpserverport = 587
 	smtpencryption = tls
 	smtpuser = dolgovs@gmail.com
+[push]
+	default = simple
