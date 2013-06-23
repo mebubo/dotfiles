@@ -92,9 +92,6 @@ esac
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CFhla'
-alias rm='rm -i'
-alias mv='mv -i'
-alias cp='cp -i'
 alias acs="apt-cache search"
 alias acsh="apt-cache show"
 alias acp="apt-cache policy"
