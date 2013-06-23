@@ -179,3 +179,9 @@ function ta {
 function rsync_mirror {
     rsync -avzP --inplace -e 'ssh -o ClearAllForwardings=yes' "$@"
 }
+
+function server {
+    local PORT="${1:-8000}"
+    echo "http://locahost:$PORT"
+    python -m SimpleHTTPServer $PORT
+}
