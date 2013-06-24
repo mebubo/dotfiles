@@ -1,0 +1,3 @@
+[submodule "external/z"]
+	path = external/z
+	url = https://github.com/rupa/z.git
