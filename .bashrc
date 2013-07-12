@@ -197,4 +197,14 @@ function _resolve_this_dir {
     cd -P "$( dirname "$SOURCE" )" && pwd
 }
 
+if [ "$TERM" = "xterm-termite" ]; then
+    export TERM=xterm-256color
+    if [ -f /usr/local/etc/profile.d/vte.sh ]; then
+        _OLD_PROMPT_COMMAND="$PROMPT_COMMAND"
+        . /usr/local/etc/profile.d/vte.sh
+        PROMPT_COMMAND="$_OLD_PROMPT_COMMAND; __vte_prompt_command;"
+    fi
+fi
+
 . $(_resolve_this_dir)/external/z/z.sh
+
