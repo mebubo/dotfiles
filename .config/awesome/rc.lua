@@ -1,24 +1,29 @@
 -- Standard awesome library
-require("awful")
+local awful = require("awful")
+awful.rules = require("awful.rules")
 require("awful.autofocus")
-require("awful.rules")
+-- Widget and layout library
+local wibox = require("wibox")
 -- Theme handling library
-require("beautiful")
+local beautiful = require("beautiful")
 -- Notification library
-require("naughty")
+local naughty = require("naughty")
+local menubar = require("menubar")
 
 -- Load Debian menu entries
-require("debian.menu")
+--require("debian.menu")
 
-require("obvious.battery")
-require("vicious")
+local obvious_battery = require("obvious.battery")
+local vicious = require("vicious")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/cac2s/theme.lua")
+-- beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "x-terminal-emulator"
+--terminal = "gnome-terminal"
+terminal = "termite"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -26,7 +31,7 @@ editor_cmd = terminal .. " -e " .. editor
 browser = "chromium"
 screenlock = "i3lock -c 330033 -b -d"
 screenlock_sleep = "i3lock -c 330033 -b"
-emacs = "emacs24"
+emacs = "emacs"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -72,7 +77,7 @@ else
    tags = {}
    for s = 1, screen.count() do
       -- Each screen has its own tag table.
-      tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, awful.layout.suit.max)
+      tags[s] = awful.tag({ " 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9" }, s, awful.layout.suit.max)
       awful.layout.set(awful.layout.suit.tile, tags[s][9])
       awful.tag.setmwfact(0.7, tags[s][9])
    end
@@ -89,29 +94,29 @@ myawesomemenu = {
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "Debian", debian.menu.Debian_menu.Debian },
+                                    --{ "Debian", debian.menu.Debian_menu.Debian },
                                     { "open terminal", terminal }
                                   }
                         })
 
-mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
+mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                                      menu = mymainmenu })
 -- }}}
 
 -- {{{ Wibox
 -- Create a textclock widget
-mytextclock = awful.widget.textclock({ align = "right" })
+mytextclock = awful.widget.textclock()
 
 -- Create a systray
-mysystray = widget({ type = "systray" })
+mysystray = wibox.widget.systray()
 
 -- Volume
 colorWidgetFg = "#999999"
-textVolume = widget({ type = "textbox" })
+textVolume = wibox.widget.textbox()
 -- textVolume.bg_image = image(awful.util.getdir("config") .. "/icons/vol.png")
 textVolume.bg_align = "left"
 textVolume.align = "right"
-vicious.cache(vicious.widgets.volume)
+-- vicious.cache(vicious.widgets.volume)
 vicious.register(textVolume, vicious.widgets.volume,
                 function (widget, args)
                     if args[2] == "♫" then
@@ -143,7 +148,7 @@ textVolume:buttons(awful.util.table.join(
 ))
 
 -- Weather
-weatherwidget = widget({ type = "textbox" })
+weatherwidget = wibox.widget.textbox()
 -- ICAO code for Pulkovo is ULLI
 -- ICAO code for Nice is LFMN
 vicious.register(weatherwidget, vicious.widgets.weather, ' <span color="#00c000">☼</span> ${tempc}°C ${windkmh} km/h', 1800, 'LFMN')
@@ -192,7 +197,7 @@ mytasklist.buttons = awful.util.table.join(
 
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
-    mypromptbox[s] = awful.widget.prompt({ layout = awful.widget.layout.horizontal.leftright })
+    mypromptbox[s] = awful.widget.prompt()
     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
     mylayoutbox[s] = awful.widget.layoutbox(s)
@@ -202,32 +207,36 @@ for s = 1, screen.count() do
                            awful.button({ }, 4, function () awful.layout.inc(layouts, 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(layouts, -1) end)))
     -- Create a taglist widget
-    mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.label.all, mytaglist.buttons)
+    mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
 
     -- Create a tasklist widget
-    mytasklist[s] = awful.widget.tasklist(function(c)
-                                              return awful.widget.tasklist.label.currenttags(c, s)
-                                          end, mytasklist.buttons)
+    mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
     -- Create the wibox
     mywibox[s] = awful.wibox({ position = "top", screen = s })
-    -- Add widgets to the wibox - order matters
-    mywibox[s].widgets = {
-        {
-            mylauncher,
-            mytaglist[s],
-            mypromptbox[s],
-            mylayoutbox[s],
-            layout = awful.widget.layout.horizontal.leftright
-        },
-        mytextclock,
-        textVolume,
-        weatherwidget,
-        obvious.battery(),
-        s == 1 and mysystray or nil,
-        mytasklist[s],
-        layout = awful.widget.layout.horizontal.rightleft
-    }
+
+    -- Widgets that are aligned to the left
+    local left_layout = wibox.layout.fixed.horizontal()
+    left_layout:add(mylauncher)
+    left_layout:add(mytaglist[s])
+    left_layout:add(mypromptbox[s])
+    left_layout:add(mylayoutbox[s])
+
+    -- Widgets that are aligned to the right
+    local right_layout = wibox.layout.fixed.horizontal()
+    if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(obvious_battery())
+    right_layout:add(weatherwidget)
+    right_layout:add(textVolume)
+    right_layout:add(mytextclock)
+
+    -- Now bring it all together (with the tasklist in the middle)
+    local layout = wibox.layout.align.horizontal()
+    layout:set_left(left_layout)
+    layout:set_middle(mytasklist[s])
+    layout:set_right(right_layout)
+
+    mywibox[s]:set_widget(layout)
 end
 -- }}}
 
@@ -515,6 +524,8 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
+    { rule = { class = "Runanki" },
+      properties = { floating = true } },
     { rule = { class = "Pidgin" },
       properties = { tag = tags[1][9] } },
     { rule = { class = "Emacs" },
@@ -527,21 +538,21 @@ awful.rules.rules = {
 
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
-client.add_signal("manage", function (c, startup)
+client.connect_signal("manage", function (c, startup)
     -- Add a titlebar
     -- awful.titlebar.add(c, { modkey = modkey })
 
     -- Enable sloppy focus
-    c:add_signal("mouse::enter", function(c)
+    c:connect_signal("mouse::enter", function(c)
         if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
             and awful.client.focus.filter(c) then
             client.focus = c
         end
     end)
 
-    if awful.rules.match(c, { class = "Eclipse" }) then
-       fullscreens(c)
-    end
+    -- if awful.rules.match(c, { class = "Eclipse" }) then
+    --    fullscreens(c)
+    -- end
 
     if not startup then
         -- Set the windows at the slave,
@@ -556,8 +567,8 @@ client.add_signal("manage", function (c, startup)
     end
 end)
 
-client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
+client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
 --- Spawns cmd if no client can be found matching properties
@@ -607,7 +618,7 @@ function raise_client(c)
    c:raise()
 end
 
-client.add_signal("focus", function(c) if client.focus then client.focus:raise() end end)
+client.connect_signal("focus", function(c) if client.focus then client.focus:raise() end end)
 
 -- Returns true if all pairs in table1 are present in table2
 function match (table1, table2)
