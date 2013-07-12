@@ -1,3 +1,6 @@
 [submodule "external/z"]
 	path = external/z
 	url = https://github.com/rupa/z.git
+[submodule ".config/awesome/obvious"]
+	path = .config/awesome/obvious
+	url = https://github.com/mebubo/obvious.git
