@@ -6,11 +6,11 @@ DUMP_FILE=$DOTFILES_DIR/.gconf.xml
 KEYS=/apps/gnome-terminal
 
 dump () {
-    gconftool --dump $KEYS > $DUMP_FILE
+    gconftool-2 --dump $KEYS > $DUMP_FILE
 }
 
 restore () {
-    gconftool --load $DUMP_FILE
+    gconftool-2 --load $DUMP_FILE
 }
 
 case "$1" in
