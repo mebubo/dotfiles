@@ -16,6 +16,9 @@ case "$1" in
         ;;
 esac
 
+# /sbin/dosfslabel does not work
+DRIVE_LABEL=MULTIBOOT
+
 DATE_PATTERN="+%Y%m%d-%H%M%S"
 
 ISO_DIR=$MOUNTPOINT/boot/iso
@@ -36,19 +39,24 @@ set_vars () {
     DEBIAN_INITRD="http://ftp.debian.org/debian/dists/$RELEASE/main/installer-$ARCH/current/images/netboot/debian-installer/$ARCH/initrd.gz"
 
     FEDORA_ISO="http://download.fedoraproject.org/pub/fedora/linux/releases/$RELEASE/Live/$ARCH/Fedora-$RELEASE-$ARCH-Live-Desktop.iso"
+
+    ARCH_ISO="http://mir.archlinux.fr/iso/$RELEASE/archlinux-$RELEASE-dual.iso"
 }
 
 UBUNTU_ARCHES=${UBUNTU_ARCHES-"amd64 i386"}
 UBUNTU_RELEASES=${UBUNTU_RELEASES-"12.10 12.04.2 13.04"}
 
 DEBIAN_ARCHES=${DEBIAN_ARCHES-"amd64 i386"}
-DEBIAN_RELEASES=${DEBIAN_RELEASES-"stable testing unstable"}
+DEBIAN_RELEASES=${DEBIAN_RELEASES-"stable"}
 
 UBUNTU_SERVER_ARCHES=${UBUNTU_SERVER_ARCHES-"amd64 i386"}
 UBUNTU_SERVER_RELEASES=${UBUNTU_SERVER_RELEASES-"precise"}
 
 FEDORA_ARCHES=${FEDORA_ARCHES-"x86_64"}
-FEDORA_RELEASES=${FEDORA_RELEASES-"18"}
+FEDORA_RELEASES=${FEDORA_RELEASES-"18 19"}
+
+ARCH_ARCHES=all
+ARCH_RELEASES=${ARCH_RELEASES-"2013.06.01"}
 
 install_grub () {
     /usr/sbin/grub-install --no-floppy --root-directory=$MOUNTPOINT ${DEVICE::-1}
@@ -77,6 +85,7 @@ create_grub_cfg () {
     create_grub_cfg_ubuntu_server
     create_grub_cfg_ubuntu
     create_grub_cfg_fedora
+    create_grub_cfg_arch
 }
 
 create_grub_cfg_debian () {
@@ -143,11 +152,29 @@ EOF
     done
 }
 
+create_grub_cfg_arch () {
+    for f in $(cd $ISO_DIR; ls archlinux-*.iso | sort -r); do
+
+        local ISO_PATH="/boot/iso/$f"
+        # archlinux-2013.06.01-dual.iso -> ARCH_201306
+        local ISO_LABEL=ARCH_${f:10:4}${f:15:2}
+
+        cat >> $GRUB_CFG <<EOF
+menuentry "$f" {
+  loopback loop $ISO_PATH
+  linux (loop)/arch/boot/x86_64/vmlinuz archisobasedir=arch archisolabel=$ISO_LABEL img_dev=/dev/disk/by-label/$DRIVE_LABEL img_loop=$ISO_PATH earlymodules=loop noeject noprompt
+  initrd (loop)/arch/boot/x86_64/archiso.img
+}
+EOF
+    done
+}
+
 download () {
     download_iso UBUNTU
     download_debian_like DEBIAN
     download_debian_like UBUNTU_SERVER
     download_iso FEDORA
+    download_iso ARCH
 }
 
 download_iso () {
