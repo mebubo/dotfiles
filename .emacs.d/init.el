@@ -1,4 +1,4 @@
-;; -*- mode: emacs-lisp -*-
+ ;; -*- mode: emacs-lisp -*-
 
 ;; for safely loading libraries
 ;; http://www.emacswiki.org/emacs/LoadingLispFiles
@@ -23,6 +23,8 @@
 (with-library 'package
               (add-to-list 'package-archives
                            '("marmalade" . "http://marmalade-repo.org/packages/") t)
+              (add-to-list 'package-archives
+                           '("melpa" . "http://melpa.milkbox.net/packages/") t)
               (package-initialize)
 
               (when (not package-archive-contents)
@@ -362,3 +364,18 @@ there's a region, all lines that region covers will be duplicated."
     (when filename
       (kill-new filename)
       (message "Saved path '%s' to kill ring" filename))))
+
+;; http://omniorthogonal.blogspot.fr/2008/05/useful-emacs-dired-launch-hack.html
+(defun dired-launch-command ()
+  (interactive)
+  (dired-do-async-shell-command
+   (case system-type
+     (gnu/linux "xdg-open")
+     (darwin "open"))
+   nil
+   (dired-get-marked-files t current-prefix-arg)))
+
+(setq dired-load-hook
+      (lambda (&rest ignore)
+        (define-key dired-mode-map
+          "l" 'dired-launch-command)))
