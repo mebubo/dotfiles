@@ -289,13 +289,13 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Next", client_focus_byidx(-1)),
     awful.key({ modkey,           }, "k", client_focus_byidx(1)),
     awful.key({ modkey,           }, "Prior", client_focus_byidx(1)),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show(true)        end),
+    awful.key({ modkey,           }, "w", function () mymainmenu:show(true) end),
 
     -- Layout manipulation
-    awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(-1)    end),
-    awful.key({ modkey, "Shift"   }, "Next", function () awful.client.swap.byidx(-1)    end),
-    awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx(1)    end),
-    awful.key({ modkey, "Shift"   }, "Prior", function () awful.client.swap.byidx(1)    end),
+    awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(-1) end),
+    awful.key({ modkey, "Shift"   }, "Next", function () awful.client.swap.byidx(-1) end),
+    awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx(1) end),
+    awful.key({ modkey, "Shift"   }, "Prior", function () awful.client.swap.byidx(1) end),
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
     awful.key({ modkey,           }, "Down", function () awful.screen.focus_relative( 1) end),
