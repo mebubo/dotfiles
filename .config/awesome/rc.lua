@@ -270,6 +270,13 @@ function move_right ()
    end
 end
 
+function client_focus_byidx(idx)
+   return function ()
+      awful.client.focus.byidx(idx)
+      if client.focus then client.focus:raise() end
+   end
+end
+
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
    awful.key({ modkey,           }, "Left",   move_left),
@@ -278,21 +285,17 @@ globalkeys = awful.util.table.join(
    awful.key({ modkey,           }, "f",  move_right),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
 
-    awful.key({ modkey,           }, "j",
-        function ()
-            awful.client.focus.byidx( 1)
-            if client.focus then client.focus:raise() end
-        end),
-    awful.key({ modkey,           }, "k",
-        function ()
-            awful.client.focus.byidx(-1)
-            if client.focus then client.focus:raise() end
-        end),
+    awful.key({ modkey,           }, "j", client_focus_byidx(-1)),
+    awful.key({ modkey,           }, "Next", client_focus_byidx(-1)),
+    awful.key({ modkey,           }, "k", client_focus_byidx(1)),
+    awful.key({ modkey,           }, "Prior", client_focus_byidx(1)),
     awful.key({ modkey,           }, "w", function () mymainmenu:show(true)        end),
 
     -- Layout manipulation
-    awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
-    awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
+    awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(-1)    end),
+    awful.key({ modkey, "Shift"   }, "Next", function () awful.client.swap.byidx(-1)    end),
+    awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx(1)    end),
+    awful.key({ modkey, "Shift"   }, "Prior", function () awful.client.swap.byidx(1)    end),
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
     awful.key({ modkey,           }, "Down", function () awful.screen.focus_relative( 1) end),
