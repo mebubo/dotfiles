@@ -2,7 +2,6 @@
 
 set -e
 
-USERNAME=mebubo
 INIT_DIR=$(cd $(dirname $0); pwd)
 DOTFILES_DEFAULT_DIR=$(dirname $INIT_DIR)
 DOTFILES_DIR=${DOTFILES_DIR-$DOTFILES_DEFAULT_DIR}
