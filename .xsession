@@ -29,7 +29,7 @@ case $(hostname) in
             xrandr --output LVDS1 --off --output VGA1 --auto
         fi
         ;;
-    mebub)
+    mayo)
         # trackpoint scrolling according to
         # http://www.thinkwiki.org/wiki/How_to_configure_the_TrackPoint
         # vertical scrolling

@@ -38,7 +38,7 @@ then
     case $TERM in
         uxterm*|xterm*|rxvt*|linux|screen*)
             case $HOSTNAME in
-                mebub|britany)
+                mayo|britany)
                     PS1='\[\033[01;36m\]\u@\h:\[\033[01;33m\]\w\[\e[01;$(($??31:37))m\] \$ \[\033[00m\]'
                     ;;
                 *)
