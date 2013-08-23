@@ -38,7 +38,7 @@ set_vars () {
     DEBIAN_KERNEL="http://ftp.debian.org/debian/dists/$RELEASE/main/installer-$ARCH/current/images/netboot/debian-installer/$ARCH/linux"
     DEBIAN_INITRD="http://ftp.debian.org/debian/dists/$RELEASE/main/installer-$ARCH/current/images/netboot/debian-installer/$ARCH/initrd.gz"
 
-    FEDORA_ISO="http://download.fedoraproject.org/pub/fedora/linux/releases/$RELEASE/Live/$ARCH/Fedora-$RELEASE-$ARCH-Live-Desktop.iso"
+    FEDORA_ISO="http://download.fedoraproject.org/pub/fedora/linux/releases/$RELEASE/Live/$ARCH/Fedora-Live-Desktop-$ARCH-$RELEASE-1.iso"
 
     ARCH_ISO="http://mir.archlinux.fr/iso/$RELEASE/archlinux-$RELEASE-dual.iso"
 }
@@ -53,10 +53,10 @@ UBUNTU_SERVER_ARCHES=${UBUNTU_SERVER_ARCHES-"amd64 i386"}
 UBUNTU_SERVER_RELEASES=${UBUNTU_SERVER_RELEASES-"precise"}
 
 FEDORA_ARCHES=${FEDORA_ARCHES-"x86_64"}
-FEDORA_RELEASES=${FEDORA_RELEASES-"18 19"}
+FEDORA_RELEASES=${FEDORA_RELEASES-"19"}
 
 ARCH_ARCHES=all
-ARCH_RELEASES=${ARCH_RELEASES-"2013.06.01"}
+ARCH_RELEASES=${ARCH_RELEASES-"2013.07.01"}
 
 install_grub () {
     /usr/sbin/grub-install --no-floppy --root-directory=$MOUNTPOINT ${DEVICE::-1}
