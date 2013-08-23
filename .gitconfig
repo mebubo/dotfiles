@@ -12,6 +12,7 @@
 	unstage = reset HEAD --
 	trash = !git add . && git commit -m 'trash' && git reset --hard HEAD^
 	serve = !git daemon --reuseaddr --verbose --base-path=. --export-all ./.git
+	news = log -p HEAD@{1}..HEAD@{0}
 [difftool]
 	prompt = no
 [color]
