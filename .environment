@@ -1,11 +1,12 @@
 export EDITOR="emacsclient"
 export OOO_FORCE_DESKTOP=gnome
-export JAVA_HOME=$HOME/opt/jdk
+export JAVA_HOME=/usr/lib/jvm/default-java
 export PATH=$JAVA_HOME/bin:$PATH
+export PATH=$PATH:$HOME/bin
 export GEM_HOME=~/gems/
 export MAILDIR=~/mail
 
-export _JAVA_AWT_WM_NONREPARENTING=1
+# export _JAVA_AWT_WM_NONREPARENTING=1
 
 # export CUPS_SERVER=cups-sop.inria.fr
 # export ALTERNATE_EDITOR=""
