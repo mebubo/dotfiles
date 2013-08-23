@@ -1,4 +1,4 @@
- ;; -*- mode: emacs-lisp -*-
+;; -*- mode: emacs-lisp -*-
 
 ;; for safely loading libraries
 ;; http://www.emacswiki.org/emacs/LoadingLispFiles
