@@ -197,6 +197,10 @@ function _resolve_this_dir {
     cd -P "$( dirname "$SOURCE" )" && pwd
 }
 
+function yd {
+    youtube-dl -i -c --output='%(upload_date)s--%(stitle)s-%(id)s.%(ext)s' "$@"
+}
+
 if [ "$TERM" = "xterm-termite" ]; then
     export TERM=xterm-256color
     if [ -f /usr/local/etc/profile.d/vte.sh ]; then
