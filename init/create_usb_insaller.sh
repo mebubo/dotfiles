@@ -119,7 +119,7 @@ create_grub_cfg_ubuntu () {
     for f in $(cd $ISO_DIR; ls *ubuntu*.iso | sort -r); do
         local KERNEL
         case $f in
-            ubuntu-12.04.2-desktop-amd64.iso|ubuntu-13.04-desktop-amd64.iso)
+            ubuntu-12.04.2-desktop-amd64.iso|ubuntu-13.*-amd64.iso)
                 KERNEL=vmlinuz.efi
                 ;;
             *)
