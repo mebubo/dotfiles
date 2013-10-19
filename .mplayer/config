@@ -1,4 +1,4 @@
-vo=gl
+#vo=gl
 
 #subcp=utf8
 subcp=latin1
@@ -10,3 +10,7 @@ sub-fuzziness=2
 mixer-channel=Master
 
 fs=yes
+
+#ao=null
+
+#ass=yes
