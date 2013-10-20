@@ -1,2 +1,3 @@
 vo=vaapi,xv
+hwdec=vaapi
 fs=yes
