@@ -44,7 +44,7 @@ set_vars () {
 }
 
 UBUNTU_ARCHES=${UBUNTU_ARCHES-"amd64 i386"}
-UBUNTU_RELEASES=${UBUNTU_RELEASES-"13.04 13.10"}
+UBUNTU_RELEASES=${UBUNTU_RELEASES-"12.04.3 13.04 13.10"}
 
 DEBIAN_ARCHES=${DEBIAN_ARCHES-"amd64 i386"}
 DEBIAN_RELEASES=${DEBIAN_RELEASES-"stable"}
@@ -119,7 +119,7 @@ create_grub_cfg_ubuntu () {
     for f in $(cd $ISO_DIR; ls *ubuntu*.iso | sort -r); do
         local KERNEL
         case $f in
-            ubuntu-12.04.2-desktop-amd64.iso|ubuntu-13.*-amd64.iso)
+            ubuntu-*-amd64.iso)
                 KERNEL=vmlinuz.efi
                 ;;
             *)
