@@ -29,6 +29,8 @@ DEBIAN_DIR=$MOUNTPOINT/$DEBIAN_DIR_REL
 UBUNTU_SERVER_DIR_REL=boot/ubuntu-server
 UBUNTU_SERVER_DIR=$MOUNTPOINT/$UBUNTU_SERVER_DIR_REL
 
+DEBIAN_DAILY_DIR=$DEBIAN_DIR
+
 set_vars () {
     UBUNTU_ISO="http://releases.ubuntu.com/$RELEASE/ubuntu-$RELEASE-desktop-$ARCH.iso"
 
@@ -37,6 +39,9 @@ set_vars () {
 
     DEBIAN_KERNEL="http://ftp.debian.org/debian/dists/$RELEASE/main/installer-$ARCH/current/images/netboot/debian-installer/$ARCH/linux"
     DEBIAN_INITRD="http://ftp.debian.org/debian/dists/$RELEASE/main/installer-$ARCH/current/images/netboot/debian-installer/$ARCH/initrd.gz"
+
+    DEBIAN_DAILY_KERNEL="http://d-i.debian.org/daily-images/$ARCH/daily/netboot/debian-installer/$ARCH/linux"
+    DEBIAN_DAILY_INITRD="http://d-i.debian.org/daily-images/$ARCH/daily/netboot/debian-installer/$ARCH/initrd.gz"
 
     FEDORA_ISO="http://download.fedoraproject.org/pub/fedora/linux/releases/$RELEASE/Live/$ARCH/Fedora-Live-Desktop-$ARCH-$RELEASE-1.iso"
 
@@ -51,6 +56,9 @@ DEBIAN_RELEASES=${DEBIAN_RELEASES-"stable"}
 
 UBUNTU_SERVER_ARCHES=${UBUNTU_SERVER_ARCHES-"amd64 i386"}
 UBUNTU_SERVER_RELEASES=${UBUNTU_SERVER_RELEASES-"saucy"}
+
+DEBIAN_DAILY_ARCHES=${DEBIAN_ARCHES}
+DEBIAN_DAILY_RELEASES="daily"
 
 FEDORA_ARCHES=${FEDORA_ARCHES-"x86_64"}
 FEDORA_RELEASES=${FEDORA_RELEASES-"19"}
@@ -82,6 +90,7 @@ create_grub_cfg () {
     [ -f $GRUB_CFG ] && mv -f $GRUB_CFG $GRUB_CFG.$(date $DATE_PATTERN)
 
     create_grub_cfg_debian
+    DEBIAN_RELEASES=$DEBIAN_DAILY_RELEASES create_grub_cfg_debian
     create_grub_cfg_ubuntu_server
     create_grub_cfg_ubuntu
     create_grub_cfg_fedora
@@ -172,6 +181,7 @@ EOF
 download () {
     download_iso UBUNTU
     download_debian_like DEBIAN
+    download_debian_like DEBIAN_DAILY
     download_debian_like UBUNTU_SERVER
     download_iso FEDORA
     download_iso ARCH
