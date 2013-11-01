@@ -1,3 +1,4 @@
 APT::Default-Release "testing";
+//APT::Default-Release "unstable";
 APT::Install-Recommends "false";
 Acquire::PDiffs "false";

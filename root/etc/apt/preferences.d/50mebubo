@@ -38,3 +38,11 @@ Package: gnome-terminal*
 Pin: release a=stable
 Pin-Priority: 999
 
+Package: *-intel
+Pin: release a=unstable
+Pin-Priority: 998
+
+Package: *-intel
+Pin: release a=experimental
+Pin-Priority: 999
+
