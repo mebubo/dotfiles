@@ -38,6 +38,10 @@
                                     browse-kill-ring
                                     back-button
                                     magit
+                                    yaml-mode
+                                    free-keys
+                                    keyfreq
+                                    evil
                                     ))
 
               (dolist (p my-packages)
@@ -111,7 +115,7 @@
 (show-paren-mode)
 
 ;; bell
-(setq visible-bell 'top-bottom)
+(setq visible-bell nil)
 
 ;; backups
 (setq backup-by-copying t
@@ -156,15 +160,47 @@
 
 ;; org
 (require 'org-mouse)
-(setq org-directory "~/org/")
-(setq org-default-notes-file (concat org-directory "/notes.org"))
-(define-key global-map "\C-cr" 'org-remember)
 (global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c b") 'org-iswitchb)
-(setq org-log-done t)
-(setq org-export-html-postamble nil
-      org-export-html-preamble nil)
+(setq org-directory "~/proactive/txt/"
+      org-default-notes-file (concat org-directory "refile.org")
+      org-log-done 'time
+      org-export-html-postamble nil
+      org-export-html-preamble nil
+      org-agenda-files '("~/proactive/txt")
+      org-completion-use-ido t
+      org-outline-path-complete-in-steps nil
+      org-refile-targets '((nil :maxlevel . 9)
+                           (org-agenda-files :maxlevel . 9))
+      org-refile-use-outline-path t
+      org-use-speed-commands t
+      org-cycle-separator-lines 1
+      org-drawers (quote ("PROPERTIES" "LOGBOOK"))
+      ;; org-clock-into-drawer t
+      org-clock-out-remove-zero-time-clocks t
+      org-clock-out-when-done t
+      ;; org-clock-idle-time 10
+      org-clock-x11idle-program-name "xprintidle"
+      org-enforce-todo-dependencies t
+      ;; org-log-done 'note
+      )
+(setq org-todo-keywords
+      '((sequence "TODO" "|" "DONE(d)")
+        (sequence "WAITING" "HOLD" "|" "CANCELLED" "PHONE" "MEETING"))
+      org-todo-keyword-faces
+      '(("TODO" :foreground "red" :weight bold)
+              ("DONE" :foreground "forest green" :weight bold)
+              ("WAITING" :foreground "orange")
+              ("HOLD" :foreground "magenta")
+              ("CANCELLED" :foreground "forest green" :weight bold)
+              ("MEETING" :foreground "forest green")
+              ("PHONE" :foreground "forest green")))
+(add-hook 'message-mode-hook 'turn-on-orgstruct)
+(add-hook 'message-mode-hook 'turn-on-orgstruct++)
+(add-hook 'mu4e-compose-mode-hook 'turn-on-orgstruct)
+(add-hook 'mu4e-compose-mode-hook 'turn-on-orgstruct++)
 
 ;; mouse-select-buffer
 (msb-mode)
@@ -183,7 +219,7 @@
 
 ;; trailing whitespace
 (setq default-indicate-empty-lines t)
-(setq-default show-trailing-whitespace t)
+;(setq-default show-trailing-whitespace t)
 
 ;; hippie-expand
 (global-set-key (kbd "M-/") 'hippie-expand)
@@ -381,3 +417,9 @@ there's a region, all lines that region covers will be duplicated."
           "l" 'dired-launch-command)))
 
 (size-indication-mode t)
+
+(setq case-fold-search t)
+(global-auto-revert-mode t)
+
+(setq helm-github-stars-username "mebubo")
+
