@@ -23,7 +23,7 @@ beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/cac2s/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 --terminal = "gnome-terminal"
-terminal = "termite"
+terminal = "x-terminal-emulator"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
