@@ -379,3 +379,5 @@ there's a region, all lines that region covers will be duplicated."
       (lambda (&rest ignore)
         (define-key dired-mode-map
           "l" 'dired-launch-command)))
+
+(size-indication-mode t)
