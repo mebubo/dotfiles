@@ -210,5 +210,7 @@ if [ "$TERM" = "xterm-termite" ]; then
     fi
 fi
 
-. $(_resolve_this_dir)/external/z/z.sh
-
+fasd () {
+    ~/src/fasd/fasd "$@"
+}
+eval "$(fasd --init auto)"
