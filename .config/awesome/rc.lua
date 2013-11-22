@@ -69,8 +69,8 @@ end
 -- Define a tag table which hold all screen tags.
 if screen.count() == 2 then
 tags = awful.util.table.join(
-   awful.tag({1, 2, 3, 4, 5}, 1, awful.layout.suit.max),
-   awful.tag({6, 7, 8, 9}, 2, awful.layout.suit.max))
+   awful.tag({" 1", " 2", " 3", " 4", " 5"}, 1, awful.layout.suit.max),
+   awful.tag({" 6", " 7", " 8", " 9"}, 2, awful.layout.suit.max))
    awful.layout.set(awful.layout.suit.tile, tags[9])
    awful.tag.setmwfact(0.7, tags[9])
 else
@@ -568,6 +568,7 @@ client.connect_signal("manage", function (c, startup)
             awful.placement.no_offscreen(c)
         end
     end
+    c.size_hints_honor = false
 end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
