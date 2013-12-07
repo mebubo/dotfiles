@@ -22,7 +22,7 @@
         - ncdu
         - openssh-server
 
-    - user: name={{ backup_user }} generate_ssh_key=yes uid=1004 shell=/bin/bash
+    - user: name={{ backup_user }} generate_ssh_key=yes ssh_key_comment="{{ backup_user }}@brioche" uid=1004 shell=/bin/bash
     - user: name={{ normal_user }} uid=1000 shell=/bin/bash
 
     # - authorized_key: user={{ normal_user }} key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
