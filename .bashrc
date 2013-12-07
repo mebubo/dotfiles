@@ -210,7 +210,9 @@ if [ "$TERM" = "xterm-termite" ]; then
     fi
 fi
 
+_THIS_DIR=$(_resolve_this_dir)
+
 fasd () {
-    ~/src/fasd/fasd "$@"
+    $_THIS_DIR/external/fasd/fasd "$@"
 }
 eval "$(fasd --init auto)"
