@@ -1,0 +1,67 @@
+---
+- name: configure brioche
+  hosts: 127.0.0.1
+  connection: local
+  sudo: yes
+  vars_files:
+    - brioche_vars.yml
+
+  tasks:
+
+    - apt: update_cache=yes upgrade=dist
+
+    - apt: pkg={{ item }} state=latest
+      with_items:
+        - rsync
+        - obnam
+        - git-annex
+        - cryptsetup
+        - sudo
+        - tmux
+        - less
+        - ncdu
+        - openssh-server
+
+    - user: name={{ backup_user }} generate_ssh_key=yes uid=1004 shell=/bin/bash
+    - user: name={{ normal_user }} uid=1000 shell=/bin/bash
+
+    # - authorized_key: user={{ normal_user }} key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+
+    - lineinfile: dest=/etc/crypttab regexp={{ item.path }} line='{{ item.name }} {{ item.path }} none luks'
+      with_items: disks
+
+    - command: creates=/mnt/{{ item.name }} mkdir -p /mnt/{{ item.name }}
+      with_items: disks
+
+    - mount: name=/mnt/{{ item.name }} src=/dev/mapper/{{ item.name }} state=present fstype=ext4
+      with_items: disks
+
+    - cron: name=backup-mayo hour=4 minute=5 user={{ backup_user }} job="/home/{{ backup_user }}/j/scripts/backup.sh {{ mayo_src }} {{ mayo_dest }}  {{ email }}"
+
+- name: backup_user actions
+  hosts: 127.0.0.1
+  connection: local
+  sudo: yes
+  sudo_user: "{{ backup_user }}"
+  vars_files:
+    - brioche_vars.yml
+
+  tasks:
+    - command: mkdir -p /home/{{ backup_user }}/j/
+    - git: repo=https://github.com/mebubo/scripts.git dest=/home/{{ backup_user }}/j/scripts/
+
+- name: normal_user actions
+  hosts: 127.0.0.1
+  connection: local
+  sudo: yes
+  sudo_user: "{{ normal_user }}"
+  vars_files:
+    - brioche_vars.yml
+
+  tasks:
+    - command: mkdir -p /home/{{ normal_user }}/j/
+    - git: repo=https://github.com/mebubo/{{ item }}.git dest=/home/{{ normal_user }}/j/{{ item }}/
+      with_items:
+        - dotfiles
+        - scripts
+    - command: /home/{{ normal_user }}/j/dotfiles/init/init.sh user

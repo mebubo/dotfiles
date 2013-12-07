@@ -1,0 +1,12 @@
+---
+backup_user: sdbackup
+normal_user: sdolgov
+email: dolgovs@gmail.com
+mayo_src: mebubo@192.168.0.65:/home/mebubo/annex/
+mayo_dest: /mnt/elements/sdbackup/backups/mayo
+
+disks:
+  - path: /dev/disk/by-uuid/c051592c-651c-469b-866a-09f53ab386f9
+    name: elements
+  - path: /dev/disk/by-uuid/9899de14-1416-48c0-8fcd-e4424f89bb9a
+    name: passport
