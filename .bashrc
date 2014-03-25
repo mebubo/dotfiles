@@ -158,11 +158,11 @@ function demo_commit_change {
 }
 
 function bfmtv {
-    mplayer mms://vipevenement.yacast.net/bfm_bfmtv
+    mpv mms://vipevenement.yacast.net/bfm_bfmtv
 }
 
 function france24 {
-    mplayer mms://stream1.france24.yacast.net/f24_livefr
+    mpv mms://stream1.france24.yacast.net/f24_livefr
 }
 
 function ta {
