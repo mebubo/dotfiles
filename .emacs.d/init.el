@@ -42,6 +42,8 @@
                                     free-keys
                                     keyfreq
                                     evil
+                                    git-annex
+                                    dired-open
                                     ))
 
               (dolist (p my-packages)
@@ -421,5 +423,4 @@ there's a region, all lines that region covers will be duplicated."
 (setq case-fold-search t)
 (global-auto-revert-mode t)
 
-(setq helm-github-stars-username "mebubo")
-
+(with-library 'git-annex)
