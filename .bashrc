@@ -179,7 +179,7 @@ function rsync_mirror {
 
 function server {
     local PORT="${1:-8000}"
-    echo "http://locahost:$PORT"
+    echo "http://localhost:$PORT"
     python -m SimpleHTTPServer $PORT
 }
 
