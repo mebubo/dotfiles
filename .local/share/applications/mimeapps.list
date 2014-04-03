@@ -1,3 +1,7 @@
-
 [Default Applications]
 application/pdf=evince.desktop
+application/bzpdf=evince.desktop
+video/mp4=mpv.desktop
+video/x-msvideo=mpv.desktop
+video/mpeg=mpv.desktop
+video/x-flv=mpv.desktop
