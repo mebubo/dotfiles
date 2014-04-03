@@ -13,7 +13,7 @@ sleep 1
 xset dpms 3600 3700 3800
 xset s 3600
 xset m 1 1
-wmname compiz
+#wmname compiz
 
 #parcellite &
 #blueman-applet &
