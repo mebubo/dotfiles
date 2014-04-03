@@ -4,7 +4,7 @@ After=suspend.target
 
 [Service]
 Type=simple
-ExecStart=hdparm -B 255 /dev/sda
+ExecStart=/sbin/hdparm -B 255 /dev/sda
 
 [Install]
 WantedBy=suspend.target
