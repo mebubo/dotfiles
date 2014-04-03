@@ -1,0 +1,10 @@
+[Unit]
+Description=Local system resume actions
+After=suspend.target
+
+[Service]
+Type=simple
+ExecStart=hdparm -B 255 /dev/sda
+
+[Install]
+WantedBy=suspend.target
