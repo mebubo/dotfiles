@@ -68,7 +68,7 @@
 
 ;; ido
 (ido-mode 'buffers)
-(add-to-list 'ido-ignore-buffers "^\*")
+;(add-to-list 'ido-ignore-buffers "^\*")
 (setq ido-enable-flex-matching t)
 
 ;; view-mode
