@@ -31,7 +31,6 @@ URxvt.clipboard.autocopy   : true
 
 URxvt.font: xft:monospace:size=9
 URxvt.letterSpace : -1
-URxvt.termName    : rxvt-256color
 URxvt.iso14755    : false
 
 URxvt.urgentOnBell: true
