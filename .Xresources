@@ -15,11 +15,36 @@ UXTerm*bellIsUrgent: true
 UXTerm*utmpInhibit: true
 UXTerm*on2Clicks: regex [^ \n]+
 
-URxvt.font: xft:monospace:size=11
-Rxvt*saveLines: 5000
-Rxvt*background: black
-Rxvt*foreground: white
-Rxvt*scrollBar: off
+URxvt.perl-lib: /home/mebubo/src/urxvt-perls
+URxvt.perl-ext-common : default,keyboard-select,url-select,clipboard
+
+URxvt.keysym.M-Escape      : perl:keyboard-select:activate
+URxvt.keysym.M-s           : perl:keyboard-select:search
+URxvt.keysym.M-u           : perl:url-select:select_next
+URxvt.keysym.M-c           : perl:clipboard:copy
+URxvt.keysym.M-v           : perl:clipboard:paste
+URxvt.keysym.M-C-v         : perl:clipboard:paste_escaped
+URxvt.url-select.launcher  : google-chrome
+URxvt.url-select.autocopy  : true
+URxvt.url-select.underline : true
+URxvt.clipboard.autocopy   : true
+
+URxvt.font: xft:monospace:size=9
+URxvt.letterSpace : -1
+URxvt.termName    : rxvt-256color
+URxvt.iso14755    : false
+
+URxvt.urgentOnBell: true
+
+URxvt.saveLines   : 12000
+URxvt.scrollBar   : false
+URxvt.scrollstyle : rxvt
+
+URxvt.background : black
+URxvt.foreground : white
+
+URxvt.scrollTtyOutput: false
+URxvt.scrollTtyKeypress: true
 
 XLock.mode: space
 XLock.background: black
