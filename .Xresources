@@ -35,6 +35,7 @@ URxvt.termName    : rxvt-256color
 URxvt.iso14755    : false
 
 URxvt.urgentOnBell: true
+URxvt.visualBell: true
 
 URxvt.saveLines   : 12000
 URxvt.scrollBar   : false
