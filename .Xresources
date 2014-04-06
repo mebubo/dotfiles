@@ -43,6 +43,9 @@ URxvt.scrollstyle : rxvt
 URxvt.background : black
 URxvt.foreground : white
 
+! blue
+URxvt.color4  : #268BD2
+URxvt.color12 : #6699FF
 URxvt.scrollTtyOutput: false
 URxvt.scrollTtyKeypress: true
 
