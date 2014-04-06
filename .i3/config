@@ -159,8 +159,8 @@ hide_edge_borders both
 workspace_auto_back_and_forth yes
 force_display_urgency_hint 500 ms
 bindsym Mod4+Escape workspace back_and_forth
-bindsym XF86AudioMute exec "amixer -q sset Master toggle && killall -USR1 i3status" 
-bindsym XF86AudioRaiseVolume exec "amixer -q sset Master 2%+ && killall -USR1 i3status"
-bindsym XF86AudioLowerVolume exec "amixer -q sset Master 2%- && killall -USR1 i3status"
+bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle && killall -USR1 i3status" 
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +2% && killall -USR1 i3status"
+bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -- -2% && killall -USR1 i3status"
 bindsym Mod4+Tab focus right
 bindsym Mod4+Shift+Tab focus left
