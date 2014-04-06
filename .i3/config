@@ -22,7 +22,7 @@ font pango:DejaVu Sans Mono 10
 floating_modifier Mod4
 
 # start a terminal
-bindsym Mod4+Return exec i3-sensible-terminal
+bindsym Mod4+Return exec urxvt
 
 # kill focused window
 bindsym Mod4+Shift+q kill
