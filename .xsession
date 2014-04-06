@@ -5,7 +5,7 @@ xautolock -time 30 -locker "i3lock -c 330033 -b -d" &
 
 #eval `gpg-agent --daemon`
 
-awesome &
+i3 &
 wmpid=$!
 
 sleep 1
