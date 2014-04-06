@@ -46,6 +46,9 @@ URxvt.foreground : white
 ! blue
 URxvt.color4  : #268BD2
 URxvt.color12 : #6699FF
+
+URxvt.cursorColor            : #00aa00
+
 URxvt.scrollTtyOutput: false
 URxvt.scrollTtyKeypress: true
 
