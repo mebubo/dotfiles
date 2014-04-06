@@ -41,6 +41,9 @@
 
     - cron: name=sync-disks hour=4 minute=5 job="rsync -aH --exclude lost+found /mnt/passport/ /mnt/elements/" state=absent
 
+    - lineinfile: dest=/etc/rc.local insertbefore="exit 0" line="hdparm -B 255 {{ item.path }}" regexp="{{ item.path }}"
+      with_items: disks
+
 - name: backup_user actions
   hosts: 127.0.0.1
   connection: local
