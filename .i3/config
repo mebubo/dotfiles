@@ -179,3 +179,4 @@ bindsym Mod4+Shift+Tab focus left
 bindsym Mod4+q exec ~/.local/bin/quickswitch.py -d "dmenu -b -i -l 20 -fn *terminus*"
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 bindsym Mod4+p exec pavucontrol
+for_window [class="mpv"] floating enable
