@@ -180,3 +180,4 @@ bindsym Mod4+q exec ~/.local/bin/quickswitch.py -d "dmenu -b -i -l 20 -fn *termi
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 bindsym Mod4+p exec pavucontrol
 for_window [class="mpv"] floating enable
+bindsym Mod4+F2 exec i3lock -c 330033 -d
