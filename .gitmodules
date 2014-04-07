@@ -4,3 +4,6 @@
 [submodule "external/fasd"]
 	path = external/fasd
 	url = https://github.com/mebubo/fasd.git
+[submodule "external/urxvt-perls"]
+	path = external/urxvt-perls
+	url = git@github.com:mebubo/urxvt-perls.git
