@@ -188,4 +188,7 @@ bindsym Mod4+p exec pavucontrol
 for_window [class="mpv"] floating enable
 bindsym Mod4+F2 exec i3lock -c 330033 -d
 force_focus_wrapping yes
-client.focused #4c7899 #00aa00 #ffffff #2e9ef4
+
+# class          border  backgr. text    indicator
+client.focused   #4c7899 #00aa00 #ffffff #2e9ef4
+client.unfocused #333333 #222222 #cccccc #292d2e

@@ -453,3 +453,5 @@ there's a region, all lines that region covers will be duplicated."
       browse-url-generic-program "google-chrome")
 
 (with-library 'git-annex)
+
+(setq frame-title-format "emacs: %b %f")
