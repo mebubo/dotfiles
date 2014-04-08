@@ -84,7 +84,7 @@ case $TERM in
 esac
 
 case $(tty) in
-    /dev/tty*)
+    /dev/tty?)
         TMOUT=300
         ;;
 esac
@@ -120,6 +120,7 @@ alias gc="git commit"
 alias gb="git branch"
 alias gl="git log"
 alias gd="git diff"
+alias less="less -j 5"
 
 ff () {
     WHERE=${2-.}

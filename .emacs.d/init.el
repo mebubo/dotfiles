@@ -42,6 +42,9 @@
                                     free-keys
                                     keyfreq
                                     evil
+                                    auto-complete
+                                    readline-complete
+                                    anzu
                                     git-annex
                                     dired-open
                                     ))
@@ -166,12 +169,12 @@
 (global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c b") 'org-iswitchb)
-(setq org-directory "~/proactive/txt/"
+(setq org-directory "~/proactive/txt/org/"
       org-default-notes-file (concat org-directory "refile.org")
       org-log-done 'time
       org-export-html-postamble nil
       org-export-html-preamble nil
-      org-agenda-files '("~/proactive/txt")
+      org-agenda-files '("~/proactive/txt/org/")
       org-completion-use-ido t
       org-outline-path-complete-in-steps nil
       org-refile-targets '((nil :maxlevel . 9)
@@ -187,6 +190,16 @@
       org-clock-x11idle-program-name "xprintidle"
       org-enforce-todo-dependencies t
       ;; org-log-done 'note
+      org-goto-interface 'outline-path-completion
+      org-goto-max-level 10
+      org-outline-path-complete-in-steps nil
+      org-mobile-directory (concat org-directory "mobile/")
+      org-mobile-inbox-for-pull (concat org-directory "from-mobile.org")
+      org-capture-templates
+      (quote (("t" "todo" entry (file org-default-notes-file)
+               "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
+              ("n" "note" entry (file org-default-notes-file)
+               "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)))
       )
 (setq org-todo-keywords
       '((sequence "TODO" "|" "DONE(d)")
@@ -214,7 +227,7 @@
 (with-library 'epa)
 
 ;; windmove
-(windmove-default-keybindings 'meta)
+(windmove-default-keybindings 'super)
 
 ;; tramp
 (setq tramp-default-method "ssh")
@@ -422,5 +435,21 @@ there's a region, all lines that region covers will be duplicated."
 
 (setq case-fold-search t)
 (global-auto-revert-mode t)
+
+(with-library 'auto-complete)
+
+(with-library 'readline-complete
+              (setq explicit-shell-file-name "bash")
+              (setq explicit-bash-args '("-c" "export EMACS=; stty echo; bash"))
+              (setq comint-process-echoes t)
+              (add-to-list 'ac-modes 'shell-mode)
+              (add-hook 'shell-mode-hook 'auto-complete-mode)
+              (add-hook 'shell-mode-hook 'ac-rlc-setup-sources))
+
+(with-library 'anzu
+              (global-anzu-mode +1))
+
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "google-chrome")
 
 (with-library 'git-annex)

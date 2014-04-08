@@ -46,6 +46,11 @@ bindsym Mod4+Down focus down
 bindsym Mod4+Up focus up
 bindsym Mod4+Right focus right
 
+bindsym Mod4+Ctrl+Left focus output left
+bindsym Mod4+Ctrl+Right focus output right
+bindsym Mod4+Ctrl+Shift+Left move output left; focus output left
+bindsym Mod4+Ctrl+Shift+Right move output right; focus output right
+
 # move focused window
 bindsym Mod4+Shift+j move left
 bindsym Mod4+Shift+k move down
@@ -177,7 +182,10 @@ bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -- -2% && killall -US
 bindsym Mod4+Tab focus right
 bindsym Mod4+Shift+Tab focus left
 bindsym Mod4+q exec ~/.local/bin/quickswitch.py -d "dmenu -b -i -l 20 -fn *terminus*"
+
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 bindsym Mod4+p exec pavucontrol
 for_window [class="mpv"] floating enable
 bindsym Mod4+F2 exec i3lock -c 330033 -d
+force_focus_wrapping yes
+client.focused #4c7899 #00aa00 #ffffff #2e9ef4
