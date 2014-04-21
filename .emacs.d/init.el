@@ -319,7 +319,7 @@
 (menu-bar-mode -1)
 
 ;; scroll-bar
-(scroll-bar-mode nil)
+(scroll-bar-mode -1)
 
 ;; tool-bar
 (tool-bar-mode -1)
