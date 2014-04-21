@@ -64,7 +64,7 @@ FEDORA_ARCHES=${FEDORA_ARCHES-"x86_64"}
 FEDORA_RELEASES=${FEDORA_RELEASES-"19"}
 
 ARCH_ARCHES=all
-ARCH_RELEASES=${ARCH_RELEASES-"2014.03.01"}
+ARCH_RELEASES=${ARCH_RELEASES-"2014.04.01"}
 
 install_grub () {
     /usr/sbin/grub-install --no-floppy --root-directory=$MOUNTPOINT ${DEVICE::-1}
