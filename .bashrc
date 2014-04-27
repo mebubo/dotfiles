@@ -152,12 +152,6 @@ function demo_ps1 {
     PS1='\[\033[01;36m\]\[\033[01;33m\]\w\[\e[01;$(($??31:37))m\] \$ \[\033[00m\]'
 }
 
-function demo_commit_change {
-    echo "DEMO Change $1" >> RM-README.txt
-    git add RM-README.txt
-    git commit -m "DEMO Change $1"
-}
-
 function bfmtv {
     mpv mms://vipevenement.yacast.net/bfm_bfmtv
 }
@@ -184,6 +178,10 @@ function server {
     python -m SimpleHTTPServer $PORT
 }
 
+function yd {
+    youtube-dl -i -c --output='%(upload_date)s--%(stitle)s-%(id)s.%(ext)s' "$@"
+}
+
 # http://stackoverflow.com/questions/59895/can-a-bash-script-tell-what-directory-its-stored-in
 function _resolve_this_dir {
     local SOURCE="${BASH_SOURCE[0]}"
@@ -197,19 +195,6 @@ function _resolve_this_dir {
     done
     cd -P "$( dirname "$SOURCE" )" && pwd
 }
-
-function yd {
-    youtube-dl -i -c --output='%(upload_date)s--%(stitle)s-%(id)s.%(ext)s' "$@"
-}
-
-if [ "$TERM" = "xterm-termite" ]; then
-    export TERM=xterm-256color
-    if [ -f /usr/local/etc/profile.d/vte.sh ]; then
-        _OLD_PROMPT_COMMAND="$PROMPT_COMMAND"
-        . /usr/local/etc/profile.d/vte.sh
-        PROMPT_COMMAND="$_OLD_PROMPT_COMMAND; __vte_prompt_command;"
-    fi
-fi
 
 _THIS_DIR=$(_resolve_this_dir)
 
