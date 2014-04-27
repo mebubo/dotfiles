@@ -92,28 +92,21 @@ esac
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CFhla'
-alias acs="apt-cache search"
-alias acsh="apt-cache show"
-alias acp="apt-cache policy"
-alias agi="sudo aptitude install"
-alias pru="ping ya.ru"
+
 alias e=$EDITOR
 alias em="emacs -nw -q -no-site-file"
-alias sa="sudo aptitude"
-alias wd="sudo wpa_action wlan0 stop"
-alias wu="sudo ifup wlan0"
-alias wl="less /var/log/wpa_action.wlan0.log"
-alias wt="tail /var/log/wpa_action.wlan0.log"
+alias E="EDITOR=\"emacsclient -c -a emacs\" sudoedit"
+
+alias pru="ping google.com"
 alias ws="wpa_cli status"
 alias wr="wpa_cli reassociate"
-alias eup="sudo ifup eth0=dhcp"
-alias edw="sudo ifdown eth0"
-alias ic="/sbin/ifconfig"
+alias ic="ip addr"
 alias wpa_gui="/usr/sbin/wpa_gui"
 alias wpa_cli="/sbin/wpa_cli"
+
 alias a="acpi"
 alias d="dict"
-alias E="EDITOR=\"emacsclient -c -a emacs\" sudoedit"
+
 alias g="git"
 alias gs="git status"
 alias gc="git commit"
@@ -121,6 +114,21 @@ alias gb="git branch"
 alias gl="git log"
 alias gd="git diff"
 alias less="less -j 5"
+
+if grep -i debian /etc/os-release &>/dev/null; then
+    alias sa="sudo aptitude"
+    alias acs="apt-cache search"
+    alias acsh="apt-cache show"
+    alias wu="sudo ifup wlan0"
+    alias wd="sudo wpa_action wlan0 stop"
+    alias eup="sudo ifup eth0=dhcp"
+    alias edw="sudo ifdown eth0"
+elif grep -i archlinux /etc/os-release &>/dev/null; then
+    alias wu="sudo systemctl start netctl-auto@wlp3s0.service"
+    alias wd="sudo systemctl stop netctl-auto@wlp3s0.service"
+    alias eup="sudo systemctl start netctl@eth0.service"
+    alias edw="sudo systemctl stop netctl@eth0.service"
+fi
 
 ff () {
     WHERE=${2-.}
