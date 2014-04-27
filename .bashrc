@@ -142,7 +142,7 @@ rg () {
 export GPG_TTY=`tty`
 
 yt () {
-    mplayer -cache 500 $(youtube-dl -g "$1")
+    mpv -cache 500 $(youtube-dl -g "$1")
 }
 
 if [ -f /etc/bash_completion.d/git ]; then
