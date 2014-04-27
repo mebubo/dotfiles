@@ -194,3 +194,5 @@ client.focused   #0aa594 #0aa594 #ffffff #2e9ef4
 client.unfocused #222222 #222222 #cccccc #292d2e
 
 bindsym Mod4+x [urgent=latest] focus
+
+popup_during_fullscreen leave_fullscreen
