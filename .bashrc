@@ -124,8 +124,8 @@ if grep -i debian /etc/os-release &>/dev/null; then
     alias eup="sudo ifup eth0=dhcp"
     alias edw="sudo ifdown eth0"
 elif grep -i archlinux /etc/os-release &>/dev/null; then
-    alias wu="sudo systemctl start netctl-auto@wlp3s0.service"
-    alias wd="sudo systemctl stop netctl-auto@wlp3s0.service"
+    alias wu="sudo systemctl start netctl-auto@wlan0.service"
+    alias wd="sudo systemctl stop netctl-auto@wlan0.service"
     alias eup="sudo systemctl start netctl@eth0.service"
     alias edw="sudo systemctl stop netctl@eth0.service"
 fi
