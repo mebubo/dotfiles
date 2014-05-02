@@ -72,11 +72,16 @@ _update_window_title () {
     echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"
 }
 
+_configure_show_current_command_in_window_title () {
+    trap 'echo -ne "\033]0;$BASH_COMMAND\007"' DEBUG
+}
+
 # Maintain $HISTORY_FILE and if this is an xterm set the title to
 # user@host:dir
 case $TERM in
     uxterm*|xterm*|rxvt*)
         PROMPT_COMMAND="_append_history; history -a; _update_window_title"
+        _configure_show_current_command_in_window_title
         ;;
     *)
         PROMPT_COMMAND="_append_history; history -a"
