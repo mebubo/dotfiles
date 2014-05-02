@@ -76,11 +76,11 @@ _update_window_title () {
 # user@host:dir
 case $TERM in
     uxterm*|xterm*|rxvt*)
-	    PROMPT_COMMAND="_append_history; history -a; _update_window_title"
-	    ;;
+        PROMPT_COMMAND="_append_history; history -a; _update_window_title"
+        ;;
     *)
-	    PROMPT_COMMAND="_append_history; history -a"
-	    ;;
+        PROMPT_COMMAND="_append_history; history -a"
+        ;;
 esac
 
 case $(tty) in
