@@ -128,6 +128,8 @@ elif grep -i archlinux /etc/os-release &>/dev/null; then
     alias wd="sudo systemctl stop netctl-auto@wlan0.service"
     alias eup="sudo systemctl start netctl@eth0.service"
     alias edw="sudo systemctl stop netctl@eth0.service"
+    alias bup="sudo systemctl start netctl@bnep0.service"
+    alias bdw="sudo systemctl stop netctl@bnep0.service"
 fi
 
 ff () {
