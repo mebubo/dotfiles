@@ -200,3 +200,6 @@ popup_during_fullscreen leave_fullscreen
 assign [instance="crx_nckgahadagoaajjgafhacjanaoiihapd"] $workspace9
 
 focus_follows_mouse no
+
+for_window [class="Anki"] floating enable
+for_window [class="Runanki"] floating enable
