@@ -374,15 +374,6 @@ there's a region, all lines that region covers will be duplicated."
 (with-library 'git-commit
               (add-hook 'git-commit-mode-hook 'turn-on-flyspell))
 
-;; append and prepend asterisks to dired buffer names
-;; this way they are filtered out from ido-switch-buffer
-(add-hook 'dired-after-readin-hook
-          (lambda ()
-            (unless (string-match "^\\*" (buffer-name))
-              (rename-buffer
-               (generate-new-buffer-name
-                (concat "*" (buffer-name) "*"))))))
-
 ;; markdown
 (with-library 'markdown-mode)
 
