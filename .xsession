@@ -18,7 +18,7 @@ xset m 1 1
 
 #parcellite &
 #blueman-applet &
-#pulseaudio --daemonize
+pulseaudio --daemonize
 #padevchooser &
 
 setxkbmap -variant -option
