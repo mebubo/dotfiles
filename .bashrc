@@ -175,6 +175,46 @@ function france24 {
     mpv mms://stream1.france24.yacast.net/f24_livefr
 }
 
+function franceinter {
+    mpv http://mp3.live.tv-radio.com/franceinter/all/franceinterhautdebit.mp3
+}
+
+function franceinfo {
+    mpv http://mp3.live.tv-radio.com/franceinfo/all/franceinfo.mp3
+}
+
+function europe1 {
+    mpv http://vipicecast.yacast.net/europe1
+}
+
+function rfi {
+    mpv http://mp3.live.tv-radio.com/rfimonde/all/rfimonde-64k.mp3
+}
+
+function bfm {
+    mpv http://vipicecast.yacast.net/bfm_web
+}
+
+function francebleu {
+    mpv http://mp3lg4.tdf-cdn.com/6841/fbazur-hd.mp3
+}
+
+function rtl {
+    mpv http://ais.rtl.fr:80/rtl-1-44-128
+}
+
+function bbc4 {
+    mpv http://bbcmedia.ic.llnwd.net/stream/bbcmedia_intl_lc_radio4_q
+}
+
+function bbcws {
+    mpv http://bbcwssc.ic.llnwd.net/stream/bbcwssc_mp1_ws-eieuk
+}
+
+function bbcwsn {
+    mpv http://bbcwssc.ic.llnwd.net/stream/bbcwssc_mp1_ws-einws
+}
+
 function ta {
     if [ "$TERM" != "screen-256color" ]
     then
