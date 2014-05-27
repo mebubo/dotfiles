@@ -47,6 +47,7 @@
                                     anzu
                                     git-annex
                                     dired-open
+                                    ace-jump-mode
                                     ))
 
               (dolist (p my-packages)
@@ -449,3 +450,6 @@ there's a region, all lines that region covers will be duplicated."
 
 (with-library 'evil
               (evil-mode 1))
+
+(with-library 'ace-jump-mode
+              (define-key global-map (kbd "s-z") 'ace-jump-mode))
