@@ -47,7 +47,9 @@
                                     anzu
                                     git-annex
                                     dired-open
+                                    paradox
                                     ace-jump-mode
+                                    emmet-mode
                                     ))
 
               (dolist (p my-packages)
