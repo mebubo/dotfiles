@@ -120,6 +120,9 @@ alias gl="git log"
 alias gd="git diff"
 alias less="less -j 5"
 
+alias bton="dbus-send --system --type=method_call --dest=org.bluez --print-reply /org/bluez/hci0 org.freedesktop.DBus.Properties.Set string:org.bluez.Adapter1 string:Powered variant:boolean:true"
+alias btoff="dbus-send --system --type=method_call --dest=org.bluez --print-reply /org/bluez/hci0 org.freedesktop.DBus.Properties.Set string:org.bluez.Adapter1 string:Powered variant:boolean:false"
+
 if grep -i debian /etc/os-release &>/dev/null; then
     alias sa="sudo aptitude"
     alias acs="apt-cache search"
