@@ -22,6 +22,8 @@ xset m 1 1
 pulseaudio --daemonize
 #padevchooser &
 
+arbtt-capture --sample-rate=30 &
+
 setxkbmap -variant -option
 setxkbmap -layout us,ru -variant ,phonetic -option grp:toggle,grp_led:caps,terminate:ctrl_alt_bksp,ctrl:nocaps,compose:menu
 
