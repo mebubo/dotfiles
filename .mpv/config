@@ -1,4 +1,4 @@
-vo=vaapi,xv
+vo=xv
 hwdec=vaapi
 fs=yes
 osc=no
