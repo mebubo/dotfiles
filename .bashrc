@@ -120,6 +120,12 @@ alias gl="git log"
 alias gd="git diff"
 alias less="less -j 5"
 
+alias nexus-connect="dbus-send --system --type=method_call --dest=org.bluez --print-reply /org/bluez/hci0/dev_$NEXUS_MAC org.bluez.Network1.Connect string:nap"
+alias nexus-disconnect="dbus-send --system --type=method_call --dest=org.bluez --print-reply /org/bluez/hci0/dev_$NEXUS_MAC org.bluez.Network1.Disconnect"
+
+alias sound-connect="dbus-send --system --type=method_call --dest=org.bluez --print-reply /org/bluez/hci0/dev_$SOUND_MAC org.bluez.Device1.Connect"
+alias sound-disconnect="dbus-send --system --type=method_call --dest=org.bluez --print-reply /org/bluez/hci0/dev_$SOUND_MAC org.bluez.Device1.Disconnect"
+
 alias bton="dbus-send --system --type=method_call --dest=org.bluez --print-reply /org/bluez/hci0 org.freedesktop.DBus.Properties.Set string:org.bluez.Adapter1 string:Powered variant:boolean:true"
 alias btoff="dbus-send --system --type=method_call --dest=org.bluez --print-reply /org/bluez/hci0 org.freedesktop.DBus.Properties.Set string:org.bluez.Adapter1 string:Powered variant:boolean:false"
 
