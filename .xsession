@@ -46,9 +46,8 @@ case $(hostname) in
         xgamma -rgamma 1.2 -bgamma 0.8
         ;;
     britany)
-        xrandr --setprovideroutputsource 1 0
-        xrandr --output DVI-1-2 --auto --output DVI-1-2 --left-of DVI-0
-        xrandr --output DVI-0 --rotate left --output DVI-1 --rotate left --output DVI-1 --right-of DVI-0
+        # xrandr --setprovideroutputsource 1 0
+        xrandr --output DVI-0 --auto --output DVI-1 --auto --output DVI-1 --right-of DVI-0
         ;;
 esac
 
