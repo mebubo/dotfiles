@@ -3,7 +3,7 @@
 xmodmap .xmodmaprc &
 xrdb ~/.Xresources
 xautolock -time 30 -locker "i3lock -c 330033 -d" &
-xss-lock -v -- i3lock -c 330033 &
+xss-lock -v -- i3lock -c 330033 || true &
 
 #eval `gpg-agent --daemon`
 
