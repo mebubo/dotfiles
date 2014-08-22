@@ -197,7 +197,7 @@ client.unfocused #555555 #555555 #ffffff #292d2e
 
 bindsym Mod4+x [urgent=latest] focus
 
-popup_during_fullscreen leave_fullscreen
+popup_during_fullscreen smart
 
 assign [instance="crx_nckgahadagoaajjgafhacjanaoiihapd"] $workspace9
 
