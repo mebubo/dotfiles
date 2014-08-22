@@ -24,7 +24,8 @@
                     mu4e-use-fancy-chars t
                     mu4e-sent-messages-behavior 'delete
                     mu4e-headers-visible-lines 15
-                    mu4e-html2text-command "html2text -utf8 -width 72"))
+                    mu4e-html2text-command "html2text -utf8 -width 72")
+              (global-set-key [f8] 'mu4e))
 (with-library 'org-mu4e)
 
 ;; erc
