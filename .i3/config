@@ -205,3 +205,7 @@ focus_follows_mouse no
 
 for_window [class="Anki"] floating enable
 for_window [class="Runanki"] floating enable
+
+bindsym Mod4+End exec "pactl set-sink-mute 0 toggle && killall -USR1 i3status"
+bindsym Mod4+Next exec "pactl set-sink-volume 0 +2% && killall -USR1 i3status"
+bindsym Mod4+Delete exec "pactl set-sink-volume 0 -- -2% && killall -USR1 i3status"
