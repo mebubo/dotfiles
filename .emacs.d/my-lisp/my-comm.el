@@ -2,14 +2,7 @@
 (setq mail-user-agent 'gnus-user-agent)
 
 ;; SMTP
-(setq send-mail-function 'smtpmail-send-it
-      message-send-mail-function 'smtpmail-send-it
-      smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
-      smtpmail-auth-credentials '(("smtp.gmail.com" 587 "dolgovs@gmail.com" nil))
-      smtpmail-default-smtp-server "smtp.gmail.com"
-      smtpmail-smtp-server "smtp.gmail.com"
-      smtpmail-smtp-service 587
-      smtpmail-debug-info t)
+(setq send-mail-function 'sendmail-send-it)
 
 ;; Mail address
 (setq user-mail-address "dolgovs@gmail.com")
