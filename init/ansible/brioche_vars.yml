@@ -6,9 +6,6 @@ email: dolgovs@gmail.com
 mayo_src: mebubo@192.168.0.65:/home/mebubo/annex/
 mayo_dest: /mnt/passport/sdbackup/backups/mayo/annex
 
-bri_src: sdolgov@bri-out:/home/sdolgov/proactive/
-bri_dest: /mnt/passport/sdbackup/backups/bri/proactive
-
 disks:
   - path: /dev/disk/by-uuid/c051592c-651c-469b-866a-09f53ab386f9
     name: elements

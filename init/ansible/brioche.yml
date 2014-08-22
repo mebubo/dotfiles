@@ -37,7 +37,6 @@
       with_items: disks
 
     - cron: name=backup-mayo hour=3 minute=5 user={{ backup_user }} job="/home/{{ backup_user }}/j/scripts/backup.sh {{ mayo_src }} {{ mayo_dest }}  {{ email }}"
-    - cron: name=backup-bri hour=2 minute=5 user={{ backup_user }} job="/home/{{ backup_user }}/j/scripts/backup.sh {{ bri_src }} {{ bri_dest }}  {{ email }}"
 
     - cron: name=sync-disks hour=4 minute=5 job="rsync -aH --exclude lost+found /mnt/passport/ /mnt/elements/" state=absent
 
