@@ -208,3 +208,14 @@ for_window [class="Runanki"] floating enable
 bindsym Mod4+End exec "pactl set-sink-mute 0 toggle && killall -USR1 i3status"
 bindsym Mod4+Next exec "pactl set-sink-volume 0 +2% && killall -USR1 i3status"
 bindsym Mod4+Delete exec "pactl set-sink-volume 0 -- -2% && killall -USR1 i3status"
+
+bindsym Mod4+m mark previous; mode "go_to_window"
+
+mode "go_to_window" {
+     bindsym e [class="Emacs"] focus; mode "default"
+     bindsym c [class="Google-chrome"] focus; mode "default"
+     bindsym i [class="jetbrains-idea"] focus; mode "default"
+
+     bindsym Return mode "default"
+     bindsym Escape mode "default"
+}
