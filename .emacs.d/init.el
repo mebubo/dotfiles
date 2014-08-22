@@ -450,8 +450,5 @@ there's a region, all lines that region covers will be duplicated."
 
 (setq frame-title-format "emacs: %b %f")
 
-(with-library 'evil
-              (evil-mode 1))
-
 (with-library 'ace-jump-mode
               (define-key global-map (kbd "s-z") 'ace-jump-mode))
