@@ -54,6 +54,7 @@
   tasks:
     - command: mkdir -p /home/{{ backup_user }}/j/
     - git: repo=https://github.com/mebubo/scripts.git dest=/home/{{ backup_user }}/j/scripts/
+    - git: repo=https://github.com/mebubo/rsync-time-backup.git dest=/home/{{ backup_user }}/j/rsync-time-backup/
 
 - name: normal_user actions
   hosts: 127.0.0.1
