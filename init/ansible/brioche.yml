@@ -36,7 +36,7 @@
     - mount: name=/mnt/{{ item.name }} src=/dev/mapper/{{ item.name }} state=present fstype=ext4
       with_items: disks
 
-    - cron: name=backup-mayo hour=3 minute=5 user={{ backup_user }} job="/home/{{ backup_user }}/j/scripts/backup.sh {{ mayo_src }} {{ mayo_dest }}  {{ email }}"
+    - cron: name=backup-mayo hour=3 minute=5 user={{ backup_user }} job="/home/{{ backup_user }}/j/rsync-time-backup/rsync_tmbackup.sh {{ mayo_src }} {{ mayo_dest }}"
 
     - cron: name=sync-disks hour=4 minute=5 job="rsync -aH --exclude lost+found /mnt/passport/ /mnt/elements/" state=absent
 
