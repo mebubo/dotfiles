@@ -242,10 +242,6 @@ function server {
     python -m SimpleHTTPServer $PORT
 }
 
-function yd {
-    youtube-dl -i -c --output='%(upload_date)s--%(stitle)s-%(id)s.%(ext)s' "$@"
-}
-
 # http://stackoverflow.com/questions/59895/can-a-bash-script-tell-what-directory-its-stored-in
 function _resolve_this_dir {
     local SOURCE="${BASH_SOURCE[0]}"

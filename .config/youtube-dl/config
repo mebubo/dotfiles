@@ -1,0 +1,1 @@
+-i -c --output='%(upload_date)s--%(title)s--%(id)s.%(ext)s'
