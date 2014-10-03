@@ -242,6 +242,23 @@ function server {
     python -m SimpleHTTPServer $PORT
 }
 
+function hdmi {
+    case "$1" in
+        on)
+            xrandr --output HDMI1 --auto
+            pactl set-card-profile 0 output:hdmi-stereo
+            ;;
+        off)
+            xrandr --output HDMI1 --off
+            pactl set-card-profile 0 output:analog-stereo
+            ;;
+        *)
+            echo "Usage: hdmi <on|off>"
+            return 1
+            ;;
+    esac
+}
+
 # http://stackoverflow.com/questions/59895/can-a-bash-script-tell-what-directory-its-stored-in
 function _resolve_this_dir {
     local SOURCE="${BASH_SOURCE[0]}"
