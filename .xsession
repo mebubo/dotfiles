@@ -24,8 +24,7 @@ pulseaudio --daemonize
 
 arbtt-capture --sample-rate=30 &
 
-setxkbmap -variant -option
-setxkbmap -layout us,ru -variant ,phonetic -option grp:toggle,grp_led:caps,terminate:ctrl_alt_bksp,ctrl:nocaps,compose:menu
+setxkbmap -layout us,ru -variant ,phonetic -option grp:menu_toggle,grp_led:caps,terminate:ctrl_alt_bksp,ctrl:nocaps,compose:ralt
 
 case $(hostname) in
     slk)
