@@ -176,51 +176,51 @@ function demo_ps1 {
     PS1='\[\033[01;36m\]\[\033[01;33m\]\w\[\e[01;$(($??31:37))m\] \$ \[\033[00m\]'
 }
 
-function bfmtv {
+function tv-bfmtv {
     mpv mms://vipevenement.yacast.net/bfm_bfmtv
 }
 
-function france24 {
+function tv-france24 {
     mpv mms://stream1.france24.yacast.net/f24_livefr
 }
 
-function franceinter {
+function radio-franceinter {
     mpv http://mp3.live.tv-radio.com/franceinter/all/franceinterhautdebit.mp3
 }
 
-function franceinfo {
+function radio-franceinfo {
     mpv http://mp3.live.tv-radio.com/franceinfo/all/franceinfo.mp3
 }
 
-function europe1 {
+function radio-europe1 {
     mpv http://vipicecast.yacast.net/europe1
 }
 
-function rfi {
+function radio-rfi {
     mpv http://mp3.live.tv-radio.com/rfimonde/all/rfimonde-64k.mp3
 }
 
-function bfm {
+function radio-bfm {
     mpv http://vipicecast.yacast.net/bfm_web
 }
 
-function francebleu {
+function radio-francebleu {
     mpv http://mp3lg4.tdf-cdn.com/6841/fbazur-hd.mp3
 }
 
-function rtl {
+function radio-rtl {
     mpv http://ais.rtl.fr:80/rtl-1-44-128
 }
 
-function bbc4 {
+function radio-bbc4 {
     mpv http://bbcmedia.ic.llnwd.net/stream/bbcmedia_intl_lc_radio4_q
 }
 
-function bbcws {
+function radio-bbcws {
     mpv http://bbcwssc.ic.llnwd.net/stream/bbcwssc_mp1_ws-eieuk
 }
 
-function bbcwsn {
+function radio-bbcwsn {
     mpv http://bbcwssc.ic.llnwd.net/stream/bbcwssc_mp1_ws-einws
 }
 
