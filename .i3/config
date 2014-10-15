@@ -87,7 +87,7 @@ bindsym Mod4+space focus mode_toggle
 bindsym Mod4+a focus parent
 
 # focus the child container
-#bindsym Mod4+d focus child
+bindsym Mod4+Shift+a focus child
 
 # move the currently focused window to the scratchpad
 bindsym Mod4+Shift+minus move scratchpad
