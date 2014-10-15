@@ -1,6 +1,5 @@
 [Default Applications]
-application/pdf=evince.desktop
-application/bzpdf=evince.desktop
+application/pdf=zathura.desktop
 video/mp4=mpv.desktop
 video/x-msvideo=mpv.desktop
 video/mpeg=mpv.desktop
