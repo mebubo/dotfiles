@@ -59,7 +59,7 @@ DEBIAN_DAILY_ARCHES=${DEBIAN_ARCHES}
 DEBIAN_DAILY_RELEASES="daily"
 
 ARCH_ARCHES=all
-ARCH_RELEASES=${ARCH_RELEASES-"2014.04.01"}
+ARCH_RELEASES=${ARCH_RELEASES-"2014.10.01"}
 
 install_grub () {
     /usr/sbin/grub-install --no-floppy --root-directory=$MOUNTPOINT ${DEVICE::-1}
