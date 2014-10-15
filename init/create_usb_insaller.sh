@@ -199,11 +199,17 @@ download_debian_like () {
             for RELEASE in ${!RELEASES}; do
                 mkdir -p ${!DIR}/${ARCH}/${RELEASE}
                 set_vars
-                wget -P ${!DIR}/${ARCH}/${RELEASE} -N ${!KERNEL}
-                wget -P ${!DIR}/${ARCH}/${RELEASE} -N ${!INITRD}
+                download_if_updated ${!DIR}/${ARCH}/${RELEASE} ${!KERNEL}
+                download_if_updated ${!DIR}/${ARCH}/${RELEASE} ${!INITRD}
             done
         done
     fi
+}
+
+download_if_updated () {
+    local DEST="$1"
+    local URL="$2"
+    wget -N --no-use-server-timestamps -P "$DEST" "$URL"
 }
 
 all () {
