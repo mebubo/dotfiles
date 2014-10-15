@@ -227,6 +227,10 @@ function radio-bbcwsn {
     mpv http://bbcwssc.ic.llnwd.net/stream/bbcwssc_mp1_ws-einws
 }
 
+function radio-fip {
+    mpv http://mp3.live.tv-radio.com/fip/all/fiphautdebit.mp3
+}
+
 function ta {
     if [ "$TERM" != "screen-256color" ]
     then
