@@ -6,3 +6,4 @@ set laststatus=2
 set title
 set runtimepath^=~/.vim/bundle/vim-sensible
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+set runtimepath^=~/.vim/bundle/vim-fugitive
