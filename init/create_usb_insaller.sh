@@ -43,8 +43,6 @@ set_vars () {
     DEBIAN_DAILY_KERNEL="http://d-i.debian.org/daily-images/$ARCH/daily/netboot/debian-installer/$ARCH/linux"
     DEBIAN_DAILY_INITRD="http://d-i.debian.org/daily-images/$ARCH/daily/netboot/debian-installer/$ARCH/initrd.gz"
 
-    FEDORA_ISO="http://download.fedoraproject.org/pub/fedora/linux/releases/$RELEASE/Live/$ARCH/Fedora-Live-Desktop-$ARCH-$RELEASE-1.iso"
-
     ARCH_ISO="http://mir.archlinux.fr/iso/$RELEASE/archlinux-$RELEASE-dual.iso"
 }
 
@@ -59,9 +57,6 @@ UBUNTU_SERVER_RELEASES=${UBUNTU_SERVER_RELEASES-"trusty"}
 
 DEBIAN_DAILY_ARCHES=${DEBIAN_ARCHES}
 DEBIAN_DAILY_RELEASES="daily"
-
-FEDORA_ARCHES=${FEDORA_ARCHES-"x86_64"}
-FEDORA_RELEASES=${FEDORA_RELEASES-"19"}
 
 ARCH_ARCHES=all
 ARCH_RELEASES=${ARCH_RELEASES-"2014.04.01"}
@@ -93,7 +88,6 @@ create_grub_cfg () {
     DEBIAN_RELEASES=$DEBIAN_DAILY_RELEASES create_grub_cfg_debian
     create_grub_cfg_ubuntu_server
     create_grub_cfg_ubuntu
-    create_grub_cfg_fedora
     create_grub_cfg_arch
 }
 
@@ -145,22 +139,6 @@ EOF
     done
 }
 
-create_grub_cfg_fedora () {
-    # https://bugzilla.redhat.com/show_bug.cgi?id=650672
-    # http://git.marmotte.net/git/glim/plain/fedora18-fromiso
-    # don't bother with scripts to modify initrd
-    # I can mount it manually once a year
-    for f in $(cd $ISO_DIR; ls Fedora*.iso | sort -r); do
-        cat >> $GRUB_CFG <<EOF
-menuentry "$f (at dracut prompt, manually mount -o loop /path/to/$f /isodevice)" {
-  loopback loop /boot/iso/$f
-  linux (loop)/isolinux/vmlinuz0 root=live:CDLABEL=${f::-1} initrd=initrd0.img rootfstype=auto ro rd.live.image rhgb rd.luks=0 rd.md=0 rd.dm=0
-  initrd (loop)/isolinux/initrd0.img
-}
-EOF
-    done
-}
-
 create_grub_cfg_arch () {
     for f in $(cd $ISO_DIR; ls archlinux-*.iso | sort -r); do
 
@@ -183,7 +161,6 @@ download () {
     download_debian_like DEBIAN
     download_debian_like DEBIAN_DAILY
     download_debian_like UBUNTU_SERVER
-    download_iso FEDORA
     download_iso ARCH
 }
 
