@@ -94,4 +94,4 @@ xpdf*background: white
                      Shift ~Ctrl ~Meta <Btn2Up>:insert-selection(CLIPBOARD, CUT_BUFFER1)
 
 Xcursor.theme: Adwaita
-Xcursor.size:  16
+Xcursor.size:  12
