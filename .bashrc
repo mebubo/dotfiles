@@ -81,7 +81,6 @@ _configure_show_current_command_in_window_title () {
 case $TERM in
     uxterm*|xterm*|rxvt*)
         PROMPT_COMMAND="_append_history; history -a; _update_window_title"
-        _configure_show_current_command_in_window_title
         ;;
     *)
         PROMPT_COMMAND="_append_history; history -a"
@@ -93,6 +92,10 @@ case $(tty) in
         TMOUT=300
         ;;
 esac
+
+# highlight search in less
+export LESS_TERMCAP_so=$'\E[38;5;016m\E[48;5;220m'    # begin standout-mode - info box
+export LESS_TERMCAP_se=$'\E[0m'           # end standout-mode
 
 alias ll='ls -l'
 alias la='ls -A'
