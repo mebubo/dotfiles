@@ -2,7 +2,7 @@
 	conflictstyle = diff3
 [user]
 	name = Sergei Dolgov
-	email = dolgovs@gmail.com
+	email = Sergei.Dolgov@activeeon.com
 [alias]
 	co = checkout
 	br = branch
@@ -21,10 +21,10 @@
     interactive = auto
     status = auto
 [sendemail]
-	smtpserver = smtp.gmail.com
-	smtpserverport = 587
-	smtpencryption = tls
-	smtpuser = dolgovs@gmail.com
+	# smtpserver = smtp.gmail.com
+	# smtpserverport = 587
+	# smtpencryption = tls
+	# smtpuser = sergei.dolgov@activeeon.com
 [push]
 	default = simple
 [core]

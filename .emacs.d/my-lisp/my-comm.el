@@ -5,7 +5,7 @@
 (setq send-mail-function 'sendmail-send-it)
 
 ;; Mail address
-(setq user-mail-address "dolgovs@gmail.com")
+(setq user-mail-address "sergei.dolgov@activeeon.com")
 (setq user-full-name "Sergei Dolgov")
 
 ;; message
