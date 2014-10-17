@@ -193,7 +193,7 @@ force_focus_wrapping no
 
 # class          border  backgr. text    indicator
 client.focused   #0aa594 #0aa594 #ffffff #2e9ef4
-client.unfocused #555555 #555555 #ffffff #292d2e
+client.unfocused #888888 #555555 #ffffff #292d2e
 
 bindsym Mod4+x [urgent=latest] focus
 
