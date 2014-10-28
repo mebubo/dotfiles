@@ -8,6 +8,8 @@ export MAILDIR=~/mail
 
 export LANG=fr_FR.UTF-8
 
+export NO_AT_BRIDGE=1
+
 # export _JAVA_AWT_WM_NONREPARENTING=1
 
 # export CUPS_SERVER=cups-sop.inria.fr
