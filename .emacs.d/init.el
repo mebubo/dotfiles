@@ -47,7 +47,6 @@
                                     anzu
                                     git-annex
                                     dired-open
-                                    paradox
                                     ace-jump-mode
                                     ace-jump-buffer
                                     emmet-mode
