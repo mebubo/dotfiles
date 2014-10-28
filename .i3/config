@@ -199,8 +199,6 @@ bindsym Mod4+x [urgent=latest] focus
 
 popup_during_fullscreen smart
 
-assign [instance="crx_nckgahadagoaajjgafhacjanaoiihapd"] $workspace9
-
 focus_follows_mouse no
 
 for_window [class="Anki"] floating enable
