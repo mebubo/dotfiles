@@ -129,6 +129,9 @@ alias nexus-disconnect="dbus-send --system --type=method_call --dest=org.bluez -
 alias desire-connect="dbus-send --system --type=method_call --dest=org.bluez --print-reply /org/bluez/hci0/dev_$DESIRE_MAC org.bluez.Network1.Connect string:nap"
 alias desire-disconnect="dbus-send --system --type=method_call --dest=org.bluez --print-reply /org/bluez/hci0/dev_$DESIRE_MAC org.bluez.Network1.Disconnect"
 
+alias nexus5-connect="dbus-send --system --type=method_call --dest=org.bluez --print-reply /org/bluez/hci0/dev_$NEXUS5_MAC org.bluez.Network1.Connect string:nap"
+alias nexus5-disconnect="dbus-send --system --type=method_call --dest=org.bluez --print-reply /org/bluez/hci0/dev_$NEXUS5_MAC org.bluez.Network1.Disconnect"
+
 alias sound-connect="dbus-send --system --type=method_call --dest=org.bluez --print-reply /org/bluez/hci0/dev_$SOUND_MAC org.bluez.Device1.Connect"
 alias sound-disconnect="dbus-send --system --type=method_call --dest=org.bluez --print-reply /org/bluez/hci0/dev_$SOUND_MAC org.bluez.Device1.Disconnect"
 
