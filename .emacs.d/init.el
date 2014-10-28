@@ -454,3 +454,6 @@ there's a region, all lines that region covers will be duplicated."
               (define-key global-map (kbd "s-z") 'ace-jump-mode))
 
 (global-set-key [C-tab] 'other-window)
+
+(evil-mode 1)
+(setq evil-default-state 'emacs)
