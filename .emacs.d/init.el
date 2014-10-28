@@ -457,3 +457,5 @@ there's a region, all lines that region covers will be duplicated."
 
 (evil-mode 1)
 (setq evil-default-state 'emacs)
+
+(setq ispell-dictionary "en")
