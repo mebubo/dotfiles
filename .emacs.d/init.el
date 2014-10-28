@@ -452,3 +452,5 @@ there's a region, all lines that region covers will be duplicated."
 
 (with-library 'ace-jump-mode
               (define-key global-map (kbd "s-z") 'ace-jump-mode))
+
+(global-set-key [C-tab] 'other-window)
