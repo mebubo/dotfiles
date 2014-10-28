@@ -210,11 +210,32 @@ bindsym Mod4+Delete exec "pactl set-sink-volume 0 -- -2% && killall -USR1 i3stat
 
 bindsym Mod4+m mark previous; mode "go_to_window"
 
+set $pocket "crx_mjcnijlhddpbdemagnpefmlkjdagkogk"
+set $tabs "crx_eggkanocgddhmamlbiijnphhppkpkmkl"
+set $keep "crx_hmjkmjkepdijhoojdojkdfohbdgmmhki"
+
+for_window [instance=$pocket] floating enable
+for_window [instance=$tabs] floating enable
+for_window [instance=$keep] floating enable
+
+for_window [instance=$pocket] move to scratchpad
+for_window [instance=$tabs] move to scratchpad
+for_window [instance=$keep] move to scratchpad
+
 mode "go_to_window" {
      bindsym e [class="Emacs"] focus; mode "default"
-     bindsym c [class="Google-chrome"] focus; mode "default"
+     bindsym c [instance="Google-chrome"] focus; mode "default"
      bindsym i [class="jetbrains-idea"] focus; mode "default"
+     bindsym a [class="Anki"] focus; mode "default"
+
+     bindsym p [instance=$pocket] focus; mode "popup"
+     bindsym t [instance=$tabs] focus; mode "popup"
+     bindsym k [instance=$keep] focus; mode "popup"
 
      bindsym Return mode "default"
      bindsym Escape mode "default"
+}
+
+mode "popup" {
+     bindsym Escape scratchpad show; mode "default"
 }
