@@ -289,4 +289,4 @@ _THIS_DIR=$(_resolve_this_dir)
 fasd () {
     $_THIS_DIR/external/fasd/fasd "$@"
 }
-eval "$(fasd --init auto)"
+test -f $_THIS_DIR/external/fasd/fasd && eval "$(fasd --init auto)"
