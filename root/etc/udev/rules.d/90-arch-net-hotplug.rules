@@ -1,0 +1,6 @@
+ACTION=="add", SUBSYSTEM=="net", KERNEL=="bnep0", RUN+="/usr/bin/systemctl start netctl@bnep0.service"
+ACTION=="remove", SUBSYSTEM=="net", KERNEL=="bnep0", RUN+="/usr/bin/systemctl stop netctl@bnep0.service"
+
+ACTION=="add", SUBSYSTEM=="net", KERNEL=="usb0", RUN+="/usr/bin/systemctl start netctl@usb0.service"
+ACTION=="remove", SUBSYSTEM=="net", KERNEL=="usb0", RUN+="/usr/bin/systemctl stop netctl@usb0.service"
+
