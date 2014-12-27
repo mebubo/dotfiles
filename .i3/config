@@ -233,6 +233,24 @@ mode "go_to_window" {
      bindsym t [instance=$tabs] focus; mode "popup"
      bindsym k [instance=$keep] focus; mode "popup"
 
+     # keybindings for marking and jumping to clients
+     bindsym Shift+a exec i3-input -F 'mark %s' -P 'Mark name: '; mode "default"
+     bindsym g exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '; mode "default"
+
+     # Assign marks to keys 1-5
+     bindsym Shift+1 mark 1; mode "default"
+     bindsym Shift+2 mark 2; mode "default"
+     bindsym Shift+3 mark 3; mode "default"
+     bindsym Shift+4 mark 4; mode "default"
+     bindsym Shift+5 mark 5; mode "default"
+
+     # Jump to clients marked 1-5
+     bindsym 1 [con_mark="1"] focus; mode "default"
+     bindsym 2 [con_mark="2"] focus; mode "default"
+     bindsym 3 [con_mark="3"] focus; mode "default"
+     bindsym 4 [con_mark="4"] focus; mode "default"
+     bindsym 5 [con_mark="5"] focus; mode "default"
+
      bindsym Return mode "default"
      bindsym Escape mode "default"
 }
