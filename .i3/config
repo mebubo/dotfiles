@@ -35,19 +35,21 @@ bindsym Mod4+d exec --no-startup-id dmenu_run
 bindsym Mod4+Shift+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym Mod4+h mark previous; focus left
-bindsym Mod4+j mark previous; focus down
-bindsym Mod4+k mark previous; focus up
-bindsym Mod4+l mark previous; focus right
+bindsym Mod4+h focus left
+bindsym Mod4+j focus down
+bindsym Mod4+k focus up
+bindsym Mod4+l focus right
 
 # alternatively, you can use the cursor keys:
-bindsym Mod4+Left mark previous; focus left
-bindsym Mod4+Down mark previous; focus down
-bindsym Mod4+Up mark previous; focus up
-bindsym Mod4+Right mark previous; focus right
+bindsym Mod4+Left focus left
+bindsym Mod4+Down focus down
+bindsym Mod4+Up focus up
+bindsym Mod4+Right focus right
 
-bindsym Mod4+Ctrl+Left mark previous; focus output left
-bindsym Mod4+Ctrl+Right mark previous; focus output right
+# bindsym Mod4+Ctrl+Left focus output left
+# bindsym Mod4+Ctrl+Right focus output right
+bindsym Mod4+Ctrl+Left workspace prev
+bindsym Mod4+Ctrl+Right workspace next
 bindsym Mod4+Ctrl+Shift+Left move output left; focus output left
 bindsym Mod4+Ctrl+Shift+Right move output right; focus output right
 
@@ -181,8 +183,7 @@ bindsym XF86AudioMute exec "pactl set-sink-mute alsa_output.pci-0000_00_1b.0.ana
 bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo +2% && killall -USR1 i3status"
 bindsym XF86AudioLowerVolume exec "pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo -- -2% && killall -USR1 i3status"
 
-bindsym Mod4+q mark previous; exec ~/.local/bin/quickswitch.py -d "dmenu -b -i -l 20 -fn *terminus*"
-bindsym Mod4+Tab mark current; [con_mark="previous"] focus; [con_mark="current"] mark previous
+bindsym Mod4+q exec ~/.local/bin/quickswitch.py -d "dmenu -b -i -l 20 -fn *terminus*"
 
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 bindsym Mod4+p exec pavucontrol
@@ -208,7 +209,7 @@ bindsym Mod4+End exec "pactl set-sink-mute 0 toggle && killall -USR1 i3status"
 bindsym Mod4+Next exec "pactl set-sink-volume 0 +2% && killall -USR1 i3status"
 bindsym Mod4+Delete exec "pactl set-sink-volume 0 -- -2% && killall -USR1 i3status"
 
-bindsym Mod4+m mark previous; mode "go_to_window"
+bindsym Mod4+m mode "go_to_window"
 
 set $pocket "crx_mjcnijlhddpbdemagnpefmlkjdagkogk"
 set $tabs "crx_eggkanocgddhmamlbiijnphhppkpkmkl"
