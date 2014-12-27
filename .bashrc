@@ -1,6 +1,4 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-
-. ~/.environment
+test -f ~/.environment && . ~/.environment
 test -f ~/.environment-private && . ~/.environment-private
 
 # If not running interactively, don't do anything
