@@ -57,6 +57,7 @@
                                     company-go
                                     go-errcheck
                                     go-eldoc
+                                    speed-type
                                     ))
 
               (dolist (p my-packages)
