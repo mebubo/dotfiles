@@ -52,7 +52,11 @@
                                     emmet-mode
                                     haskell-mode
                                     flycheck
+                                    go-mode
                                     company
+                                    company-go
+                                    go-errcheck
+                                    go-eldoc
                                     ))
 
               (dolist (p my-packages)
@@ -469,3 +473,18 @@ there's a region, all lines that region covers will be duplicated."
 
 (with-library 'company
               (add-hook 'after-init-hook 'global-company-mode))
+
+;; golang
+(add-to-list 'load-path "~/go/src/github.com/dougm/goflymake")
+(require 'go-flycheck)
+
+(with-library 'go-eldoc
+              (add-hook 'go-mode-hook 'go-eldoc-setup))
+
+(load-file "~/go/src/code.google.com/p/go.tools/cmd/oracle/oracle.el")
+(add-hook 'go-mode-hook (lambda ()
+                          (local-set-key (kbd "M-.") 'godef-jump)
+                          (go-oracle-mode)
+                          ))
+(add-hook 'before-save-hook 'gofmt-before-save)
+(setq gofmt-command "goimports")
