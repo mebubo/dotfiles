@@ -7,7 +7,7 @@ xss-lock -v -- i3lock -c 330033 || true &
 
 #eval `gpg-agent --daemon`
 
-~/src/i3/i3 &
+i3 &
 wmpid=$!
 
 sleep 1
