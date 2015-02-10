@@ -14,3 +14,6 @@ set show-all-if-ambiguous on
 $if Bash
   Space: magic-space
 $endif
+
+"\e[1;5C": forward-word     # Ctrl+right  => forward word
+"\e[1;5D": backward-word    # Ctrl+left   => backward word
