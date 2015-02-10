@@ -225,7 +225,8 @@
 (msb-mode)
 
 ;; yasnippet
-(with-library 'yasnippet-bundle)
+(with-library 'yasnippet
+              (yas-global-mode 1))
 
 ;; EasyPG
 (with-library 'epa)
