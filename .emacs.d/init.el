@@ -51,6 +51,8 @@
                                     ace-jump-buffer
                                     emmet-mode
                                     haskell-mode
+                                    flycheck
+                                    company
                                     ))
 
               (dolist (p my-packages)
@@ -461,3 +463,9 @@ there's a region, all lines that region covers will be duplicated."
 (setq evil-default-state 'emacs)
 
 (setq ispell-dictionary "en")
+
+(with-library 'flycheck
+              (add-hook 'after-init-hook 'global-flycheck-mode))
+
+(with-library 'company
+              (add-hook 'after-init-hook 'global-company-mode))
