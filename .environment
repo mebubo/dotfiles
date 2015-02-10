@@ -6,6 +6,9 @@ export PATH=$PATH:$HOME/bin
 export GEM_HOME=~/gems/
 export MAILDIR=~/mail
 
+export GOPATH=$HOME/go
+export PATH=$PATH:$HOME/go/bin
+
 export LANG=fr_FR.UTF-8
 
 export NO_AT_BRIDGE=1
