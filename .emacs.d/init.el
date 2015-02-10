@@ -488,3 +488,6 @@ there's a region, all lines that region covers will be duplicated."
                           ))
 (add-hook 'before-save-hook 'gofmt-before-save)
 (setq gofmt-command "goimports")
+
+;; IntelliJ-style autosave
+(add-hook 'focus-out-hook (lambda () (save-some-buffers t)))
