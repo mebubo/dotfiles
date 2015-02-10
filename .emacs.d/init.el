@@ -50,6 +50,7 @@
                                     ace-jump-mode
                                     ace-jump-buffer
                                     emmet-mode
+                                    haskell-mode
                                     ))
 
               (dolist (p my-packages)
