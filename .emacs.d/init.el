@@ -480,7 +480,7 @@ there's a region, all lines that region covers will be duplicated."
 (with-library 'go-eldoc
               (add-hook 'go-mode-hook 'go-eldoc-setup))
 
-(load-file "~/go/src/code.google.com/p/go.tools/cmd/oracle/oracle.el")
+(load-file "~/go/src/golang.org/x/tools/cmd/oracle/oracle.el")
 (add-hook 'go-mode-hook (lambda ()
                           (local-set-key (kbd "M-.") 'godef-jump)
                           (go-oracle-mode)
