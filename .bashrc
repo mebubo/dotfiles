@@ -261,7 +261,7 @@ function hdmi {
             ;;
         off)
             xrandr --output HDMI1 --off
-            pactl set-card-profile 0 output:analog-stereo
+            pactl set-card-profile 0 output:analog-stereo+input:analog-stereo
             ;;
         *)
             echo "Usage: hdmi <on|off>"
