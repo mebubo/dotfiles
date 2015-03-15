@@ -12,7 +12,6 @@
 # By default this script does nothing.
 
 echo 255 > /proc/sys/kernel/sysrq
-sysctl fs.inotify.max_user_watches=524288
 
 case "$(hostname)" in
     brioche)
