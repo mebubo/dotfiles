@@ -121,6 +121,8 @@ alias gl="git log"
 alias gd="git diff"
 alias less="less -j 5"
 
+alias cp="cp --reflink=auto --sparse=always"
+
 alias nexus-connect="dbus-send --system --type=method_call --dest=org.bluez --print-reply /org/bluez/hci0/dev_$NEXUS_MAC org.bluez.Network1.Connect string:nap"
 alias nexus-disconnect="dbus-send --system --type=method_call --dest=org.bluez --print-reply /org/bluez/hci0/dev_$NEXUS_MAC org.bluez.Network1.Disconnect"
 
