@@ -18,11 +18,6 @@ case "$(hostname)" in
         # samsung netbook screen brightness
         setpci -s 00:02.0 F4.B=FF
         ;;
-    mayo)
-        # Thinkpad TrackPoint
-        echo 250 > /sys/devices/platform/i8042/serio1/serio2/sensitivity
-        echo 120 > /sys/devices/platform/i8042/serio1/serio2/speed
-        ;;
 esac
 
 exit 0
