@@ -1,6 +1,8 @@
 test -f ~/.environment && . ~/.environment
 test -f ~/.environment-private && . ~/.environment-private
 
+export PATH=/bin:/usr/bin/:/usr/local/bin:$PATH
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -58,7 +60,7 @@ then
     alias egrep='egrep --color=auto'
 fi
 
-HISTORY_FILE=~/history
+HISTORY_FILE=~/.history
 _append_history () {
     local LAST_CMD=$(history 1)
     # strip useless entry number from the beginning
@@ -99,7 +101,7 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CFhla'
 
-alias e=$EDITOR
+alias e=emacsclient
 alias em="emacs -nw -q -no-site-file"
 alias E="EDITOR=\"emacsclient -c -a emacs\" sudoedit"
 

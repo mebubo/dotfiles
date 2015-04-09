@@ -9,15 +9,15 @@
 (add-to-list 'load-path "~/.emacs.d/site-lisp")
 
 (add-to-list 'load-path "~/.emacs.d/my-lisp")
-(load-library "my-shell")
-(load-library "my-comm")
+;; (load-library "my-shell")
+;; (load-library "my-comm")
 
 ;; make customize use it's own file
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
 
 ;; font
-(set-frame-font "monospace-10")
+;; (set-frame-font "monospace-10")
 
 ;; packages
 (with-library 'package
@@ -59,9 +59,11 @@
                                     guide-key
                                     ))
 
-              (dolist (p my-packages)
-                (when (not (package-installed-p p))
-                  (package-install p))))
+              ;; (dolist (p my-packages)
+              ;;   (when (not (package-installed-p p))
+              ;;     (package-install p)))
+
+	      )
 
 ;; no-splash-screen
 (setq inhibit-startup-message t)
@@ -103,7 +105,7 @@
 ;; http://www.masteringemacs.org/articles/2011/01/27/find-files-faster-recent-files-package/
 ;; also see recentf-open-files
 (recentf-mode t)
-(setq recentf-max-saved-items 200)
+(setq recentf-max-saved-items 1000)
 (defun ido-recentf-open ()
   "Use `ido-completing-read' to \\[find-file] a recent file"
   (interactive)
@@ -179,7 +181,7 @@
 (global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c b") 'org-iswitchb)
-(setq org-directory "~/dev/txt/"
+(setq org-directory "~/txt/"
       org-default-notes-file (concat org-directory "refile.org")
       org-log-done 'time
       org-export-html-postamble nil
@@ -207,9 +209,11 @@
       org-mobile-inbox-for-pull (concat org-directory "from-mobile.org")
       org-capture-templates
       (quote (("t" "todo" entry (file org-default-notes-file)
-               "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
+               "* TODO %?\n%U\n%a\n")
               ("n" "note" entry (file org-default-notes-file)
-               "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)))
+               "* %? :NOTE:\n%U\n%a\n")))
+      org-show-entry-below t
+      org-show-siblings t
       )
 (setq org-todo-keywords
       '((sequence "TODO" "|" "DONE(d)")
@@ -392,7 +396,8 @@ there's a region, all lines that region covers will be duplicated."
 
 ;; expand-region
 (with-library 'expand-region
-              (global-set-key (kbd "C-=") 'er/expand-region))
+              (global-set-key (kbd "C-=") 'er/expand-region)
+              (global-set-key (kbd "C-+") 'er/contract-region))
 
 (add-hook 'dired-mode-hook
           '(lambda ()
@@ -436,7 +441,7 @@ there's a region, all lines that region covers will be duplicated."
 (size-indication-mode t)
 
 (setq case-fold-search t)
-(global-auto-revert-mode t)
+;; (global-auto-revert-mode t)
 
 (with-library 'auto-complete
               (with-library 'readline-complete
@@ -493,24 +498,46 @@ there's a region, all lines that region covers will be duplicated."
 ;; IntelliJ-style autosave
 (add-hook 'focus-out-hook (lambda () (save-some-buffers t)))
 
+(global-undo-tree-mode -1)
+
+(desktop-save-mode 1)
+
 (with-library 'helm
               (require 'helm-config)
               (global-set-key (kbd "M-x") 'helm-M-x)
               (global-set-key (kbd "C-x b")   'helm-mini)
               (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
               (global-set-key (kbd "C-x C-m") 'helm-M-x)
-              (global-set-key (kbd "C-x C-f") 'helm-find-files)
               (global-set-key (kbd "C-x C-r") 'helm-recentf)
               (global-set-key (kbd "M-y") 'helm-show-kill-ring)
               (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to do persistent action
               (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
               (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
-              (setq helm-split-window-in-side-p t)
-              )
+              (setq helm-split-window-in-side-p t))
 
 (with-library 'guide-key
               (setq guide-key/guide-key-sequence '("C-c" "C-x"))
               (setq guide-key/recursive-key-sequence-flag t)
               (guide-key-mode 1))
 
-(desktop-save-mode 1)
+(with-library 'projectile
+              (projectile-global-mode)
+              ;;(setq projectile-indexing-method 'alien)
+              (setq projectile-completion-system 'helm)
+              (helm-projectile-on))
+
+(add-to-list 'load-path "~/src/windows-path/")
+(with-library 'windows-path
+              (windows-path-activate))
+
+(setq magit-git-executable "/cygdrive/c/cygwin64/bin/git.exe")
+(setq large-file-warning-threshold 300000000)
+
+(global-set-key (kbd "C-c j") 'helm-org-agenda-files-headings)
+
+(setq w32-get-true-file-attributes nil)
+
+(defun sd-reformat-xml()
+  (interactive)
+  (mark-whole-buffer)
+  (shell-command-on-region (region-beginning) (region-end) "xmllint --format -" t t))

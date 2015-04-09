@@ -1,0 +1,13 @@
+ftype txtfile="C:\cygwin64\bin\emacsclient-w32.exe" "--no-wait" "%1"
+assoc .java=txtfile
+assoc .js=txtfile
+assoc .json=txtfile
+assoc .jsp=txtfile
+assoc .log=txtfile
+assoc .md=txtfile
+assoc .out=txtfile
+assoc .properties=txtfile
+assoc .txt=txtfile
+assoc .xml=txtfile
+assoc .yml=txtfile
+assoc .groovy=txtfile

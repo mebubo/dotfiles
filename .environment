@@ -1,7 +1,7 @@
 export EDITOR="emacsclient"
-export OOO_FORCE_DESKTOP=gnome
-export JAVA_HOME=$HOME/opt/jdk/
-export PATH=$JAVA_HOME/bin:$PATH
+# export OOO_FORCE_DESKTOP=gnome
+# export JAVA_HOME=$HOME/opt/jdk/
+# export PATH=$JAVA_HOME/bin:$PATH
 export PATH=$PATH:$HOME/bin
 export GEM_HOME=~/gems/
 export MAILDIR=~/mail
@@ -9,10 +9,10 @@ export MAILDIR=~/mail
 export GOPATH=$HOME/go
 export PATH=$PATH:$HOME/go/bin
 
-export LANG=fr_FR.UTF-8
+# export LANG=fr_FR.UTF-8
 
-export NO_AT_BRIDGE=1
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+# export NO_AT_BRIDGE=1
+export SSH_AUTH_SOCK="$HOME/.ssh/ssh-agent.socket"
 
 # export _JAVA_AWT_WM_NONREPARENTING=1
 
