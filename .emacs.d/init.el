@@ -512,3 +512,5 @@ there's a region, all lines that region covers will be duplicated."
               (setq guide-key/guide-key-sequence '("C-c" "C-x"))
               (setq guide-key/recursive-key-sequence-flag t)
               (guide-key-mode 1))
+
+(desktop-save-mode 1)
