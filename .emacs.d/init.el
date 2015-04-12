@@ -492,3 +492,18 @@ there's a region, all lines that region covers will be duplicated."
 
 ;; IntelliJ-style autosave
 (add-hook 'focus-out-hook (lambda () (save-some-buffers t)))
+
+(with-library 'helm
+              (require 'helm-config)
+              (global-set-key (kbd "M-x") 'helm-M-x)
+              (global-set-key (kbd "C-x b")   'helm-mini)
+              (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
+              (global-set-key (kbd "C-x C-m") 'helm-M-x)
+              (global-set-key (kbd "C-x C-f") 'helm-find-files)
+              (global-set-key (kbd "C-x C-r") 'helm-recentf)
+              (global-set-key (kbd "M-y") 'helm-show-kill-ring)
+              (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to do persistent action
+              (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
+              (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
+              (setq helm-split-window-in-side-p t)
+              )
