@@ -437,15 +437,14 @@ there's a region, all lines that region covers will be duplicated."
 (setq case-fold-search t)
 (global-auto-revert-mode t)
 
-(with-library 'auto-complete)
-
-(with-library 'readline-complete
-              (setq explicit-shell-file-name "bash")
-              (setq explicit-bash-args '("-c" "export EMACS=; stty echo; bash"))
-              (setq comint-process-echoes t)
-              (add-to-list 'ac-modes 'shell-mode)
-              (add-hook 'shell-mode-hook 'auto-complete-mode)
-              (add-hook 'shell-mode-hook 'ac-rlc-setup-sources))
+(with-library 'auto-complete
+              (with-library 'readline-complete
+                            (setq explicit-shell-file-name "bash")
+                            (setq explicit-bash-args '("-c" "export EMACS=; stty echo; bash"))
+                            (setq comint-process-echoes t)
+                            (add-to-list 'ac-modes 'shell-mode)
+                            (add-hook 'shell-mode-hook 'auto-complete-mode)
+                            (add-hook 'shell-mode-hook 'ac-rlc-setup-sources)))
 
 (with-library 'anzu
               (global-anzu-mode +1))
@@ -462,8 +461,9 @@ there's a region, all lines that region covers will be duplicated."
 
 (global-set-key [C-tab] 'other-window)
 
-(evil-mode 1)
-(setq evil-default-state 'emacs)
+(with-library 'evil
+	      (evil-mode 1)
+	      (setq evil-default-state 'emacs))
 
 (setq ispell-dictionary "en")
 
