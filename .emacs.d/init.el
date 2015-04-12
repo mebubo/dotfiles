@@ -373,8 +373,8 @@ there's a region, all lines that region covers will be duplicated."
 
 ;; smex
 (with-library 'smex
+              (setq smex-save-file "~/.emacs.d/smex-items")
               (smex-initialize)
-              (setq smex-save-file "~/.emacs.d/smex.save")
               (global-set-key (kbd "M-x") 'smex)
               (global-set-key (kbd "M-X") 'smex-major-mode-commands)
               ;; This is your old M-x.
