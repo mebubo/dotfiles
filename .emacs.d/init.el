@@ -507,3 +507,8 @@ there's a region, all lines that region covers will be duplicated."
               (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
               (setq helm-split-window-in-side-p t)
               )
+
+(with-library 'guide-key
+              (setq guide-key/guide-key-sequence '("C-c" "C-x"))
+              (setq guide-key/recursive-key-sequence-flag t)
+              (guide-key-mode 1))
