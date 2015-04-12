@@ -15,7 +15,7 @@ UXTerm*bellIsUrgent: true
 UXTerm*utmpInhibit: true
 UXTerm*on2Clicks: regex [^ \n]+
 
-URxvt.perl-lib: /home/sdolgov/j/dotfiles/external/urxvt-perls
+URxvt.perl-lib: /home/mebubo/dev/dotfiles/external/urxvt-perls
 URxvt.perl-ext-common : default,keyboard-select,url-select,clipboard
 
 URxvt.keysym.M-Escape      : perl:keyboard-select:activate
