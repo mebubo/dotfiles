@@ -40,7 +40,6 @@
                                     free-keys
                                     keyfreq
                                     evil
-                                    auto-complete
                                     readline-complete
                                     anzu
                                     git-annex
@@ -56,6 +55,8 @@
                                     go-errcheck
                                     go-eldoc
                                     speed-type
+                                    helm
+                                    guide-key
                                     ))
 
               (dolist (p my-packages)
