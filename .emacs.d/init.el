@@ -178,12 +178,12 @@
 (global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c b") 'org-iswitchb)
-(setq org-directory "~/proactive/txt/org/"
+(setq org-directory "~/dev/txt/"
       org-default-notes-file (concat org-directory "refile.org")
       org-log-done 'time
       org-export-html-postamble nil
       org-export-html-preamble nil
-      org-agenda-files '("~/proactive/txt/org/")
+      org-agenda-files (list org-directory)
       org-completion-use-ido t
       org-outline-path-complete-in-steps nil
       org-refile-targets '((nil :maxlevel . 9)
