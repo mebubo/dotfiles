@@ -474,19 +474,20 @@ there's a region, all lines that region covers will be duplicated."
               (add-hook 'after-init-hook 'global-company-mode))
 
 ;; golang
-(add-to-list 'load-path "~/go/src/github.com/dougm/goflymake")
-(require 'go-flycheck)
+(when (eq system-type 'gnu/linux)
+  (add-to-list 'load-path "~/go/src/github.com/dougm/goflymake")
+  (require 'go-flycheck)
 
-(with-library 'go-eldoc
-              (add-hook 'go-mode-hook 'go-eldoc-setup))
+  (with-library 'go-eldoc
+                (add-hook 'go-mode-hook 'go-eldoc-setup))
 
-(load-file "~/go/src/golang.org/x/tools/cmd/oracle/oracle.el")
-(add-hook 'go-mode-hook (lambda ()
-                          (local-set-key (kbd "M-.") 'godef-jump)
-                          (go-oracle-mode)
-                          ))
-(add-hook 'before-save-hook 'gofmt-before-save)
-(setq gofmt-command "goimports")
+  (load-file "~/go/src/golang.org/x/tools/cmd/oracle/oracle.el")
+  (add-hook 'go-mode-hook (lambda ()
+                            (local-set-key (kbd "M-.") 'godef-jump)
+                            (go-oracle-mode)
+                            ))
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  (setq gofmt-command "goimports"))
 
 ;; IntelliJ-style autosave
 (add-hook 'focus-out-hook (lambda () (save-some-buffers t)))
