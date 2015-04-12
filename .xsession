@@ -2,18 +2,19 @@
 
 xmodmap .xmodmaprc &
 xrdb ~/.Xresources
-xautolock -time 30 -locker "i3lock -c 330033 -d" &
-xss-lock -v -- i3lock -c 330033 || true &
 
+xset s 1200
+xset dpms 1800 1800 1800
+xset m 1 1
+xset r rate 400 40
+
+xss-lock -v -- i3lock -c 330033 &
 
 i3 &
 wmpid=$!
 
 sleep 1
 
-xset dpms 3600 3700 3800
-xset s 3600
-xset m 1 1
 
 pulseaudio --daemonize
 
