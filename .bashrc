@@ -66,8 +66,24 @@ _append_history () {
     echo "$(date) -- cd $(pwd); $LAST_CMD" >> $HISTORY_FILE
 }
 
+_update_window_title () {
+    echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"
+}
 
-PROMPT_COMMAND="_append_history; history -a"
+_configure_show_current_command_in_window_title () {
+    trap 'echo -ne "\033]0;$BASH_COMMAND\007"' DEBUG
+}
+
+# Maintain $HISTORY_FILE and if this is an xterm set the title to
+# user@host:dir
+case $TERM in
+    uxterm*|xterm*|rxvt*)
+        PROMPT_COMMAND="_append_history; history -a; _update_window_title"
+        ;;
+    *)
+        PROMPT_COMMAND="_append_history; history -a"
+        ;;
+esac
 
 case $(tty) in
     /dev/tty?)
@@ -275,27 +291,4 @@ _THIS_DIR=$(_resolve_this_dir)
 fasd () {
     $_THIS_DIR/external/fasd/fasd "$@"
 }
-
 test -f $_THIS_DIR/external/fasd/fasd && eval "$(fasd --init auto)"
-
-case $TERM in
-    uxterm*|xterm*|rxvt*)
-        set_xterm_title () {
-            local title="$1"
-            echo -ne "\e]0;$title\007"
-        }
-
-        . /usr/share/undistract-me/preexec.bash
-
-        precmd () {
-            set_xterm_title "${USER}@${HOSTNAME}: `dirs -0`"
-        }
-
-        preexec () {
-            set_xterm_title "$1 {`dirs -0`} (${USER}@${HOSTNAME})"
-        }
-
-        preexec_install
-        ;;
-esac
-
