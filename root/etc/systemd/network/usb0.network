@@ -4,5 +4,6 @@ Name=usb0
 [Network]
 DHCP=v4
 
-[DHCPv4]
+[DHCP]
 UseHostname=false
+RouteMetric=100

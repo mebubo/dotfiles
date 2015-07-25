@@ -3,6 +3,8 @@ Name=eth0
 
 [Network]
 DHCP=v4
+#Address=192.168.173.1/24
 
-[DHCPv4]
+[DHCP]
 UseHostname=false
+RouteMetric=300
