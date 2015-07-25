@@ -1,23 +1,23 @@
-auto lo
-iface lo inet loopback
+source /etc/network/interfaces.d/*
 
-allow-hotplug wlan0
-iface wlan0 inet manual
-    # wpa-debug-level 3
-    wpa-driver nl80211
-    wpa-logfile /var/log/wpa_supplicant
-    wpa-roam /etc/wpa_supplicant/wpa-roam.conf
+#auto lo
+#iface lo inet loopback
 
-iface default inet dhcp
-iface dhcp inet dhcp
+#allow-hotplug wlan0
+#iface wlan0 inet manual
+#    # wpa-debug-level 3
+#    wpa-driver nl80211
+#    wpa-logfile /var/log/wpa_supplicant
+#    wpa-roam /etc/wpa_supplicant/wpa-roam.conf
 
-allow-hotplug eth0
-iface eth0 inet static
-    address 192.168.88.1
-    netmask 255.255.255.0
+#iface default inet dhcp
+#iface dhcp inet dhcp
 
-allow-hotplug usb0
-iface usb0 inet dhcp
+#allow-hotplug eth0
+#iface eth0 inet dhcp
 
-allow-hotplug bnep0
-iface bnep0 inet dhcp
+#allow-hotplug usb0
+#iface usb0 inet dhcp
+
+#allow-hotplug bnep0
+#iface bnep0 inet dhcp
