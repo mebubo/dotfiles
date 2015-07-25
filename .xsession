@@ -8,7 +8,8 @@ xset dpms 1800 1800 1800
 xset m 1 1
 xset r rate 400 40
 
-xss-lock -v -- i3lock -c 330033 &
+# xss-lock -v -- i3lock -c 330033 &
+xss-lock -v -- /home/mebubo/src/i3lock-fancy/lock &
 
 i3 &
 wmpid=$!
