@@ -72,6 +72,10 @@ copy_tree () {
 	    DEST_FILE="$DEST"/"$FILE"
 	    DEST_DIR=$(dirname "$DEST_FILE")
 	    SRC_FILE=$SRC/$FILE
+        if [ ! -e "$SRC_FILE" ]; then
+            echo "Source file does not exist, skipping: $SRC_FILE"
+            continue
+        fi
 	    [ -d "$DEST_DIR" ] || mkdir -p "$DEST_DIR"
 	    if [ -f "$DEST_FILE" ]; then
 	        if files_differ "$SRC_FILE" "$DEST_FILE"; then
