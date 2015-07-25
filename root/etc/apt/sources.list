@@ -1,12 +1,4 @@
-deb http://ftp.fr.debian.org/debian/ stable main non-free contrib
 deb http://ftp.fr.debian.org/debian/ testing main non-free contrib
 deb http://ftp.fr.debian.org/debian/ unstable main non-free contrib
 deb http://ftp.fr.debian.org/debian/ experimental main non-free contrib
-
-deb http://security.debian.org/ stable/updates main contrib non-free
-deb http://ftp.fr.debian.org/debian/ stable-updates main contrib non-free
-
-# deb http://emacs.naquadah.org/ unstable/
-
-#deb http://archive.ubuntu.com/ubuntu/ raring main
-#deb http://archive.ubuntu.com/ubuntu/ saucy main
+deb http://security.debian.org/ jessie/updates main contrib non-free
