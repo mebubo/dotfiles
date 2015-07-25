@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# grub-install --target x86_64-efi --efi-directory /media/sdd1/ --boot-directory=/media/sdd1/boot/ --removable
+# grub-install --target=i386-pc --removable --boot-directory=/media/sdd1/boot /dev/sdd
+
 set -e
 
 PATTERN="/dev/sd[b-z]1"
