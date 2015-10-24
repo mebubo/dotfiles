@@ -513,3 +513,5 @@ there's a region, all lines that region covers will be duplicated."
               (guide-key-mode 1))
 
 (desktop-save-mode 1)
+
+(global-undo-tree-mode -1)
