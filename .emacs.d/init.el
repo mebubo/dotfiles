@@ -59,9 +59,11 @@
                                     guide-key
                                     ))
 
-              (dolist (p my-packages)
-                (when (not (package-installed-p p))
-                  (package-install p))))
+              ;; (dolist (p my-packages)
+              ;;   (when (not (package-installed-p p))
+              ;;     (package-install p)))
+
+	      )
 
 ;; no-splash-screen
 (setq inhibit-startup-message t)
