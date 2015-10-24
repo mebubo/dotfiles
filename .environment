@@ -1,28 +1,19 @@
+test -v _ENVIRONMENT_DEFINED || {
+
 export EDITOR="emacsclient"
-export OOO_FORCE_DESKTOP=gnome
-export JAVA_HOME=$HOME/opt/jdk/
-export PATH=$JAVA_HOME/bin:$PATH
-export PATH=$PATH:$HOME/bin
+export JAVA_HOME=~/opt/jdk
 export GEM_HOME=~/gems/
 export MAILDIR=~/mail
+export GOPATH=~/go
 
-export GOPATH=$HOME/go
-export PATH=$PATH:$HOME/go/bin
+export PATH=$JAVA_HOME/bin:$PATH:~/bin:~/go/bin:/opt/elm/Elm-Platform/0.15.1/.cabal-sandbox/bin
 
 export LANG=fr_FR.UTF-8
 
+export OOO_FORCE_DESKTOP=gnome
 export NO_AT_BRIDGE=1
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
-# export _JAVA_AWT_WM_NONREPARENTING=1
+export _ENVIRONMENT_DEFINED=true
 
-# export CUPS_SERVER=cups-sop.inria.fr
-# export ALTERNATE_EDITOR=""
-# export MAIL=~/mail/inbox
-# export LD_LIBRARY_PATH=/usr/local/lib
-# export PATH=/home/solka/bin:$PATH
-# export LC_ALL=en_US.UTF-8
-# export LANG=en_US.UTF-8
-# export LC_CTYPE=ru_RU.UTF-8
-# export AWT_TOOLKIT=MToolkit
-# export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
+}
