@@ -234,7 +234,11 @@ function radio-bbcwsn {
 }
 
 function radio-fip {
-    mpv http://mp3.live.tv-radio.com/fip/all/fiphautdebit.mp3
+    mpv http://audio.scdn.arkena.com/11016/fip-midfi128.mp3
+}
+
+function radio-kexp {
+    mpv http://live-mp3-128.kexp.org:8000/listen.pls
 }
 
 function ta {
