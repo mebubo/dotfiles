@@ -517,3 +517,6 @@ there's a region, all lines that region covers will be duplicated."
 (desktop-save-mode 1)
 
 (global-undo-tree-mode -1)
+
+(with-library 'elm-mode
+              (add-hook 'elm-mode-hook #'elm-oracle-setup-completion))
