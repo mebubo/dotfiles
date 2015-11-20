@@ -5,8 +5,9 @@ export JAVA_HOME=~/opt/jdk
 export GEM_HOME=~/gems/
 export MAILDIR=~/mail
 export GOPATH=~/go
+export ELM_PLATFORM=/opt/elm/Elm-Platform/0.15.1/
 
-export PATH=$JAVA_HOME/bin:$PATH:~/bin:~/go/bin:/opt/elm/Elm-Platform/0.15.1/.cabal-sandbox/bin
+export PATH=$JAVA_HOME/bin:$PATH:~/bin:~/go/bin:$ELM_PLATFORM/.cabal-sandbox/bin:~/.npm-packages/bin/
 
 export LANG=fr_FR.UTF-8
 
