@@ -1,5 +1,3 @@
-. ~/.environment
-
 xmodmap .xmodmaprc &
 xrdb ~/.Xresources
 
