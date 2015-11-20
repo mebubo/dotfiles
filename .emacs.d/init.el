@@ -520,3 +520,13 @@ there's a region, all lines that region covers will be duplicated."
 
 (with-library 'elm-mode
               (add-hook 'elm-mode-hook #'elm-oracle-setup-completion))
+
+(defun my-filter-dired-buffers (buffer-list)
+  (delq nil (mapcar
+             (lambda (buffer)
+               (if (eq (with-current-buffer buffer major-mode)  'dired-mode)
+                   nil
+                 buffer))
+             buffer-list)))
+
+(advice-add 'helm-skip-boring-buffers :filter-return 'my-filter-dired-buffers)
