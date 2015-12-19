@@ -22,7 +22,7 @@
 ;; packages
 (with-library 'package
               (add-to-list 'package-archives
-                           '("melpa" . "http://melpa.org/packages/") t)
+                           '("melpa-stable" . "http://stable.melpa.org/packages/") t)
               (package-initialize)
 
               (when (not package-archive-contents)
@@ -132,7 +132,7 @@
 (show-paren-mode)
 
 ;; bell
-(setq visible-bell nil)
+(setq visible-bell 1)
 
 ;; backups
 (setq backup-by-copying t
@@ -466,7 +466,7 @@ there's a region, all lines that region covers will be duplicated."
 
 (with-library 'evil
 	      (evil-mode 1)
-	      (setq evil-default-state 'normal))
+	      (setq evil-default-state 'emacs))
 
 (setq ispell-dictionary "en")
 
