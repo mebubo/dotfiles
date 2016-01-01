@@ -24,7 +24,7 @@ set $mod Mod4
 floating_modifier Mod1
 
 # start a terminal
-bindsym Mod4+Return exec urxvt
+bindsym $mod+Return exec st -e tmux
 
 # kill focused window
 bindsym $mod+Shift+q kill
