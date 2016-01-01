@@ -22,7 +22,7 @@ call plug#end()
 set hlsearch
 set title
 set background=dark
-colorscheme solarized
+" colorscheme solarized
 
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
@@ -65,6 +65,10 @@ set wildmode=list:longest,full
 
 " Show trailing whitespace
 set list
+" But only interesting whitespace
+if &listchars ==# 'eol:$'
+  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+endif
 
 " Return to last edit position when opening files (You want this!)
 augroup last_edit
