@@ -8,8 +8,11 @@ Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
 Plug 'simnalamburt/vim-mundo'
 Plug 'godlygeek/tabular'
+" Plug 'bling/vim-airline'
+Plug 'altercation/vim-colors-solarized'
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
-Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
+" Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
+Plug 'moll/vim-bbye'
 Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
 Plug 'bitc/vim-hdevtools', { 'for': 'haskell' }
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
@@ -19,6 +22,7 @@ call plug#end()
 set hlsearch
 set title
 set background=dark
+colorscheme solarized
 
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
@@ -56,6 +60,12 @@ set showmatch
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
+" Tab-complete files up to longest unambiguous prefix
+set wildmode=list:longest,full
+
+" Show trailing whitespace
+set list
+
 " Return to last edit position when opening files (You want this!)
 augroup last_edit
   autocmd!
@@ -78,12 +88,44 @@ autocmd BufRead *
       \ exec "set path^=".s:tempPath |
       \ exec "set path^=".s:default_path
 
-
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
 
 " Open file prompt with current path
 nmap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
+
+" Use spaces instead of tabs
+set expandtab
+
+" Be smart when using tabs ;)
+set smarttab
+
+" 1 tab == 2 spaces
+set shiftwidth=4
+set tabstop=4
+
+" previous buffer, next buffer
+nnoremap <leader>bp :bp<cr>
+nnoremap <leader>bn :bn<cr>
+
+" close every window in current tabview but the current
+nnoremap <leader>bo <c-w>o
+
+" --- Plugins
+
+" Show undo tree
+nmap <silent> <leader>u :GundoToggle<CR>
+
+" Use powerline fonts for airline
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+let g:airline_powerline_fonts = 1
+let g:airline_symbols.space = "\ua0"
+
+" delete buffer without closing pane
+noremap <leader>bd :Bd<cr>
 
 " Fuzzy find files
 nnoremap <silent> <Leader><space> :CtrlP<CR>
@@ -91,10 +133,8 @@ let g:ctrlp_max_files=0
 let g:ctrlp_show_hidden=1
 let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|.cabal-sandbox|.stack-work)$' }
 
-" --- Plugins
-
-" Show undo tree
-nmap <silent> <leader>u :GundoToggle<CR>
+" fuzzy find buffers
+noremap <leader>b<space> :CtrlPBuffer<cr>
 
 " --- Haskell
 
