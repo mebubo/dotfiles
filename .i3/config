@@ -18,85 +18,87 @@
 # chose a FreeType font, such as:
 font pango:monospace 9
 
-# use Mouse+Mod4 to drag floating windows to their wanted position
-floating_modifier Mod4
+set $mod Mod4
+
+# use Mouse+Mod1 to drag floating windows to their wanted position
+floating_modifier Mod1
 
 # start a terminal
 bindsym Mod4+Return exec urxvt
 
 # kill focused window
-bindsym Mod4+Shift+q kill
+bindsym $mod+Shift+q kill
 
 # program launcher
-bindsym Mod4+d exec --no-startup-id rofi -show run -columns 3
+bindsym $mod+d exec --no-startup-id rofi -show run -columns 3
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym Mod4+Shift+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym Mod4+h focus left
-bindsym Mod4+j focus down
-bindsym Mod4+k focus up
-bindsym Mod4+l focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
-bindsym Mod4+Left focus left
-bindsym Mod4+Down focus down
-bindsym Mod4+Up focus up
-bindsym Mod4+Right focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
 
-# bindsym Mod4+Ctrl+Left focus output left
-# bindsym Mod4+Ctrl+Right focus output right
-bindsym Mod4+Ctrl+Left workspace prev
-bindsym Mod4+Ctrl+Right workspace next
-bindsym Mod4+Ctrl+Shift+Left move output left; focus output left
-bindsym Mod4+Ctrl+Shift+Right move output right; focus output right
+# bindsym $mod+Ctrl+Left focus output left
+# bindsym $mod+Ctrl+Right focus output right
+bindsym $mod+Ctrl+Left workspace prev
+bindsym $mod+Ctrl+Right workspace next
+bindsym $mod+Ctrl+Shift+Left move output left; focus output left
+bindsym $mod+Ctrl+Shift+Right move output right; focus output right
 
 # move focused window
-bindsym Mod4+Shift+h move left
-bindsym Mod4+Shift+j move down
-bindsym Mod4+Shift+k move up
-bindsym Mod4+Shift+l move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
-bindsym Mod4+Shift+Left move left
-bindsym Mod4+Shift+Down move down
-bindsym Mod4+Shift+Up move up
-bindsym Mod4+Shift+Right move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym Mod4+semicolon split h
+bindsym $mod+semicolon split h
 
 # split in vertical orientation
-bindsym Mod4+v split v
+bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym Mod4+f fullscreen
+bindsym $mod+f fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym Mod4+s layout stacking
-bindsym Mod4+w layout tabbed
-bindsym Mod4+e layout toggle split
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym Mod4+Shift+space floating toggle
+bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym Mod4+space focus mode_toggle
+bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym Mod4+a focus parent
+bindsym $mod+a focus parent
 
 # focus the child container
-bindsym Mod4+Shift+a focus child
+bindsym $mod+Shift+a focus child
 
 # move the currently focused window to the scratchpad
-bindsym Mod4+Shift+minus move scratchpad
+bindsym $mod+Shift+minus move scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
-bindsym Mod4+minus scratchpad show
+bindsym $mod+minus scratchpad show
 
 set $workspace1 1:www
 set $workspace2 2:idea
@@ -110,35 +112,35 @@ set $workspace9 9
 set $workspace10 10
 
 # switch to workspace
-bindsym Mod4+1 workspace $workspace1
-bindsym Mod4+2 workspace $workspace2
-bindsym Mod4+3 workspace $workspace3
-bindsym Mod4+4 workspace $workspace4
-bindsym Mod4+5 workspace $workspace5
-bindsym Mod4+6 workspace $workspace6
-bindsym Mod4+7 workspace $workspace7
-bindsym Mod4+8 workspace $workspace8
-bindsym Mod4+9 workspace $workspace9
-bindsym Mod4+0 workspace $workspace10
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+10 workspace $workspace10
 
 # move focused container to workspace
-bindsym Mod4+Shift+1 move container to workspace $workspace1
-bindsym Mod4+Shift+2 move container to workspace $workspace2
-bindsym Mod4+Shift+3 move container to workspace $workspace3
-bindsym Mod4+Shift+4 move container to workspace $workspace4
-bindsym Mod4+Shift+5 move container to workspace $workspace5
-bindsym Mod4+Shift+6 move container to workspace $workspace6
-bindsym Mod4+Shift+7 move container to workspace $workspace7
-bindsym Mod4+Shift+8 move container to workspace $workspace8
-bindsym Mod4+Shift+9 move container to workspace $workspace9
-bindsym Mod4+Shift+0 move container to workspace $workspace10
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace10
 
 # reload the configuration file
-bindsym Mod4+Shift+c reload
+bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym Mod4+Shift+r restart
+bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym Mod4+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -164,7 +166,7 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindsym Mod4+r mode "resize"
+bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -177,19 +179,19 @@ workspace_layout tabbed
 hide_edge_borders both
 workspace_auto_back_and_forth no
 force_display_urgency_hint 500 ms
-bindsym Mod4+Escape workspace back_and_forth
+bindsym $mod+Escape workspace back_and_forth
 
 set $sink $(pactl list short sinks | (grep RUNNING || echo "alsa_output.pci-0000_00_1b.0.analog-stereo") | cut -f1)
 bindsym XF86AudioMute exec pactl set-sink-mute $sink toggle && killall -USR1 i3status
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $sink +2% && killall -USR1 i3status
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume $sink -2% && killall -USR1 i3status
 
-bindsym Mod4+q exec rofi -show window
+bindsym $mod+q exec rofi -show window
 
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
-bindsym Mod4+p exec pavucontrol
+bindsym $mod+p exec pavucontrol
 for_window [class="mpv"] floating enable
-bindsym Mod4+F2 exec i3lock -c 330033 -d
+bindsym $mod+F2 exec i3lock -c 330033 -d
 
 force_focus_wrapping no
 
@@ -197,7 +199,7 @@ force_focus_wrapping no
 client.focused   #7cafc2 #7cafc2 #ffffff #2e9ef4
 client.unfocused #585858 #585858 #ffffff #292d2e
 
-bindsym Mod4+x [urgent=latest] focus
+bindsym $mod+x [urgent=latest] focus
 
 popup_during_fullscreen smart
 
@@ -206,11 +208,11 @@ focus_follows_mouse no
 for_window [class="Anki"] floating enable
 for_window [class="Runanki"] floating enable
 
-bindsym Mod4+End exec "pactl set-sink-mute 0 toggle && killall -USR1 i3status"
-bindsym Mod4+Next exec "pactl set-sink-volume 0 +2% && killall -USR1 i3status"
-bindsym Mod4+Delete exec "pactl set-sink-volume 0 -- -2% && killall -USR1 i3status"
+bindsym $mod+End exec "pactl set-sink-mute 0 toggle && killall -USR1 i3status"
+bindsym $mod+Next exec "pactl set-sink-volume 0 +2% && killall -USR1 i3status"
+bindsym $mod+Delete exec "pactl set-sink-volume 0 -- -2% && killall -USR1 i3status"
 
-bindsym Mod4+m mode "go_to_window"
+bindsym $mod+m mode "go_to_window"
 
 set $pocket "crx_mjcnijlhddpbdemagnpefmlkjdagkogk"
 set $tabs "crx_eggkanocgddhmamlbiijnphhppkpkmkl"
