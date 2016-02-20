@@ -1,31 +1,3 @@
-" HVN paths {{{
-" Set XDG_CONFIG_HOME/haskell-vim-now to load user's config files
-if exists($XDG_CONFIG_HOME)
-  let hvn_config_dir = $XDG_CONFIG_HOME . "/haskell-vim-now"
-else
-  let hvn_config_dir = $HOME . "/.config/haskell-vim-now"
-endif
-
-" Haskell Vim Now paths
-" pre config path
-let hvn_config_pre = expand(resolve(hvn_config_dir . "/vimrc.local.pre"))
-" post config path
-let hvn_config_post = expand(resolve(hvn_config_dir . "/vimrc.local"))
-" user plugins config path
-let hvn_user_plugins = expand(resolve(hvn_config_dir . "/plugins.vim"))
-
-" stack bin path symlink
-let hvn_stack_bin = expand(resolve(hvn_config_dir . "/.stack-bin"))
-" stack global path symlink
-" let hvn_stack_global = expand(resolve(hvn_config_dir . "/.stack"))
-" }}}
-
-" Precustomization {{{
-if filereadable(hvn_config_pre)
-  execute 'source '. hvn_config_pre
-endif
-" }}}
-
 " General {{{
 " Use indentation for folds
 set foldmethod=indent
@@ -43,9 +15,6 @@ augroup END
 " Use par for prettier line formatting
 set formatprg="PARINIT='rTbgqR B=.,?_A_a Q=_s>|' par\ -w72"
 
-" Find custom built hasktags, codex etc
-let $PATH = $PATH . ':' . expand(hvn_stack_bin)
-
 " Kill the damned Ex mode.
 nnoremap Q <nop>
 
@@ -60,43 +29,20 @@ endif
 
 set nocompatible
 
-if has('nvim')
-  call plug#begin('~/.config/nvim/bundle')
-else
-  call plug#begin('~/.vim/bundle')
-endif
+call plug#begin()
 
-" Support bundles
-Plug 'jgdavey/tslime.vim'
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'vim-scripts/gitignore'
-
-" Git
 Plug 'tpope/vim-fugitive'
 Plug 'int3/vim-extradite'
-
-" Bars, panels, and files
-Plug 'bling/vim-airline'
-
-" Text manipulation
 Plug 'vim-scripts/Align'
-Plug 'tpope/vim-commentary'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'easymotion/vim-easymotion'
 
-" Allow pane movement to jump out of vim into tmux
-Plug 'christoomey/vim-tmux-navigator'
-
-
-" Colorscheme
 Plug 'vim-scripts/wombat256.vim'
 
 call plug#end()
 
-set number
+}}}
 
-" Height of the command bar
-set cmdheight=1
+set number
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
@@ -105,25 +51,6 @@ set whichwrap+=<,>,h,l
 " No annoying sound on errors
 set noerrorbells
 set vb t_vb=
-
-if &term =~ '256color'
-  " disable Background Color Erase (BCE) so that color schemes
-  " render properly when inside 256-color tmux and GNU screen.
-  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-  set t_ut=
-endif
-
-" Force redraw
-map <silent> <leader>r :redraw!<CR>
-
-" Turn mouse mode on
-nnoremap <leader>ma :set mouse=a<cr>
-
-" Turn mouse mode off
-nnoremap <leader>mo :set mouse=<cr>
-
-" Default to mouse mode on
-set mouse=a
 
 " Colors and Fonts {{{
 
@@ -150,18 +77,6 @@ hi Cursor guibg=red
 " Use same color behind concealed unicode characters
 hi clear Conceal
 
-" Don't blink normal mode cursor
-set guicursor=n-v-c:block-Cursor
-set guicursor+=n-v-c:blinkon0
-
-" Set extra options when running in GUI mode
-if has("gui_running")
-  set guioptions-=T
-  set guioptions-=e
-  set guitablabel=%M\ %t
-endif
-set t_Co=256
-
 " Set utf8 as standard encoding and en_US as the standard language
 if !has('nvim')
   " Only set this for vim, since neovim is utf8 as default and setting it
@@ -172,16 +87,6 @@ endif
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
-" Use large font by default in MacVim
-set gfn=Monaco:h19
-
-" Use powerline fonts for airline
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-let g:airline_powerline_fonts = 1
-let g:airline_symbols.space = "\ua0"
 " }}}
 
 " Files, backups and undo {{{
@@ -204,14 +109,6 @@ augroup END
 " }}}
 
 " Text, tab and indent related {{{
-
-" Linebreak on 500 characters
-set lbr
-set tw=500
-
-set ai "Auto indent
-set si "Smart indent
-set wrap "Wrap lines
 
 " Pretty unicode haskell symbols
 let g:haskell_conceal_wide = 1
@@ -239,32 +136,6 @@ vnoremap <silent> # :call VisualSelection('b', '')<CR>
 
 " Moving around, tabs, windows and buffers {{{
 
-" Treat long lines as break lines (useful when moving around in them)
-nnoremap j gj
-nnoremap k gk
-
-noremap <c-h> <c-w>h
-noremap <c-k> <c-w>k
-noremap <c-j> <c-w>j
-noremap <c-l> <c-w>l
-
-" Open window splits in various places
-nmap <leader>sh :leftabove  vnew<CR>
-nmap <leader>sl :rightbelow vnew<CR>
-nmap <leader>sk :leftabove  new<CR>
-nmap <leader>sj :rightbelow new<CR>
-
-" Manually create key mappings (to avoid rebinding C-\)
-let g:tmux_navigator_no_mappings = 1
-
-nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-
-" don't close buffers when you aren't displaying them
-set hidden
-
 " Neovim terminal configurations
 if has('nvim')
   " Use <Esc> to escape terminal insert mode
@@ -276,22 +147,6 @@ if has('nvim')
   tnoremap <c-l> <C-\><C-n><C-w>l
 endif
 
-
-" }}}
-
-" Editing mappings {{{
-
-" Delete trailing white space on save
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
-
-augroup whitespace
-  autocmd!
-  autocmd BufWrite *.hs :call DeleteTrailingWS()
-augroup END
 
 " }}}
 
@@ -323,14 +178,6 @@ function! VisualSelection(direction, extra_filter) range
   let @/ = l:pattern
   let @" = l:saved_reg
 endfunction
-
-" }}}
-
-" Slime {{{
-
-vmap <silent> <Leader>rs <Plug>SendSelectionToTmux
-nmap <silent> <Leader>rs <Plug>NormalModeSendToTmux
-nmap <silent> <Leader>rv <Plug>SetTmuxVars
 
 " }}}
 

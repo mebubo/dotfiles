@@ -13,15 +13,24 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 " Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
 Plug 'moll/vim-bbye'
+Plug 'tpope/vim-commentary'
+Plug 'jgdavey/tslime.vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'easymotion/vim-easymotion'
 Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
 Plug 'bitc/vim-hdevtools', { 'for': 'haskell' }
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }
 call plug#end()
 
+set t_Co=256
+
 set hlsearch
 set title
 set background=dark
+
 " colorscheme solarized
 
 " Set 7 lines to the cursor - when moving vertically using j/k
@@ -63,12 +72,42 @@ set mat=2
 " Tab-complete files up to longest unambiguous prefix
 set wildmode=list:longest,full
 
+" Height of the command bar
+set cmdheight=1
+
 " Show trailing whitespace
 set list
 " But only interesting whitespace
 if &listchars ==# 'eol:$'
   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 endif
+
+" Linebreak on 500 characters
+set lbr
+set tw=500
+
+set ai "Auto indent
+set si "Smart indent
+set wrap "Wrap lines
+
+if &term =~ '256color'
+  " disable Background Color Erase (BCE) so that color schemes
+  " render properly when inside 256-color tmux and GNU screen.
+  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+  set t_ut=
+endif
+
+" Force redraw
+map <silent> <leader>r :redraw!<CR>
+
+" Turn mouse mode on
+nnoremap <leader>ma :set mouse=a<cr>
+
+" Turn mouse mode off
+nnoremap <leader>mo :set mouse=<cr>
+
+" Default to mouse mode on
+set mouse=a
 
 " Return to last edit position when opening files (You want this!)
 augroup last_edit
@@ -115,6 +154,24 @@ nnoremap <leader>bn :bn<cr>
 " close every window in current tabview but the current
 nnoremap <leader>bo <c-w>o
 
+" Treat long lines as break lines (useful when moving around in them)
+nnoremap j gj
+nnoremap k gk
+
+noremap <c-h> <c-w>h
+noremap <c-k> <c-w>k
+noremap <c-j> <c-w>j
+noremap <c-l> <c-w>l
+
+" Open window splits in various places
+nmap <leader>sh :leftabove  vnew<CR>
+nmap <leader>sl :rightbelow vnew<CR>
+nmap <leader>sk :leftabove  new<CR>
+nmap <leader>sj :rightbelow new<CR>
+
+" don't close buffers when you aren't displaying them
+set hidden
+
 " --- Plugins
 
 " Show undo tree
@@ -139,6 +196,18 @@ let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|.cabal-sandbox|.stack-work)$' 
 
 " fuzzy find buffers
 noremap <leader>b<space> :CtrlPBuffer<cr>
+
+vmap <silent> <Leader>rs <Plug>SendSelectionToTmux
+nmap <silent> <Leader>rs <Plug>NormalModeSendToTmux
+nmap <silent> <Leader>rv <Plug>SetTmuxVars
+
+" Manually create key mappings (to avoid rebinding C-\)
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 
 " --- Haskell
 
@@ -271,3 +340,15 @@ au FileType haskell let g:ghcmod_use_basedir = getcwd()
 nmap <silent> <leader>ht :GhcModType<CR>
 " Insert type of expression under cursor
 nmap <silent> <leader>hT :GhcModTypeInsert<CR>
+
+" Delete trailing white space on save
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+
+augroup whitespace
+  autocmd!
+  autocmd BufWrite *.hs :call DeleteTrailingWS()
+augroup END
