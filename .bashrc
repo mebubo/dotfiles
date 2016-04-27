@@ -34,7 +34,7 @@ export HISTSIZE=100000
 if [ $SHELL = "/bin/bash" ]
 then
     case $TERM in
-        uxterm*|xterm*|rxvt*|linux|screen*)
+        uxterm*|xterm*|rxvt*|linux|screen*|st*)
             case $HOSTNAME in
                 mayo|britany)
                     PS1='\[\033[01;36m\]\u@\h:\[\033[01;33m\]\w\[\e[01;$(($??31:37))m\] \$ \[\033[00m\]'
@@ -77,7 +77,7 @@ _configure_show_current_command_in_window_title () {
 # Maintain $HISTORY_FILE and if this is an xterm set the title to
 # user@host:dir
 case $TERM in
-    uxterm*|xterm*|rxvt*)
+    uxterm*|xterm*|rxvt*|st*)
         PROMPT_COMMAND="_append_history; history -a; _update_window_title"
         ;;
     *)
