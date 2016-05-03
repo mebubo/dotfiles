@@ -10,6 +10,9 @@ Plug 'pangloss/vim-javascript'
 call plug#end()
 
 set hlsearch
+set ignorecase
+set smartcase
+
 set title
 
 set t_Co=256
@@ -42,4 +45,3 @@ for prefix in ['i', 'n', 'v']
     exe prefix . "noremap " . key . " <Nop>"
   endfor
 endfor
-
