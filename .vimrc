@@ -27,9 +27,7 @@ set background=dark
 
 set scrolloff=7
 
-if ! exists("mapleader")
-  let mapleader = ","
-endif
+let mapleader = ","
 noremap ,, ,
 
 nmap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
