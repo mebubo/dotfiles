@@ -13,6 +13,10 @@ set hlsearch
 set ignorecase
 set smartcase
 
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
 set title
 
 set t_Co=256
@@ -45,3 +49,5 @@ for prefix in ['i', 'n', 'v']
     exe prefix . "noremap " . key . " <Nop>"
   endfor
 endfor
+
+autocmd BufWritePre * :%s/\s\+$//e
