@@ -3,10 +3,13 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'rking/ag.vim'
 call plug#end()
 
 set hlsearch
@@ -51,3 +54,10 @@ for prefix in ['i', 'n', 'v']
 endfor
 
 autocmd BufWritePre * :%s/\s\+$//e
+
+let g:ag_working_path_mode="r"
+nnoremap K :Ag "\b<C-R><C-W>\b"<CR><CR>
+
+set cursorline
+:hi CursorLine cterm=NONE ctermbg=235
+:nnoremap <Leader>c :set cursorline!<CR>
