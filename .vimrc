@@ -50,6 +50,11 @@ highlight CursorLine cterm=NONE ctermbg=234
 nnoremap <Leader>c :set cursorline!<CR>
 autocmd InsertEnter,InsertLeave * set cursorline!
 
+set statusline=%<%f\ %h%m%r%Y%=%-14.(%l,%c%V%)\ %P
+highlight StatusLine ctermfg=7
+autocmd InsertEnter * highlight StatusLine ctermfg=5
+autocmd InsertLeave * highlight StatusLine ctermfg=7
+
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
