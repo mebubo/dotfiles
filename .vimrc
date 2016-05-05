@@ -1,3 +1,5 @@
+let g:plug_shallow = 0
+
 call plug#begin()
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
