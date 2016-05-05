@@ -35,12 +35,12 @@ noremap ,, ,
 
 nmap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
 
-nnoremap <leader>bp :bp<cr>
-nnoremap <leader>bn :bn<cr>
-nnoremap <leader>bo <c-w>o
+nnoremap <leader>bp :bp<CR>
+nnoremap <leader>bn :bn<CR>
+nnoremap <leader>bo <C-W>o
 
-nnoremap <silent> <Leader><space> :CtrlP<CR>
-nnoremap <leader>b<space> :CtrlPBuffer<cr>
+nnoremap <leader><space> :CtrlP<CR>
+nnoremap <leader>b<space> :CtrlPBuffer<CR>
 
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
