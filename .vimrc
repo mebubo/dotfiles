@@ -45,6 +45,11 @@ nnoremap <leader>b<space> :CtrlPBuffer<CR>
 nnoremap <leader>w :w<CR>
 imap jk <Esc>
 
+set cursorline
+highlight CursorLine cterm=NONE ctermbg=234
+nnoremap <Leader>c :set cursorline!<CR>
+autocmd InsertEnter,InsertLeave * set cursorline!
+
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
@@ -61,7 +66,3 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 let g:ag_working_path_mode="r"
 nnoremap K :Ag "\b<C-R><C-W>\b"<CR><CR>
-
-set cursorline
-:hi CursorLine cterm=NONE ctermbg=235
-:nnoremap <Leader>c :set cursorline!<CR>
