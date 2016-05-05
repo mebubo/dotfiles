@@ -1,6 +1,6 @@
 test -v _ENVIRONMENT_DEFINED || {
 
-export EDITOR="emacsclient"
+export EDITOR="vim"
 export JAVA_HOME=~/opt/jdk
 export GEM_HOME=~/gems/
 export MAILDIR=~/mail
