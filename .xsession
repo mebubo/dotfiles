@@ -4,7 +4,7 @@ xrdb ~/.Xresources
 xset s 1200
 xset dpms 1800 1800 1800
 xset m 1 1
-xset r rate 400 40
+xset r rate 200 60
 
 xss-lock -v -- i3lock -c 330033 &
 
