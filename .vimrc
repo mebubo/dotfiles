@@ -32,6 +32,8 @@ set background=dark
 
 set scrolloff=7
 
+set showcmd
+
 let mapleader = ","
 noremap ,, ,
 
