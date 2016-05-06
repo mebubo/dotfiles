@@ -47,7 +47,8 @@ nnoremap <leader><space> :CtrlP<CR>
 nnoremap <leader>b<space> :CtrlPBuffer<CR>
 
 nnoremap <leader>w :w<CR>
-imap jk <Esc>
+inoremap jk <Esc>
+inoremap <Esc> <nop>
 
 set cursorline
 highlight CursorLine cterm=NONE ctermbg=234
