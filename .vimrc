@@ -34,6 +34,10 @@ set scrolloff=7
 
 set showcmd
 
+set wildmode=longest,list
+
+set number
+
 let mapleader = ","
 noremap ,, ,
 
