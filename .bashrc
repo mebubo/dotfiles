@@ -297,5 +297,5 @@ fasd () {
 }
 test -f $_THIS_DIR/external/fasd/fasd && eval "$(fasd --init auto)"
 
-BASE16=~/src/base16-shell/base16-default.dark.sh
+BASE16=~/src/base16-shell/base16-bright.dark.sh
 test -f $BASE16 && . $BASE16
