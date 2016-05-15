@@ -52,7 +52,6 @@ nnoremap <leader>m :CtrlPMixed<CR>
 
 nnoremap <leader>w :w<CR>
 inoremap jk <Esc>
-inoremap <Esc> <nop>
 
 set cursorline
 highlight CursorLine cterm=NONE ctermbg=234
