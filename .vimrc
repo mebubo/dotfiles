@@ -46,12 +46,9 @@ noremap ,, ,
 
 nmap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
 
-nnoremap <leader>bp :bp<CR>
-nnoremap <leader>bn :bn<CR>
-nnoremap <leader>bo <C-W>o
-
-nnoremap <leader><space> :CtrlP<CR>
-nnoremap <leader>b<space> :CtrlPBuffer<CR>
+nnoremap <leader>f :CtrlP<CR>
+nnoremap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>m :CtrlPMixed<CR>
 
 nnoremap <leader>w :w<CR>
 inoremap jk <Esc>
