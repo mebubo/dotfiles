@@ -39,6 +39,8 @@ set wildmode=longest,list
 
 set number
 
+set noswapfile
+
 let mapleader = ","
 noremap ,, ,
 
