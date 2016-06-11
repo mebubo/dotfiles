@@ -16,10 +16,10 @@
 [difftool]
 	prompt = no
 [color]
-    branch = auto
-    diff = auto
-    interactive = auto
-    status = auto
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
 [sendemail]
 	smtpserver = smtp.gmail.com
 	smtpserverport = 587
