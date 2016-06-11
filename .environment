@@ -1,4 +1,4 @@
-test -v _ENVIRONMENT_DEFINED || {
+# vim: filetype=sh
 
 export EDITOR="vim"
 export JAVA_HOME=~/opt/jdk
@@ -6,14 +6,26 @@ export GEM_HOME=~/gems/
 export MAILDIR=~/mail
 export GOPATH=~/go
 
-export PATH=$JAVA_HOME/bin:$PATH:~/bin:~/go/bin:~/.npm-packages/bin/:~/.cabal/bin
-
 export LANG=fr_FR.UTF-8
 
 export OOO_FORCE_DESKTOP=gnome
 export NO_AT_BRIDGE=1
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
-export _ENVIRONMENT_DEFINED=true
-
+add_to_path() {
+    local DIR="$1"
+    local BEFORE="$2"
+    if [[ ":$PATH:" != *":$DIR:"* ]]; then
+        if [[ -n "$BEFORE" ]]; then
+            PATH=$DIR:$PATH
+        else
+            PATH=$PATH:$DIR
+        fi
+    fi
 }
+
+add_to_path $JAVA_HOME/bin true
+
+for d in ~/bin ~/go/bin ~/.npm-packages/bin/ ~/.cabal/bin; do
+    add_to_path $d
+done
