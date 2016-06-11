@@ -45,6 +45,8 @@ set number
 
 set noswapfile
 
+set modeline
+
 let mapleader = ","
 noremap ,, ,
 
