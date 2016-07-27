@@ -1,0 +1,10 @@
+set incsearch
+set hlsearch
+
+let mapleader = ","
+
+inoremap jk <ESC>
+nnoremap <leader>w :w<CR>
+
+set surround
+set clipboard+=unnamedplus
