@@ -276,6 +276,11 @@ function hdmi {
     esac
 }
 
+function copy_terminfo {
+  local REMOTE_HOST=$1
+  infocmp | ssh $REMOTE_HOST tic -
+}
+
 # http://stackoverflow.com/questions/59895/can-a-bash-script-tell-what-directory-its-stored-in
 function _resolve_this_dir {
     local SOURCE="${BASH_SOURCE[0]}"
