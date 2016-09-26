@@ -262,11 +262,11 @@ function server {
 function hdmi {
     case "$1" in
         on)
-            xrandr --output HDMI1 --auto
+            xrandr --output HDMI-1 --auto
             pactl set-card-profile 0 output:hdmi-stereo
             ;;
         off)
-            xrandr --output HDMI1 --off
+            xrandr --output HDMI-1 --off
             pactl set-card-profile 0 output:analog-stereo+input:analog-stereo
             ;;
         *)
