@@ -24,7 +24,7 @@ set $mod Mod4
 floating_modifier Mod1
 
 # start a terminal
-bindsym $mod+Return exec st
+bindsym $mod+Return exec --no-startup-id st
 
 # kill focused window
 bindsym $mod+Shift+q kill
