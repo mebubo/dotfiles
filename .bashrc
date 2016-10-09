@@ -297,10 +297,7 @@ function _resolve_this_dir {
 
 _THIS_DIR=$(_resolve_this_dir)
 
-fasd () {
-    $_THIS_DIR/external/fasd/fasd "$@"
-}
-test -f $_THIS_DIR/external/fasd/fasd && eval "$(fasd --init auto)"
+test -f $_THIS_DIR/external/z/z.sh && . $_THIS_DIR/external/z/z.sh
 
 BASE16=~/src/base16-shell/base16-bright.dark.sh
 test -f $BASE16 && . $BASE16
