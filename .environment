@@ -2,7 +2,7 @@
 
 export EDITOR="vim"
 export JAVA_HOME=~/opt/jdk
-export GEM_HOME=~/gems/
+export GEM_HOME=~/gems
 export MAILDIR=~/mail
 export GOPATH=~/go
 
@@ -26,6 +26,6 @@ add_to_path() {
 
 add_to_path $JAVA_HOME/bin true
 
-for d in ~/bin ~/go/bin ~/.npm-packages/bin/ ~/.cabal/bin; do
+for d in ~/bin $GOPATH/bin ~/.npm-packages/bin/ ~/.cabal/bin ~/.local/bin $GEM_HOME/bin; do
     add_to_path $d
 done
