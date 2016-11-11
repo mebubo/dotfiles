@@ -59,6 +59,8 @@ nnoremap <leader>m :CtrlPMixed<CR>
 nnoremap <leader>w :w<CR>
 inoremap jk <Esc>
 
+nnoremap <leader>t :NERDTreeToggle<CR>
+
 set cursorline
 highlight CursorLine cterm=NONE ctermbg=234
 nnoremap <Leader>c :set cursorline!<CR>
