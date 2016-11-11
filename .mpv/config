@@ -1,5 +1,7 @@
-vo=vaapi,xv,drm
+vo=vaapi,opengl,xv,drm
+profile=opengl-hq
 hwdec=vaapi
 fs=yes
 osc=no
 af=scaletempo
+ytdl-format=bestvideo[height<=?1440]+bestaudio/best
