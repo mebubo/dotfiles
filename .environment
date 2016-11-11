@@ -11,6 +11,8 @@ export LANG=fr_FR.UTF-8
 export OOO_FORCE_DESKTOP=gnome
 export NO_AT_BRIDGE=1
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+export GTK_THEME=Flat-Plat
+export GTK2_RC_FILES=~/.themes/Flat-Plat/gtk-2.0/gtkrc
 
 add_to_path() {
     local DIR="$1"
