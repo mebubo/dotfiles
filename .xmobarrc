@@ -1,0 +1,4 @@
+Config {
+    font = "xft:Hack:size=9"
+    , position = Bottom
+}
