@@ -7,6 +7,8 @@ import XMonad.Util.EZConfig
 import XMonad.Actions.CycleWS
 import XMonad.Layout.Tabbed
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.EwmhDesktops (fullscreenEventHook)
+import XMonad.Layout.NoBorders
 
 tabConfig = defaultTheme {
     activeBorderColor = "#7cafc2",
@@ -20,7 +22,14 @@ tabConfig = defaultTheme {
 
 baseConfig = desktopConfig
 
-myLayout = avoidStruts $ tabbed shrinkText tabConfig ||| Tall 1 (3/100) (1/2) ||| Full
+myLayout = lessBorders OnlyFloat $ avoidStruts $ noBorders (tabbed shrinkText tabConfig) ||| smartBorders (Tall 1 (3/100) (1/2)) ||| noBorders Full
+
+sink = "$(pactl list short sinks | (grep RUNNING || echo 'alsa_output.pci-0000_00_1b.0.analog-stereo') | cut -f1)"
+
+myManageHook = composeAll
+    [ className =? "Pavucontrol" --> doFloat
+    , className =? "mpv" --> doFloat
+    ]
 
 main = do
     xmproc <- spawnPipe "xmobar"
@@ -33,6 +42,15 @@ main = do
         , terminal = "st"
         , modMask = mod4Mask
         , layoutHook = myLayout
-        } `additionalKeys` [
-           ((mod4Mask, xK_Escape), toggleWS)
+        , handleEventHook = fullscreenEventHook
+        , manageHook = myManageHook <+> manageHook baseConfig
+        } `additionalKeysP`
+           [ ("M4-<Esc>", toggleWS)
+           , ("<XF86AudioRaiseVolume>", spawn $ "pactl set-sink-volume " ++ sink ++ " +2%")
+           , ("<XF86AudioLowerVolume>", spawn $ "pactl set-sink-volume " ++ sink ++ " -2%")
+           , ("<XF86AudioMute>", spawn $ "pactl set-sink-mute " ++ sink ++ " toggle")
+           , ("<XF86Display>", spawn $ "external-display.sh")
+           , ("M4-<F2>", spawn $ "i3lock -c 330033 -d")
+           , ("M4-d", spawn $ "rofi -show run -columns 3")
+           , ("M4-p", spawn $ "pavucontrol")
         ]
