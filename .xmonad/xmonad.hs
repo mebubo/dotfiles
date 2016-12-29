@@ -22,7 +22,7 @@ tabConfig = defaultTheme {
 
 baseConfig = desktopConfig
 
-myLayout = lessBorders OnlyFloat $ avoidStruts $ noBorders (tabbed shrinkText tabConfig) ||| smartBorders (Tall 1 (3/100) (1/2)) ||| noBorders Full
+myLayout = lessBorders OnlyFloat $ avoidStruts $ smartBorders (Tall 1 (3/100) (1/2)) ||| noBorders Full ||| (tabbed shrinkText tabConfig)
 
 sink = "$(pactl list short sinks | (grep RUNNING || echo 'alsa_output.pci-0000_00_1b.0.analog-stereo') | cut -f1)"
 
