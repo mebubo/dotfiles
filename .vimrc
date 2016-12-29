@@ -87,3 +87,5 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 let g:ag_working_path_mode="r"
 nnoremap K :Ag "\b<C-R><C-W>\b"<CR><CR>
+
+set tags+=codex.tags;/
