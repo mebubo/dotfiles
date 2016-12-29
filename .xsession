@@ -1,4 +1,3 @@
-xmodmap .xmodmaprc &
 xrdb ~/.Xresources
 
 xset s 1200
