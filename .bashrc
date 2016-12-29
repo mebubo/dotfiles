@@ -299,5 +299,5 @@ _THIS_DIR=$(_resolve_this_dir)
 
 test -f $_THIS_DIR/external/z/z.sh && . $_THIS_DIR/external/z/z.sh
 
-BASE16=~/src/base16-shell/base16-bright.dark.sh
+BASE16=~/src/base16-shell/scripts/base16-bright.sh
 test -f $BASE16 && . $BASE16
