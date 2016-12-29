@@ -1,5 +1,5 @@
 Config {
-    font = "xft:Hack:size=9"
+    font = "xft:monospace:size=9"
     , position = Bottom
     , commands = [ Run StdinReader
                  , Run Date "%a %b %_d %Y %H:%M:%S" "theDate" 10

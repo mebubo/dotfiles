@@ -17,7 +17,7 @@ tabConfig = defaultTheme {
     inactiveBorderColor = "#585858",
     inactiveTextColor = "#ffffff",
     inactiveColor = "#585858",
-    fontName = "xft:Hack:size=9"
+    fontName = "xft:monospace:size=9"
 }
 
 baseConfig = desktopConfig
