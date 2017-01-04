@@ -9,6 +9,7 @@ import XMonad.Layout.Tabbed
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.EwmhDesktops (fullscreenEventHook)
 import XMonad.Layout.NoBorders
+import qualified XMonad.StackSet as W
 
 tabConfig = defaultTheme {
     activeBorderColor = "#7cafc2",
@@ -53,4 +54,6 @@ main = do
            , ("M4-<F2>", spawn $ "i3lock -c 330033 -d")
            , ("M4-d", spawn $ "rofi -show run -columns 3")
            , ("M4-p", spawn $ "pavucontrol")
+           , ("M4-<Return>", spawn $ "st")
+           , ("M4-S-<Return>", windows W.swapMaster)
         ]
