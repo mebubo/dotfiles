@@ -11,7 +11,7 @@ import XMonad.Hooks.EwmhDesktops (fullscreenEventHook)
 import XMonad.Layout.NoBorders
 import qualified XMonad.StackSet as W
 
-tabConfig = defaultTheme {
+tabConfig = def {
     activeBorderColor = "#7cafc2",
     activeTextColor = "#ffffff",
     activeColor = "#7cafc2",
@@ -23,7 +23,7 @@ tabConfig = defaultTheme {
 
 baseConfig = desktopConfig
 
-myLayout = lessBorders OnlyFloat $ avoidStruts $ smartBorders (Tall 1 (3/100) (1/2)) ||| noBorders Full ||| (tabbed shrinkText tabConfig)
+myLayout = lessBorders OnlyFloat $ avoidStruts $ smartBorders (Tall 1 (3/100) (1/2)) ||| noBorders Full ||| tabbed shrinkText tabConfig
 
 sink = "$(pactl list short sinks | (grep RUNNING || echo 'alsa_output.pci-0000_00_1b.0.analog-stereo') | cut -f1)"
 
@@ -31,6 +31,9 @@ myManageHook = composeAll
     [ className =? "Pavucontrol" --> doFloat
     , className =? "mpv" --> doFloat
     ]
+
+myTerminal = "st"
+myModMask = mod4Mask
 
 main = do
     xmproc <- spawnPipe "xmobar"
@@ -40,8 +43,8 @@ main = do
             { ppOutput = hPutStrLn xmproc
             , ppTitle = xmobarColor "green" ""
             }
-        , terminal = "st"
-        , modMask = mod4Mask
+        , terminal = myTerminal
+        , modMask = myModMask
         , layoutHook = myLayout
         , handleEventHook = fullscreenEventHook
         , manageHook = myManageHook <+> manageHook baseConfig
@@ -50,10 +53,12 @@ main = do
            , ("<XF86AudioRaiseVolume>", spawn $ "pactl set-sink-volume " ++ sink ++ " +2%")
            , ("<XF86AudioLowerVolume>", spawn $ "pactl set-sink-volume " ++ sink ++ " -2%")
            , ("<XF86AudioMute>", spawn $ "pactl set-sink-mute " ++ sink ++ " toggle")
-           , ("<XF86Display>", spawn $ "external-display.sh")
-           , ("M4-<F2>", spawn $ "i3lock -c 330033 -d")
-           , ("M4-d", spawn $ "rofi -show run -columns 3")
-           , ("M4-p", spawn $ "pavucontrol")
-           , ("M4-<Return>", spawn $ "st")
+           , ("<XF86Display>", spawn "external-display.sh")
+           , ("M4-<F2>", spawn "i3lock -c 330033 -d")
+           , ("M4-d", spawn "rofi -show run -columns 3")
+           , ("M4-p", spawn "pavucontrol")
+           , ("M4-<Return>", spawn myTerminal)
            , ("M4-S-<Return>", windows W.swapMaster)
-        ]
+           ] `removeKeys` [
+             (myModMask .|. shiftMask, xK_q)
+           ]
