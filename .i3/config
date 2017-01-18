@@ -261,3 +261,9 @@ mode "go_to_window" {
 mode "popup" {
      bindsym Escape scratchpad show; mode "default"
 }
+
+mode "passthrough" {
+     bindsym $mod+Home mode "default"
+}
+
+bindsym $mod+Home mode "passthrough"
