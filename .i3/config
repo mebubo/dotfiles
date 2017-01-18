@@ -184,7 +184,7 @@ bindsym XF86AudioMute exec pactl set-sink-mute $sink toggle && killall -USR1 i3s
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $sink +2% && killall -USR1 i3status
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume $sink -2% && killall -USR1 i3status
 
-bindsym XF86Display exec --no-startup-id external-display.sh
+bindsym XF86Display exec --no-startup-id external-display.sh on
 
 bindsym $mod+q exec rofi -show window
 
