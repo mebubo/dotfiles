@@ -159,10 +159,6 @@ ff () {
     WHERE=${2-.}
     find $WHERE -name "$1"
 }
-rg () {
-    WHERE=${2-.}
-    grep -r "$1" $WHERE
-}
 
 export GPG_TTY=`tty`
 

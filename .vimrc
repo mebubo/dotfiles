@@ -16,7 +16,7 @@ Plug 'scrooloose/syntastic'
 Plug 'jiangmiao/auto-pairs'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'rking/ag.vim'
+Plug 'mileszs/ack.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'raichoo/purescript-vim'
 Plug 'FrigoEU/psc-ide-vim'
@@ -73,8 +73,14 @@ highlight StatusLine ctermfg=7
 autocmd InsertEnter * highlight StatusLine ctermfg=5
 autocmd InsertLeave * highlight StatusLine ctermfg=7
 
-if executable('ag')
+if executable('rg')
+  set grepprg=rg\ --vimgrep\ --no-heading
+  let g:ackprg = 'rg --vimgrep --no-heading'
+  let g:ctrlp_user_command = 'rg --files %s'
+  let g:ctrlp_use_caching = 0
+elseif executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
+  let g:ackprg = 'ag --nogroup --nocolor'
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
   let g:ctrlp_use_caching = 0
 endif
@@ -87,7 +93,6 @@ endfor
 
 autocmd BufWritePre * :%s/\s\+$//e
 
-let g:ag_working_path_mode="r"
-nnoremap K :Ag "\b<C-R><C-W>\b"<CR><CR>
+nnoremap K :Ack "\b<C-R><C-W>\b"<CR><CR>
 
 set tags+=codex.tags;/
