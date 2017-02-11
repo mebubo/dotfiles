@@ -27,7 +27,7 @@ floating_modifier Mod1
 bindsym $mod+Return exec --no-startup-id st
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+Shift+c kill
 
 # program launcher
 bindsym $mod+d exec --no-startup-id rofi -show run -columns 3

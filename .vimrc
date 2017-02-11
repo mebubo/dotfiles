@@ -18,6 +18,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'rking/ag.vim'
 Plug 'leafgarland/typescript-vim'
+Plug 'raichoo/purescript-vim'
+Plug 'FrigoEU/psc-ide-vim'
 call plug#end()
 
 set hlsearch
