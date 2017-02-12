@@ -293,7 +293,8 @@ function _resolve_this_dir {
 
 _THIS_DIR=$(_resolve_this_dir)
 
-test -f $_THIS_DIR/external/z/z.sh && . $_THIS_DIR/external/z/z.sh
+Z=$_THIS_DIR/external/z/z.sh
+test -f $Z && . $Z
 
 BASE16=$_THIS_DIR/external/base16-shell/scripts/base16-bright.sh
 test -f $BASE16 && . $BASE16
