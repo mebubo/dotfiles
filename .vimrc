@@ -80,7 +80,7 @@ if executable('rg')
   let g:ctrlp_use_caching = 0
 elseif executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
-  let g:ackprg = 'ag --nogroup --nocolor'
+  let g:ackprg = 'ag --vimgrep'
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
   let g:ctrlp_use_caching = 0
 endif
