@@ -7,7 +7,7 @@ xset r rate 200 60
 
 xss-lock -v -- i3lock -c 330033 &
 
-xmonad &
+i3 &
 wmpid=$!
 
 sleep 1
