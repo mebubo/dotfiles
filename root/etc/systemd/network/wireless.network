@@ -1,0 +1,14 @@
+[Match]
+Name=wlp3s0
+
+[Network]
+DHCP=v4
+# Address=192.168.1.146/24
+
+[Route]
+# Gateway=192.168.1.1
+# Metric=1000
+
+[DHCP]
+UseHostname=false
+RouteMetric=1000

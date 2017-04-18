@@ -1,0 +1,14 @@
+[Match]
+Name=enp*s*
+
+[Network]
+DHCP=v4
+# Address=192.168.1.145/24
+
+[Route]
+# Gateway=192.168.1.1
+# Metric=300
+
+[DHCP]
+UseHostname=false
+RouteMetric=300

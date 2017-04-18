@@ -1,8 +1,9 @@
 [Match]
-Name=wlan0
+Name=enp*u*
 
 [Network]
 DHCP=v4
 
-[DHCPv4]
+[DHCP]
 UseHostname=false
+RouteMetric=100
