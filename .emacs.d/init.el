@@ -11,33 +11,27 @@
 
 (with-library 'package
               (add-to-list 'package-archives
-                           '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+                           '("melpa" . "https://melpa.org/packages/") t)
               (package-initialize)
 
               (defvar my-packages '(
-				    better-defaults
-                                    ;; evil
+                                    better-defaults
+                                    evil
                                     back-button
-                                    company
-                                    company-ghc
                                     expand-region
                                     flycheck
-                                    flycheck-haskell
-                                    ghc
                                     guide-key
                                     haskell-mode
                                     helm
                                     highlight-symbol
-                                    magit
-                                    markdown-mode
                                     whole-line-or-region
-                                    yaml-mode
+                                    intero
                                     ))
 
               (defun sd-install-packages()
                 (interactive)
-		(unless package-archive-contents
-		  (package-refresh-contents))
+                (unless package-archive-contents
+                  (package-refresh-contents))
                 (dolist (p my-packages)
                   (unless (package-installed-p p)
                     (package-install p)))))
@@ -64,9 +58,7 @@
 
 (server-start)
 
-(desktop-save-mode 1)
-
-;;
+;; (desktop-save-mode 1)
 
 (ido-mode 'buffers)
 (global-set-key (kbd "M-l") 'ido-switch-buffer)
@@ -77,9 +69,6 @@
 
 (with-library 'flycheck
               (add-hook 'after-init-hook 'global-flycheck-mode))
-
-(with-library 'company
-              (add-hook 'after-init-hook 'global-company-mode))
 
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "google-chrome")
@@ -106,21 +95,6 @@
               (setq org-directory "~/dev/txt/"
                     org-default-notes-file (concat org-directory "refile.org")))
 
-
-(with-library 'haskell-mode
-              (let ((my-cabal-path (expand-file-name "~/.cabal/bin")))
-                (setenv "PATH" (concat my-cabal-path ":" (getenv "PATH")))
-                (add-to-list 'exec-path my-cabal-path))
-              (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-              (custom-set-variables '(haskell-tags-on-save t))
-              (with-library 'company
-                            (add-to-list 'company-backends 'company-ghc)
-                            (custom-set-variables '(company-ghc-show-info t)))
-              (with-library 'ghc
-                            (autoload 'ghc-init "ghc" nil t)
-                            (autoload 'ghc-debug "ghc" nil t)
-                            (add-hook 'haskell-mode-hook (lambda () (ghc-init)))))
-
 (with-library 'highlight-symbol
               (global-set-key (kbd "C-<f3>") 'highlight-symbol-at-point)
               (global-set-key (kbd "C-<f4>") 'highlight-symbol-remove-all)
@@ -135,11 +109,11 @@
               (back-button-mode 1))
 
 (with-library 'evil
-	      (evil-mode 1)
-	      (setq evil-default-state 'emacs)
-              (global-undo-tree-mode -1))
+	      (evil-mode 1))
 
 (with-library 'guide-key
               (setq guide-key/guide-key-sequence '("C-c" "C-x"))
               (setq guide-key/recursive-key-sequence-flag t)
               (guide-key-mode 1))
+
+(add-hook 'haskell-mode-hook 'intero-mode)
