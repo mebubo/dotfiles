@@ -11,14 +11,17 @@ Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-characterize'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
+
 Plug 'jiangmiao/auto-pairs'
 Plug 'michaeljsmith/vim-indent-object', {'commit': '41d700f14b3decccdde421fbfe49e95a084a2f89'}
+Plug 'scrooloose/syntastic'
+
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'mileszs/ack.vim'
+
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'mileszs/ack.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'raichoo/purescript-vim'
 Plug 'FrigoEU/psc-ide-vim'
