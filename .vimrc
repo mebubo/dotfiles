@@ -67,6 +67,7 @@ nnoremap <leader>w :w<CR>
 inoremap jk <Esc>
 
 nnoremap <leader>t :NERDTreeToggle<CR>
+nnoremap <leader>T :NERDTreeFind<CR>
 
 set cursorline
 highlight CursorLine cterm=NONE ctermbg=234
