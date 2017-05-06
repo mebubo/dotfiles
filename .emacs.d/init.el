@@ -15,18 +15,18 @@
               (package-initialize)
 
               (defvar my-packages '(
-                                    better-defaults
-                                    evil
                                     back-button
+                                    better-defaults
+                                    dracula-theme
+                                    evil
                                     expand-region
                                     flycheck
                                     guide-key
                                     haskell-mode
                                     helm
                                     highlight-symbol
-                                    whole-line-or-region
                                     intero
-                                    dracula-theme
+                                    whole-line-or-region
                                     ))
 
               (defun sd-install-packages()
