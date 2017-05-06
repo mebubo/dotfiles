@@ -26,6 +26,7 @@
                                     highlight-symbol
                                     whole-line-or-region
                                     intero
+                                    dracula-theme
                                     ))
 
               (defun sd-install-packages()
@@ -116,4 +117,11 @@
               (setq guide-key/recursive-key-sequence-flag t)
               (guide-key-mode 1))
 
-(add-hook 'haskell-mode-hook 'intero-mode)
+(with-library 'intero
+              (add-hook 'haskell-mode-hook
+                        (lambda ()
+                          (intero-mode)
+                          (local-set-key (kbd "<f12>") 'intero-goto-definition))))
+
+(with-library 'dracula-theme
+              (load-theme 'dracula t))
