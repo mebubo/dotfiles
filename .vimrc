@@ -105,3 +105,4 @@ nnoremap K :Ack "\b<C-R><C-W>\b"<CR><CR>
 set tags+=codex.tags;/
 
 let g:syntastic_scala_checkers=['']
+let g:psc_ide_syntastic_mode = 1
