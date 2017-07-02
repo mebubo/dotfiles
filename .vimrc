@@ -19,6 +19,7 @@ Plug 'scrooloose/syntastic'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'mileszs/ack.vim'
+Plug 'mhinz/vim-grepper', {'commit': 'ab3c715c1507c2f4386cbabe9966ccdcf2858754'}
 
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
