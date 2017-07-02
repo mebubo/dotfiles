@@ -118,9 +118,10 @@
               (guide-key-mode 1))
 
 (with-library 'intero
+              (setq intero-blacklist '("~/.stack"))
               (add-hook 'haskell-mode-hook
                         (lambda ()
-                          (intero-mode)
+                          (intero-mode-blacklist)
                           (local-set-key (kbd "<f12>") 'intero-goto-definition))))
 
 (with-library 'dracula-theme
