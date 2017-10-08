@@ -1,14 +1,13 @@
 {
-    "workbench.welcome.enabled": false,
     "editor.fontSize": 12,
     "files.trimTrailingWhitespace": true,
     "vim.disableAnnoyingNeovimMessage": true,
-    "vim.disableAnnoyingGcMessage": true,
-    "emmet.useNewEmmet": true,
     "editor.minimap.enabled": false,
     "extensions.autoUpdate": false,
     "purescript.pscIdeServerExe": "purs ide",
     "workbench.colorTheme": "Visual Studio Light",
-    "files.autoSave": "onFocusChange",
-    "window.zoomLevel": 0
+    "files.autoSave": "onWindowChange",
+    "window.zoomLevel": 0,
+    "purescript.autocompleteAllModules": false,
+    "vim.hlsearch": true
 }
