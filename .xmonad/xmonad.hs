@@ -53,7 +53,7 @@ main = do
            , ("<XF86AudioRaiseVolume>", spawn $ "pactl set-sink-volume " ++ sink ++ " +2%")
            , ("<XF86AudioLowerVolume>", spawn $ "pactl set-sink-volume " ++ sink ++ " -2%")
            , ("<XF86AudioMute>", spawn $ "pactl set-sink-mute " ++ sink ++ " toggle")
-           , ("<XF86Display>", spawn "external-display.sh")
+           , ("<XF86Display>", spawn "external-display.sh on")
            , ("M4-<F2>", spawn "i3lock -c 330033 -d")
            , ("M4-d", spawn "rofi -show run -columns 3")
            , ("M4-p", spawn "pavucontrol")
