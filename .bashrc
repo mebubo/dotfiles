@@ -155,6 +155,8 @@ elif grep -i archlinux /etc/os-release &>/dev/null; then
     alias bdw="sudo systemctl stop netctl@bnep0.service"
 fi
 
+alias vim='vim -c "let g:psc_ide_server_port = $(( $$ + 1024  ))"'
+
 ff () {
     WHERE=${2-.}
     find $WHERE -name "$1"
