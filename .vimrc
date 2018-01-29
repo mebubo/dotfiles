@@ -30,6 +30,12 @@ Plug 'purescript-contrib/purescript-vim'
 Plug 'FrigoEU/psc-ide-vim'
 call plug#end()
 
+if (has("termguicolors"))
+ set termguicolors
+ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+
 set hlsearch
 set ignorecase
 set smartcase
@@ -42,7 +48,6 @@ autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 
 set title
 
-set t_Co=256
 set background=dark
 
 set scrolloff=7
