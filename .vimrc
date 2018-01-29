@@ -18,6 +18,7 @@ Plug 'michaeljsmith/vim-indent-object', {'commit': '41d700f14b3decccdde421fbfe49
 Plug 'scrooloose/syntastic'
 
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ivalkeen/vim-ctrlp-tjump', {'commit': '830a409f7e6f19a8632e33591ae10bef32329158'}
 Plug 'scrooloose/nerdtree'
 Plug 'mileszs/ack.vim'
 Plug 'mhinz/vim-grepper', {'commit': 'ab3c715c1507c2f4386cbabe9966ccdcf2858754'}
@@ -107,3 +108,10 @@ set tags+=codex.tags;/
 
 let g:syntastic_scala_checkers=['']
 let g:psc_ide_syntastic_mode = 1
+
+nnoremap <c-]> :CtrlPtjump<cr>
+vnoremap <c-]> :CtrlPtjumpVisual<cr>
+
+let g:ctrlp_tjump_shortener = ['/home/[^/]*/.stack/indices/Hackage/packages/', '~~/']
+let g:ctrlp_tjump_only_silent = 1
+let g:ctrlp_tjump_skip_tag_name = 1
