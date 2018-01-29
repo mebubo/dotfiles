@@ -1,3 +1,0 @@
-[submodule "external/urxvt-perls"]
-	path = external/urxvt-perls
-	url = git@github.com:mebubo/urxvt-perls.git
