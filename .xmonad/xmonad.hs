@@ -55,7 +55,7 @@ main = do
            , ("<XF86AudioMute>", spawn $ "pactl set-sink-mute " ++ sink ++ " toggle")
            , ("<XF86Display>", spawn "external-display.sh on")
            , ("M4-<F2>", spawn "i3lock -c 330033 -d")
-           , ("M4-d", spawn "rofi -show run -columns 3")
+           , ("M4-d", spawn "dmenu_run")
            , ("M4-p", spawn "pavucontrol")
            , ("M4-<Return>", spawn myTerminal)
            , ("M4-S-<Return>", windows W.swapMaster)
