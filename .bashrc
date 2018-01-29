@@ -246,7 +246,7 @@ function ta {
 }
 
 function rsync_mirror {
-    rsync -avzHP --inplace -e 'ssh -o ClearAllForwardings=yes' "$@"
+    rsync -avHP --inplace -e 'ssh -o ClearAllForwardings=yes' "$@"
 }
 
 function server {
