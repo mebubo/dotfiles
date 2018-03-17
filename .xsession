@@ -30,7 +30,7 @@ case $(hostname) in
         # horizontal scrolling
         xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Axes" 8 6 7 4 5
 
-        xgamma -rgamma 1.2 -bgamma 0.8
+        xrandr --output LVDS-1 --gamma 1.2:1:0.8
         ;;
 esac
 
