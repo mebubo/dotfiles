@@ -1,0 +1,21 @@
+[Unit]
+Requires=docker.service
+After=docker.service
+
+[Service]
+ExecStartPre=-/usr/bin/docker kill pairbox
+ExecStartPre=-/usr/bin/docker rm pairbox
+ExecStart=/usr/bin/docker run \
+        --name pairbox --shm-size=256m \
+        -p 127.0.0.1:4444:22 \
+        -p 127.0.0.1:2000-2010:2000-2010 \
+        -v pairbox-home:/home/pairbox \
+        -v /home/meb/src:/home/pairbox/src \
+        -v /tmp/.X11-unix:/tmp/.X11-unix \
+        -v /home/meb/.local-pairbox:/home/pairbox/.local \
+        --device /dev/dri \
+        pairbox
+ExecStop=-/usr/bin/docker stop pairbox
+
+[Install]
+WantedBy=multi-user.target
