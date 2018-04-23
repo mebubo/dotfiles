@@ -21,6 +21,7 @@ setxkbmap -layout us,ru -variant ,phonetic -option grp:menu_toggle,grp_led:caps,
 
 case $(hostname) in
     mayo)
+        xinput set-prop "TPPS/2 IBM TrackPoint" "libinput Accel Speed" 1
         xrandr --output LVDS-1 --gamma 1.2:1:0.8
         ;;
 esac
