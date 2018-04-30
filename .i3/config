@@ -16,7 +16,7 @@
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
-font pango:monospace 9
+font pango:monospace 8
 
 set $mod Mod4
 
@@ -169,7 +169,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
-        font pango:monospace, FontAwesome 10
+        font pango:monospace, FontAwesome 9
 }
 
 workspace_layout default
