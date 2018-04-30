@@ -15,7 +15,6 @@ Plug 'tpope/vim-eunuch'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'michaeljsmith/vim-indent-object', {'commit': '41d700f14b3decccdde421fbfe49e95a084a2f89'}
-Plug 'scrooloose/syntastic'
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ivalkeen/vim-ctrlp-tjump', {'commit': '830a409f7e6f19a8632e33591ae10bef32329158'}
@@ -107,9 +106,6 @@ autocmd BufWritePre * :%s/\s\+$//e
 nnoremap K :Ack "\b<C-R><C-W>\b"<CR><CR>
 
 set tags+=codex.tags;/
-
-let g:syntastic_scala_checkers=['']
-let g:psc_ide_syntastic_mode = 1
 
 nnoremap <c-]> :CtrlPtjump<cr>
 vnoremap <c-]> :CtrlPtjumpVisual<cr>
