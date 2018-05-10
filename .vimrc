@@ -27,6 +27,7 @@ Plug 'mxw/vim-jsx'
 Plug 'leafgarland/typescript-vim'
 Plug 'purescript-contrib/purescript-vim'
 Plug 'FrigoEU/psc-ide-vim'
+Plug 'LnL7/vim-nix'
 call plug#end()
 
 if (has("termguicolors"))
