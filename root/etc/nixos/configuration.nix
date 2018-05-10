@@ -84,6 +84,8 @@
 
 
     fstrim.enable = true;
+
+    nscd.enable = false;
   };
 
   users = {
