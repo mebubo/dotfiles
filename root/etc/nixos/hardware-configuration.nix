@@ -7,7 +7,7 @@
 
   boot.initrd.availableKernelModules = [ "ehci_pci" "ahci" "usb_storage" "sd_mod" "sdhci_pci" ];
   boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.acpi_call ];
   boot.kernelParams = [ ''acpi_osi="!Windows 2012"'' ];
 
   boot.initrd.luks.devices."root" = {
