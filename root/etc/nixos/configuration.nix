@@ -91,7 +91,15 @@
   # Enable touchpad support.
   # services.xserver.libinput.enable = true;
 
-  services.tlp.enable = true;
+  services.tlp = {
+    enable = true;
+    extraConfig = ''
+      START_CHARGE_THRESH_BAT0=91
+      STOP_CHARGE_THRESH_BAT0=96
+    '';
+  };
+
+
   services.fstrim.enable = true;
 
   users.users.me = {
