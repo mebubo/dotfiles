@@ -37,6 +37,7 @@
     ripgrep
     ag
     file
+    tree
     tmux
     htop
     git
@@ -47,6 +48,7 @@
     dmenu
     st
     firefox
+    chromium
     pavucontrol
     (pkgs.vim_configurable.customize {
       name = "vimx";
@@ -54,11 +56,21 @@
         start = [ pkgs.vimPlugins.vim-nix ];
       };
     })
+    jdk
+    sbt
+    stack
+    cabal2nix
+    stack2nix
+    cabal-install
+    haskellPackages.ghc
+    haskellPackages.ghcid
+    mpv
   ];
 
   programs = {
     gnupg.agent = { enable = true; enableSSHSupport = false; };
     ssh.startAgent = true;
+    java.enable = true;
   };
 
   networking = {
