@@ -1,11 +1,6 @@
 # vim: filetype=sh
 
 export EDITOR="vim"
-export JAVA_HOME=~/opt/jdk
-export GEM_HOME=~/gems
-export MAILDIR=~/mail
-export GOPATH=~/go
-
 export LANG=fr_FR.UTF-8
 
 export OOO_FORCE_DESKTOP=gnome
@@ -28,8 +23,6 @@ add_to_path() {
     fi
 }
 
-add_to_path $JAVA_HOME/bin true
-
-for d in ~/bin $GOPATH/bin ~/.npm-packages/bin/ ~/.cabal/bin ~/.local/bin $GEM_HOME/bin; do
+for d in ~/bin ~/.npm-packages/bin/ ~/.cabal/bin ~/.local/bin; do
     add_to_path $d
 done
