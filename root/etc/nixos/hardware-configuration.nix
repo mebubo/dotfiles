@@ -18,18 +18,18 @@
   fileSystems."/" =
     { device = "/dev/mapper/root";
       fsType = "btrfs";
-      options = [ "subvol=@nixos2,compress=lzo" ];
+      options = [ "subvol=@nixos,compress=lzo" ];
     };
 
   fileSystems."/home" =
     { device = "/dev/mapper/root";
       fsType = "btrfs";
-      options = [ "subvol=@home4,compress=lzo" ];
+      options = [ "subvol=@home,compress=lzo" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/sda2";
-      fsType = "ext2";
+    { device = "/dev/sda1";
+      fsType = "ext4";
     };
 
   swapDevices = [ ];
