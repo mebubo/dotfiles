@@ -25,7 +25,7 @@
       '';
     };
     kernel.sysctl."fs.inotify.max_user_watches" = 524288;
-    kernelPackages = (import <nixos-unstable> {}).linuxPackages_4_16;
+    kernelPackages = pkgs.linuxPackages_latest;
   };
 
 
@@ -60,7 +60,6 @@
     sbt
     stack
     cabal2nix
-    stack2nix
     cabal-install
     haskellPackages.ghc
     haskellPackages.ghcid
@@ -98,13 +97,18 @@
     fstrim.enable = true;
 
     nscd.enable = false;
+
+    postgresql = {
+      enable = true;
+      extraPlugins = [ pkgs.postgis ];
+    };
   };
 
   users = {
     users.me = {
       isNormalUser = true;
       uid = 1000;
-      extraGroups = [ "systemd-journal" ];
+      extraGroups = [ "systemd-journal" "libvirtd" ];
       group = "me";
     };
 
@@ -113,9 +117,8 @@
     };
   };
 
-  system.stateVersion = "18.03";
+  system.nixos.stateVersion = "18.03";
 
   security.hideProcessInformation = true;
 
 }
-
