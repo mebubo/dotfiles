@@ -48,6 +48,8 @@
     xss-lock
     dmenu
     st
+    usbutils
+    unzip
     firefox
     chromium
     pavucontrol
