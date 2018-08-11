@@ -154,6 +154,6 @@
 
   system.nixos.stateVersion = "18.03";
 
-  security.hideProcessInformation = true;
+  security.hideProcessInformation = false;
 
 }
