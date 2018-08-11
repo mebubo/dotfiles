@@ -79,6 +79,34 @@
     firewall.enable = true;
     nameservers = [ "8.8.8.8" ];
     hostName = "laptop";
+    useNetworkd = true;
+    dhcpcd.enable = false;
+    useDHCP = false;
+  };
+
+  systemd.network = {
+    enable = true;
+    networks = {
+       "50-ethernet" = {
+         enable = true;
+         matchConfig = { Name = "enp*s*"; };
+         networkConfig = { DHCP = "v4"; };
+         dhcpConfig = { RouteMetric = 300; };
+       };
+       "50-wireless" = {
+         enable = true;
+         matchConfig = { Name = "wlp*s*"; };
+         networkConfig = { DHCP = "v4"; };
+         dhcpConfig = { RouteMetric = 1000; };
+       };
+       "99-main" = {
+         enable = false;
+       };
+    };
+  };
+
+  systemd.services.systemd-networkd-wait-online = {
+    enable = false;
   };
 
   sound.enable = true;
@@ -104,6 +132,10 @@
     postgresql = {
       enable = true;
       extraPlugins = [ pkgs.postgis ];
+    };
+
+    resolved = {
+      enable = true;
     };
   };
 
