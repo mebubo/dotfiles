@@ -7,7 +7,7 @@ xset r off
 
 xss-lock -v -- i3lock -c 330033 &
 
-xmonad &
+i3 &
 wmpid=$!
 
 sleep 1
