@@ -97,7 +97,7 @@
          enable = true;
          matchConfig = { Name = "wlp*s*"; };
          networkConfig = { DHCP = "v4"; };
-         dhcpConfig = { RouteMetric = 1000; };
+         dhcpConfig = { RouteMetric = 1000; UseDNS = false; };
        };
        "99-main" = {
          enable = false;
