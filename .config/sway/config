@@ -195,9 +195,9 @@ bindsym $mod+F2 exec i3lock -c 330033 -d
 
 force_focus_wrapping no
 
-# class          border  backgr. text    indicator
-client.focused   #7cafc2 #7cafc2 #ffffff #2e9ef4
-client.unfocused #585858 #585858 #ffffff #292d2e
+# class          border  backgr. text    indic.  child
+client.focused   #7cafc2 #7cafc2 #ffffff #2e9ef4 #7cafc2
+client.unfocused #585858 #585858 #ffffff #292d2e #585858
 
 bindsym $mod+x [urgent=latest] focus
 
