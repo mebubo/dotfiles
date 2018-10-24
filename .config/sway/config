@@ -1,8 +1,21 @@
-font pango:monospace 8
-
 set $mod Mod4
 
+font pango:monospace 8
+
+# class          border  backgr. text    indic.  child
+client.focused   #7cafc2 #7cafc2 #ffffff #2e9ef4 #7cafc2
+client.unfocused #585858 #585858 #ffffff #292d2e #585858
+
 floating_modifier Mod1
+workspace_layout default
+new_window normal 1
+hide_edge_borders both
+workspace_auto_back_and_forth no
+force_display_urgency_hint 500 ms
+bindsym $mod+Escape workspace back_and_forth
+force_focus_wrapping no
+popup_during_fullscreen smart
+focus_follows_mouse no
 
 bindsym $mod+Return exec --no-startup-id st
 
@@ -103,38 +116,22 @@ bar {
         font pango:monospace, FontAwesome 9
 }
 
-workspace_layout default
-new_window normal 1
-hide_edge_borders both
-workspace_auto_back_and_forth no
-force_display_urgency_hint 500 ms
-bindsym $mod+Escape workspace back_and_forth
+bindsym $mod+x [urgent=latest] focus
 
 set $sink $(pactl list short sinks | (grep RUNNING || echo "alsa_output.pci-0000_00_1b.0.analog-stereo") | cut -f1)
 bindsym XF86AudioMute exec pactl set-sink-mute $sink toggle && killall -USR1 i3status
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $sink +2% && killall -USR1 i3status
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume $sink -2% && killall -USR1 i3status
 
+bindsym $mod+End exec "pactl set-sink-mute 0 toggle && killall -USR1 i3status"
+bindsym $mod+Next exec "pactl set-sink-volume 0 +2% && killall -USR1 i3status"
+bindsym $mod+Delete exec "pactl set-sink-volume 0 -- -2% && killall -USR1 i3status"
+
 bindsym XF86Display exec --no-startup-id external-display.sh auto
 
 bindsym $mod+p exec pavucontrol
 bindsym $mod+F2 exec swaylock -c 330033 -d
 
-force_focus_wrapping no
-
-# class          border  backgr. text    indic.  child
-client.focused   #7cafc2 #7cafc2 #ffffff #2e9ef4 #7cafc2
-client.unfocused #585858 #585858 #ffffff #292d2e #585858
-
-bindsym $mod+x [urgent=latest] focus
-
-popup_during_fullscreen smart
-
-focus_follows_mouse no
-
-bindsym $mod+End exec "pactl set-sink-mute 0 toggle && killall -USR1 i3status"
-bindsym $mod+Next exec "pactl set-sink-volume 0 +2% && killall -USR1 i3status"
-bindsym $mod+Delete exec "pactl set-sink-volume 0 -- -2% && killall -USR1 i3status"
 
 mode "passthrough" {
      bindsym $mod+Home mode "default"
