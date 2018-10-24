@@ -1,67 +1,31 @@
-# i3 config file (v4)
-#
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
-#
-# This config file uses keycodes (bindsym) and was written for the QWERTY
-# layout.
-#
-# To get a config file with the same key positions, but for your current
-# layout, use the i3-config-wizard
-#
-
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below. ISO 10646 = Unicode
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, if you need a lot of unicode glyphs or
-# right-to-left text rendering, you should instead use pango for rendering and
-# chose a FreeType font, such as:
 font pango:monospace 8
 
 set $mod Mod4
 
-# use Mouse+Mod1 to drag floating windows to their wanted position
 floating_modifier Mod1
 
-# start a terminal
 bindsym $mod+Return exec --no-startup-id st
 
-# kill focused window
 bindsym $mod+Shift+c kill
 
-# program launcher
 bindsym $mod+d exec --no-startup-id dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
 bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop
 
-# change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-# bindsym $mod+Left focus left
-# bindsym $mod+Down focus down
-# bindsym $mod+Up focus up
-# bindsym $mod+Right focus right
-
-# bindsym $mod+Ctrl+Left focus output left
-# bindsym $mod+Ctrl+Right focus output right
 bindsym $mod+Ctrl+Left workspace prev
 bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Shift+Left move output left; focus output left
 bindsym $mod+Ctrl+Shift+Right move output right; focus output right
 
-# move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -70,31 +34,20 @@ bindsym $mod+Shift+Right move right
 bindsym $mod+v split v
 bindsym $mod+b split h
 
-# enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
 
-# change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-# toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-# focus the parent container
 bindsym $mod+a focus parent
-
-# focus the child container
 bindsym $mod+Shift+a focus child
 
-# move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
 
-# Show the next scratchpad window or hide the focused scratchpad window.
-# If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
 
 set $workspace1 1:www
@@ -108,7 +61,6 @@ set $workspace8 8
 set $workspace9 9
 set $workspace10 10
 
-# switch to workspace
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
@@ -120,7 +72,6 @@ bindsym $mod+8 workspace $workspace8
 bindsym $mod+9 workspace $workspace9
 bindsym $mod+0 workspace $workspace10
 
-# move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $workspace1
 bindsym $mod+Shift+2 move container to workspace $workspace2
 bindsym $mod+Shift+3 move container to workspace $workspace3
@@ -132,41 +83,21 @@ bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
-# reload the configuration file
 bindsym $mod+Shift+q reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "swaynag -t warning -m 'Exit sway?' -b 'Yes' 'swaymsg exit'"
 
-# resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym h           resize shrink width 10 px or 10 ppt
         bindsym j           resize grow height 10 px or 10 ppt
         bindsym k           resize shrink height 10 px or 10 ppt
-        bindsym l   resize grow width 10 px or 10 ppt
+        bindsym l           resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left        resize shrink width 10 px or 10 ppt
-        bindsym Down        resize grow height 10 px or 10 ppt
-        bindsym Up          resize shrink height 10 px or 10 ppt
-        bindsym Right       resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
 bar {
         status_command i3status
         font pango:monospace, FontAwesome 9
@@ -186,12 +117,8 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume $sink -2% && killall -US
 
 bindsym XF86Display exec --no-startup-id external-display.sh auto
 
-bindsym $mod+q exec rofi -show window
-
-for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 bindsym $mod+p exec pavucontrol
-for_window [class="mpv"] floating enable
-bindsym $mod+F2 exec i3lock -c 330033 -d
+bindsym $mod+F2 exec swaylock -c 330033 -d
 
 force_focus_wrapping no
 
@@ -205,62 +132,9 @@ popup_during_fullscreen smart
 
 focus_follows_mouse no
 
-for_window [class="Anki"] floating enable
-for_window [class="Runanki"] floating enable
-
 bindsym $mod+End exec "pactl set-sink-mute 0 toggle && killall -USR1 i3status"
 bindsym $mod+Next exec "pactl set-sink-volume 0 +2% && killall -USR1 i3status"
 bindsym $mod+Delete exec "pactl set-sink-volume 0 -- -2% && killall -USR1 i3status"
-
-bindsym $mod+m mode "go_to_window"
-
-set $pocket "crx_mjcnijlhddpbdemagnpefmlkjdagkogk"
-set $tabs "crx_eggkanocgddhmamlbiijnphhppkpkmkl"
-set $keep "crx_hmjkmjkepdijhoojdojkdfohbdgmmhki"
-
-for_window [instance=$pocket] floating enable
-for_window [instance=$tabs] floating enable
-for_window [instance=$keep] floating enable
-
-for_window [instance=$pocket] move to scratchpad
-for_window [instance=$tabs] move to scratchpad
-for_window [instance=$keep] move to scratchpad
-
-mode "go_to_window" {
-     bindsym e [class="Emacs"] focus; mode "default"
-     bindsym c [instance="Google-chrome"] focus; mode "default"
-     bindsym i [class="jetbrains-idea"] focus; mode "default"
-     bindsym a [class="Anki"] focus; mode "default"
-
-     bindsym p [instance=$pocket] focus; mode "popup"
-     bindsym t [instance=$tabs] focus; mode "popup"
-     bindsym k [instance=$keep] focus; mode "popup"
-
-     # keybindings for marking and jumping to clients
-     bindsym Shift+a exec i3-input -F 'mark %s' -P 'Mark name: '; mode "default"
-     bindsym g exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '; mode "default"
-
-     # Assign marks to keys 1-5
-     bindsym Shift+1 mark 1; mode "default"
-     bindsym Shift+2 mark 2; mode "default"
-     bindsym Shift+3 mark 3; mode "default"
-     bindsym Shift+4 mark 4; mode "default"
-     bindsym Shift+5 mark 5; mode "default"
-
-     # Jump to clients marked 1-5
-     bindsym 1 [con_mark="1"] focus; mode "default"
-     bindsym 2 [con_mark="2"] focus; mode "default"
-     bindsym 3 [con_mark="3"] focus; mode "default"
-     bindsym 4 [con_mark="4"] focus; mode "default"
-     bindsym 5 [con_mark="5"] focus; mode "default"
-
-     bindsym Return mode "default"
-     bindsym Escape mode "default"
-}
-
-mode "popup" {
-     bindsym Escape scratchpad show; mode "default"
-}
 
 mode "passthrough" {
      bindsym $mod+Home mode "default"
