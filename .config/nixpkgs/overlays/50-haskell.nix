@@ -2,7 +2,7 @@ self: super:
 with super.haskell.lib;
 {
   haskellPackages = super.haskellPackages // {
-    codex = doJailbreak super.haskellPackages.codex;
+    codex = super.haskellPackages.callPackage /home/me/src/codex {};
     grid = doJailbreak super.haskellPackages.grid;
     heist = dontCheck super.haskellPackages.heist;
     hasktags = dontCheck super.haskellPackages.hasktags;
