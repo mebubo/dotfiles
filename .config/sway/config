@@ -130,11 +130,12 @@ bindsym $mod+Delete exec "pactl set-sink-volume 0 -- -2% && killall -USR1 i3stat
 bindsym XF86Display exec --no-startup-id external-display.sh auto
 
 bindsym $mod+p exec pavucontrol
-bindsym $mod+F2 exec swaylock -c 330033 -d
-
+bindsym $mod+F2 exec swaylock -c 330033
 
 mode "passthrough" {
      bindsym $mod+Home mode "default"
 }
 
 bindsym $mod+Home mode "passthrough"
+
+exec swayidle timeout 300 'swaylock -c 330033' timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -c 330033'
