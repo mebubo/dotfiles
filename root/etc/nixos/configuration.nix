@@ -42,32 +42,22 @@
     tmux
     htop
     git
-    i3
-    i3status
-    i3lock
-    xss-lock
-    dmenu
-    st
     usbutils
     unzip
     zip
+    moreutils
+    jq
+    ctags
     pavucontrol
+    mpv
+    i3status
+    dmenu
     (pkgs.vim_configurable.customize {
       name = "vimx";
       vimrcConfig.packages.myplugins = {
         start = [ pkgs.vimPlugins.vim-nix ];
       };
     })
-    jdk
-    sbt
-    stack
-    cabal2nix
-    cabal-install
-    haskellPackages.ghc
-    haskellPackages.ghcid
-    mpv
-    moreutils
-    jq
   ];
 
   programs = {
