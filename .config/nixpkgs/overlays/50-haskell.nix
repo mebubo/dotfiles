@@ -6,4 +6,9 @@ with super.haskell.lib;
     heist = dontCheck super.haskellPackages.heist;
   };
 
+  myHaskellEnv = super.haskell.packages.ghc862.ghcWithPackages
+  (haskellPackages: with haskellPackages; [
+    mtl transformers lens recursion-schemes
+  ]);
+
 }
