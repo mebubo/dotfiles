@@ -17,17 +17,11 @@
       version = 2;
       gfxmodeBios= "text";
       device = "/dev/sda";
-      extraEntries = ''
-        menuentry "Arch" {
-          configfile /grub.arch4/grub.cfg
-        }
-      '';
     };
     kernel.sysctl."fs.inotify.max_user_watches" = 524288;
     kernelPackages = pkgs.linuxPackages_latest;
     cleanTmpDir = true;
   };
-
 
   time.timeZone = "Europe/Paris";
 
