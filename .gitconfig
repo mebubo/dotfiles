@@ -29,5 +29,3 @@
 	default = simple
 [core]
 	quotepath = false
-[init]
-	templatedir = ~/.git-template
