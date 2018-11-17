@@ -9,7 +9,6 @@
     [
       ./hardware-configuration.nix
       ./wireless.nix
-      ./xserver.nix
     ];
 
   boot = {
@@ -75,6 +74,14 @@
     gnupg.agent = { enable = true; enableSSHSupport = false; };
     ssh.startAgent = true;
     java.enable = true;
+    sway-beta = {
+      enable = true;
+      extraPackages = with pkgs; [ xwayland ];
+      extraSessionCommands = ''
+      export _JAVA_AWT_WM_NONREPARENTING=1
+      '';
+    };
+    dconf.enable = false;
   };
 
   networking = {
