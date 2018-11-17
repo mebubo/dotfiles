@@ -133,3 +133,8 @@ _THIS_DIR=$(_resolve_this_dir)
 
 Z=$_THIS_DIR/external/z/z.sh
 test -f $Z && . $Z
+
+function nix-haskell() {
+    pkgs=${@}
+    nix-shell -I nixpkgs=$HOME/src/nixpkgs -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [$pkgs])"
+}
