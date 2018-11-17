@@ -152,7 +152,7 @@
     };
   };
 
-  system.nixos.stateVersion = "18.03";
+  system.stateVersion = "19.03";
 
   security.hideProcessInformation = false;
 
