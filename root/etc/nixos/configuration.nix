@@ -35,6 +35,7 @@
   environment.systemPackages = with pkgs; [
     vim
     curl
+    wget
     ripgrep
     ag
     file
@@ -50,8 +51,7 @@
     st
     usbutils
     unzip
-    firefox
-    chromium
+    zip
     pavucontrol
     (pkgs.vim_configurable.customize {
       name = "vimx";
@@ -67,6 +67,8 @@
     haskellPackages.ghc
     haskellPackages.ghcid
     mpv
+    moreutils
+    jq
   ];
 
   programs = {
