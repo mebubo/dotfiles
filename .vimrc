@@ -31,7 +31,9 @@ if (has("termguicolors"))
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
+set background=dark
 highlight Visual guibg=#444444
+highlight CursorLine cterm=NONE guibg=#222222
 
 set hlsearch
 set ignorecase
@@ -46,19 +48,11 @@ autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 autocmd FileType python setlocal shiftwidth=4 tabstop=4
 
 set title
-
-set background=dark
-
 set scrolloff=7
-
 set showcmd
-
 set wildmode=longest,list
-
 set number
-
 set noswapfile
-
 set modeline
 
 let mapleader = ","
@@ -77,7 +71,6 @@ nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>T :NERDTreeFind<CR>
 
 set cursorline
-highlight CursorLine cterm=NONE guibg=#222222
 nnoremap <Leader>c :set cursorline!<CR>
 autocmd InsertEnter,InsertLeave * set cursorline!
 
