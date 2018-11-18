@@ -31,6 +31,8 @@ if (has("termguicolors"))
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
+highlight Visual guibg=#444444
+
 set hlsearch
 set ignorecase
 set smartcase
@@ -75,7 +77,7 @@ nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>T :NERDTreeFind<CR>
 
 set cursorline
-highlight CursorLine cterm=NONE ctermbg=234
+highlight CursorLine cterm=NONE guibg=#222222
 nnoremap <Leader>c :set cursorline!<CR>
 autocmd InsertEnter,InsertLeave * set cursorline!
 
