@@ -13,21 +13,14 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-characterize'
 Plug 'tpope/vim-eunuch'
 
-Plug 'jiangmiao/auto-pairs'
-Plug 'michaeljsmith/vim-indent-object', {'commit': '41d700f14b3decccdde421fbfe49e95a084a2f89'}
-
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'jiangmiao/auto-pairs', {'commit': 'f0019fc6423e7ce7bbd01d196a7e027077687fda'}
+Plug 'michaeljsmith/vim-indent-object', {'commit': '5c5b24c959478929b54a9e831a8e2e651a465965'}
+Plug 'ctrlpvim/ctrlp.vim', {'commit': '5e40e555d31d9cce2188d9fa724d1debcad28aa6'}
 Plug 'ivalkeen/vim-ctrlp-tjump', {'commit': '830a409f7e6f19a8632e33591ae10bef32329158'}
-Plug 'scrooloose/nerdtree'
-Plug 'mileszs/ack.vim'
-Plug 'mhinz/vim-grepper', {'commit': 'ab3c715c1507c2f4386cbabe9966ccdcf2858754'}
-
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'leafgarland/typescript-vim'
-Plug 'purescript-contrib/purescript-vim'
-Plug 'FrigoEU/psc-ide-vim'
-Plug 'LnL7/vim-nix'
+Plug 'scrooloose/nerdtree', {'commit': '91e0f2253fbecefa7e14f095950341584877ef19'}
+Plug 'mileszs/ack.vim', {'commit': '36e40f9ec91bdbf6f1adf408522a73a6925c3042'}
+Plug 'mhinz/vim-grepper', {'commit': '4a47e20c98eee758b905a2cd7ca29f433c08e7e7'}
+Plug 'LnL7/vim-nix', {'commit': 'be0c6bb409732b79cc86c177ca378b0b334e1efe'}
 call plug#end()
 
 set encoding=utf-8
