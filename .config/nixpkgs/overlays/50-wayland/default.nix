@@ -6,8 +6,8 @@ self: super:
     src = super.fetchFromGitHub {
       owner = "swaywm";
       repo = "wlroots";
-      rev = "040d62de0076a349612b7c2c28c5dc5e93bb9760";
-      sha256 = "0iyr0xcyh46z78aa3sqxkapb11afvrjk2b0mhq1pxg66da7mxxiv";
+      rev = "0.2";
+      sha256 = "0gfxawjlb736xl90zfv3n6zzf5n1cacgzflqi1zq1wn7wd3j6ppv";
     };
     patches = [];
     name = "wlroots-git";
@@ -16,8 +16,8 @@ self: super:
     src = super.fetchFromGitHub {
       owner = "swaywm";
       repo = "sway";
-      rev = "4ce18d2744776b6789f7118bc08d44ae424ca6b3";
-      sha256 = "13q3mfvdhgzijxxpc42cnja7crqbnmsfj8kpw20jah5h8i8i45wv";
+      rev = "1.0-beta.2";
+      sha256 = "0f9rniwizbc3vzxdy6rc47749p6gczfbgfdy4r458134rbl551hw";
     };
     name = "sway-git";
     mesonFlags = "-Dsway-version=sway-git-${src.rev}";
