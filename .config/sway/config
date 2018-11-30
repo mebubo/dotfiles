@@ -5,6 +5,7 @@ font pango:monospace 8
 # class          border  backgr. text    indic.  child
 client.focused   #7cafc2 #7cafc2 #ffffff #2e9ef4 #7cafc2
 client.unfocused #585858 #585858 #ffffff #292d2e #585858
+titlebar_padding 3 1
 
 floating_modifier Mod1
 workspace_layout default
