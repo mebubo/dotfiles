@@ -139,4 +139,4 @@ mode "passthrough" {
 
 bindsym $mod+Home mode "passthrough"
 
-exec swayidle timeout 300 'swaylock -c 330033' timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -c 330033'
+exec swayidle timeout 900 'swaylock -c 330033' timeout 3600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -c 330033'
