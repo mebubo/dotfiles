@@ -150,3 +150,7 @@ function nx-add-root-drv {
 function nx-print-roots {
   nix-store --gc --print-roots
 }
+
+function nx-closure {
+  nix-store -q -R $1
+}
