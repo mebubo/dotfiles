@@ -127,7 +127,26 @@ _THIS_DIR=$(_resolve_this_dir)
 Z=$_THIS_DIR/external/z/z.sh
 test -f $Z && . $Z
 
-function nix-haskell() {
-    pkgs=${@}
-    nix-shell -I nixpkgs=$HOME/src/nixpkgs -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [$pkgs])"
+function nx-haskell {
+  pkgs=${@}
+  nix-shell -I nixpkgs=$HOME/src/nixpkgs -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [$pkgs])"
+}
+
+function nx-hash {
+  local hash=$1
+  nix-hash --type sha256 --to-base32 $hash
+}
+
+function nx-hash-file {
+  local file=$1
+  nix-hash --type sha256 --base32 $file
+}
+
+function nx-add-root-drv {
+  local f=$1
+  nix-instantiate $f --indirect --add-root $f.drv
+}
+
+function nx-print-roots {
+  nix-store --gc --print-roots
 }
