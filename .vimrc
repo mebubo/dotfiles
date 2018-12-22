@@ -59,14 +59,10 @@ let mapleader = ","
 noremap ,, ,
 
 nmap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
-
 nnoremap <leader>f :CtrlP<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>m :CtrlPMixed<CR>
-
 nnoremap <leader>w :w<CR>
-inoremap jk <Esc>
-
 nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>T :NERDTreeFind<CR>
 
