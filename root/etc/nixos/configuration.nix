@@ -46,12 +46,6 @@
     mpv
     i3status
     dmenu
-    (pkgs.vim_configurable.customize {
-      name = "vimx";
-      vimrcConfig.packages.myplugins = {
-        start = [ pkgs.vimPlugins.vim-nix ];
-      };
-    })
   ];
 
   programs = {
