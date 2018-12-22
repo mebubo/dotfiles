@@ -22,21 +22,14 @@ export HISTSIZE=100000
 # 37: White/light grey
 # 38: "Default" foreground color
 
-if [ $SHELL = "/bin/bash" ]
-then
-    case $TERM in
-        uxterm*|xterm*|rxvt*|linux|screen*|st*)
-            case $HOSTNAME in
-                mayo|britany)
-                    PS1='\[\033[01;36m\]\u@\h:\[\033[01;33m\]\w\[\e[01;$(($??31:37))m\] \$ \[\033[00m\]'
-                    ;;
-                *)
-                    PS1='\[\033[01;34m\]\u@\h:\[\033[01;33m\]\w\[\e[01;$(($??31:37))m\] \$ \[\033[00m\]'
-                    ;;
-                esac
-            ;;
-    esac
-fi
+case $HOSTNAME in
+    laptop*)
+        PS1='\[\033[01;36m\]\u@\h:\[\033[01;33m\]\w\[\e[01;$(($??31:37))m\] \$ \[\033[00m\]'
+        ;;
+    *)
+        PS1='\[\033[01;34m\]\u@\h:\[\033[01;33m\]\w\[\e[01;$(($??31:37))m\] \$ \[\033[00m\]'
+        ;;
+esac
 
 if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]
 then
