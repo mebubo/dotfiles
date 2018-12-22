@@ -144,4 +144,9 @@
   security.hideProcessInformation = false;
 
   environment.etc."resolv.conf".text = "nameserver 8.8.8.8";
+
+  nix.extraOptions = ''
+    gc-keep-outputs = true
+    gc-keep-derivations = true
+  '';
 }
