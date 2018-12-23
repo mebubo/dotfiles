@@ -134,6 +134,11 @@
       group = "me";
     };
 
+    users.him = {
+      isNormalUser = true;
+      uid = 1001;
+    };
+
     groups.me = {
       gid = 1000;
     };

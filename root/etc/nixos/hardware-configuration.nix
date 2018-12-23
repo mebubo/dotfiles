@@ -1,5 +1,29 @@
 { config, lib, pkgs, ... }:
 
+let
+
+  external-display-hotplug = pkgs.writeScript "external-display-hotplug" ''
+#!${pkgs.stdenv.shell}
+
+STATUS_FILE=/sys/class/drm/card0-DP-1/status
+STATUS=$(${pkgs.coreutils}/bin/cat $STATUS_FILE)
+export SWAYSOCK=$(readlink -f /run/user/1000/sway-ipc.1000.*.sock)
+
+env >> /tmp/h
+
+case $STATUS in
+  disconnected)
+    ${pkgs.sway-beta}/bin/swaymsg output LVDS-1 enable
+    ${pkgs.sway-beta}/bin/swaymsg output DP-1 disable
+    ;;
+  connected)
+    ${pkgs.sway-beta}/bin/swaymsg output DP-1 enable
+    ${pkgs.sway-beta}/bin/swaymsg output LVDS-1 disable
+    ;;
+  esac
+'';
+
+in
 {
   imports =
     [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
@@ -42,7 +66,7 @@
 
   services.udev.extraRules = ''
     SUBSYSTEM=="rfkill", ATTR{type}=="bluetooth", ATTR{state}="0"
-    ACTION=="change", SUBSYSTEM=="drm", ENV{HOTPLUG}=="1", RUN+="${pkgs.sudo}/bin/sudo -u me DISPLAY=:0 /usr/local/bin/external-display.sh"
+    ACTION=="change", SUBSYSTEM=="drm", ENV{HOTPLUG}=="1", RUN+="${pkgs.sudo}/bin/sudo -u me ${external-display-hotplug}"
   '';
 
 }
