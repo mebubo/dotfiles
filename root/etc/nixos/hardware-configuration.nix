@@ -7,7 +7,7 @@ let
 
 STATUS_FILE=/sys/class/drm/card0-DP-1/status
 STATUS=$(${pkgs.coreutils}/bin/cat $STATUS_FILE)
-export SWAYSOCK=$(readlink -f /run/user/1000/sway-ipc.1000.*.sock)
+export SWAYSOCK=$(${pkgs.coreutils}/bin/readlink -f /run/user/1000/sway-ipc.1000.*.sock)
 
 env >> /tmp/h
 
