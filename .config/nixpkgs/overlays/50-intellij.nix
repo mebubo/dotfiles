@@ -2,7 +2,7 @@ self: super:
 
 {
   jetbrains = super.jetbrains // {
-    idea-community = super.jetbrains.idea-community.overrideAttrs (oldAttrs: rec {
+    idea-community_2018_2 = super.jetbrains.idea-community.overrideAttrs (oldAttrs: rec {
       version = "2018.2.6";
       name = "idea-community-${version}";
       src = super.fetchurl {
