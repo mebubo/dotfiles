@@ -110,3 +110,5 @@ let g:NERDTreeWinSize = 40
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+
+imap <F3> <C-R>=strftime("%Y-%m-%d")<CR>
