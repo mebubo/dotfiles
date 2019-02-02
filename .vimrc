@@ -94,7 +94,7 @@ endfor
 
 autocmd BufWritePre * :%s/\s\+$//e
 
-nnoremap K :Ack "\b<C-R><C-W>\b"<CR><CR>
+nnoremap K :Ack! "\b<C-R><C-W>\b"<CR>
 
 set tags+=codex.tags;/
 
