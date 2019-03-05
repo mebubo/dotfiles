@@ -4,6 +4,7 @@ export EDITOR="vim"
 export LANG=fr_FR.UTF-8
 export NO_AT_BRIDGE=1
 export NIX_PATH=nixpkgs=$HOME/src/nixpkgs
+export CUPS_SERVER=print-server:631
 
 add_to_path() {
     local DIR="$1"
