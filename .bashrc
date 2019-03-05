@@ -129,7 +129,7 @@ test -f $Z && . $Z
 
 function nx-haskell {
   pkgs=${@}
-  nix-shell -I nixpkgs=$HOME/src/nixpkgs -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [$pkgs])"
+  nix-shell -I nixpkgs=$HOME/src/nixpkgs -p "h.ghcWithPackages (pkgs: with pkgs; [$pkgs])"
 }
 
 function nx-hash {
@@ -153,4 +153,12 @@ function nx-print-roots {
 
 function nx-closure {
   nix-store -q -R $1
+}
+
+function nx-build {
+  nix-build -E 'with import <nixpkgs> {  }; callPackage ./default.nix {  }'
+}
+
+function nx-build-haskell {
+  nix-build -E 'with import <nixpkgs> {  }; h.callPackage ./default.nix {  }'
 }
