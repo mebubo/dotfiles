@@ -1,13 +1,15 @@
 {
     "editor.fontSize": 12,
-    "files.trimTrailingWhitespace": true,
-    "vim.disableAnnoyingNeovimMessage": true,
     "editor.minimap.enabled": false,
     "extensions.autoUpdate": false,
-    "purescript.pscIdeServerExe": "purs ide",
-    "workbench.colorTheme": "Visual Studio Light",
-    "files.autoSave": "onWindowChange",
-    "window.zoomLevel": 0,
-    "purescript.autocompleteAllModules": false,
-    "vim.hlsearch": true
+    "files.autoSave": "onFocusChange",
+    "files.trimTrailingWhitespace": true,
+    "vim.handleKeys": {
+        "<C-k>": false
+    },
+    "vim.hlsearch": true,
+    "window.menuBarVisibility": "default",
+    "workbench.activityBar.visible": false,
+    "workbench.editor.showTabs": false,
+    "workbench.editor.tabCloseButton": "off"
 }
