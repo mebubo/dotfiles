@@ -140,3 +140,6 @@ mode "passthrough" {
 bindsym $mod+Home mode "passthrough"
 
 exec swayidle timeout 900 'swaylock -c 330033' timeout 3600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -c 330033'
+
+bindsym $mod+F3 output LVDS-1 enable
+bindsym $mod+F4 output LVDS-1 disable
