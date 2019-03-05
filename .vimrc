@@ -21,9 +21,13 @@ Plug 'ivalkeen/vim-ctrlp-tjump', {'commit': '830a409f7e6f19a8632e33591ae10bef323
 Plug 'scrooloose/nerdtree', {'commit': '91e0f2253fbecefa7e14f095950341584877ef19'}
 Plug 'mileszs/ack.vim', {'commit': '36e40f9ec91bdbf6f1adf408522a73a6925c3042'}
 Plug 'mhinz/vim-grepper', {'commit': '4a47e20c98eee758b905a2cd7ca29f433c08e7e7'}
+
 Plug 'LnL7/vim-nix', {'commit': 'be0c6bb409732b79cc86c177ca378b0b334e1efe'}
 Plug 'purescript-contrib/purescript-vim', {'commit': '67ca4dc4a0291e5d8c8da48bffc0f3d2c9739e7f'}
 Plug 'FrigoEU/psc-ide-vim', {'commit': '6d4a3cc27e9782b703f6dd61ef5fdf27054bac0f'}
+
+Plug 'derekwyatt/vim-scala', {'commit': '971ac9ab3fe945105ef88587cfe5273fa2c8e988'}
+Plug 'natebosch/vim-lsc', {'commit': 'f7adfe36af3afbd557c885819b6218a256f375ea'}
 call plug#end()
 
 set encoding=utf-8
@@ -114,3 +118,16 @@ if has("autocmd")
 endif
 
 imap <F3> <C-R>=strftime("%Y-%m-%d")<CR>
+
+au BufRead,BufNewFile *.sbt set filetype=scala
+
+let g:lsc_enable_autocomplete = v:false
+let g:lsc_server_commands = {
+  \  'scala': {
+  \    'command': '/home/me/bin/metals-vim',
+  \    'log_level': 'Log'
+  \  }
+  \}
+let g:lsc_auto_map = {
+  \  'GoToDefinition': 'gd',
+  \}
