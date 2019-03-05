@@ -18,6 +18,6 @@ add_to_path() {
     fi
 }
 
-for d in ~/bin ~/.npm-packages/bin/ ~/.cabal/bin ~/.local/bin; do
-    add_to_path $d
-done
+# for d in ~/bin ~/.npm-packages/bin/ ~/.cabal/bin ~/.local/bin; do
+#     add_to_path $d
+# done
