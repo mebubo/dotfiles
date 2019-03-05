@@ -117,7 +117,7 @@
     nscd.enable = false;
 
     postgresql = {
-      enable = true;
+      enable = false;
       extraPlugins = [ pkgs.postgis ];
     };
 
