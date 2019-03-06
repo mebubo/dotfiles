@@ -122,6 +122,7 @@ imap <F3> <C-R>=strftime("%Y-%m-%d")<CR>
 autocmd BufRead,BufNewFile *.sbt set filetype=scala
 
 let g:lsc_enable_autocomplete = v:false
+let g:lsc_trace_level = 'verbose'
 let g:lsc_server_commands = {
   \  'scala': {
   \    'command': '/home/me/bin/metals-vim',
@@ -129,5 +130,14 @@ let g:lsc_server_commands = {
   \  }
   \}
 let g:lsc_auto_map = {
-  \  'GoToDefinition': 'gd',
+  \ 'GoToDefinition': ['<C-]>', 'gd'],
+  \ 'GoToDefinitionSplit': ['<C-W>]', '<C-W><C-]>'],
+  \ 'FindReferences': 'gr',
+  \ 'FindImplementations': 'gI',
+  \ 'FindCodeActions': 'ga',
+  \ 'Rename': 'gR',
+  \ 'ShowHover': v:true,
+  \ 'DocumentSymbol': 'go',
+  \ 'WorkspaceSymbol': 'gS',
+  \ 'SignatureHelp': '<C-m>',
   \}
