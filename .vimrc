@@ -119,6 +119,7 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 imap <F3> <C-R>=strftime("%Y-%m-%d")<CR>
 
 autocmd BufRead,BufNewFile *.sbt set filetype=scala
+autocmd FileType sbt setlocal commentstring=//\ %s
 
 let g:lsc_enable_autocomplete = v:false
 let g:lsc_trace_level = 'verbose'
