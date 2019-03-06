@@ -115,13 +115,11 @@ let g:ctrlp_tjump_skip_tag_name = 1
 
 let g:NERDTreeWinSize = 40
 
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 imap <F3> <C-R>=strftime("%Y-%m-%d")<CR>
 
-au BufRead,BufNewFile *.sbt set filetype=scala
+autocmd BufRead,BufNewFile *.sbt set filetype=scala
 
 let g:lsc_enable_autocomplete = v:false
 let g:lsc_server_commands = {
