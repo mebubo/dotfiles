@@ -76,7 +76,6 @@ nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>T :NERDTreeFind<CR>
 
 set cursorline
-nnoremap <Leader>c :set cursorline!<CR>
 autocmd InsertEnter,InsertLeave * set cursorline!
 
 set statusline=%<%f\ %h%m%r%Y%=%-14.(%l,%c%V%)\ %P
