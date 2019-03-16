@@ -45,6 +45,7 @@ highlight Visual guibg=#444444
 highlight CursorLine cterm=NONE guibg=#222222
 highlight StatusLine cterm=bold guibg=#ffffff guifg=#000000
 highlight StatusLineNC cterm=NONE guibg=#666666 guifg=#000000
+highlight Search cterm=NONE guibg=#664400
 
 set hlsearch
 set ignorecase
