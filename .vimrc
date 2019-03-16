@@ -147,3 +147,5 @@ let g:lsc_auto_map = {
   \}
 
 nnoremap <leader>l :ls<CR>:b<space>
+
+set viminfo='1000,f1,<500
