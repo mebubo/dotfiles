@@ -145,3 +145,5 @@ let g:lsc_auto_map = {
   \ 'WorkspaceSymbol': 'gS',
   \ 'SignatureHelp': '<C-m>',
   \}
+
+nnoremap <leader>l :ls<CR>:b<space>
