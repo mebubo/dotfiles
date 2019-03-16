@@ -159,4 +159,7 @@
     gc-keep-outputs = true
     gc-keep-derivations = true
   '';
+
+  nix.useSandbox = true;
+
 }
