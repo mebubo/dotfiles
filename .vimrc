@@ -129,7 +129,8 @@ let g:lsc_trace_level = 'verbose'
 let g:lsc_server_commands = {
   \  'scala': {
   \    'command': '/home/me/bin/metals-vim',
-  \    'log_level': 'Log'
+  \    'log_level': 'Log',
+  \    'enabled': v:false
   \  }
   \}
 let g:lsc_auto_map = {
