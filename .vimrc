@@ -12,6 +12,8 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-characterize'
 Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-obsession'
 
 Plug 'jiangmiao/auto-pairs', {'commit': 'f0019fc6423e7ce7bbd01d196a7e027077687fda'}
 Plug 'michaeljsmith/vim-indent-object', {'commit': '5c5b24c959478929b54a9e831a8e2e651a465965'}
