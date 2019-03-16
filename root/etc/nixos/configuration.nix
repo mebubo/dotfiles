@@ -48,6 +48,11 @@
     dmenu
   ];
 
+  fonts.fonts = with pkgs; [
+    noto-fonts
+    noto-fonts-emoji
+  ];
+
   programs = {
     gnupg.agent = { enable = true; enableSSHSupport = false; };
     ssh.startAgent = true;
