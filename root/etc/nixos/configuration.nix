@@ -57,7 +57,7 @@
     gnupg.agent = { enable = true; enableSSHSupport = false; };
     ssh.startAgent = true;
     java.enable = true;
-    sway-beta = {
+    sway = {
       enable = true;
       extraPackages = with pkgs; [ xwayland ];
       extraSessionCommands = ''
