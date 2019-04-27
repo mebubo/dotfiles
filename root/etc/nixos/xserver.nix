@@ -39,16 +39,17 @@ in
     hardware.opengl.enable = true;
 
     environment.etc =
-        [ { source = "${configFile}";
-            target = "X11/xorg.conf";
+      [
+        { source = "${configFile}";
+          target = "X11/xorg.conf";
+        }
+        (let cfgPath = "/X11/xorg.conf.d/40-libinput.conf"; in
+          {
+            source = xorg.xf86inputlibinput.out + "/share" + cfgPath;
+            target = cfgPath;
           }
-          (let cfgPath = "/X11/xorg.conf.d/40-libinput.conf"; in
-            {
-              source = xorg.xf86inputlibinput.out + "/share" + cfgPath;
-              target = cfgPath;
-            }
-          )
-        ]; 
+        )
+      ];
 
     environment.systemPackages =
       modules ++ 
