@@ -52,7 +52,6 @@ in
       ];
 
     environment.systemPackages =
-      modules ++ 
       [ pkgs.xdg_utils
         xorg.setxkbmap
         xorg.xauth
