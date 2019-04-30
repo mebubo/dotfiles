@@ -10,6 +10,7 @@ self: super:
   } // (with self; {
     inherit
     ag
+    alacritty
     bat
     coursier
     ctags
@@ -20,7 +21,7 @@ self: super:
     feh
     ffmpeg
     file
-    firefox-bin
+    firefox
     fish
     git
     gnupg
@@ -42,9 +43,10 @@ self: super:
     sqlite
     slurp
     st
-    sway-beta
+    sway
     swayidle
     swaylock
+    tigervnc
     tmux
     tree
     unzip
@@ -57,7 +59,7 @@ self: super:
     zip
     ;
     # idea-community = jetbrains.idea-community;
-  }) // (with self.haskell.packages.ghc863; {
+  }) // (with self.h; {
     inherit
     cabal-install
     cabal2nix
