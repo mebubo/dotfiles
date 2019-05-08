@@ -152,7 +152,15 @@ function nx-print-roots {
 }
 
 function nx-closure {
-  nix-store -q -R $1
+  nix-store -q --requisites $1
+}
+
+function nx-roots {
+  nix-store -q --roots $1
+}
+
+function nx-referrers {
+  nix-store -q --referrers $1
 }
 
 function nx-build {
