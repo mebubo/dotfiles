@@ -25,28 +25,32 @@
 
   time.timeZone = "Europe/Paris";
 
-  environment.systemPackages = with pkgs; [
-    vim
-    curl
-    wget
-    ripgrep
-    ag
-    file
-    tree
-    tmux
-    htop
-    git
-    usbutils
-    unzip
-    zip
-    moreutils
-    jq
-    ctags
-    pavucontrol
-    mpv
-    i3status
-    dmenu
-  ];
+  environment = {
+    systemPackages = with pkgs; [
+      vim
+      curl
+      wget
+      ripgrep
+      ag
+      file
+      tree
+      tmux
+      htop
+      git
+      usbutils
+      unzip
+      zip
+      moreutils
+      jq
+      ctags
+      pavucontrol
+      mpv
+      i3status
+      dmenu
+    ];
+
+    etc."resolv.conf".text = "nameserver 8.8.8.8";
+  };
 
   fonts.fonts = with pkgs; [
     noto-fonts
@@ -61,7 +65,7 @@
       enable = true;
       extraPackages = with pkgs; [ xwayland ];
       extraSessionCommands = ''
-      export _JAVA_AWT_WM_NONREPARENTING=1
+        export _JAVA_AWT_WM_NONREPARENTING=1
       '';
     };
     dconf.enable = false;
@@ -76,29 +80,31 @@
     useDHCP = false;
   };
 
-  systemd.network = {
-    enable = true;
-    networks = {
-       "50-ethernet" = {
-         enable = true;
-         matchConfig = { Name = "enp*s*"; };
-         networkConfig = { DHCP = "v4"; };
-         dhcpConfig = { RouteMetric = 300; };
-       };
-       "50-wireless" = {
-         enable = true;
-         matchConfig = { Name = "wlp*s*"; };
-         networkConfig = { DHCP = "v4"; };
-         dhcpConfig = { RouteMetric = 1000; UseDNS = false; };
-       };
-       "99-main" = {
-         enable = false;
-       };
+  systemd = {
+    network = {
+      enable = true;
+      networks = {
+         "50-ethernet" = {
+           enable = false;
+           matchConfig = { Name = "enp*s*"; };
+           networkConfig = { DHCP = "v4"; };
+           dhcpConfig = { RouteMetric = 300; };
+         };
+         "50-wireless" = {
+           enable = true;
+           matchConfig = { Name = "wlp*s*"; };
+           networkConfig = { DHCP = "v4"; };
+           dhcpConfig = { RouteMetric = 1000; UseDNS = false; };
+         };
+         "99-main" = {
+           enable = false;
+         };
+      };
     };
-  };
 
-  systemd.services.systemd-networkd-wait-online = {
-    enable = false;
+    services.systemd-networkd-wait-online = {
+      enable = false;
+    };
   };
 
   sound.enable = true;
@@ -139,27 +145,34 @@
       group = "me";
     };
 
-    users.him = {
+    users.dev = {
       isNormalUser = true;
-      uid = 1001;
+      uid = 1002;
     };
 
     groups.me = {
       gid = 1000;
     };
+
+    groups.wireless = {};
   };
 
   system.stateVersion = "19.03";
 
   security.hideProcessInformation = false;
 
-  environment.etc."resolv.conf".text = "nameserver 8.8.8.8";
+  nix = {
+    extraOptions = ''
+      gc-keep-outputs = true
+      gc-keep-derivations = true
+    '';
+    useSandbox = true;
+  };
 
-  nix.extraOptions = ''
-    gc-keep-outputs = true
-    gc-keep-derivations = true
-  '';
-
-  nix.useSandbox = true;
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+    memoryPercent = 40;
+  };
 
 }
