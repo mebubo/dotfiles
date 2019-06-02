@@ -13,12 +13,12 @@ env >> /tmp/h
 
 case $STATUS in
   disconnected)
-    ${pkgs.sway-beta}/bin/swaymsg output LVDS-1 enable
-    ${pkgs.sway-beta}/bin/swaymsg output DP-1 disable
+    ${pkgs.sway}/bin/swaymsg output LVDS-1 enable
+    ${pkgs.sway}/bin/swaymsg output DP-1 disable
     ;;
   connected)
-    ${pkgs.sway-beta}/bin/swaymsg output DP-1 enable
-    ${pkgs.sway-beta}/bin/swaymsg output LVDS-1 disable
+    ${pkgs.sway}/bin/swaymsg output DP-1 enable
+    ${pkgs.sway}/bin/swaymsg output LVDS-1 disable
     ;;
   esac
 '';
