@@ -31,8 +31,8 @@ in
 
   boot.initrd.availableKernelModules = [ "ehci_pci" "ahci" "usb_storage" "sd_mod" "sdhci_pci" ];
   boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ config.boot.kernelPackages.acpi_call ];
-  boot.kernelParams = [ ''acpi_osi="!Windows 2012"'' ];
+  # boot.extraModulePackages = [ config.boot.kernelPackages.acpi_call ];
+  boot.kernelParams = [ ''acpi_osi="!Windows 2012"'' "i915.enable_rc6=7" ];
 
   boot.initrd.luks.devices."root" = {
     device = "/dev/sda3";
@@ -69,4 +69,5 @@ in
     ACTION=="change", SUBSYSTEM=="drm", ENV{HOTPLUG}=="1", RUN+="${pkgs.sudo}/bin/sudo -u me ${external-display-hotplug}"
   '';
 
+  hardware.opengl.enable = true;
 }
