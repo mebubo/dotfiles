@@ -84,6 +84,10 @@
     network = {
       enable = true;
       networks = {
+         "50-lo" = {
+           enable = true;
+           matchConfig = { Name = "lo"; };
+         };
          "50-ethernet" = {
            enable = false;
            matchConfig = { Name = "enp*s*"; };
@@ -103,7 +107,7 @@
     };
 
     services.systemd-networkd-wait-online = {
-      enable = false;
+      enable = true;
     };
   };
 
