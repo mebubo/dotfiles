@@ -19,9 +19,9 @@ self: super:
     exa
     fd
     feh
-    ffmpeg
+    ffmpeg_4
     file
-    firefox
+    firefox-wayland
     fish
     git
     gnupg
@@ -35,7 +35,6 @@ self: super:
     mpv
     nodejs
     pavucontrol
-    psc-package
     pstree
     pwgen
     ripgrep
@@ -51,7 +50,9 @@ self: super:
     tree
     unzip
     usbutils
+    v4l_utils
     vim
+    vlc
     vscode
     wget
     wlroots
