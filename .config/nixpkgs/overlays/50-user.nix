@@ -4,7 +4,7 @@ self: super:
   user-packages = {
     nx-rebuild = super.writeScriptBin "nx-rebuild" ''
       #!${super.stdenv.shell}
-      exec ${self.nix}/bin/nix-env -f '<nixpkgs>' -r -iA user-packages "$@"
+      exec ${self.nix}/bin/nix-env -f '<nixpkgs>' -j1 -r -iA user-packages "$@"
     '';
 
   } // (with self; {
