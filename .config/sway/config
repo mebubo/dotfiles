@@ -1,5 +1,14 @@
 set $mod Mod4
 
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $term alacritty
+
+set $menu dmenu_path | bemenu -i --fn "pango:monospace 12" | xargs swaymsg exec --
+
 font pango:monospace 8
 
 # class          border  backgr. text    indic.  child
@@ -18,29 +27,30 @@ focus_wrapping no
 popup_during_fullscreen smart
 focus_follows_mouse no
 
+bindsym $mod+Return exec $term
 bindsym $mod+Shift+Return exec --no-startup-id st
-bindsym $mod+Return exec --no-startup-id alacritty
+
 bindsym $mod+F5 exec firefox
 
 bindsym $mod+Shift+c kill
 
-bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec $menu
+bindsym $mod+Shift+d exec i3-dmenu-desktop
 
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
 
 bindsym $mod+Ctrl+Left workspace prev
 bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Shift+Left move output left; focus output left
 bindsym $mod+Ctrl+Shift+Right move output right; focus output right
 
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
 
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
@@ -103,10 +113,10 @@ bindsym $mod+Shift+q reload
 bindsym $mod+Shift+e exec "swaynag -t warning -m 'Exit sway?' -b 'Yes' 'swaymsg exit'"
 
 mode "resize" {
-        bindsym h           resize shrink width 10 px or 10 ppt
-        bindsym j           resize grow height 10 px or 10 ppt
-        bindsym k           resize shrink height 10 px or 10 ppt
-        bindsym l           resize grow width 10 px or 10 ppt
+        bindsym $left resize shrink width 10px
+        bindsym $down resize grow height 10px
+        bindsym $up resize shrink height 10px
+        bindsym $right resize grow width 10px
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -115,20 +125,25 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bar {
+        position bottom
         status_command i3status
         font pango:monospace, FontAwesome 9
+        colors {
+            statusline #ffffff
+            background #323232
+            inactive_workspace #32323200 #32323200 #5c5c5c
+        }
 }
 
 bindsym $mod+x [urgent=latest] focus
 
-set $sink $(pactl list short sinks | (grep RUNNING || echo "alsa_output.pci-0000_00_1b.0.analog-stereo") | cut -f1)
-bindsym XF86AudioMute exec pactl set-sink-mute $sink toggle && killall -USR1 i3status
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $sink +2% && killall -USR1 i3status
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume $sink -2% && killall -USR1 i3status
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && killall -USR1 i3status
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && killall -USR1 i3status
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle && killall -USR1 i3status
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle && killall -USR1 i3status
 
-bindsym $mod+End exec "pactl set-sink-mute 0 toggle && killall -USR1 i3status"
-bindsym $mod+Next exec "pactl set-sink-volume 0 +2% && killall -USR1 i3status"
-bindsym $mod+Delete exec "pactl set-sink-volume 0 -- -2% && killall -USR1 i3status"
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 
 bindsym XF86Display exec --no-startup-id external-display.sh auto
 
@@ -145,3 +160,9 @@ exec swayidle timeout 900 'swaylock -c 330033' timeout 3600 'swaymsg "output * d
 
 bindsym $mod+F3 output LVDS-1 enable
 bindsym $mod+F4 output LVDS-1 disable
+
+input type:touchpad click_method clickfinger
+input type:touchpad tap enabled
+input type:keyboard xkb_layout us,ru
+input type:keyboard xkb_variant ,phonetic
+input type:keyboard xkb_options grp:menu_toggle,grp_led:caps,ctrl:nocaps,compose:ralt
