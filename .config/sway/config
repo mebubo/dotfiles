@@ -18,7 +18,9 @@ focus_wrapping no
 popup_during_fullscreen smart
 focus_follows_mouse no
 
-bindsym $mod+Return exec --no-startup-id st
+bindsym $mod+Shift+Return exec --no-startup-id st
+bindsym $mod+Return exec --no-startup-id alacritty
+bindsym $mod+F5 exec firefox
 
 bindsym $mod+Shift+c kill
 
