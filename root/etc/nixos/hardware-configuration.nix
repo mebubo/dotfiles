@@ -2,9 +2,7 @@
 
 let
 
-  external-display-hotplug = pkgs.writeScript "external-display-hotplug" ''
-#!${pkgs.stdenv.shell}
-
+  external-display-hotplug = pkgs.writeShellScript "external-display-hotplug" ''
 STATUS_FILE=/sys/class/drm/card0-DP-1/status
 STATUS=$(${pkgs.coreutils}/bin/cat $STATUS_FILE)
 export SWAYSOCK=$(${pkgs.coreutils}/bin/readlink -f /run/user/1000/sway-ipc.1000.*.sock)

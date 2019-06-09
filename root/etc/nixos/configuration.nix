@@ -38,6 +38,7 @@
       htop
       git
       usbutils
+      pciutils
       unzip
       zip
       moreutils
