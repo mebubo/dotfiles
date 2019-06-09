@@ -9,12 +9,12 @@ titlebar_padding 3 1
 
 floating_modifier Mod1
 workspace_layout default
-new_window normal 1
+default_border normal 1px
 hide_edge_borders both
 workspace_auto_back_and_forth no
 force_display_urgency_hint 500 ms
 bindsym $mod+Escape workspace back_and_forth
-force_focus_wrapping no
+focus_wrapping no
 popup_during_fullscreen smart
 focus_follows_mouse no
 
