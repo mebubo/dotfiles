@@ -30,10 +30,13 @@ self: super:
     htop
     i3status
     jq
+    libinput
     miniserve
     moreutils
     mpv
+    nix-prefetch-github
     nodejs
+    p7zip
     pavucontrol
     pstree
     pwgen
@@ -42,9 +45,6 @@ self: super:
     sqlite
     slurp
     st
-    sway
-    swayidle
-    swaylock
     tigervnc
     tmux
     tree
