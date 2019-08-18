@@ -8,7 +8,7 @@ shopt -s histappend
 shopt -s checkwinsize
 
 export MAILCHECK=-1
-export HISTCONTROL=ignoredups
+export HISTCONTROL=ignoreboth
 export HISTSIZE=100000
 
 # colorfull prompt:
@@ -129,7 +129,7 @@ test -f $Z && . $Z
 
 function nx-haskell {
   pkgs=${@}
-  nix-shell -I nixpkgs=$HOME/src/nixpkgs -p "h.ghcWithPackages (pkgs: with pkgs; [$pkgs])"
+  nix-shell -I nixpkgs=$HOME/src/NixOS/nixpkgs -p "h.ghcWithPackages (pkgs: with pkgs; [$pkgs])"
 }
 
 function nx-hash {
