@@ -1,15 +1,24 @@
 {
-    "editor.fontSize": 12,
     "editor.minimap.enabled": false,
     "extensions.autoUpdate": false,
     "files.autoSave": "onFocusChange",
     "files.trimTrailingWhitespace": true,
     "vim.handleKeys": {
-        "<C-k>": false
+        "<C-k>": false,
+        "<C-t>": false
     },
     "vim.hlsearch": true,
     "window.menuBarVisibility": "default",
-    "workbench.activityBar.visible": false,
+    "window.titleBarStyle": "custom",
+    "workbench.activityBar.visible": true,
     "workbench.editor.showTabs": false,
-    "workbench.editor.tabCloseButton": "off"
+    "workbench.editor.tabCloseButton": "off",
+    "workbench.colorTheme": "Default Light+",
+    "workbench.tree.indent": 16,
+    "terminal.integrated.rendererType": "dom",
+    // "editor.fontSize": 18,
+    "editor.fontSize": 12,
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "window.restoreWindows": "none"
 }
