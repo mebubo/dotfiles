@@ -17,8 +17,12 @@
       version = 2;
       gfxmodeBios= "text";
       device = "/dev/sda";
+      splashImage = null;
     };
-    kernel.sysctl."fs.inotify.max_user_watches" = 524288;
+    kernel.sysctl = {
+      "fs.inotify.max_user_watches" = 524288;
+      "kernel.sysrq" = 1;
+    };
     kernelPackages = pkgs.linuxPackages_latest;
     cleanTmpDir = true;
   };
@@ -48,6 +52,8 @@
       mpv
       i3status
       dmenu
+      manpages
+      ddccontrol
     ];
 
     etc."resolv.conf".text = "nameserver 8.8.8.8";
@@ -64,9 +70,11 @@
     java.enable = true;
     sway = {
       enable = true;
-      extraPackages = with pkgs; [ xwayland swayidle swaylock i3status grim slurp ];
+      extraPackages = with pkgs; [ xwayland swayidle swaylock i3status grim slurp bemenu ];
       extraSessionCommands = ''
         export _JAVA_AWT_WM_NONREPARENTING=1
+        export MOZ_ENABLE_WAYLAND=1
+        export MOZ_USE_XINPUT2=1
       '';
     };
     dconf.enable = false;
@@ -74,6 +82,7 @@
 
   networking = {
     firewall.enable = true;
+    # firewall.allowedTCPPorts = [ 8000 ];
     nameservers = [ "8.8.8.8" ];
     hostName = "laptop";
     useNetworkd = true;
@@ -90,7 +99,7 @@
            matchConfig = { Name = "lo"; };
          };
          "50-ethernet" = {
-           enable = false;
+           enable = true;
            matchConfig = { Name = "enp*s*"; };
            networkConfig = { DHCP = "v4"; };
            dhcpConfig = { RouteMetric = 300; };
@@ -108,7 +117,7 @@
     };
 
     services.systemd-networkd-wait-online = {
-      enable = true;
+      enable = false;
     };
   };
 
@@ -139,6 +148,14 @@
 
     resolved = {
       enable = false;
+    };
+
+    bloop = {
+      install = true;
+    };
+
+    pipewire = {
+      enable = true;
     };
   };
 
@@ -180,4 +197,15 @@
     memoryPercent = 40;
   };
 
+  nixpkgs.config = {
+    packageOverrides = super: {
+      bemenu = super.bemenu.override {
+        waylandSupport = true;
+        ncursesSupport = false;
+        x11Support = false;
+      };
+    };
+  };
+
+  documentation.dev.enable = true;
 }
