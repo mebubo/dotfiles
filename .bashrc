@@ -171,3 +171,8 @@ function nx-build {
 function nx-build-haskell {
   nix-build -E 'with import <nixpkgs> {  }; h.callPackage ./default.nix {  }'
 }
+
+function haskell-project-tags {
+  nix-build --arg cabalProject ./. ~/src/me/haskell-sources-tags-nix/
+  nix-shell -p haskellPackages.fast-tags --run "fast-tags -R ."
+}
