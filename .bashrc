@@ -34,7 +34,7 @@ esac
 if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]
 then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
+    alias ls='exa --color=auto'
     alias dir='dir --color=auto'
     alias vdir='vdir --color=auto'
     alias grep='grep --color=auto'
@@ -73,10 +73,11 @@ case $(tty) in
         ;;
 esac
 
-alias ll='ls -l'
-alias la='ls -A'
-alias l='ls -CFhla'
+alias ll='exa -l'
+alias la='exa -A'
+alias l='exa -Fhla'
 alias less="less -j 5"
+alias cat=bat
 
 alias cp="cp --reflink=auto --sparse=always"
 
