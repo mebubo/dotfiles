@@ -107,12 +107,12 @@ autocmd BufWritePre * :%s/\s\+$//e
 nnoremap K :Ack! "\b<C-R><C-W>\b"<CR>
 nnoremap <Leader>a :Ack!<Space>
 
-set tags+=codex.tags;/
+set tags+=dependencies/tags
 
 nnoremap <c-]> :CtrlPtjump<cr>
 vnoremap <c-]> :CtrlPtjumpVisual<cr>
 
-let g:ctrlp_tjump_shortener = ['/home/[^/]*/.stack/indices/Hackage/packages/', '~~/']
+let g:ctrlp_tjump_shortener = ['^\(dependencies/\|/nix/store/.*-haskell-sources-tags/\)', '.../']
 let g:ctrlp_tjump_only_silent = 1
 let g:ctrlp_tjump_skip_tag_name = 1
 

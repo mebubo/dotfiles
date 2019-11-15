@@ -173,6 +173,6 @@ function nx-build-haskell {
 }
 
 function haskell-project-tags {
-  nix-build --arg cabalProject ./. ~/src/me/haskell-sources-tags-nix/
+  nix-build --out-link dependencies --arg cabalProject ./. ~/src/me/haskell-sources-tags-nix/
   nix-shell -p haskellPackages.fast-tags --run "fast-tags -R ."
 }
