@@ -1,1 +1,1 @@
--i --output='%(uploader)s--%(upload_date)s--%(title)s--%(id)s.%(ext)s'
+-i --output='%(uploader)s--%(upload_date)s--%(title)s--%(id)s.%(ext)s' --download-archive ~/.cache/youtube-dl/seen --write-description
