@@ -1,7 +1,3 @@
-# See:
-# - configuration.nix(5)
-# - NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
@@ -9,6 +5,7 @@
     [
       ./hardware-configuration.nix
       ./wireless.nix
+      ./xserver.nix
     ];
 
   boot = {
@@ -18,6 +15,7 @@
       gfxmodeBios= "text";
       device = "/dev/sda";
       splashImage = null;
+      font = null;
     };
     kernel.sysctl = {
       "fs.inotify.max_user_watches" = 524288;
@@ -53,7 +51,6 @@
       i3status
       dmenu
       manpages
-      ddccontrol
     ];
 
     etc."resolv.conf".text = "nameserver 8.8.8.8";
@@ -62,6 +59,7 @@
   fonts.fonts = with pkgs; [
     noto-fonts
     noto-fonts-emoji
+    cascadia-code
   ];
 
   programs = {
@@ -78,6 +76,16 @@
       '';
     };
     dconf.enable = false;
+    less = {
+      enable = true;
+      envVariables = {
+        LESS = "--quit-if-one-screen --jump-target=5";
+      };
+    };
+    chromium = {
+      enable = true;
+      extensions = [ "cjpalhdlnbpafiamejdnhcphjbkeiagm" ];
+    };
   };
 
   networking = {
@@ -110,9 +118,6 @@
            networkConfig = { DHCP = "v4"; };
            dhcpConfig = { RouteMetric = 1000; UseDNS = false; };
          };
-         "99-main" = {
-           enable = false;
-         };
       };
     };
 
@@ -136,7 +141,6 @@
       '';
     };
 
-
     fstrim.enable = true;
 
     nscd.enable = false;
@@ -150,12 +154,12 @@
       enable = false;
     };
 
-    bloop = {
-      install = true;
+    pipewire = {
+      enable = false;
     };
 
-    pipewire = {
-      enable = true;
+    upower = {
+      enable = false;
     };
   };
 
@@ -170,6 +174,16 @@
     users.dev = {
       isNormalUser = true;
       uid = 1002;
+      packages = with pkgs; [
+        alacritty
+        cage
+        # chromium
+        firefox-wayland
+        jetbrains.idea-community
+        sbt
+        x11docker
+        xpra
+      ];
     };
 
     groups.me = {
