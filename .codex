@@ -1,7 +1,0 @@
-currentProjectIncluded: true
-hackagePath: /home/pairbox/.cabal/packages/hackage.haskell.org/
-tagsFileHeader: false
-tagsFileName: codex.tags
-tagsFileSorted: true
-tagsCmd: hasktags --ctags --follow-symlinks --ignore-close-implementation --extendedctag --output="$TAGS" "$SOURCES"
-stackOpts: ''
