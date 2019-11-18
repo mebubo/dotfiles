@@ -2,7 +2,7 @@ test -f ~/.environment && . ~/.environment
 test -f ~/.environment-private && . ~/.environment-private
 
 # If not running interactively, don't do anything
-[ -z "$PS1" ] && return
+[[ $- != *i* ]] && return
 
 shopt -s histappend
 shopt -s checkwinsize
@@ -11,38 +11,10 @@ export MAILCHECK=-1
 export HISTCONTROL=ignoreboth
 export HISTSIZE=100000
 
-# colorfull prompt:
-# 30: Black/Dark grey
-# 31: Red
-# 32: Green
-# 33: Yellow
-# 34: Blue
-# 35: Magenta
-# 36: Fuscia
-# 37: White/light grey
-# 38: "Default" foreground color
-
-case $HOSTNAME in
-    laptop*)
-        PS1='\[\033[01;36m\]\u@\h:\[\033[01;33m\]\w\[\e[01;$(($??31:37))m\] \$ \[\033[00m\]'
-        ;;
-    *)
-        PS1='\[\033[01;34m\]\u@\h:\[\033[01;33m\]\w\[\e[01;$(($??31:37))m\] \$ \[\033[00m\]'
-        ;;
-esac
-
-if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]
-then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='exa --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
+PS1='\[\033[01;36m\]\u@\h:\[\033[01;33m\]\w\[\e[01;$(($??31:37))m\] \$ \[\033[00m\]'
 
 HISTORY_FILE=~/history
+
 _append_history () {
     local LAST_CMD=$(history 1)
     # strip useless entry number from the beginning
@@ -54,54 +26,19 @@ _update_window_title () {
     echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"
 }
 
-_configure_show_current_command_in_window_title () {
-    trap 'echo -ne "\033]0;$BASH_COMMAND\007"' DEBUG
-}
-
-case $TERM in
-    uxterm*|xterm*|rxvt*|st*)
-        PROMPT_COMMAND="_append_history; history -a; _update_window_title"
-        ;;
-    *)
-        PROMPT_COMMAND="_append_history; history -a"
-        ;;
-esac
-
-case $(tty) in
-    /dev/tty?)
-        TMOUT=300
-        ;;
-esac
+PROMPT_COMMAND="_append_history; history -a; _update_window_title"
 
 alias ll='exa -l'
 alias la='exa -A'
 alias l='exa -Fhla'
 alias less="less -j 5"
 alias cat=bat
-
 alias cp="cp --reflink=auto --sparse=always"
 
 export GPG_TTY=`tty`
 
 function rsync_mirror {
     rsync -avHP --inplace -e 'ssh -o ClearAllForwardings=yes' "$@"
-}
-
-function hdmi {
-    case "$1" in
-        on)
-            xrandr --output HDMI-1 --auto
-            pactl set-card-profile 0 output:hdmi-stereo
-            ;;
-        off)
-            xrandr --output HDMI-1 --off
-            pactl set-card-profile 0 output:analog-stereo+input:analog-stereo
-            ;;
-        *)
-            echo "Usage: hdmi <on|off>"
-            return 1
-            ;;
-    esac
 }
 
 function copy_terminfo {
