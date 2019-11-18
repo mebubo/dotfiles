@@ -4,6 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
+      ./hardware-configuration-custom.nix
       ./wireless.nix
       ./xserver.nix
     ];
@@ -12,8 +13,8 @@
     loader.grub = {
       enable = true;
       version = 2;
-      gfxmodeBios= "text";
       device = "/dev/sda";
+      gfxmodeBios = "text";
       splashImage = null;
       font = null;
     };
@@ -68,7 +69,7 @@
     java.enable = true;
     sway = {
       enable = true;
-      extraPackages = with pkgs; [ xwayland swayidle swaylock i3status grim slurp bemenu ];
+      extraPackages = with pkgs; [ xwayland swayidle swaylock i3status grim slurp ];
       extraSessionCommands = ''
         export _JAVA_AWT_WM_NONREPARENTING=1
         export MOZ_ENABLE_WAYLAND=1
@@ -85,6 +86,9 @@
     chromium = {
       enable = true;
       extensions = [ "cjpalhdlnbpafiamejdnhcphjbkeiagm" ];
+      extraOpts = {
+        RestoreOnStartup = 1;
+      };
     };
   };
 
@@ -102,20 +106,16 @@
     network = {
       enable = true;
       networks = {
-         "50-lo" = {
-           enable = true;
-           matchConfig = { Name = "lo"; };
-         };
          "50-ethernet" = {
            enable = true;
            matchConfig = { Name = "enp*s*"; };
-           networkConfig = { DHCP = "v4"; };
+           networkConfig = { DHCP = "ipv4"; };
            dhcpConfig = { RouteMetric = 300; };
          };
          "50-wireless" = {
            enable = true;
            matchConfig = { Name = "wlp*s*"; };
-           networkConfig = { DHCP = "v4"; };
+           networkConfig = { DHCP = "ipv4"; };
            dhcpConfig = { RouteMetric = 1000; UseDNS = false; };
          };
       };
@@ -127,7 +127,6 @@
   };
 
   sound.enable = true;
-
   hardware.pulseaudio.enable = true;
 
   services = {
@@ -171,13 +170,16 @@
       group = "me";
     };
 
+    groups.me = {
+      gid = 1000;
+    };
+
     users.dev = {
       isNormalUser = true;
       uid = 1002;
       packages = with pkgs; [
         alacritty
         cage
-        # chromium
         firefox-wayland
         jetbrains.idea-community
         sbt
@@ -186,14 +188,23 @@
       ];
     };
 
-    groups.me = {
-      gid = 1000;
+    users.dev2 = {
+      isNormalUser = true;
+      uid = 1003;
+      packages = with pkgs; [
+        alacritty
+        firefox
+        google-chrome
+        nodejs
+        vscode
+        i3
+        i3lock
+        i3status
+      ];
     };
 
     groups.wireless = {};
   };
-
-  system.stateVersion = "19.03";
 
   security.hideProcessInformation = false;
 
@@ -211,15 +222,10 @@
     memoryPercent = 40;
   };
 
-  nixpkgs.config = {
-    packageOverrides = super: {
-      bemenu = super.bemenu.override {
-        waylandSupport = true;
-        ncursesSupport = false;
-        x11Support = false;
-      };
-    };
-  };
-
   documentation.dev.enable = true;
+
+  nixpkgs.config.allowUnfree = true;
+
+  system.stateVersion = "20.03";
+
 }
