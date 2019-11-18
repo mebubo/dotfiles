@@ -109,10 +109,10 @@
       profiles = {
         me = {
           userChrome = ''
-              #tabbrowser-tabs {
-                visibility: collapse !important;
-              }
-            '';
+            #tabbrowser-tabs {
+              visibility: collapse !important;
+            }
+          '';
         };
       };
     };
@@ -129,5 +129,7 @@
     "sway/config".source = ../../.config/sway/config;
     "i3/config".source = ../../.config/i3/config;
     "i3status/config".source = ../../.config/i3status/config;
+    "youtube-dl/config".source = ../../.config/youtube-dl/config;
+    "mpv/mpv.conf".source = ../../.config/mpv/mpv.conf;
   };
 }
