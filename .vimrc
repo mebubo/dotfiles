@@ -31,7 +31,6 @@ Plug 'purescript-contrib/purescript-vim', {'commit': '67ca4dc4a0291e5d8c8da48bff
 Plug 'FrigoEU/psc-ide-vim', {'commit': '6d4a3cc27e9782b703f6dd61ef5fdf27054bac0f'}
 
 Plug 'derekwyatt/vim-scala', {'commit': '971ac9ab3fe945105ef88587cfe5273fa2c8e988'}
-Plug 'natebosch/vim-lsc', {'commit': '9b00c03beb755ee4bcd86173473abd8d63d62e46'}
 call plug#end()
 
 endif
@@ -128,28 +127,6 @@ imap <F3> <C-R>=strftime("%Y-%m-%d")<CR>
 
 autocmd BufRead,BufNewFile *.sbt set filetype=scala
 autocmd FileType sbt setlocal commentstring=//\ %s
-
-let g:lsc_enable_autocomplete = v:false
-let g:lsc_trace_level = 'verbose'
-let g:lsc_server_commands = {
-  \  'scala': {
-  \    'command': '/home/me/bin/metals-vim',
-  \    'log_level': 'Log',
-  \    'enabled': v:false
-  \  }
-  \}
-let g:lsc_auto_map = {
-  \ 'GoToDefinition': ['<C-]>', 'gd'],
-  \ 'GoToDefinitionSplit': ['<C-W>]', '<C-W><C-]>'],
-  \ 'FindReferences': 'gr',
-  \ 'FindImplementations': 'gI',
-  \ 'FindCodeActions': 'ga',
-  \ 'Rename': 'gR',
-  \ 'ShowHover': v:true,
-  \ 'DocumentSymbol': 'go',
-  \ 'WorkspaceSymbol': 'gS',
-  \ 'SignatureHelp': '<C-m>',
-  \}
 
 nnoremap <leader>l :ls<CR>:b<space>
 
