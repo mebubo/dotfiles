@@ -7,7 +7,7 @@ set $right l
 
 set $term alacritty
 
-set $menu dmenu_path | bemenu -i --fn "pango:monospace 12" | xargs swaymsg exec --
+set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
 font pango:monospace 8
 
