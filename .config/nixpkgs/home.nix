@@ -101,7 +101,7 @@
         EDITOR = "vim";
         NIX_PATH = "nixpkgs=$HOME/src/NixOS/nixpkgs:home-manager=$HOME/src/rycee/home-manager";
       };
-      initExtra = builtins.readFile ../../.bashrc;
+      initExtra = with builtins; concatStringsSep "\n" (map readFile [ ../../external/z/z.sh ../../.bashrc ]);
     };
     firefox = {
       enable = true;
