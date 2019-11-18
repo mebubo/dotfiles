@@ -75,7 +75,7 @@
         vim-rsi
         vim-sleuth
         vim-vinegar
-        # vim-characterize
+        vim-characterize
         vim-eunuch
         vim-abolish
         vim-obsession
@@ -86,7 +86,7 @@
         nerdtree
         psc-ide-vim
         purescript-vim
-        # vim-ctrlp-tjump
+        vim-ctrlp-tjump
         vim-grepper
         vim-indent-object
         vim-nix
