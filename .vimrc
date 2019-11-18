@@ -1,3 +1,5 @@
+if exists('plug#begin')
+
 let g:plug_shallow = 0
 
 call plug#begin()
@@ -31,6 +33,8 @@ Plug 'FrigoEU/psc-ide-vim', {'commit': '6d4a3cc27e9782b703f6dd61ef5fdf27054bac0f
 Plug 'derekwyatt/vim-scala', {'commit': '971ac9ab3fe945105ef88587cfe5273fa2c8e988'}
 Plug 'natebosch/vim-lsc', {'commit': '9b00c03beb755ee4bcd86173473abd8d63d62e46'}
 call plug#end()
+
+endif
 
 set encoding=utf-8
 
