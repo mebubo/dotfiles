@@ -1,5 +1,11 @@
 { config, pkgs, ... }:
 
+let
+
+  home-manager-snapshot = import ./home-manager-snapshot.nix pkgs;
+
+in
+
 {
 
   home.packages = (with pkgs; [
@@ -61,7 +67,7 @@
   programs = {
     home-manager = {
       enable = true;
-      path = "/home/me/src/rycee/home-manager";
+      path = "${home-manager-snapshot}";
     };
     vim = {
       enable = true;
