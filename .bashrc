@@ -106,7 +106,7 @@ function nx-build {
 }
 
 function nx-build-haskell {
-  nix-build -E 'with import <nixpkgs> {  }; h.callPackage ./default.nix {  }'
+  nix-build -E 'with import <nixpkgs> {  }; haskellPackages.callPackage ./default.nix {  }'
 }
 
 function haskell-project-tags {
