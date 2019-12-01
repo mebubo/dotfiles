@@ -6,7 +6,7 @@
       ./hardware-configuration.nix
       ./hardware-configuration-custom.nix
       ./wireless.nix
-      ./xserver.nix
+      ../../modules/xserver.nix
     ];
 
   boot = {
