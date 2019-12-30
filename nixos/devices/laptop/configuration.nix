@@ -12,9 +12,16 @@
   boot = {
     loader.grub = {
       enable = true;
-      version = 2;
-      device = "/dev/sda";
-      gfxmodeBios = "text";
+
+      # BIOS
+      # device = "/dev/sda";
+
+      # UEFI
+      device = "nodev";
+      efiSupport = true;
+      efiInstallAsRemovable = true;
+
+      gfxmodeBios= "text";
       splashImage = null;
       font = null;
     };
