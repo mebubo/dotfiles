@@ -62,6 +62,8 @@
     ];
 
     etc."resolv.conf".text = "nameserver 8.8.8.8";
+    etc."jdk".source = pkgs.jdk;
+    etc."jdk12".source = pkgs.jdk12;
   };
 
   fonts.fonts = with pkgs; [
