@@ -105,7 +105,7 @@ in
       enable = true;
       sessionVariables = {
         EDITOR = "vim";
-        NIX_PATH = "nixpkgs=$HOME/src/NixOS/nixpkgs:home-manager=$HOME/src/rycee/home-manager";
+        NIX_PATH = "nixpkgs=$HOME/src/NixOS/nixpkgs";
       };
       initExtra = with builtins; concatStringsSep "\n" (map readFile [ ../../external/z/z.sh ../../.bashrc ]);
     };
