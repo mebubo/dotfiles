@@ -107,7 +107,7 @@ in
         EDITOR = "vim";
         NIX_PATH = "nixpkgs=$HOME/src/NixOS/nixpkgs";
       };
-      initExtra = with builtins; concatStringsSep "\n" (map readFile [ ../../external/z/z.sh ../../.bashrc ]);
+      initExtra = with builtins; concatStringsSep "\n" (map readFile [ ../../.bashrc ../../external/z/z.sh ]);
     };
     firefox = {
       enable = true;
