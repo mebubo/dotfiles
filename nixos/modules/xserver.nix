@@ -28,7 +28,7 @@ let
 
         echo 'EndSection' >> $out
 
-      ''); 
+      '');
 
 in
 
@@ -39,17 +39,19 @@ in
     hardware.opengl.enable = true;
 
     environment.etc =
-      [
-        { source = "${configFile}";
+      {
+        "xorg.conf" = {
+          source = "${configFile}";
           target = "X11/xorg.conf";
-        }
-        (let cfgPath = "/X11/xorg.conf.d/40-libinput.conf"; in
+        };
+        "libinput.conf" = let
+          cfgPath = "/X11/xorg.conf.d/40-libinput.conf";
+        in
           {
             source = xorg.xf86inputlibinput.out + "/share" + cfgPath;
             target = cfgPath;
-          }
-        )
-      ];
+          };
+      };
 
     environment.systemPackages =
       [ pkgs.xdg_utils
