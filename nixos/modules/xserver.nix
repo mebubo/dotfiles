@@ -62,6 +62,9 @@ in
         xorg.xprop
         xorg.xrandr
         xorg.xset
+        xorg.xev
+        xorg.xrdb
+        xorg.xorgserver
       ];
 
     environment.pathsToLink = [ "/etc/xdg" "/share/xdg" "/share/applications" "/share/icons" "/share/pixmaps" ];
