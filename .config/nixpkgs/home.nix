@@ -131,6 +131,10 @@ in
         };
       };
     };
+    broot = {
+      enable = true;
+      enableBashIntegration = true;
+    };
   };
 
   home.file = {
