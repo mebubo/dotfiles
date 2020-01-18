@@ -122,6 +122,14 @@ in
         };
       };
     };
+    alacritty = {
+      enable = true;
+      settings = {
+        font = {
+          size = 9;
+        };
+      };
+    };
   };
 
   home.file = {
