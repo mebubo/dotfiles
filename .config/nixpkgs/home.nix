@@ -4,6 +4,14 @@ let
 
   home-manager-snapshot = import ./home-manager-snapshot.nix pkgs;
 
+  linuxDesktopPkgs = with pkgs; [
+    dmenu
+    i3
+    i3status
+    i3lock
+    pavucontrol
+  ];
+
 in
 
 {
@@ -13,8 +21,9 @@ in
     alacritty
     bat
     cage
+    ctags
     curl
-    dmenu
+    diskus
     exa
     fd
     feh
@@ -23,25 +32,29 @@ in
     gnupg
     google-chrome
     grim
+    hexyl
     htop
-    i3
-    i3status
-    i3lock
+    jetbrains.idea-community
     jq
     libinput
+    manpages
     miniserve
     moreutils
     mpv
     nix-prefetch-github
+    nodejs
+    openjdk
     p7zip
-    pavucontrol
+    pastel
+    pciutils
     pstree
     pwgen
     python3
     ripgrep
     rsync
-    sqlite
+    sbt
     slurp
+    sqlite
     st
     tmux
     tre
@@ -49,10 +62,12 @@ in
     unzip
     usbutils
     v4l_utils
+    vscode
     wget
     youtube-dl
     zip
-  ]) ++ (with pkgs.haskellPackages; [
+  ])
+  ++ (with pkgs.haskellPackages; [
     cabal-install
     cabal2nix
     fast-tags
@@ -62,7 +77,9 @@ in
     hpack
     nix-derivation
     nix-diff
-  ]);
+  ])
+  ++ linuxDesktopPkgs
+  ;
 
   programs = {
     home-manager = {
