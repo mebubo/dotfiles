@@ -106,6 +106,7 @@ in
       sessionVariables = {
         EDITOR = "vim";
         NIX_PATH = "nixpkgs=$HOME/src/NixOS/nixpkgs";
+        JAVA_HOME = pkgs.jdk;
       };
       initExtra = with builtins; concatStringsSep "\n" (map readFile [ ../../.bashrc ../../external/z/z.sh ]);
     };
