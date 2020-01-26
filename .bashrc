@@ -48,7 +48,7 @@ function copy_terminfo {
 
 function nx-haskell {
   pkgs=${@}
-  nix-shell -I nixpkgs=$HOME/src/NixOS/nixpkgs -p "h.ghcWithPackages (pkgs: with pkgs; [$pkgs])"
+  nix-shell -I nixpkgs=$HOME/src/NixOS/nixpkgs -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [$pkgs])"
 }
 
 function nx-hash {
