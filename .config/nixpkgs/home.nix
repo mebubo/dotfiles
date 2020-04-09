@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
 
@@ -6,11 +6,22 @@ let
 
   linuxDesktopPkgs = with pkgs; [
     dmenu
+    google-chrome
     i3
-    i3status
     i3lock
+    i3status
     pavucontrol
   ];
+
+  chromeos-scale = pkgs.writeShellScriptBin "chromeos-scale" ''
+    sommelier -X --dpi=160 --scale=1.3 "$@";
+  '';
+
+  chromeOSWrappers = {
+    inherit chromeos-scale;
+    idea-community-chromeos = pkgs.writeShellScriptBin "idea-community-chromeos" ''${chromeos-scale}/bin/chromeos-scale ${pkgs.jetbrains.idea-community}/bin/idea-community "$@"'';
+    code-chromeos = pkgs.writeShellScriptBin "code-chromeos" ''${chromeos-scale}/bin/chromeos-scale ${pkgs.vscode}/bin/code -w "$@"'';
+  };
 
 in
 
@@ -18,19 +29,20 @@ in
 
   home.packages = (with pkgs; [
     ag
-    alacritty
     bat
     cage
     ctags
     curl
+    dhall
+    dhall-json
     diskus
     exa
     fd
     feh
     file
+    fzf
     git
     gnupg
-    google-chrome
     grim
     hexyl
     htop
@@ -41,6 +53,8 @@ in
     miniserve
     moreutils
     mpv
+    niv
+    nix-prefetch-git
     nix-prefetch-github
     nodejs
     openjdk
@@ -48,12 +62,14 @@ in
     pastel
     pciutils
     pstree
+    purescript-pinned
     pwgen
     python3
     ripgrep
     rsync
     sbt
     slurp
+    spago
     sqlite
     st
     tmux
@@ -79,6 +95,7 @@ in
     nix-diff
   ])
   ++ linuxDesktopPkgs
+  # ++ (lib.attrValues chromeOSWrappers)
   ;
 
   programs = {
@@ -106,6 +123,7 @@ in
         ack-vim
         # auto-pairs
         ctrlp-vim
+        fzf-vim
         nerdtree
         psc-ide-vim
         purescript-vim
@@ -115,8 +133,14 @@ in
         vim-nix
         vim-scala
         vim-sneak
+        dhall-vim
       ];
       extraConfig = builtins.readFile ../../.vimrc;
+    };
+    emacs = {
+      enable = true;
+      package = pkgs.emacs-nox;
+      extraPackages = epkgs: with epkgs; [ org-roam ];
     };
     bash = {
       enable = true;
