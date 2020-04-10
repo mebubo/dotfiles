@@ -192,4 +192,6 @@ in
     "youtube-dl/config".source = ../../.config/youtube-dl/config;
     "mpv/mpv.conf".source = ../../.config/mpv/mpv.conf;
   };
+
+  targets.genericLinux.enable = false;
 }
