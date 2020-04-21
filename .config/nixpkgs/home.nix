@@ -138,7 +138,7 @@ in
       extraConfig = builtins.readFile ../../.vimrc;
     };
     emacs = {
-      enable = true;
+      enable = false;
       package = pkgs.emacs-nox;
       extraPackages = epkgs: with epkgs; [ org-roam ];
     };
