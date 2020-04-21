@@ -46,4 +46,6 @@ in
       vaapiVdpau
     ];
   };
+
+  security.allowSimultaneousMultithreading = false;
 }
