@@ -31,6 +31,8 @@
     };
     kernelPackages = pkgs.linuxPackages_latest;
     cleanTmpDir = true;
+
+    binfmt.emulatedSystems = [ "aarch64-linux" ];
   };
 
   time.timeZone = "Europe/Paris";
