@@ -56,9 +56,10 @@ in
     niv
     nix-prefetch-git
     nix-prefetch-github
+    nixos-generators
     nodejs
     openjdk
-    p7zip
+    # p7zip
     pastel
     pciutils
     pstree
