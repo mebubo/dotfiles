@@ -79,7 +79,7 @@
     java.enable = true;
     sway = {
       enable = true;
-      extraPackages = with pkgs; [ xwayland swayidle swaylock i3status grim slurp ];
+      extraPackages = with pkgs; [ xwayland swayidle swaylock i3status grim slurp wayvnc ];
       extraSessionCommands = ''
         export _JAVA_AWT_WM_NONREPARENTING=1
         export MOZ_ENABLE_WAYLAND=1
