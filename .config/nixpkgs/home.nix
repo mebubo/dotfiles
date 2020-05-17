@@ -5,12 +5,14 @@ let
   home-manager-snapshot = import ./home-manager-snapshot.nix pkgs;
 
   linuxDesktopPkgs = with pkgs; [
+    cage
     dmenu
     google-chrome
     i3
     i3lock
     i3status
     pavucontrol
+    wlr-randr
   ];
 
   chromeos-scale = pkgs.writeShellScriptBin "chromeos-scale" ''
@@ -30,10 +32,9 @@ in
   home.packages = (with pkgs; [
     ag
     bat
-    cage
     ctags
     curl
-    dhall
+    # dhall
     dhall-json
     diskus
     exa
@@ -87,6 +88,7 @@ in
   ++ (with pkgs.haskellPackages; [
     cabal-install
     cabal2nix
+    (pkgs.haskell.lib.dontCheck  dhall_1_32_0)
     fast-tags
     ghc
     ghcid
