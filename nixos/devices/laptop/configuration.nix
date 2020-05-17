@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -152,8 +152,6 @@
 
     fstrim.enable = true;
 
-    nscd.enable = false;
-
     postgresql = {
       enable = false;
       extraPlugins = [ pkgs.postgis ];
@@ -171,6 +169,9 @@
       enable = false;
     };
   };
+
+  services.nscd.enable = false;
+  system.nssModules = lib.mkForce [];
 
   users = {
     users.me = {
