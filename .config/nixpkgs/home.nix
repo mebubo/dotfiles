@@ -32,10 +32,11 @@ in
   home.packages = (with pkgs; [
     ag
     bat
+    coursier
     ctags
     curl
     # dhall
-    dhall-json
+    # dhall-json
     diskus
     exa
     fd
@@ -51,7 +52,7 @@ in
     jq
     libinput
     manpages
-    miniserve
+    # miniserve
     moreutils
     mpv
     niv
@@ -75,7 +76,7 @@ in
     sqlite
     st
     tmux
-    tre
+    # tre
     tree
     unzip
     usbutils
@@ -88,7 +89,6 @@ in
   ++ (with pkgs.haskellPackages; [
     cabal-install
     cabal2nix
-    (pkgs.haskell.lib.dontCheck  dhall_1_32_0)
     fast-tags
     ghc
     ghcid
@@ -96,7 +96,17 @@ in
     hpack
     nix-derivation
     nix-diff
-  ])
+  ]) ++ (
+    with pkgs.haskellPackages;
+    with pkgs.haskell.lib;
+    let
+      dhall = dhall_1_32_0;
+      dhall-json = dhall-json_1_6_4.override { inherit dhall; };
+      dhall-lsp-server = pkgs.haskellPackages.dhall-lsp-server.override { inherit dhall dhall-json; };
+    in
+
+    map justStaticExecutables [ dhall dhall-json dhall-lsp-server ]
+  )
   ++ linuxDesktopPkgs
   # ++ (lib.attrValues chromeOSWrappers)
   ;
@@ -178,6 +188,10 @@ in
     broot = {
       enable = true;
       enableBashIntegration = true;
+    };
+    fzf = {
+      enable = true;
+      enableBashIntegration = false;
     };
   };
 
