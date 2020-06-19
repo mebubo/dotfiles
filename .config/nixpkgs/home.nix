@@ -105,7 +105,7 @@ in
       dhall-lsp-server = pkgs.haskellPackages.dhall-lsp-server.override { inherit dhall dhall-json; };
     in
 
-    map justStaticExecutables [ dhall dhall-json dhall-lsp-server ]
+    [ dhall dhall-json dhall-lsp-server ]
   )
   ++ linuxDesktopPkgs
   # ++ (lib.attrValues chromeOSWrappers)
