@@ -15,6 +15,10 @@ let
     wlr-randr
   ];
 
+  ghcide-nix = pkgs.writeShellScriptBin "ghcide-nix" ''
+    nix-shell --run "ghcide --lsp"
+  '';
+
   chromeos-scale = pkgs.writeShellScriptBin "chromeos-scale" ''
     sommelier -X --dpi=160 --scale=1.3 "$@";
   '';
@@ -45,6 +49,7 @@ in
     fzf
     git
     gnupg
+    ghcide-nix
     grim
     hexyl
     htop
@@ -86,12 +91,14 @@ in
     youtube-dl
     zip
   ])
+  ++ (with pkgs; [ gcc gnumake binutils ])
   ++ (with pkgs.haskellPackages; [
     cabal-install
     cabal2nix
     fast-tags
     ghc
     ghcid
+    ghcide
     hasktags
     hpack
     nix-derivation
@@ -100,12 +107,12 @@ in
     with pkgs.haskellPackages;
     with pkgs.haskell.lib;
     let
-      dhall = dhall_1_32_0;
-      dhall-json = dhall-json_1_6_4.override { inherit dhall; };
-      dhall-lsp-server = pkgs.haskellPackages.dhall-lsp-server.override { inherit dhall dhall-json; };
+      dhall = dhall_1_33_0;
+      dhall-json = dhall-json_1_7_0.override { inherit dhall; };
+      dhall-lsp-server = pkgs.haskellPackages.dhall-lsp-server_1_0_8.override { inherit dhall dhall-json; };
     in
 
-    [ dhall dhall-json dhall-lsp-server ]
+    [ dhall dhall-json ]
   )
   ++ linuxDesktopPkgs
   # ++ (lib.attrValues chromeOSWrappers)

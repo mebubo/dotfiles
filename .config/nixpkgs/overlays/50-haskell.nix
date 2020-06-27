@@ -3,8 +3,8 @@ self: super:
 {
   haskellPackages = super.haskellPackages.override {
     overrides = slf: sup: {
-      dhall = slf.dhall_1_32_0;
-      dhall-json = slf.dhall-json_1_6_4;
+      # dhall = slf.dhall_1_33_0;
+      # dhall-json = slf.dhall-json_1_7_0;
     };
   };
   haskell = super.haskell // {
