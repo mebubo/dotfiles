@@ -8,7 +8,7 @@
     "extensions.autoUpdate": false,
     "files.autoSave": "onFocusChange",
     "files.trimTrailingWhitespace": true,
-    "purescript.addNpmPath": true,
+    "purescript.addNpmPath": false,
     "purescript.addSpagoSources": true,
     "purescript.buildCommand": "spago build --purs-args --json-errors",
     "purescript.trace.server": "messages",
@@ -28,5 +28,7 @@
     "workbench.editor.showTabs": false,
     "workbench.editor.tabCloseButton": "off",
     "workbench.tree.indent": 16,
-    "typescript.updateImportsOnFileMove.enabled": "always"
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "hic.executablePath": "ghcide-nix",
+    "hic.arguments": "",
 }
