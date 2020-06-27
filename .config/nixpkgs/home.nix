@@ -107,7 +107,7 @@ in
     with pkgs.haskellPackages;
     with pkgs.haskell.lib;
     let
-      dhall = dhall_1_33_0;
+      dhall = dontCheck dhall_1_33_0;
       dhall-json = dhall-json_1_7_0.override { inherit dhall; };
       dhall-lsp-server = pkgs.haskellPackages.dhall-lsp-server_1_0_8.override { inherit dhall dhall-json; };
     in
