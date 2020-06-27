@@ -28,5 +28,7 @@
 	smtpuser = dolgovs@gmail.com
 [push]
 	default = simple
+[pull]
+	ff = only
 [core]
 	quotepath = false
