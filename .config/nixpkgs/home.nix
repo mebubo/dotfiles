@@ -37,7 +37,7 @@ let
     fetchSubmodules = false;
   };
 
-  cabal-sources-tags = pkgs.callPackage "${haskell-sources-tags-nix}/cabal-sources-tags.nix" {};
+  cabal-sources-tags = pkgs.callPackage (haskell-sources-tags-nix + "/cabal-sources-tags.nix") {};
 
 in
 
