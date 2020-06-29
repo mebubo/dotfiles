@@ -29,6 +29,16 @@ let
     code-chromeos = pkgs.writeShellScriptBin "code-chromeos" ''${chromeos-scale}/bin/chromeos-scale ${pkgs.vscode}/bin/code -w "$@"'';
   };
 
+  haskell-sources-tags-nix = pkgs.fetchFromGitHub {
+    owner = "mebubo";
+    repo = "haskell-sources-tags-nix";
+    rev = "9fdbfdc55de30933a209392d0fb320b2591b9d86";
+    sha256 = "12bmw3gisn9fbi89lbhph52k8zab2jfly774frm0ql48h7lmaqcz";
+    fetchSubmodules = false;
+  };
+
+  cabal-sources-tags = pkgs.callPackage "${haskell-sources-tags-nix}/cabal-sources-tags.nix" {};
+
 in
 
 {
@@ -36,6 +46,7 @@ in
   home.packages = (with pkgs; [
     ag
     bat
+    cabal-sources-tags
     coursier
     ctags
     curl
