@@ -118,9 +118,10 @@ in
     with pkgs.haskellPackages;
     with pkgs.haskell.lib;
     let
-      dhall = dontCheck dhall_1_33_0;
+      repline = repline_0_4_0_0.override { haskeline = haskeline_0_8_0_0; };
+      dhall = dontCheck (dhall_1_33_1.override { inherit repline; });
       dhall-json = dhall-json_1_7_0.override { inherit dhall; };
-      dhall-lsp-server = pkgs.haskellPackages.dhall-lsp-server_1_0_8.override { inherit dhall dhall-json; };
+      dhall-lsp-server = dhall-lsp-server_1_0_8.override { inherit dhall dhall-json; };
     in
 
     [ dhall dhall-json ]
