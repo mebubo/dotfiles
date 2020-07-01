@@ -2,7 +2,7 @@
 
 let
 
-  home-manager-snapshot = import ./home-manager-snapshot.nix pkgs;
+  home-manager-snapshot = import ./home-manager-snapshot.nix;
 
   linuxDesktopPkgs = with pkgs; [
     cage
@@ -230,4 +230,14 @@ in
   };
 
   targets.genericLinux.enable = false;
+
+  nixpkgs.overlays = [
+    (import ./overlays/50-haskell.nix)
+    (import ./overlays/50-home-manager.nix)
+    (import ./overlays/50-purescript)
+    (import ./overlays/50-st)
+    (import ./overlays/50-vim-plugins.nix)
+  ];
+
+  nixpkgs.config.allowUnfree = true;
 }

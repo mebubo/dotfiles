@@ -7,6 +7,7 @@
       ./hardware-configuration-custom.nix
       ./wireless.nix
       ../../modules/xserver.nix
+      ./home-manager.nix
     ];
 
   boot = {
