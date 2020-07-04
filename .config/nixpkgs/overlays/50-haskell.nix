@@ -2,9 +2,16 @@ self: super:
 
 {
   haskellPackages = super.haskellPackages.override {
-    overrides = slf: sup: {
-      # dhall = slf.dhall_1_33_0;
-      # dhall-json = slf.dhall-json_1_7_0;
+    overrides = slf: sup:
+    let
+      repline = slf.repline_0_4_0_0.override { haskeline = slf.haskeline_0_8_0_0; };
+      dhall-default = sup.dhall;
+    in
+    {
+      dhall = self.haskell.lib.dontCheck (slf.dhall_1_33_1.override { inherit repline; });
+      dhall-json = slf.dhall-json_1_7_0;
+      dhall-lsp-server = slf.dhall-lsp-server_1_0_8;
+      spago = sup.spago.override { dhall = dhall-default; };
     };
   };
   haskell = super.haskell // {
