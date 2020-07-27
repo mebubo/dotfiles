@@ -8,6 +8,8 @@ self: super:
       dhall-default = sup.dhall;
     in
     {
+      haskeline_0_8_0_0 = self.haskell.lib.dontCheck sup.haskeline_0_8_0_0;
+      dhall-default = sup.dhall;
       dhall = self.haskell.lib.dontCheck (slf.dhall_1_33_1.override { inherit repline; });
       dhall-json = slf.dhall-json_1_7_0;
       dhall-lsp-server = slf.dhall-lsp-server_1_0_8;
