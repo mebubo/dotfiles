@@ -6,6 +6,7 @@ let
 
   linuxDesktopPkgs = with pkgs; [
     cage
+    chromium
     dmenu
     google-chrome
     i3
@@ -237,6 +238,11 @@ in
     (import ./overlays/50-purescript)
     (import ./overlays/50-st)
     (import ./overlays/50-vim-plugins.nix)
+    (self: super: {
+      chromium = super.chromium.override {
+        enableVaapi = true;
+      };
+    })
   ];
 
   nixpkgs.config.allowUnfree = true;
