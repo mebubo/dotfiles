@@ -75,8 +75,11 @@ let mapleader = ","
 noremap ,, ,
 
 nmap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
-nnoremap <leader>f :CtrlP<CR>
-nnoremap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>f :Tags<CR>
+nnoremap <leader>r :Tags '<c-r><c-w><CR>
+" nnoremap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <c-p> :Files<CR>
 nnoremap <leader>m :CtrlPMixed<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>t :NERDTreeToggle<CR>
@@ -112,8 +115,9 @@ nnoremap <Leader>a :Ack!<Space>
 
 set tags+=dependencies/tags
 
-nnoremap <c-]> :CtrlPtjump<cr>
-vnoremap <c-]> :CtrlPtjumpVisual<cr>
+" nnoremap <c-]> :CtrlPtjump<cr>
+" vnoremap <c-]> :CtrlPtjumpVisual<cr>
+nnoremap <c-]> :Tags '<c-r><c-w><cr>
 
 let g:ctrlp_tjump_shortener = ['^\(dependencies/\|/nix/store/.*-haskell-sources-tags/\)', '.../']
 let g:ctrlp_tjump_only_silent = 1

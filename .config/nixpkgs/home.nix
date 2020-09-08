@@ -81,6 +81,7 @@ in
     # p7zip
     pastel
     pciutils
+    perl
     pstree
     purescript-pinned
     pwgen
@@ -155,12 +156,12 @@ in
 
         ack-vim
         # auto-pairs
-        ctrlp-vim
+        # ctrlp-vim
         fzf-vim
         nerdtree
         psc-ide-vim
         purescript-vim
-        vim-ctrlp-tjump
+        # vim-ctrlp-tjump
         vim-grepper
         vim-indent-object
         vim-nix
