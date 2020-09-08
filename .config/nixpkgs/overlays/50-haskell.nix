@@ -4,15 +4,15 @@ self: super:
   haskellPackages = super.haskellPackages.override {
     overrides = slf: sup:
     let
-      repline = slf.repline_0_4_0_0.override { haskeline = slf.haskeline_0_8_0_0; };
+      repline = slf.repline_0_4_0_0.override { haskeline = slf.haskeline_0_8_1_0; };
       dhall-default = sup.dhall;
     in
     {
-      haskeline_0_8_0_0 = self.haskell.lib.dontCheck sup.haskeline_0_8_0_0;
+      haskeline_0_8_1_0 = self.haskell.lib.dontCheck sup.haskeline_0_8_1_0;
       dhall-default = sup.dhall;
-      dhall = self.haskell.lib.dontCheck (slf.dhall_1_33_1.override { inherit repline; });
-      dhall-json = slf.dhall-json_1_7_0;
-      dhall-lsp-server = slf.dhall-lsp-server_1_0_8;
+      dhall = self.haskell.lib.dontCheck (slf.dhall_1_34_0.override { inherit repline; });
+      dhall-json = self.haskell.lib.doJailbreak slf.dhall-json_1_7_1;
+      dhall-lsp-server = slf.dhall-lsp-server_1_0_9;
       spago = sup.spago.override { dhall = dhall-default; };
     };
   };
