@@ -145,10 +145,10 @@
 
     tlp = {
       enable = true;
-      extraConfig = ''
-        START_CHARGE_THRESH_BAT0=91
-        STOP_CHARGE_THRESH_BAT0=96
-      '';
+      settings = {
+        START_CHARGE_THRESH_BAT0 = 91;
+        STOP_CHARGE_THRESH_BAT0 = 96;
+      };
     };
 
     fstrim.enable = true;
