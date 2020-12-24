@@ -201,8 +201,8 @@
         firefox-wayland
         jetbrains.idea-community
         sbt
-        x11docker
-        xpra
+        # x11docker
+        # xpra
       ];
     };
 
