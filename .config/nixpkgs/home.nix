@@ -137,8 +137,9 @@ in
       enable = true;
       path = "${home-manager-snapshot}";
     };
-    vim = {
+    neovim = {
       enable = true;
+      vimAlias = true;
       plugins = with pkgs.vimPlugins; [
         vim-sensible
         vim-commentary
@@ -168,6 +169,8 @@ in
         vim-scala
         vim-sneak
         dhall-vim
+
+        nvim-lspconfig
       ];
       extraConfig = builtins.readFile ../../.vimrc;
     };
@@ -239,6 +242,7 @@ in
     (import ./overlays/50-purescript)
     (import ./overlays/50-st)
     (import ./overlays/50-vim-plugins.nix)
+    (import ./overlays/50-neovim.nix)
     (self: super: {
       chromium = super.chromium.override {
         enableVaapi = true;
