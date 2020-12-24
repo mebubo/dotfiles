@@ -224,6 +224,13 @@
     groups.wireless = {};
   };
 
+  virtualisation = {
+    podman = {
+      enable = true;
+      dockerCompat = true;
+    };
+  };
+
   security.hideProcessInformation = false;
 
   nix = {
