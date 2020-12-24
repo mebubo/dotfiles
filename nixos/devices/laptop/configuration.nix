@@ -34,7 +34,13 @@
     cleanTmpDir = true;
 
     binfmt.emulatedSystems = [ "aarch64-linux" ];
+
+    extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
+    extraModprobeConfig = ''options v4l2loopback exclusive_caps=1 video_nr=10 card_label=MyCamera'';
+    kernelModules = [ "v4l2loopback" ];
+
   };
+
 
   time.timeZone = "Europe/Paris";
 
