@@ -119,12 +119,12 @@ in
   ]) ++ (
     with pkgs.haskellPackages;
     with pkgs.haskell.lib;
-    let
-      repline = repline_0_4_0_0.override { haskeline = haskeline_0_8_1_0; };
-      dhall = dontCheck (dhall_1_34_0.override { inherit repline; });
-      dhall-json = doJailbreak (dhall-json_1_7_1.override { inherit dhall; });
-      dhall-lsp-server = dhall-lsp-server_1_0_9.override { inherit dhall dhall-json; };
-    in
+    # let
+    #   repline = repline_0_4_0_0.override { haskeline = haskeline_0_8_1_0; };
+    #   dhall = dontCheck (dhall_1_36_0.override { inherit repline; });
+    #   dhall-json = doJailbreak (dhall-json_1_7_3.override { inherit dhall; });
+    #   dhall-lsp-server = dhall-lsp-server_1_0_11.override { inherit dhall dhall-json; };
+    # in
 
     [ dhall dhall-json ]
   )
