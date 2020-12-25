@@ -189,7 +189,7 @@ in
       initExtra = with builtins; concatStringsSep "\n" (map readFile [ ../../.bashrc ../../external/z/z.sh ]);
     };
     firefox = {
-      enable = true;
+      enable = false;
       package = pkgs.firefox-wayland;
       profiles = {
         me = {
