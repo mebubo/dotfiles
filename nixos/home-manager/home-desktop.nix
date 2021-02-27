@@ -12,6 +12,8 @@
     i3status
     pavucontrol
     wlr-randr
+    jetbrains.idea-community
+    vscode
   ];
 
   programs = {

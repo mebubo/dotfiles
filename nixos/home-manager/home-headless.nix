@@ -43,7 +43,6 @@ in
     grim
     hexyl
     htop
-    jetbrains.idea-community
     jq
     libinput
     manpages
@@ -77,7 +76,6 @@ in
     unzip
     usbutils
     v4l_utils
-    vscode
     wget
     youtube-dl
     zip
