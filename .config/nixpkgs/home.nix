@@ -125,8 +125,7 @@ in
     #   dhall-json = doJailbreak (dhall-json_1_7_3.override { inherit dhall; });
     #   dhall-lsp-server = dhall-lsp-server_1_0_11.override { inherit dhall dhall-json; };
     # in
-
-    [ dhall dhall-json ]
+    [ dhall dhall-json dhall-lsp-server ]
   )
   ++ linuxDesktopPkgs
   # ++ (lib.attrValues chromeOSWrappers)
