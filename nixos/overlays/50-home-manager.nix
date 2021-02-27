@@ -2,7 +2,7 @@ self: super:
 
 let
 
-  home-manager-snapshot = import ../home-manager-snapshot.nix;
+  home-manager-snapshot = import ../home-manager/home-manager-snapshot.nix;
 
 in
 
