@@ -182,7 +182,8 @@ in
       enable = true;
       sessionVariables = {
         EDITOR = "vim";
-        NIX_PATH = "nixpkgs=$HOME/src/NixOS/nixpkgs";
+        NIX_PATH = "nixpkgs=$HOME/src/NixOS/nixpkgs:nixpkgs-overlays=$HOME/src/me/dotfiles/nixos/overlays";
+        HOME_MANAGER_CONFIG = "$HOME/src/me/dotfiles/home-manager/home.nix";
         JAVA_HOME = pkgs.jdk;
       };
       initExtra = with builtins; concatStringsSep "\n" (map readFile [ ../../.bashrc ../../external/z/z.sh ]);
@@ -240,12 +241,12 @@ in
   targets.genericLinux.enable = false;
 
   nixpkgs.overlays = [
-    (import ./overlays/50-haskell.nix)
-    (import ./overlays/50-home-manager.nix)
-    (import ./overlays/50-purescript)
-    (import ./overlays/50-st)
-    (import ./overlays/50-vim-plugins.nix)
-    (import ./overlays/50-neovim.nix)
+    (import ../overlays/50-haskell.nix)
+    (import ../overlays/50-home-manager.nix)
+    (import ../overlays/50-purescript)
+    (import ../overlays/50-st)
+    (import ../overlays/50-vim-plugins.nix)
+    (import ../overlays/50-neovim.nix)
     (self: super: {
       chromium = super.chromium.override {
         enableVaapi = true;

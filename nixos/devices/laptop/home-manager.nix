@@ -2,7 +2,7 @@
 
 let
 
-  home-manager-shapshot = import ../../../.config/nixpkgs/home-manager-snapshot.nix;
+  home-manager-shapshot = import ../../home-manager/home-manager-snapshot.nix;
 
 in
 
@@ -11,8 +11,8 @@ in
 
   home-manager = {
     # useGlobalPkgs = true;
-    users.me = import ../../../.config/nixpkgs/home.nix;
-    users.dev = import ../../../.config/nixpkgs/home.nix;
-    users.dev2 = import ../../../.config/nixpkgs/home.nix;
+    users.me = import ../../home-manager/home.nix;
+    users.dev = import ../../home-manager/home.nix;
+    users.dev2 = import ../../home-manager/home.nix;
   };
 }
