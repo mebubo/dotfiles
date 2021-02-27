@@ -68,6 +68,7 @@
       i3status
       dmenu
       manpages
+      gnome3.adwaita-icon-theme
     ];
 
     etc."resolv.conf".text = "nameserver 8.8.8.8";
@@ -230,8 +231,6 @@
       dockerCompat = true;
     };
   };
-
-  security.hideProcessInformation = false;
 
   nix = {
     extraOptions = ''
