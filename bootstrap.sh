@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
-DOTFILES=$(dirname $BASH_SOURCE)
+DOTFILES=$(dirname "$0")
 
 $DOTFILES/install-nix-2.3.10.sh --no-daemon
 
