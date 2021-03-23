@@ -6,13 +6,12 @@
     cage
     chromium
     dmenu
-    google-chrome
     i3
     i3lock
     i3status
     pavucontrol
     wlr-randr
-    jetbrains.idea-community
+    # jetbrains.idea-community
     vscode
   ];
 

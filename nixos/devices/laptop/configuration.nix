@@ -197,13 +197,6 @@
       isNormalUser = true;
       uid = 1002;
       packages = with pkgs; [
-        alacritty
-        cage
-        firefox-wayland
-        jetbrains.idea-community
-        sbt
-        # x11docker
-        # xpra
       ];
     };
 
@@ -211,14 +204,6 @@
       isNormalUser = true;
       uid = 1003;
       packages = with pkgs; [
-        alacritty
-        firefox
-        google-chrome
-        nodejs
-        vscode
-        i3
-        i3lock
-        i3status
       ];
     };
 
