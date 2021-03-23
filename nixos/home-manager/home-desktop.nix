@@ -56,7 +56,10 @@
   nixpkgs.overlays = [
     (self: super: {
       chromium = super.chromium.override {
-        enableVaapi = true;
+        commandLineArgs = [
+          "--enable-features=VaapiVideoDecoder"
+          "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"
+        ];
       };
     })
   ];
