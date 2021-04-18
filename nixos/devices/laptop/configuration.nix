@@ -103,7 +103,10 @@
     };
     chromium = {
       enable = true;
-      extensions = [ "cjpalhdlnbpafiamejdnhcphjbkeiagm" "ogfcmafjalglgifnmanfmnieipoejdcf" ];
+      extensions = [
+        "cjpalhdlnbpafiamejdnhcphjbkeiagm"
+        # "ogfcmafjalglgifnmanfmnieipoejdcf"
+      ];
       extraOpts = {
         RestoreOnStartup = 1;
       };
