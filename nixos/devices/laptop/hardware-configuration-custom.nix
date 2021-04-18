@@ -4,7 +4,8 @@
 
   boot.initrd.availableKernelModules = [ "i915" ];
 
-  boot.kernelParams = [ ''acpi_osi="!Windows 2012"'' "i915.enable_rc6=7" ];
+  # boot.kernelParams = [ ''acpi_osi="!Windows 2012"'' "i915.enable_rc6=7" ];
+  boot.kernelParams = [ ''acpi_osi="!Windows 2012"'' ];
 
   boot.initrd.luks.devices."root" = {
     allowDiscards = true;
