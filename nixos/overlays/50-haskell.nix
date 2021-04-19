@@ -6,8 +6,11 @@ self: super:
     let
       repline = slf.repline_0_4_0_0.override { haskeline = slf.haskeline_0_8_1_0; };
       dhall-default = sup.dhall;
+      inherit (self.haskell.lib) dontCheck doJailbreak;
     in
     {
+      purescript-ast = doJailbreak sup.purescript-ast;
+      purescript-cst = dontCheck (doJailbreak sup.purescript-cst);
       # haskeline_0_8_1_0 = self.haskell.lib.dontCheck sup.haskeline_0_8_1_0;
       # dhall-default = sup.dhall;
       # dhall = self.haskell.lib.dontCheck (slf.dhall_1_36_0.override { inherit repline; });
