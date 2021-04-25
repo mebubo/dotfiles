@@ -14,10 +14,10 @@ in
 {
   networking.wireless = {
     enable = true;
-    networks = {
-      "${ssid}" = {
-        inherit psk;
-      };
+    networks = (import ./private.nix).wireless.networks;
+    userControlled = {
+      enable = true;
+      group = "wireless";
     };
   };
 

@@ -111,6 +111,7 @@
     useNetworkd = true;
     dhcpcd.enable = false;
     useDHCP = false;
+    extraHosts = (import ./private.nix).networking.extraHosts;
   };
 
   systemd = {
