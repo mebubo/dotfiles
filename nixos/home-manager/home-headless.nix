@@ -24,6 +24,8 @@ in
 
   home.packages = (with pkgs; [
     ag
+    alloy
+    tlaplus
     bat
     cabal-sources-tags
     coursier
@@ -61,6 +63,7 @@ in
     # purescript-pinned
     pwgen
     python3
+    restic
     ripgrep
     rsync
     sbt

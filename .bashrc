@@ -46,6 +46,30 @@ function copy_terminfo {
   infocmp | ssh $REMOTE_HOST tic -
 }
 
+function vnc_server {
+    local REMOTE=$1
+    ssh -f -o ClearAllForwardings=yes -L 5901:localhost:5900 $REMOTE x11vnc -scale 0.68 -display :0 -localhost -overlay
+}
+
+function vnc_client {
+    vncviewer -DotWhenNoCursor -ViewOnly localhost:1
+}
+
+function vnc_client_rw {
+    vncviewer -DotWhenNoCursor localhost:1
+}
+
+function vnc_all {
+    vnc_server $@
+    vnc_client
+}
+
+function vnc_via {
+    local REMOTE=$1
+    export VNC_VIA_CMD='/usr/bin/ssh -f -o ClearAllForwardings=yes -L "$L":"$H":"$R" "$G" x11vnc -scale 0.68 -display :0 -localhost -overlay'
+    vncviewer -via $REMOTE localhost:0
+}
+
 function nx-haskell {
   pkgs=${@}
   nix-shell -I nixpkgs=$HOME/src/NixOS/nixpkgs -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [$pkgs])"

@@ -115,7 +115,7 @@
 
   networking = {
     firewall.enable = true;
-    # firewall.allowedTCPPorts = [ 8000 ];
+    firewall.allowedTCPPorts = [ 8000 ];
     nameservers = [ "8.8.8.8" ];
     hostName = "laptop";
     useNetworkd = true;
