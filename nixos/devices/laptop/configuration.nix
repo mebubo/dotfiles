@@ -48,11 +48,7 @@
     systemPackages = with pkgs; [
       vim
       curl
-      wget
-      ripgrep
-      ag
       file
-      tree
       tmux
       htop
       git
@@ -61,12 +57,6 @@
       unzip
       zip
       moreutils
-      jq
-      ctags
-      pavucontrol
-      mpv
-      i3status
-      dmenu
       manpages
       gnome3.adwaita-icon-theme
     ];
