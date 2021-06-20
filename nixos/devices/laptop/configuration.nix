@@ -7,6 +7,8 @@
       ./hardware-configuration-custom.nix
       ./wireless.nix
       ../../modules/xserver.nix
+      ../../modules/prometheus.nix
+      ../../modules/grafana.nix
       ./home-manager.nix
     ];
 
