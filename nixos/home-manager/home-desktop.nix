@@ -13,6 +13,11 @@
     wlr-randr
     # jetbrains.idea-community
     vscode
+    (wrapOBS {
+      plugins = with obs-studio-plugins; [
+        wlrobs
+      ];
+    })
   ];
 
   programs = {
@@ -37,10 +42,10 @@
         };
       };
     };
-    obs-studio = {
-      enable = true;
-      plugins = [ pkgs.obs-wlrobs pkgs.obs-v4l2sink ];
-    };
+    # obs-studio = {
+    #   enable = true;
+    #   plugins = [ pkgs.obs-wlrobs pkgs.obs-v4l2sink ];
+    # };
   };
 
   xdg.configFile = {
