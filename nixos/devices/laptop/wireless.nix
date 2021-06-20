@@ -14,6 +14,7 @@ in
 {
   networking.wireless = {
     enable = true;
+    interfaces = [ "wlp3s0" ];
     networks = (import ./private.nix).wireless.networks;
     userControlled = {
       enable = true;
