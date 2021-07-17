@@ -1,10 +1,12 @@
-#!/bin/sh
+#!/bin/bash
 
 DOTFILES=$(dirname "$0")
 
-$DOTFILES/install-nix-2.3.10.sh --no-daemon
+$DOTFILES/install-nix-2.3.14.sh --no-daemon
 
 set -x
+
+export USER=${USER:-codespace}
 
 . $HOME/.nix-profile/etc/profile.d/nix.sh
 
