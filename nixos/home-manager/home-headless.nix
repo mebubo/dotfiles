@@ -42,6 +42,9 @@ in
     ghcide-nix
     grim
     hexyl
+    hledger
+    hledger-ui
+    hledger-web
     htop
     jq
     libinput
@@ -53,6 +56,7 @@ in
     nix-prefetch-git
     nix-prefetch-github
     nixos-generators
+    nixos-shell
     nodejs
     openjdk
     # p7zip
