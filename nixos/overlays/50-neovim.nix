@@ -1,13 +1,13 @@
 self: super: {
 
   neovim-unwrapped = super.neovim-unwrapped.overrideAttrs (oldAttrs: rec {
-	name = "neovim-nightly";
-	version = "0.5-nightly-2021-06-20";
+	name = "neovim";
+	version = "0.5.0";
 	src = self.fetchFromGitHub {
 	  owner = "neovim";
 	  repo = "neovim";
-	  rev = "997a9c879215bc01a928de3e762955878314ec6a";
-	  sha256 = "1jli9z1yycmzmfpzj7f3yw61ddsral8nnnffrljzzyjn817ix79n";
+	  rev = "v0.5.0";
+	  sha256 = "0lgbf90sbachdag1zm9pmnlbn35964l3khs27qy4462qzpqyi9fi";
 	};
 
 	buildInputs = oldAttrs.buildInputs ++ [ self.tree-sitter ];
