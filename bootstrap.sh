@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOTFILES=$(dirname "$0")
+DOTFILES=$(dirname $(readlink -f $0))
 
 $DOTFILES/install-nix-2.3.14.sh --no-daemon
 
