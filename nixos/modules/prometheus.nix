@@ -7,6 +7,7 @@
     exporters = {
       node = {
         enable = true;
+        disabledCollectors = [ "rapl" ];
         listenAddress = "localhost";
       };
     };
