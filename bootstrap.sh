@@ -1,12 +1,12 @@
 #!/bin/bash
 
-DOTFILES=$(dirname $(readlink -f $0))
-
-$DOTFILES/install-nix-2.3.14.sh --no-daemon
-
 set -x
 
+DOTFILES=$(dirname $(readlink -f $0))
+
 export USER=${USER:-codespace}
+
+$DOTFILES/install-nix-2.3.14.sh --no-daemon
 
 . $HOME/.nix-profile/etc/profile.d/nix.sh
 
