@@ -197,7 +197,10 @@ end
 metals_config = require("metals").bare_config
 metals_config.init_options.statusBarProvider = "on"
 
-cmd [[
+vim.g.metals_disabled_mode = true
+vim.g.metals_use_global_executable = true
+
+vim.cmd [[
 augroup lsp
   au!
   au FileType scala,sbt lua require("metals").initialize_or_attach(metals_config)

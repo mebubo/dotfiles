@@ -39,6 +39,7 @@ self: super:
     i3lock
     jq
     libinput
+    metals
     miniserve
     moreutils
     mpv
