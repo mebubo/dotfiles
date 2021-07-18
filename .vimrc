@@ -193,4 +193,14 @@ local servers = { "hls", "dhall_lsp_server" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
+
+metals_config = require("metals").bare_config
+metals_config.init_options.statusBarProvider = "on"
+
+cmd [[
+augroup lsp
+  au!
+  au FileType scala,sbt lua require("metals").initialize_or_attach(metals_config)
+augroup end
+]]
 EOF

@@ -142,6 +142,7 @@ in
         dhall-vim
 
         nvim-lspconfig
+        nvim-metals
       ];
       extraConfig = builtins.readFile ../../.vimrc;
     };

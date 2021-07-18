@@ -23,5 +23,17 @@ self: super:
     	sha256 = "1hm2rhls2hn703f78z21wpq5j3s90y5k3qgzi0gq12pnd5cxz358";
       };
     };
+
+    nvim-metals = self.vimUtils.buildVimPluginFrom2Nix {
+      pname = "nvim-metals";
+      version = "2021-07-18";
+      src = self.fetchFromGitHub {
+        owner = "scalameta";
+        repo = "nvim-metals";
+        rev = "4c9ed42f7070aa25eee4241f146b1f5b5adee93d";
+        sha256 = "1jbc9pbhjfzx8h5m652dwaximqvsh934rki5dkma6lpmy9srq7b8";
+      };
+    };
+
   };
 }
