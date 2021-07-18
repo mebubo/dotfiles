@@ -136,13 +136,22 @@ in
         # vim-ctrlp-tjump
         vim-grepper
         vim-indent-object
-        vim-nix
+        # vim-nix
         vim-scala
         vim-sneak
         dhall-vim
 
         nvim-lspconfig
         nvim-metals
+        (nvim-treesitter.withPlugins (p: [
+          p.tree-sitter-nix
+          p.tree-sitter-scala
+          p.tree-sitter-lua
+          p.tree-sitter-markdown
+          p.tree-sitter-bash
+          p.tree-sitter-json
+          p.tree-sitter-yaml
+        ]))
       ];
       extraConfig = builtins.readFile ../../.vimrc;
     };

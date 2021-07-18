@@ -203,4 +203,12 @@ augroup lsp
   au FileType scala,sbt lua require("metals").initialize_or_attach(metals_config)
 augroup end
 ]]
+
+require("nvim-treesitter.configs").setup{
+  highlight={enable=true},
+  indent={enable=true},
+}
+
+-- Manually set the filetype (needed if vim-nix is not installed)
+vim.api.nvim_command("autocmd BufNewFile,BufRead *.nix setlocal filetype=nix")
 EOF
