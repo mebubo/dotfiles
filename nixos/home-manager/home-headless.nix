@@ -49,6 +49,7 @@ in
     jq
     libinput
     manpages
+    metals
     # miniserve
     moreutils
     mpv
