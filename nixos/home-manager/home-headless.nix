@@ -157,6 +157,9 @@ in
         playground
       ];
       extraConfig = builtins.readFile ../../.vimrc;
+      withNodeJs = false;
+      withPython3 = false;
+      withRuby = false;
     };
     emacs = {
       enable = false;
