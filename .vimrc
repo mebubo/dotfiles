@@ -208,8 +208,9 @@ augroup end
 ]]
 
 require("nvim-treesitter.configs").setup{
-  highlight={enable=true},
-  indent={enable=true},
+  highlight = { enable = true },
+  indent = { enable = true },
+  playground = { enable = true },
 }
 
 -- Manually set the filetype (needed if vim-nix is not installed)

@@ -153,6 +153,8 @@ in
           p.tree-sitter-json
           p.tree-sitter-yaml
         ]))
+        # treesitter playground
+        playground
       ];
       extraConfig = builtins.readFile ../../.vimrc;
     };
