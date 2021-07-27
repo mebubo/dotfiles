@@ -147,6 +147,7 @@ in
         (nvim-treesitter.withPlugins (p: [
           p.tree-sitter-nix
           p.tree-sitter-scala
+          p.tree-sitter-haskell
           p.tree-sitter-lua
           p.tree-sitter-markdown
           p.tree-sitter-bash
