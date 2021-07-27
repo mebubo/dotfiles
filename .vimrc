@@ -197,6 +197,7 @@ end
 
 metals_config = require("metals").bare_config
 metals_config.init_options.statusBarProvider = "on"
+metals_config.on_attach = on_attach
 
 vim.g.metals_disabled_mode = true
 vim.g.metals_use_global_executable = true
@@ -206,6 +207,8 @@ augroup lsp
   au!
   au FileType scala,sbt lua require("metals").initialize_or_attach(metals_config)
 augroup end
+
+set shortmess-=F
 ]]
 
 require("nvim-treesitter.configs").setup{
