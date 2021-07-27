@@ -50,6 +50,7 @@ highlight StatusLine cterm=bold guibg=#ffffff guifg=#000000
 highlight StatusLineNC cterm=NONE guibg=#666666 guifg=#000000
 highlight Search cterm=NONE guibg=#ffa7c4
 highlight QuickFixLine cterm=NONE guibg=#555555
+highlight NormalFloat cterm=NONE guibg=#333333
 
 set hlsearch
 set ignorecase
