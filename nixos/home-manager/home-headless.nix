@@ -127,20 +127,21 @@ in
         vim-abolish
         vim-obsession
 
-        ack-vim
-        # auto-pairs
-        # ctrlp-vim
         fzf-vim
         nerdtree
-        psc-ide-vim
-        purescript-vim
-        # vim-ctrlp-tjump
-        vim-grepper
+        ack-vim
         vim-indent-object
-        # vim-nix
-        vim-scala
         vim-sneak
+        # auto-pairs
+        # ctrlp-vim
+        # vim-ctrlp-tjump
+        # vim-grepper
+
         dhall-vim
+        purescript-vim
+        # psc-ide-vim
+        # vim-nix
+        # vim-scala
 
         nvim-lspconfig
         nvim-metals
@@ -156,6 +157,7 @@ in
         ]))
         # treesitter playground
         playground
+
       ];
       extraConfig = builtins.readFile ../../.vimrc;
       withNodeJs = false;
