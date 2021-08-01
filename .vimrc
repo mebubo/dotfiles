@@ -72,13 +72,7 @@ set statusline=%<%f\ %h%m%r%Y%=%-14.(%l,%c%V%)\ %P
 set cursorline
 autocmd InsertEnter,InsertLeave * set cursorline!
 
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
-autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
-autocmd FileType python setlocal shiftwidth=4 tabstop=4
-autocmd FileType sbt setlocal commentstring=//\ %s
-autocmd BufRead,BufNewFile *.sbt set filetype=scala
 autocmd BufWritePre * :%s/\s\+$//e
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 let mapleader = ","
 noremap ,, ,
