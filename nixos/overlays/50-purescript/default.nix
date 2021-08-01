@@ -1,13 +1,25 @@
+self: super:
+
 let
 
-  pkgs = import ./nixpkgs.nix {};
-
-  purescript = pkgs.haskellPackages.callPackage ./purescript.nix {
-    happy = pkgs.haskellPackages.happy_1_19_9;
-  };
+  inherit (self.haskell.lib) doJailbreak dontCheck dontHaddock unmarkBroken generateOptparseApplicativeCompletion;
 
 in
 
-  self: super: {
-    purescript-pinned = with pkgs.haskell.lib; generateOptparseApplicativeCompletion "purs" (doJailbreak (dontCheck (dontHaddock purescript)));
+  {
+
+    haskellPackages = super.haskellPackages.override {
+      overrides = slf: sup:
+        let
+          purescript-src = self.nix-gitignore.gitignoreSource [] ../../../../../purescript/purescript;
+          purescript = self.haskellPackages.callCabal2nix "purescript" purescript-src {};
+        in
+          {
+            purescript-cst = unmarkBroken (doJailbreak sup.purescript-cst);
+            purescript = doJailbreak purescript;
+          };
+    };
+
+    purescript = generateOptparseApplicativeCompletion "purs" self.haskellPackages.purescript;
+
   }
