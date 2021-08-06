@@ -4,10 +4,6 @@ let
 
   home-manager-snapshot = import ./home-manager-snapshot.nix;
 
-  ghcide-nix = pkgs.writeShellScriptBin "ghcide-nix" ''
-    nix-shell --run "ghcide --lsp"
-  '';
-
   haskell-sources-tags-nix = pkgs.fetchFromGitHub {
     owner = "mebubo";
     repo = "haskell-sources-tags-nix";
@@ -39,7 +35,6 @@ in
     fzf
     git
     gnupg
-    ghcide-nix
     grim
     hexyl
     hledger
