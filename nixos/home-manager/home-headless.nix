@@ -153,6 +153,8 @@ in
         # treesitter playground
         playground
 
+        telescope-nvim
+
       ];
       extraConfig = builtins.readFile ../../.vimrc;
       withNodeJs = false;
