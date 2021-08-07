@@ -77,19 +77,23 @@ autocmd BufWritePre * :%s/\s\+$//e
 let mapleader = ","
 noremap ,, ,
 
+imap <F3> <C-R>=strftime("%Y-%m-%d")<CR>
 nmap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
+nnoremap <leader>w :w<CR>
+nnoremap <leader>l :ls<CR>:b<space>
+
 nnoremap <leader>f :Tags<CR>
 nnoremap <leader>r :Tags '<c-r><c-w><CR>
 nnoremap <c-]> :Tags '<c-r><c-w><cr>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <c-p> :Files<CR>
-nnoremap <leader>w :w<CR>
+nnoremap <leader>h :History<CR>
+
 nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>T :NERDTreeFind<CR>
-nnoremap <leader>l :ls<CR>:b<space>
+
 nnoremap K :Ack! "\b<C-R><C-W>\b"<CR>
 nnoremap <Leader>a :Ack!<Space>
-imap <F3> <C-R>=strftime("%Y-%m-%d")<CR>
 
 let g:NERDTreeWinSize = 40
 
