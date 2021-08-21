@@ -82,15 +82,25 @@ nmap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>l :ls<CR>:b<space>
 
-nnoremap <leader>f :Tags<CR>
-nnoremap <leader>r :Tags '<c-r><c-w><CR>
-nnoremap <c-]> :Tags '<c-r><c-w><cr>
-nnoremap <leader>b :Buffers<CR>
-nnoremap <c-p> :Files<CR>
-nnoremap <leader>h :History<CR>
+nnoremap <leader>ft :Tags<CR>
+nnoremap <leader>fr :Tags '<c-r><c-w><CR>
+nnoremap <leader>fb :Buffers<CR>
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>fh :History<CR>
+" nnoremap <c-p> :Files<CR>
+nnoremap <c-]> :Tags '<c-r><c-w><CR>
 
-nnoremap <leader>t :NERDTreeToggle<CR>
-nnoremap <leader>T :NERDTreeFind<CR>
+nnoremap <leader><space> :Telescope builtin<CR>
+nnoremap <leader>tt :Telescope tags<CR>
+nnoremap <leader>tr :lua require'telescope.builtin'.tags { default_text = vim.fn.expand("<cword>") }<CR>
+nnoremap <leader>tb :Telescope buffers<CR>
+nnoremap <leader>tf :Telescope find_files follow=true<CR>
+nnoremap <leader>th :Telescope oldfiles<CR>
+nnoremap <c-p> :Telescope find_files follow=true<CR>
+" nnoremap <c-]> :lua require'telescope.builtin'.tags { default_text = vim.fn.expand("<cword>") }<CR>
+
+nnoremap <leader>nt :NERDTreeToggle<CR>
+nnoremap <leader>nT :NERDTreeFind<CR>
 
 nnoremap K :Ack! "\b<C-R><C-W>\b"<CR>
 nnoremap <Leader>a :Ack!<Space>
