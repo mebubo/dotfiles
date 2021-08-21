@@ -159,8 +159,6 @@ augroup lsp
   au!
   au FileType scala,sbt lua require("metals").initialize_or_attach(metals_config)
 augroup end
-
-set shortmess-=F
 ]]
 
 require("nvim-treesitter.configs").setup{
