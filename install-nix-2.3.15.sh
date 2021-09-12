@@ -25,17 +25,17 @@ require_util() {
 }
 
 case "$(uname -s).$(uname -m)" in
-    Linux.x86_64) system=x86_64-linux; hash=5260ea5bb30bf3a7d023869644f28fae8b510b91e50f031cf72085f229dc769f;;
-    Linux.i?86) system=i686-linux; hash=16cda1322ea63effa6f8ef018f6240240e3d8478011ce060ffba64356f758fe4;;
-    Linux.aarch64) system=aarch64-linux; hash=a3be84110647d3aeadef0f8b398c59f71aaf44250ab7ec99464e9781d77b33bb;;
-    Darwin.x86_64) system=x86_64-darwin; hash=bb99ed5a18383133ec5c63677fed5cc199dbbc1ef98d0ac312afe3a27d6380ad;;
-    Darwin.arm64) system=aarch64-darwin; hash=5078b0a1685682b7d8c44d91bd34ee6979959505641662c37c225a0b7ed7eab3;;
+    Linux.x86_64) system=x86_64-linux; hash=aae346f0ee447efa042c38e320aee0368e3c6c7fa331d76f708bbe8539f694fa;;
+    Linux.i?86) system=i686-linux; hash=eee4d487ed4f370169e329ba88f1b1e7d8db3811bc24720ddb9c13a1a1f5c8ce;;
+    Linux.aarch64) system=aarch64-linux; hash=cd0050cc1600b9911b9036f2a0c9b8c71fb22f4c7ef6916b3af60d2372b65515;;
+    Darwin.x86_64) system=x86_64-darwin; hash=2042098eeb2ef0be8a30d1c8a39c4bcfba37041415bffd0de8ea1d75fdbd0615;;
+    Darwin.arm64) system=aarch64-darwin; hash=91038ebf010d72b3d0ad7adf0aa5daf38b3ce843710396adfd5b34cf53e50aa1;;
     *) oops "sorry, there is no binary distribution of Nix for your platform";;
 esac
 
-url="https://releases.nixos.org/nix/nix-2.3.14/nix-2.3.14-$system.tar.xz"
+url="https://releases.nixos.org/nix/nix-2.3.15/nix-2.3.15-$system.tar.xz"
 
-tarball="$tmpDir/$(basename "$tmpDir/nix-2.3.14-$system.tar.xz")"
+tarball="$tmpDir/$(basename "$tmpDir/nix-2.3.15-$system.tar.xz")"
 
 require_util curl "download the binary tarball"
 require_util tar "unpack the binary tarball"
@@ -43,7 +43,7 @@ if [ "$(uname -s)" != "Darwin" ]; then
     require_util xz "unpack the binary tarball"
 fi
 
-echo "downloading Nix 2.3.14 binary tarball for $system from '$url' to '$tmpDir'..."
+echo "downloading Nix 2.3.15 binary tarball for $system from '$url' to '$tmpDir'..."
 curl -L "$url" -o "$tarball" || oops "failed to download '$url'"
 
 if command -v sha256sum > /dev/null 2>&1; then
