@@ -140,8 +140,15 @@
     };
   };
 
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  # sound.enable = true;
+  # hardware.pulseaudio.enable = true;
+
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
+    media-session.enable = true;
+  };
 
   services = {
     xserver.enable = false;
@@ -166,10 +173,6 @@
     };
 
     resolved = {
-      enable = false;
-    };
-
-    pipewire = {
       enable = false;
     };
 
