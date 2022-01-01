@@ -227,6 +227,7 @@
     extraOptions = ''
       gc-keep-outputs = true
       gc-keep-derivations = true
+      experimental-features = nix-command flakes
     '';
     useSandbox = true;
   };
