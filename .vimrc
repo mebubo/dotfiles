@@ -37,14 +37,14 @@ if (has("termguicolors"))
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-set background=dark
-highlight Visual guibg=#444444
-highlight CursorLine cterm=NONE guibg=#222222
-highlight StatusLine cterm=bold guibg=#ffffff guifg=#000000
-highlight StatusLineNC cterm=NONE guibg=#666666 guifg=#000000
-highlight Search cterm=NONE guibg=#ffa7c4
-highlight QuickFixLine cterm=NONE guibg=#555555
-highlight NormalFloat cterm=NONE guibg=#333333
+set background=light
+" highlight Visual guibg=#444444
+" highlight CursorLine cterm=NONE guibg=#222222
+" highlight StatusLine cterm=bold guibg=#ffffff guifg=#000000
+" highlight StatusLineNC cterm=NONE guibg=#666666 guifg=#000000
+" highlight Search cterm=NONE guibg=#ffa7c4
+" highlight QuickFixLine cterm=NONE guibg=#555555
+" highlight NormalFloat cterm=NONE guibg=#333333
 
 set hlsearch
 set ignorecase
