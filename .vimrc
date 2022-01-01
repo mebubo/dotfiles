@@ -72,6 +72,8 @@ set statusline=%<%f\ %h%m%r%Y%=%-14.(%l,%c%V%)\ %P
 set cursorline
 autocmd InsertEnter,InsertLeave * set cursorline!
 
+autocmd FileType sbt setlocal commentstring=//\ %s
+autocmd BufRead,BufNewFile *.sbt set filetype=scala
 autocmd BufWritePre * :%s/\s\+$//e
 
 let mapleader = ","
