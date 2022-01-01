@@ -11,8 +11,6 @@
     i3status
     pavucontrol
     wlr-randr
-    # jetbrains.idea-community
-    vscode
     (wrapOBS {
       plugins = with obs-studio-plugins; [
         wlrobs

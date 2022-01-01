@@ -22,7 +22,6 @@ in
     ag
     alloy
     tlaplus
-    bat
     cabal-sources-tags
     coursier
     ctags
@@ -122,6 +121,8 @@ in
         vim-abolish
         vim-obsession
 
+        base16-vim
+
         fzf-vim
         nerdtree
         ack-vim
@@ -144,7 +145,11 @@ in
           p.tree-sitter-nix
           p.tree-sitter-scala
           p.tree-sitter-haskell
+          p.tree-sitter-rust
           p.tree-sitter-lua
+          p.tree-sitter-java
+          p.tree-sitter-javascript
+          p.tree-sitter-typescript
           p.tree-sitter-markdown
           p.tree-sitter-bash
           p.tree-sitter-json
@@ -184,6 +189,18 @@ in
       enable = true;
       enableBashIntegration = false;
     };
+    mcfly = {
+      enable = false;
+      enableBashIntegration = true;
+      enableFishIntegration = false;
+      enableZshIntegration = false;
+    };
+    bat = {
+      enable = true;
+      config = {
+        theme = "Solarized (light)";
+      };
+    };
   };
 
   home.file = {
@@ -201,7 +218,7 @@ in
     # (import ../overlays/50-purescript)
     (import ../overlays/50-st)
     (import ../overlays/50-vim-plugins.nix)
-    (import ../overlays/50-neovim.nix)
+    # (import ../overlays/50-neovim.nix)
   ];
 
   nixpkgs.config.allowUnfree = true;

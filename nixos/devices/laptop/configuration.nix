@@ -200,6 +200,8 @@
       isNormalUser = true;
       uid = 1002;
       packages = with pkgs; [
+        jetbrains.idea-community
+        vscode
       ];
     };
 
@@ -207,6 +209,7 @@
       isNormalUser = true;
       uid = 1003;
       packages = with pkgs; [
+        vscode
       ];
     };
 
