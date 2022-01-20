@@ -200,7 +200,7 @@
       isNormalUser = true;
       uid = 1002;
       packages = with pkgs; [
-        jetbrains.idea-community
+        jetbrains.idea-community-minimal
         vscode
       ];
     };
@@ -241,6 +241,10 @@
   documentation.dev.enable = true;
 
   nixpkgs.config.allowUnfree = true;
+
+  nixpkgs.overlays = [
+    (import ../../overlays/50-intellij.nix)
+  ];
 
   system.stateVersion = "20.03";
 
