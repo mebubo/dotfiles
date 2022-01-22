@@ -243,6 +243,13 @@
   nixpkgs.config.allowUnfree = true;
 
   nixpkgs.overlays = [
+    (import ../../overlays/50-haskell.nix)
+    (import ../../overlays/50-home-manager.nix)
+    # (import ../../overlays/50-purescript)
+    (import ../../overlays/50-vim-plugins.nix)
+    # (import ../../overlays/50-neovim.nix)
+    (import ../../overlays/50-chromium.nix)
+    (import ../../overlays/50-st)
     (import ../../overlays/50-intellij.nix)
   ];
 

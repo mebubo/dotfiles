@@ -211,13 +211,4 @@ in
 
   targets.genericLinux.enable = true;
 
-  nixpkgs.overlays = [
-    (import ../overlays/50-haskell.nix)
-    (import ../overlays/50-home-manager.nix)
-    # (import ../overlays/50-purescript)
-    (import ../overlays/50-vim-plugins.nix)
-    # (import ../overlays/50-neovim.nix)
-  ];
-
-  nixpkgs.config.allowUnfree = true;
 }

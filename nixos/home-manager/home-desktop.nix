@@ -85,15 +85,4 @@
 
   targets.genericLinux.enable = lib.mkForce false;
 
-  nixpkgs.overlays = [
-    (self: super: {
-      chromium = super.chromium.override {
-        commandLineArgs = [
-          "--enable-features=VaapiVideoDecoder"
-          "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"
-        ];
-      };
-    })
-    (import ../overlays/50-st)
-  ];
 }
