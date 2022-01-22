@@ -1,9 +1,0 @@
-[Match]
-Name=enp*u*
-
-[Network]
-DHCP=v4
-
-[DHCP]
-UseHostname=false
-RouteMetric=100

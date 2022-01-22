@@ -1,8 +1,0 @@
-[beets]
-directory: ~/music-beets
-plugins: web
-
-[paths]
-default: $albumartist--$year--$album/$track--$title
-singleton: Singletons/$artist--$title
-albumtype_soundtrack: Soundtracks/$album/$track--$title

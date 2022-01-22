@@ -1,3 +1,0 @@
-APT::Default-Release "testing";
-APT::Install-Recommends "false";
-Acquire::PDiffs "false";
