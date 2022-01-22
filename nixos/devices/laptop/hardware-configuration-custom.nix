@@ -15,6 +15,8 @@
     SUBSYSTEM=="rfkill", ATTR{type}=="bluetooth", ATTR{state}="0"
   '';
 
+  hardware.enableRedistributableFirmware = true;
+
   hardware.cpu.intel.updateMicrocode = true;
 
   hardware.opengl = {
