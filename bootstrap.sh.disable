@@ -6,7 +6,7 @@ DOTFILES=$(dirname $(readlink -f $0))
 
 export USER=${USER:-codespace}
 
-$DOTFILES/install-nix-2.3.15.sh --no-daemon
+$DOTFILES/install-nix-2.5.1.sh --no-daemon
 
 . $HOME/.nix-profile/etc/profile.d/nix.sh
 
