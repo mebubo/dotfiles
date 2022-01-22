@@ -1,34 +1,3 @@
-if exists('plug#begin')
-
-let g:plug_shallow = 0
-
-call plug#begin()
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-rsi'
-Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-characterize'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-obsession'
-
-Plug 'scrooloose/nerdtree', {'commit': '91e0f2253fbecefa7e14f095950341584877ef19'}
-Plug 'mileszs/ack.vim', {'commit': '36e40f9ec91bdbf6f1adf408522a73a6925c3042'}
-Plug 'michaeljsmith/vim-indent-object', {'commit': '5c5b24c959478929b54a9e831a8e2e651a465965'}
-Plug 'justinmk/vim-sneak', {'commit': '91192d8969af1d86c98beff4001612976ea25d7a'}
-
-Plug 'LnL7/vim-nix', {'commit': 'be0c6bb409732b79cc86c177ca378b0b334e1efe'}
-Plug 'purescript-contrib/purescript-vim', {'commit': '67ca4dc4a0291e5d8c8da48bffc0f3d2c9739e7f'}
-Plug 'derekwyatt/vim-scala', {'commit': '971ac9ab3fe945105ef88587cfe5273fa2c8e988'}
-call plug#end()
-
-endif
-
 set encoding=utf-8
 
 if (has("termguicolors"))
