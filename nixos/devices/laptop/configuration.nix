@@ -101,6 +101,7 @@
       ];
       extraOpts = {
         RestoreOnStartup = 1;
+        HttpsOnlyMode = "force_enabled";
       };
     };
   };
