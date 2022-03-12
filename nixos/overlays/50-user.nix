@@ -12,7 +12,7 @@ self: super:
 
   } // (with self; {
     inherit
-    ag
+    silver-searcher
     alacritty
     bat
     cage

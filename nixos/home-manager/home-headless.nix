@@ -19,7 +19,7 @@ in
 {
 
   home.packages = (with pkgs; [
-    ag
+    silver-searcher
     alloy
     tlaplus
     cabal-sources-tags
@@ -42,7 +42,7 @@ in
     htop
     jq
     libinput
-    manpages
+    man-pages
     # metals
     # miniserve
     moreutils

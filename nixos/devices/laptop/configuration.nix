@@ -59,7 +59,7 @@
       unzip
       zip
       moreutils
-      manpages
+      man-pages
       gnome3.adwaita-icon-theme
     ];
 
@@ -148,7 +148,6 @@
     enable = true;
     alsa.enable = true;
     pulse.enable = true;
-    media-session.enable = true;
   };
 
   services = {
@@ -230,7 +229,7 @@
       gc-keep-derivations = true
       experimental-features = nix-command flakes
     '';
-    useSandbox = true;
+    settings.sandbox = true;
   };
 
   zramSwap = {
