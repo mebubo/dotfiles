@@ -69,6 +69,8 @@ nnoremap <leader>tb :Telescope buffers<CR>
 nnoremap <leader>tf :Telescope find_files follow=true<CR>
 nnoremap <leader>th :Telescope oldfiles<CR>
 nnoremap <c-p> :Telescope find_files follow=true<CR>
+nnoremap <c-b> :Telescope buffers<CR>
+nnoremap <leader>b :Telescope buffers<CR>
 " nnoremap <c-]> :lua require'telescope.builtin'.tags { default_text = vim.fn.expand("<cword>") }<CR>
 
 nnoremap <leader>nt :NERDTreeToggle<CR>
@@ -151,4 +153,12 @@ require("nvim-treesitter.configs").setup{
 
 -- Manually set the filetype (needed if vim-nix is not installed)
 vim.api.nvim_command("autocmd BufNewFile,BufRead *.nix setlocal filetype=nix")
+
+require('telescope').setup{
+  pickers = {
+    buffers = {
+      sort_lastused = true
+    }
+  }
+}
 EOF
