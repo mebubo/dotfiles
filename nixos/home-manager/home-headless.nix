@@ -181,7 +181,7 @@ in
       initExtra = with builtins; concatStringsSep "\n" (map readFile [ ../../.bashrc ../../external/z/z.sh ]);
     };
     broot = {
-      enable = true;
+      enable = false;
       enableBashIntegration = true;
     };
     fzf = {
