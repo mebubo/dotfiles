@@ -208,7 +208,6 @@ in
   home.file = {
     ".inputrc".source = ../../.inputrc;
     ".tmux.conf".source = ../../.tmux.conf;
-    ".environment".source = ../../.environment;
     ".gitconfig".source = ../../.gitconfig;
   };
 
