@@ -39,7 +39,6 @@ in
     hledger-web
     htop
     jq
-    libinput
     man-pages
     # metals
     # miniserve
@@ -70,13 +69,10 @@ in
     # tre
     tree
     unzip
-    usbutils
-    v4l_utils
     wget
     youtube-dl
     zip
   ])
-  ++ (with pkgs; [ gcc gnumake binutils ])
   ++ (with pkgs.haskellPackages; [
     cabal-install
     cabal2nix
@@ -205,7 +201,5 @@ in
     ".environment".source = ../../.environment;
     ".gitconfig".source = ../../.gitconfig;
   };
-
-  targets.genericLinux.enable = true;
 
 }
