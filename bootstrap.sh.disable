@@ -10,4 +10,4 @@ $DOTFILES/install-nix-2.8.0.sh --no-daemon
 
 . $HOME/.nix-profile/etc/profile.d/nix.sh
 
-NIX_PATH=$NIX_PATH:nixpkgs-overlays=$DOTFILES/nixos/overlays nix-shell -p home-manager-init --run "HOME_MANAGER_CONFIG=$DOTFILES/nixos/home-manager/home-headless.nix home-manager switch"
+nix-shell -p home-manager --run "home-manager -f $DOTFILES/nixos/home-manager/home.nix switch"
