@@ -29,7 +29,9 @@ in
     idea-community-minimal = super.jetbrains.idea-community.overrideAttrs (attrs: {
       postFixup = ''
         (
-          cd $out/idea-*/plugins/
+          # cd $out/idea-*/plugins/
+          # cd $out/Application*/Intelli*/Content*/plugins/
+          cd "$(find $out -name plugins)"
 
           for p in *; do
             case $p in
@@ -41,8 +43,8 @@ in
             esac
           done
 
-          unzip ${plugin-scala}
-          unzip ${plugin-vim}
+          ${self.unzip}/bin/unzip ${plugin-scala}
+          ${self.unzip}/bin/unzip ${plugin-vim}
         )
       '';
     });

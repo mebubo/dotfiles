@@ -33,7 +33,6 @@ alias la='exa -A'
 alias l='exa -Fhla'
 alias less="less -j 5"
 alias cat=bat
-alias cp="cp --reflink=auto --sparse=always"
 
 export GPG_TTY=`tty`
 

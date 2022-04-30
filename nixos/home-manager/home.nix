@@ -7,6 +7,7 @@
     # ./home-desktop.nix
     # ./home-chromeos.nix
     # ./home-linux.nix
+    # ./home-darwin.nix
   ];
 
   nixpkgs.overlays = [
