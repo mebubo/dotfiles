@@ -12,6 +12,9 @@
     st
     pavucontrol
     wlr-randr
+    tlaplus
+    grim
+    slurp
     (wrapOBS {
       plugins = with obs-studio-plugins; [
         wlrobs

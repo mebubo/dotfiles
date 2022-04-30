@@ -21,7 +21,6 @@ in
   home.packages = (with pkgs; [
     silver-searcher
     alloy
-    tlaplus
     cabal-sources-tags
     coursier
     ctags
@@ -34,7 +33,6 @@ in
     fzf
     git
     gnupg
-    grim
     hexyl
     hledger
     hledger-ui
@@ -66,7 +64,6 @@ in
     ripgrep
     rsync
     sbt
-    slurp
     spago
     sqlite
     tmux
