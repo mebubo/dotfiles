@@ -4,14 +4,14 @@ let
 
   plugin-scala = self.fetchurl {
     name = "intellij-plugin-scala.zip";
-    url = "https://plugins.jetbrains.com/plugin/download?rel=true&updateId=153523";
-    sha256 = "0zbj4cvrpbam1mvl7kr8x943ixvlmvqd8k79i6rpyhf41cn2ngx5";
+    url = "https://plugins.jetbrains.com/plugin/download?rel=true&updateId=167520";
+    sha256 = "19rh6crgq9p051qqvwwh59ygf8503545ysw52fylhps8r63zr33a";
   };
 
   plugin-vim = self.fetchurl {
     name = "intellij-plugin-vim.zip";
-    url = "https://plugins.jetbrains.com/plugin/download?rel=true&updateId=151325";
-    sha256 = "1l814yfw1q1cr2qp9gnxhkj818sqvz5ncx8gnpx867d1mga451d2";
+    url = "https://plugins.jetbrains.com/plugin/download?rel=true&updateId=169987";
+    sha256 = "0xi56crlyl3ampygxhg3127cgmpgh9qpjw13sgvc6gxdh8890fxx";
   };
 
   keep = [
