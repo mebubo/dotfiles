@@ -181,7 +181,25 @@ in
         HOME_MANAGER_CONFIG = "$HOME/src/me/dotfiles/home-manager/home.nix";
         JAVA_HOME = pkgs.jdk;
       };
-      initExtra = with builtins; concatStringsSep "\n" (map readFile [ ../../.bashrc ../../external/z/z.sh ]);
+      initExtra = ''
+        ${builtins.readFile ../../.bashrc}
+
+        . ${../../external/z/z.sh}
+
+        # https://github.com/NixOS/nixpkgs/blob/d510b23805c37a5b11b86dc3ba8723fcaa6f4539/nixos/modules/programs/bash/bash-completion.nix#L23-L34
+        if shopt -q progcomp &>/dev/null; then
+          . "${pkgs.bash-completion}/etc/profile.d/bash_completion.sh"
+          nullglobStatus=$(shopt -p nullglob)
+          shopt -s nullglob
+          for p in $NIX_PROFILES; do
+            for m in "$p/etc/bash_completion.d/"*; do
+              . "$m"
+            done
+          done
+          eval "$nullglobStatus"
+          unset nullglobStatus p m
+        fi
+      '';
     };
     broot = {
       enable = false;
