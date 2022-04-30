@@ -26,7 +26,6 @@ in
   home.packages = (with pkgs; [
     silver-searcher
     alloy
-    cabal-sources-tags
     coursier
     ctags
     curl
@@ -96,6 +95,7 @@ in
     dhall-lsp-server
   ])
   ++ [
+    cabal-sources-tags
     hm
   ]
   ;
