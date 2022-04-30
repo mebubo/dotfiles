@@ -76,12 +76,13 @@ in
     unzip
     wget
     youtube-dl
+    yt-dlp
     zip
   ])
   ++ (with pkgs.haskellPackages; [
     cabal-install
     cabal2nix
-    fast-tags
+    # fast-tags
     ghc
     ghcid
     ghcide
