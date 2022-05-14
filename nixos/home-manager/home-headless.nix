@@ -200,10 +200,17 @@ in
           unset nullglobStatus p m
         fi
       '';
+      shellAliases = {
+        l = "${pkgs.exa}/bin/exa -la";
+      };
     };
     broot = {
       enable = false;
       enableBashIntegration = true;
+    };
+    exa = {
+      enable = true;
+      enableAliases = true;
     };
     fzf = {
       enable = true;
