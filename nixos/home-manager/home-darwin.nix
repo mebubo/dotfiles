@@ -20,6 +20,8 @@ in
     jetbrains.idea-community-minimal
     qemu
     podman
+    m-cli
+    alacritty
   ];
 
   programs = {
@@ -34,7 +36,6 @@ in
 
   xdg.configFile = {
     "youtube-dl/config".source = ../../.config/youtube-dl/config;
-    "mpv/mpv.conf".source = ../../.config/mpv/mpv.conf;
   };
 
   nixpkgs.config.allowUnfree = true;
