@@ -32,6 +32,19 @@ in
       '';
       enableCompletion = false;
     };
+    alacritty = {
+      enable = true;
+      settings = {
+        key_bindings = [
+          { key = "Period"; mods = "Alt"; chars = "\\x1b."; }
+          { key = "H"; mods = "Alt"; chars = "\\x1bh"; }
+          { key = "J"; mods = "Alt"; chars = "\\x1bj"; }
+          { key = "K"; mods = "Alt"; chars = "\\x1bk"; }
+          { key = "L"; mods = "Alt"; chars = "\\x1bl"; }
+          { key = "B"; mods = "Alt"; chars = "\\x1bb"; }
+        ];
+      };
+    };
   };
 
   xdg.configFile = {
