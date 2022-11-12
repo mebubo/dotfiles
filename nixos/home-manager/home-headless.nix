@@ -179,7 +179,7 @@ in
       sessionVariables = {
         EDITOR = "vim";
         NIX_PATH = "nixpkgs=$HOME/src/NixOS/nixpkgs:nixpkgs-overlays=$HOME/src/me/dotfiles/nixos/overlays";
-        HOME_MANAGER_CONFIG = "$HOME/src/me/dotfiles/home-manager/home.nix";
+        HOME_MANAGER_CONFIG = "$HOME/src/me/dotfiles/nixos/home-manager/home.nix";
         JAVA_HOME = pkgs.jdk;
       };
       initExtra = ''
