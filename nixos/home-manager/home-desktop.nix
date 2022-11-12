@@ -10,6 +10,7 @@
     i3lock
     i3status
     st
+    pulseaudio
     pavucontrol
     wlr-randr
     tlaplus
