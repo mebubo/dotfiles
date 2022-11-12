@@ -245,4 +245,6 @@ in
     };
   };
 
+  manual.manpages.enable = false;
+
 }
