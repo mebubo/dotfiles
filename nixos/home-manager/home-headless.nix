@@ -152,6 +152,7 @@ in
           p.tree-sitter-java
           p.tree-sitter-javascript
           p.tree-sitter-typescript
+          p.tree-sitter-python
           p.tree-sitter-markdown
           p.tree-sitter-bash
           p.tree-sitter-json
