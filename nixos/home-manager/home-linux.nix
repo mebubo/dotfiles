@@ -6,7 +6,7 @@
     binutils
     libinput
     usbutils
-    v4l_utils
+    v4l-utils
   ];
 
   targets.genericLinux.enable = true;
