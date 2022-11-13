@@ -14,11 +14,13 @@ general {
 order += "disk /home"
 order += "wireless wlan0"
 order += "wireless wlp3s0"
+order += "wireless wlp1s0f0"
 order += "ethernet eth0"
 order += "ethernet enp0s25"
 order += "ethernet bnep0"
 order += "ethernet usb0"
 order += "battery 0"
+order += "battery m1"
 order += "cpu_temperature 0"
 order += "load"
 order += "volume master"
@@ -30,6 +32,11 @@ wireless wlan0 {
 }
 
 wireless wlp3s0 {
+        format_up = "W %quality %essid %ip"
+        format_down = ""
+}
+
+wireless wlp1s0f0 {
         format_up = "W %quality %essid %ip"
         format_down = ""
 }
@@ -57,6 +64,14 @@ ethernet usb0 {
 
 battery 0 {
         format = "%status %percentage %remaining %consumption"
+        format_down = ""
+        low_threshold = 10
+}
+
+battery m1 {
+        format = "%status %percentage %remaining %consumption"
+        format_down = ""
+        path = "/sys/class/power_supply/macsmc-battery/uevent"
         low_threshold = 10
 }
 
