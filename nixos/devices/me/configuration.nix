@@ -25,10 +25,6 @@ in
   boot.loader.systemd-boot.consoleMode = "0";
   boot.loader.efi.canTouchEfiVariables = false;
 
-  boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
-  boot.extraModprobeConfig = ''options v4l2loopback exclusive_caps=1 video_nr=10 card_label=my-loopback'';
-  boot.kernelModules = [ "v4l2loopback" ];
-
   hardware.asahi = {
     use4KPages = false;
     extractPeripheralFirmware = false;
