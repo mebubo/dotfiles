@@ -31,6 +31,7 @@ in
   hardware.asahi = {
     use4KPages = false;
     extractPeripheralFirmware = false;
+    addEdgeKernelConfig = true;
   };
 
   nixpkgs.overlays = [
