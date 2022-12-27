@@ -99,9 +99,6 @@
       extraOpts = {
         RestoreOnStartup = 1;
         HttpsOnlyMode = "force_enabled";
-        DefaultSearchProviderEnabled = true;
-        DefaultSearchProviderName = "DuckDuckGo";
-        DefaultSearchProviderSearchURL = "https://duckduckgo.com/?q={searchTerms}";
         BrowserSignin = 0;
         SyncDisabled = true;
         PasswordManagerEnabled = false;
