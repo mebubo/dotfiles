@@ -18,6 +18,7 @@ in
       ./me.nix
       m1-support
       ./home-manager.nix
+      ../../modules/wlroots-screen-share.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
