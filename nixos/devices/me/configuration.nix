@@ -3,8 +3,8 @@
 let
 
   nixos-m1 = builtins.fetchTarball {
-    url = "https://github.com/tpwrules/nixos-m1/archive/f6bd2e82c1b5ed01561d06eb7c494f3af7d7672a.tar.gz";
-    sha256 = "1vbc9lr1qwhdj4gka47pimx71yf4bciqv220mwvzbhsn6x7qmmfj";
+    url = "https://github.com/tpwrules/nixos-m1/archive/eedc13c8f9b0ca86a1bcf99104389431eb74c32a.tar.gz";
+    sha256 = "0g7xxrvgh9chlg6x66qsw1iknk8zw3iv2jzfwv788qmgkyxyndv8";
   };
 
   m1-support = nixos-m1 + "/nix/m1-support";
