@@ -22,9 +22,9 @@
 
   system.activationScripts = {
     brightness = ''
-      echo 0 > /sys/class/backlight/gpio-bl/brightness
+      echo 0 > /sys/class/backlight/apple-panel-bl/brightness
       sleep 1
-      echo 1 > /sys/class/backlight/gpio-bl/brightness
+      echo 420 > /sys/class/backlight/apple-panel-bl/brightness
     '';
   };
 }
