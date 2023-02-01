@@ -3,11 +3,11 @@
 let
 
   nixos-m1 = builtins.fetchTarball {
-    url = "https://github.com/tpwrules/nixos-m1/archive/fe4fff71fd1dbd8733512d0a2b83a84e3cfdc2bd.tar.gz";
-    sha256 = "1znz3lm5spq62jygp2ha3ypgpyy45s09rvk6xdfvbw55223qvc53";
+    url = "https://github.com/tpwrules/nixos-apple-silicon/archive/0086dd0e401f9dde826e6c170d312a87564aa6a4.tar.gz";
+    sha256 = "13krn3b54w5rfrqyn5czwddh2jhggdx5wkysj1kz7n75mv3z1frv";
   };
 
-  m1-support = nixos-m1 + "/nix/m1-support";
+  m1-support = nixos-m1 + "/apple-silicon-support";
 
 in
 
