@@ -31,6 +31,13 @@ in
     addEdgeKernelConfig = true;
   };
 
+  hardware.firmware = [
+    (pkgs.runCommand "firmware-extract" {} ''
+      mkdir -p $out/lib/firmware
+      tar xf ${./firmware.tar} -C $out/lib/firmware
+    '')
+  ];
+
   nixpkgs.overlays = [
     (import ../../overlays/50-haskell.nix)
     (import ../../overlays/50-home-manager.nix)
