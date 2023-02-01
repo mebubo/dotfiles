@@ -31,4 +31,6 @@
 
   documentation.nixos.enable = false;
 
+  system.stateVersion = "23.05";
+
 }

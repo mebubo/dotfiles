@@ -10,7 +10,7 @@
     ./zigbee.nix
     # ./router.nix
     # ./desktop.nix
-    # ./printing.nix
+    ./printing.nix
   ];
 
 }

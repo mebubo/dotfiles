@@ -13,7 +13,7 @@
       cp -r ${./.}/* ./files/etc/nixos/
     '';
     compressImage = false;
-    expandOnBoot = false;
+    expandOnBoot = true;
   };
 
 }
