@@ -142,7 +142,7 @@
     };
 
     services.systemd-networkd-wait-online = {
-      enable = false;
+      # enable = false;
     };
   };
 
