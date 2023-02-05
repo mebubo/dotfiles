@@ -1,5 +1,11 @@
 { pkgs, ... }:
 
+let
+
+  zigbee-dongle-firmware-update = pkgs.callPackage ./zigbee-dongle-firmware-update.nix {};
+
+in
+
 {
 
   services = {
@@ -49,6 +55,7 @@
     jq
     mosquitto
     influxdb2-cli
+    zigbee-dongle-firmware-update
   ];
 
 }
