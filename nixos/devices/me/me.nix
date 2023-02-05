@@ -1,5 +1,19 @@
 { config, pkgs, lib, modulesPath, ... }:
 
+let
+
+  # latest pre-jcef commit, works on aarch64-linux
+  # https://hydra.nixos.org/job/nixos/trunk-combined/nixpkgs.jetbrains.jdk.aarch64-linux
+  pkgs-jetbrains-jdk = import (pkgs.fetchzip {
+    url = "https://github.com/NixOS/nixpkgs/archive/06278c77b5d162e62df170fec307e83f1812d94b.tar.gz";
+    sha256 = "1javsbaxf04fjygyp5b9c9hb9dkh5gb4m4h9gf9gvqlanlnms4n5";
+  }) {};
+
+  jdk = pkgs-jetbrains-jdk.callPackage ../../packages/jetbrains/jetbrains-jdk.nix {};
+  intellij = pkgs.callPackage ../../packages/jetbrains/intellij.nix { inherit jdk; };
+
+in
+
 {
 
   users = {
@@ -16,6 +30,7 @@
         isNormalUser = true;
         uid = 1002;
         packages = with pkgs; [
+          intellij
         ];
       };
 
