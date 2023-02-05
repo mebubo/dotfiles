@@ -30,8 +30,6 @@ focus_follows_mouse no
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+Return exec --no-startup-id st
 
-bindsym $mod+F5 exec firefox
-
 bindsym $mod+Shift+c kill
 
 bindsym $mod+d exec $menu
