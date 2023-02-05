@@ -7,8 +7,8 @@
       ./hardware-configuration-custom.nix
       ./wireless.nix
       ../../modules/xserver.nix
-      ../../modules/prometheus.nix
-      ../../modules/grafana.nix
+      # ../../modules/prometheus.nix
+      # ../../modules/grafana.nix
       ../../modules/wlroots-screen-share.nix
       ./home-manager.nix
     ];
