@@ -110,15 +110,18 @@ in
 
   console.packages = [ pkgs.terminus_font ];
 
-  environment.systemPackages = [
-    pkgs.gptfdisk
-    pkgs.parted
-    pkgs.cryptsetup
-    pkgs.vim
-    pkgs.git
-    pkgs.tmux
-    pkgs.htop
-  ];
+  environment = {
+    systemPackages = [
+      pkgs.gptfdisk
+      pkgs.parted
+      pkgs.cryptsetup
+      pkgs.vim
+      pkgs.git
+      pkgs.tmux
+      pkgs.htop
+    ];
+    etc."jdk".source = pkgs.openjdk;
+  };
 
   sound.enable = true;
 
