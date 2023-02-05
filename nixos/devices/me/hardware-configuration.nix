@@ -1,9 +1,13 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
+  boot.initrd.luks.devices."root" = {
+    device = "/dev/disk/by-label/nixos3";
+    allowDiscards = true;
+  };
 
   fileSystems."/" = {
-    device = "/dev/disk/by-label/nixos";
+    device = "/dev/disk/by-label/nixos3-root";
   };
 
   fileSystems."/boot" = {
