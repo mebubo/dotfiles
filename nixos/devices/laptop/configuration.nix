@@ -207,6 +207,7 @@
       packages = with pkgs; [
         jetbrains.idea-community-minimal
         vscode
+        scala-cli
       ];
     };
 
