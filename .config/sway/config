@@ -154,6 +154,7 @@ bindsym $mod+Home mode "passthrough"
 
 bindsym $mod+F3 output LVDS-1 enable
 bindsym $mod+F4 output LVDS-1 disable
+bindsym $mod+F5 output eDP-1 dpms toggle
 
 input type:touchpad click_method clickfinger
 input type:touchpad tap enabled
