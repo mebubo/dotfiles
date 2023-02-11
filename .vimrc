@@ -31,6 +31,8 @@ set number
 set noswapfile
 set modeline
 
+set mouse=
+
 set viminfo='1000,f1,<500
 set undodir=~/.vimdid
 set undofile
