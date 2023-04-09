@@ -11,6 +11,7 @@
     # ./router.nix
     # ./desktop.nix
     ./printing.nix
+    ./scanner.nix
     # ./wireless.nix
   ];
 
