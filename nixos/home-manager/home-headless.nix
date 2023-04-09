@@ -48,7 +48,6 @@ in
     # miniserve
     moreutils
     mpv
-    niv
     nix-prefetch-git
     nix-prefetch-github
     nixos-generators
@@ -74,8 +73,6 @@ in
     tree
     unzip
     wget
-    youtube-dl
-    yt-dlp
     zip
   ])
   ++ (with pkgs.haskellPackages; [
@@ -228,6 +225,12 @@ in
       enable = true;
       config = {
         theme = "Solarized (light)";
+      };
+    };
+    yt-dlp = {
+      enable = true;
+      settings = {
+        output  = "%(uploader)s--%(upload_date)s--%(title)s--%(id)s.%(ext)s";
       };
     };
   };
