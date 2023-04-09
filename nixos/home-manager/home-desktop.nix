@@ -57,6 +57,7 @@
       extensions = with pkgs.vscode-extensions; [
         vscodevim.vim
         ms-pyright.pyright
+        bbenoist.nix
         # scalameta.metals
       ];
       mutableExtensionsDir = false;
