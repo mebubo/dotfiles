@@ -22,6 +22,14 @@
   hardware.enableAllFirmware = lib.mkForce false;
   hardware.enableRedistributableFirmware = lib.mkForce false;
 
+  boot.initrd.kernelModules = [ "apple_dcp" ];
+
+  boot.initrd.postDeviceCommands = ''
+      echo 0 > /sys/class/backlight/apple-panel-bl/brightness
+      sleep 1
+      echo 420 > /sys/class/backlight/apple-panel-bl/brightness
+  '';
+
   system.activationScripts = {
     brightness = ''
       echo 0 > /sys/class/backlight/apple-panel-bl/brightness
