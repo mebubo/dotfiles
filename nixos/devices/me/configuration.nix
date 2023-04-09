@@ -29,6 +29,7 @@ in
     use4KPages = false;
     extractPeripheralFirmware = false;
     addEdgeKernelConfig = true;
+    useExperimentalGPUDriver = false;
   };
 
   hardware.firmware = [
