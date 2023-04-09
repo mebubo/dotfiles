@@ -37,4 +37,8 @@
       echo 420 > /sys/class/backlight/apple-panel-bl/brightness
     '';
   };
+
+  services.udev.extraRules = ''
+    SUBSYSTEM=="rfkill", ATTR{type}=="bluetooth", ATTR{state}="0"
+  '';
 }
