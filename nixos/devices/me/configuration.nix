@@ -56,4 +56,12 @@ in
   hardware.opengl = {
     enable = true;
   };
+
+  fonts.fontconfig = {
+    enable = true;
+    antialias = true;
+    hinting = {
+      enable = true;
+    };
+  };
 }

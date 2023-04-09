@@ -19,8 +19,6 @@
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 
-  hardware.video.hidpi.enable = lib.mkDefault true;
-
   hardware.enableAllFirmware = lib.mkForce false;
   hardware.enableRedistributableFirmware = lib.mkForce false;
 
