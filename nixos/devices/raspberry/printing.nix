@@ -61,4 +61,7 @@ in
     };
   };
 
+  users.users.me = {
+    extraGroups = [ "lp" ];
+  };
 }
