@@ -160,4 +160,9 @@ input type:touchpad click_method clickfinger
 input type:touchpad tap enabled
 input type:keyboard xkb_layout us,ru
 input type:keyboard xkb_variant ,phonetic
-input type:keyboard xkb_options grp:menu_toggle,grp_led:caps,ctrl:nocaps,compose:ralt
+input type:keyboard xkb_options grp:rwin_toggle,grp_led:caps,ctrl:nocaps,compose:ralt,altwin:swap_lalt_lwin
+
+output eDP-1 scale 2
+seat seat0 xcursor_theme Adwaita 24
+
+include /etc/sway/config.d/*
