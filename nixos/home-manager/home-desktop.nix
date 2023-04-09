@@ -20,7 +20,7 @@
 
   programs = {
     firefox = {
-      enable = false;
+      enable = true;
       package = pkgs.firefox-wayland;
       profiles = {
         me = {
