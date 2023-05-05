@@ -114,7 +114,7 @@ in
     ssh.startAgent = true;
     sway = {
       enable = true;
-      extraPackages = with pkgs; [ xwayland swayidle swaylock i3status grim slurp wayvnc brightnessctl ];
+      extraPackages = with pkgs; [ xwayland swayidle swaylock i3status grim slurp wayvnc brightnessctl wl-clipboard ];
       extraSessionCommands = ''
         export _JAVA_AWT_WM_NONREPARENTING=1
         export MOZ_ENABLE_WAYLAND=1
