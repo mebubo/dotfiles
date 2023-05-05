@@ -15,11 +15,13 @@ order += "disk /home"
 order += "wireless wlan0"
 order += "wireless wlp3s0"
 order += "wireless wlp1s0f0"
+order += "wireless wlp166s0"
 order += "ethernet eth0"
 order += "ethernet enp0s25"
 order += "ethernet bnep0"
 order += "ethernet usb0"
 order += "battery 0"
+order += "battery 1"
 order += "battery m1"
 order += "cpu_temperature 0"
 order += "load"
@@ -37,6 +39,11 @@ wireless wlp3s0 {
 }
 
 wireless wlp1s0f0 {
+        format_up = "W %quality %essid %ip"
+        format_down = ""
+}
+
+wireless wlp166s0 {
         format_up = "W %quality %essid %ip"
         format_down = ""
 }
@@ -63,6 +70,12 @@ ethernet usb0 {
 }
 
 battery 0 {
+        format = "%status %percentage %remaining %consumption"
+        format_down = ""
+        low_threshold = 10
+}
+
+battery 1 {
         format = "%status %percentage %remaining %consumption"
         format_down = ""
         low_threshold = 10
