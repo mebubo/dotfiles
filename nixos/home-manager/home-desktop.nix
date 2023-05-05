@@ -1,5 +1,11 @@
 { config, pkgs, lib, ... }:
 
+let
+
+  obsidian = pkgs.callPackage ../packages/obsidian.nix {};
+
+in
+
 {
 
   home.packages = with pkgs; [
@@ -16,6 +22,7 @@
     tlaplus
     grim
     slurp
+    obsidian
   ];
 
   programs = {
