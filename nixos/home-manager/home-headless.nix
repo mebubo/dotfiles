@@ -256,7 +256,7 @@ in
     };
   };
 
-  manual.manpages.enable = false;
+  manual.manpages.enable = true;
 
   home.stateVersion = "22.05";
 
