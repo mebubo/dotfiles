@@ -25,6 +25,15 @@ in
     obsidian
   ];
 
+  home.pointerCursor = {
+    gtk.enable = true;
+    # package = pkgs.vanilla-dmz;
+    package = pkgs.apple-cursor;
+    # name = "Vanilla-DMZ";
+    name = "macOS-Monterey-White";
+    size = 20;
+  };
+
   programs = {
     firefox = {
       enable = true;
