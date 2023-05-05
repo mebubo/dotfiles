@@ -71,7 +71,7 @@ in
   # services.openssh.enable = true;
 
   networking.firewall.enable = true;
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 8000 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
 
   # Copy the NixOS configuration file and link it from the resulting system
