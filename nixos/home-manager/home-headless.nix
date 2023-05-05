@@ -102,6 +102,13 @@ in
       enable = true;
       path = "${home-manager-snapshot}";
     };
+    git = {
+      enable = true;
+      extraConfig = builtins.readFile ../../.gitconfig;
+      lfs = {
+        enable = true;
+      };
+    };
     neovim = {
       enable = true;
       vimAlias = true;
@@ -238,7 +245,7 @@ in
   home.file = {
     ".inputrc".source = ../../.inputrc;
     ".tmux.conf".source = ../../.tmux.conf;
-    ".gitconfig".source = ../../.gitconfig;
+    # ".gitconfig".source = ../../.gitconfig;
   };
 
   nix = {
