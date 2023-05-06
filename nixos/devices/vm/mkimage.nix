@@ -116,6 +116,7 @@ in
       (start "gl-gtk" "-device virtio-vga-gl -display gtk,gl=on")
       (start "qxl" "-vga qxl")
       (start "std" "-vga std")
+      (start "text" "-nographic")
       (start-aarch64 "aarch64" "-display sdl")
       (ssh-vm "me")
       (sshfs-vm "me")
