@@ -22,30 +22,30 @@ let
 
   port = "60022";
 
-  home = "home.qcow2";
+  home = "home.raw";
 
   start = name: args: pkgs.writeShellScriptBin "start-vm-${name}" ''
     ls -lah ${img}
-    # test -f ${home} || ( ${pkgs.qemu}/bin/qemu-img create -f raw ${home} 64G && ${pkgs.e2fsprogs}/bin/mkfs.ext4 ${home} )
-    test -f ${home} || ( ${pkgs.qemu}/bin/qemu-img create -f qcow2 ${home} 64G )
+    test -f ${home} || ( ${pkgs.qemu}/bin/qemu-img create -f raw ${home} 64G && ${pkgs.e2fsprogs}/bin/mkfs.ext4 -L home ${home} )
+    # test -f ${home} || ( ${pkgs.qemu}/bin/qemu-img create -f qcow2 ${home} 64G )
     ${pkgs.qemu_kvm}/bin/qemu-kvm \
-    -snapshot \
     -m 16G \
     -cpu host \
     -smp cpus=8 \
     -kernel ${config.system.build.toplevel}/kernel \
     -initrd ${config.system.build.toplevel}/initrd \
-    -append "$(cat ${config.system.build.toplevel}/kernel-params) init=${config.system.build.toplevel}/init" \
+    -append "$(cat ${config.system.build.toplevel}/kernel-params) init=${config.system.build.toplevel}/init console=ttyS0" \
     -device virtio-keyboard \
     -usb -device usb-tablet,bus=usb-bus.0 \
     -audiodev pa,id=snd0 \
     -device ich9-intel-hda \
     -device hda-output,audiodev=snd0 \
     -nic user,hostfwd=tcp::${port}-:22 \
-    -drive file=${home},format=qcow2,id=home,if=none,index=2 \
+    -drive file=${imgFile},format=raw,id=nix-store,if=none,index=0,snapshot=on \
+    -device virtio-blk-pci,drive=nix-store \
+    -drive file=${home},format=raw,id=home,if=none,index=1 \
     -device virtio-blk-pci,drive=home \
-    ${args} \
-    ${imgFile}
+    ${args}
   '';
 
   start-aarch64 = name: args: pkgs.writeShellScriptBin "start-vm-${name}" ''

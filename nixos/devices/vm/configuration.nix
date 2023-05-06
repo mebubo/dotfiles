@@ -2,6 +2,11 @@
 
 let
 
+  ensure-home-me = pkgs.writeShellScript "ensure-home-me" ''
+    mkdir -p /home/me
+    chown me:users /home/me
+  '';
+
   firefox = pkgs.firefox;
 
   chromium = pkgs.chromium;
@@ -99,17 +104,19 @@ in
       fsType = "tmpfs";
       options = [ "defaults" "size=8G" "mode=755" ];
     };
+
     fileSystems."/home" = {
-      device = "/dev/vda";
+      device = "/dev/disk/by-label/home";
       fsType = "ext4";
     };
+
     fileSystems."/nix/store" = {
       device = "/dev/disk/by-label/nix-store";
       autoResize = true;
       fsType = "ext4";
     };
 
-    boot.loader.grub.device = "/dev/vda";
+    boot.loader.grub.device = "/none";
     boot.kernelPackages = pkgs.linuxPackages_latest;
 
     networking = {
@@ -204,6 +211,18 @@ in
     };
 
     system.stateVersion = "23.05";
+
+    systemd.services.enusre-home-me = {
+      description = "Ensure /home/me exists and is owned by me";
+      after = [ "local-fs.target" ];
+      wantedBy = [ "multi-user.target" ];
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = ensure-home-me;
+        RemainAfterExit = "yes";
+      };
+    };
+
   };
 
 }
