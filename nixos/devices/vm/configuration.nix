@@ -128,7 +128,6 @@ in
     };
 
     users.users.root = {
-      password = "me";
       openssh.authorizedKeys.keys = [ (builtins.readFile ./key.pub) ];
     };
     users.users.me = {
@@ -143,9 +142,6 @@ in
         pkgs.foot
         pkgs.vim
         pkgs.htop
-        # pkgs.anki
-        # pkgs.anki-bin
-        # pkgs.poppler_utils
         sway-run
         pkgs.cage
         cage-run
