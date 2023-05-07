@@ -24,29 +24,31 @@ let
 
   home = "home.raw";
 
-  start = name: args: pkgs.writeShellScriptBin "start-vm-${name}" ''
-    ls -lah ${img}
-    test -f ${home} || ( ${pkgs.qemu}/bin/qemu-img create -f raw ${home} 64G && ${pkgs.e2fsprogs}/bin/mkfs.ext4 -L home ${home} )
-    # test -f ${home} || ( ${pkgs.qemu}/bin/qemu-img create -f qcow2 ${home} 64G )
-    ${pkgs.qemu_kvm}/bin/qemu-kvm \
-    -m 64G \
-    -cpu host \
-    -smp cpus=8 \
-    -kernel ${config.system.build.toplevel}/kernel \
-    -initrd ${config.system.build.toplevel}/initrd \
-    -append "$(cat ${config.system.build.toplevel}/kernel-params) init=${config.system.build.toplevel}/init console=ttyS0" \
-    -device virtio-keyboard \
-    -usb -device usb-tablet,bus=usb-bus.0 \
-    -audiodev pa,id=snd0 \
-    -device ich9-intel-hda \
-    -device hda-output,audiodev=snd0 \
-    -nic user,hostfwd=tcp::${port}-:22 \
-    -drive file=${imgFile},format=raw,id=nix-store,if=none,index=0,snapshot=on \
-    -device virtio-blk-pci,drive=nix-store \
-    -drive file=${home},format=raw,id=home,if=none,index=1 \
-    -device virtio-blk-pci,drive=home \
-    ${args}
-  '';
+  start = name: args:
+    let
+      console = if name == "text" then "console=ttyS0" else "";
+    in
+      pkgs.writeShellScriptBin "start-vm-${name}" ''
+        test -f ${home} || ( ${pkgs.qemu}/bin/qemu-img create -f raw ${home} 64G && ${pkgs.e2fsprogs}/bin/mkfs.ext4 -L home ${home} )
+        ${pkgs.qemu_kvm}/bin/qemu-kvm \
+        -m 64G \
+        -cpu host \
+        -smp cpus=8 \
+        -kernel ${config.system.build.toplevel}/kernel \
+        -initrd ${config.system.build.toplevel}/initrd \
+        -append "$(cat ${config.system.build.toplevel}/kernel-params) init=${config.system.build.toplevel}/init ${console}" \
+        -device virtio-keyboard \
+        -usb -device usb-tablet,bus=usb-bus.0 \
+        -audiodev pa,id=snd0 \
+        -device ich9-intel-hda \
+        -device hda-output,audiodev=snd0 \
+        -nic user,hostfwd=tcp::${port}-:22 \
+        -drive file=${imgFile},format=raw,id=nix-store,if=none,index=0,snapshot=on \
+        -device virtio-blk-pci,drive=nix-store \
+        -drive file=${home},format=raw,id=home,if=none,index=1 \
+        -device virtio-blk-pci,drive=home \
+        ${args}
+      '';
 
   ssh-vm = user: pkgs.writeShellScriptBin "ssh-vm-${user}" ''
     ${pkgs.openssh}/bin/ssh -o StrictHostKeyChecking=no -i key -p ${port} ${user}@localhost
