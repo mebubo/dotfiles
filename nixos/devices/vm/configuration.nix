@@ -133,7 +133,7 @@ in
     };
     users.users.me = {
       isNormalUser = true;
-      uid = 1001;
+      uid = 1000;
       password = "me";
       openssh.authorizedKeys.keys = [ (builtins.readFile ./key.pub) ];
       packages = [

@@ -29,7 +29,7 @@ let
     test -f ${home} || ( ${pkgs.qemu}/bin/qemu-img create -f raw ${home} 64G && ${pkgs.e2fsprogs}/bin/mkfs.ext4 -L home ${home} )
     # test -f ${home} || ( ${pkgs.qemu}/bin/qemu-img create -f qcow2 ${home} 64G )
     ${pkgs.qemu_kvm}/bin/qemu-kvm \
-    -m 16G \
+    -m 64G \
     -cpu host \
     -smp cpus=8 \
     -kernel ${config.system.build.toplevel}/kernel \
@@ -103,7 +103,7 @@ let
   '';
 
   sshfs-vm = user: pkgs.writeShellScriptBin "sshfs-vm-${user}" ''
-    ${pkgs.sshfs}/bin/sshfs -o StrictHostKeyChecking=no -o IdentityFile=key -p ${port} ${user}@localhost:src vm-src
+    ${pkgs.sshfs}/bin/sshfs -o StrictHostKeyChecking=no -o IdentityFile=$(pwd)/key -p ${port} ${user}@localhost:src vm-src
   '';
 
 in
