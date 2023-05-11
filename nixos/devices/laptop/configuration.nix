@@ -10,6 +10,7 @@
       # ../../modules/prometheus.nix
       # ../../modules/grafana.nix
       ../../modules/wlroots-screen-share.nix
+      ../../modules/podman.mnix
       ./home-manager.nix
     ];
 
@@ -220,13 +221,6 @@
     };
 
     groups.wireless = {};
-  };
-
-  virtualisation = {
-    podman = {
-      enable = true;
-      dockerCompat = true;
-    };
   };
 
   nix = {
