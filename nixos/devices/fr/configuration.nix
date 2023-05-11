@@ -10,7 +10,7 @@ in
   imports =
     [
       ./hardware-configuration.nix
-      ./home-manager.nix
+      ../../modules/home-manager.nix
       ../../../../../NixOS/nixos-hardware/framework/12th-gen-intel
       ../../modules/wlroots-screen-share.nix
     ];
