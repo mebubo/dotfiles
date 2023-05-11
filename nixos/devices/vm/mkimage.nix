@@ -55,7 +55,7 @@ let
   '';
 
   sshfs-vm = user: pkgs.writeShellScriptBin "sshfs-vm-${user}" ''
-    ${pkgs.sshfs}/bin/sshfs -o StrictHostKeyChecking=no -o IdentityFile=$(pwd)/key -p ${port} ${user}@localhost:src vm-src
+    ${pkgs.sshfs}/bin/sshfs -o StrictHostKeyChecking=no -o IdentityFile=$(pwd)/key -p ${port} ${user}@localhost: vm-home
   '';
 
   start-aarch64 = (import ./aarch64.nix) { inherit pkgs config img imgFile home port; };
