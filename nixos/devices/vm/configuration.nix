@@ -139,16 +139,21 @@ in
       packages = [
         chromium
         firefox
-        pkgs.alacritty
-        pkgs.foot
-        pkgs.vim
-        pkgs.htop
         sway-run
-        pkgs.cage
         cage-run
-        pkgs.i3
         i3-run
-      ];
+      ] ++ (with pkgs; [
+        foot
+        vim
+        cage
+        htop
+        i3
+        git
+        tmux
+        nodejs
+        python3
+        supabase-cli
+      ]);
     };
 
     programs = {
@@ -198,10 +203,6 @@ in
     };
 
     documentation.enable = false;
-
-    nixpkgs.overlays = [
-      # (import ../../dotfiles/nixos/overlays/50-chromium.nix)
-    ];
 
     hardware.opengl = {
       enable = true;
