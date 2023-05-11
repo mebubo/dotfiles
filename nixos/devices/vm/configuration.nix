@@ -94,7 +94,8 @@ in
 
   imports = [
     "${modulesPath}/profiles/qemu-guest.nix"
-    # ../modules/xserver.nix
+    ../../modules/home-manager.nix
+    ../../modules/podman.nix
   ];
 
   config = {
