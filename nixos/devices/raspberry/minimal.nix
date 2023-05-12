@@ -27,7 +27,7 @@
     };
   };
 
-  boot.cleanTmpDir = true;
+  boot.tmp.cleanOnBoot = true;
 
   documentation.nixos.enable = false;
 
