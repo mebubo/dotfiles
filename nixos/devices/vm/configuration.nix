@@ -126,6 +126,7 @@ in
       usePredictableInterfaceNames = false;
       interfaces.eth0.useDHCP = true;
       nameservers = [ "8.8.8.8" ];
+      firewall.enable = false;
     };
 
     users.users.root = {

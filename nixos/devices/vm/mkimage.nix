@@ -42,7 +42,7 @@ let
         -audiodev pa,id=snd0 \
         -device ich9-intel-hda \
         -device hda-output,audiodev=snd0 \
-        -nic user,hostfwd=tcp::${port}-:22 \
+        -nic user,hostfwd=tcp::${port}-:22,hostfwd=tcp::8080-:8080,hostfwd=tcp::8000-:8000 \
         -drive file=${imgFile},format=raw,id=nix-store,if=none,index=0,snapshot=on \
         -device virtio-blk-pci,drive=nix-store \
         -drive file=${home},format=raw,id=home,if=none,index=1 \
