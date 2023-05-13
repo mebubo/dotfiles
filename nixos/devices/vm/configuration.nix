@@ -151,7 +151,6 @@ in
         i3-run
       ] ++ (with pkgs; [
         foot
-        vim
         cage
         htop
         i3
