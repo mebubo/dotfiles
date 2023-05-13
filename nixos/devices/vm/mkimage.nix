@@ -12,7 +12,7 @@ let
     inherit config pkgs lib;
     # diskSize = 3000;
     format = "raw";
-    onlyNixStore = true;
+    onlyNixStore = false;
     installBootLoader = false;
     copyChannel = true;
     partitionTableType = "none";

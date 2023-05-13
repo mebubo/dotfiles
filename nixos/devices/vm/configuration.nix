@@ -100,10 +100,16 @@ in
 
   config = {
 
+    # fileSystems."/" = {
+    #   device = "none";
+    #   fsType = "tmpfs";
+    #   options = [ "defaults" "size=8G" "mode=755" ];
+    # };
+
     fileSystems."/" = {
-      device = "none";
-      fsType = "tmpfs";
-      options = [ "defaults" "size=8G" "mode=755" ];
+      device = "/dev/disk/by-label/nixos";
+      autoResize = true;
+      fsType = "ext4";
     };
 
     fileSystems."/home" = {
@@ -111,11 +117,11 @@ in
       fsType = "ext4";
     };
 
-    fileSystems."/nix/store" = {
-      device = "/dev/disk/by-label/nix-store";
-      autoResize = true;
-      fsType = "ext4";
-    };
+    # fileSystems."/nix/store" = {
+    #   device = "/dev/disk/by-label/nix-store";
+    #   autoResize = true;
+    #   fsType = "ext4";
+    # };
 
     boot.loader.grub.device = "/none";
     boot.kernelPackages = pkgs.linuxPackages_latest;
