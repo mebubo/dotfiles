@@ -153,6 +153,7 @@ in
         tmux
         nodejs
         python3
+        python3Packages.pip
         supabase-cli
       ]);
     };
