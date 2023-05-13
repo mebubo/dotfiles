@@ -51,7 +51,7 @@ let
       '';
 
   ssh-vm = user: pkgs.writeShellScriptBin "ssh-vm-${user}" ''
-    ${pkgs.openssh}/bin/ssh -o StrictHostKeyChecking=no -i key -p ${port} ${user}@localhost
+    ${pkgs.openssh}/bin/ssh -o StrictHostKeyChecking=no -i key -p ${port} ${user}@localhost $@
   '';
 
   sshfs-vm = user: pkgs.writeShellScriptBin "sshfs-vm-${user}" ''
