@@ -1,4 +1,4 @@
 builtins.fetchTarball {
-  url = "https://github.com/nix-community/home-manager/archive/0e4c33d76006c9080d2f228ba1c2308e3e4d7be6.tar.gz";
-  sha256 = "0p7hibqh6w0gkfdf1z96487slj06najjxibfkx6xbnmh93ymlm8p";
+  url = "https://github.com/nix-community/home-manager/archive/39c7d0a97a77d3f31953941767a0822c94dc01f5.tar.gz";
+  sha256 = "1hsspmy78w28lsrvvqky86nxlrb0w86v56csrr1aqqhmmlyk3z90";
 }
