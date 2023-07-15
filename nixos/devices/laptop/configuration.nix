@@ -34,7 +34,7 @@
       "fs.inotify.max_user_watches" = 524288;
       "kernel.sysrq" = 1;
     };
-    kernelPackages = pkgs.linuxPackages_latest;
+    # kernelPackages = pkgs.linuxPackages_latest;
     cleanTmpDir = true;
 
     binfmt.emulatedSystems = [ "aarch64-linux" ];
