@@ -161,6 +161,7 @@ in
         python3
         python3Packages.pip
         supabase-cli
+        cmake
       ]);
     };
 
