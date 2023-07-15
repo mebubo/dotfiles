@@ -63,6 +63,11 @@
       pkgs = nixpkgs.legacyPackages.aarch64-darwin;
       modules = [
         home-manager-module-darwin
+        { nixpkgs.overlays = [
+            (import ./nixos/overlays/50-vim-plugins.nix)
+            (import ./nixos/overlays/50-intellij.nix)
+          ];
+        }
       ];
 
     };

@@ -173,8 +173,7 @@ in
       enable = true;
       sessionVariables = {
         EDITOR = "vim";
-        NIX_PATH = "nixpkgs=$HOME/src/NixOS/nixpkgs:nixpkgs-overlays=$HOME/src/me/dotfiles/nixos/overlays";
-        HOME_MANAGER_CONFIG = "$HOME/src/me/dotfiles/nixos/home-manager/home.nix";
+        NIX_PATH = "nixpkgs=$HOME/src/NixOS/nixpkgs";
         JAVA_HOME = pkgs.jdk;
         NIXOS_OZONE_WL = "1";
       };
