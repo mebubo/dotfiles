@@ -10,7 +10,7 @@
       # ../../modules/prometheus.nix
       # ../../modules/grafana.nix
       ../../modules/wlroots-screen-share.nix
-      ../../modules/podman.mnix
+      ../../modules/podman.nix
       ./home-manager.nix
     ];
 
