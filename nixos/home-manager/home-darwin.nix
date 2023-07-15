@@ -24,6 +24,11 @@ in
     utm
   ];
 
+  home = {
+    username = "dev";
+    homeDirectory = "/Users/dev";
+  };
+
   programs = {
     zsh = {
       enable = true;
