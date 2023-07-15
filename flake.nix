@@ -11,6 +11,12 @@
           ./nixos/devices/laptop/configuration.nix
         ];
       };
+      fr = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./nixos/devices/fr/configuration.nix
+        ];
+      };
     };
   };
 }
