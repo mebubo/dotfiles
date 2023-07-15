@@ -14,8 +14,8 @@ let
   py = python3.withPackages (p: [ p.pyserial p.intelhex ]);
 
   firmware = builtins.fetchurl {
-    url = "https://github.com/Koenkk/Z-Stack-firmware/raw/master/coordinator/Z-Stack_3.x.0/bin/CC1352P2_CC2652P_launchpad_coordinator_20221226.zip";
-    sha256 = "sha256:1566hzdf7a4687iy8wk0qrg6g29qki0k5k8r8vin39j82ijq7n1n";
+    url = "https://github.com/Koenkk/Z-Stack-firmware/raw/master/coordinator/Z-Stack_3.x.0/bin/CC1352P2_CC2652P_launchpad_coordinator_20230507.zip";
+    sha256 = "sha256:1d6f667ykrlz7077b6yy3wm6cxd0fyaqdhvbq7acpdm8dhxjwivq";
   };
 
   firmware-unpacked = runCommand "firmare-unpack" {} ''
