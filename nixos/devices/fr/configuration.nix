@@ -13,6 +13,8 @@ in
       ../../modules/home-manager.nix
       ../../modules/framework.nix
       ../../modules/wlroots-screen-share.nix
+      ../../modules/prometheus.nix
+      ../../modules/grafana.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
