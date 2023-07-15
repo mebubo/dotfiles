@@ -21,6 +21,7 @@ in
     podman
     m-cli
     alacritty
+    utm
   ];
 
   programs = {
