@@ -11,7 +11,6 @@ in
   imports =
     [
       ./hardware-configuration.nix
-      ../../modules/home-manager.nix
       ../../modules/framework.nix
       ../../modules/wlroots-screen-share.nix
       ../../modules/prometheus.nix
