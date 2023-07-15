@@ -108,12 +108,6 @@ in
     };
   };
 
-  nixpkgs.config = {
-    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-      "obsidian"
-    ];
-  };
-
   xdg.configFile = {
     "sway/config".source = ../../.config/sway/config;
     "i3/config".source = ../../.config/i3/config;

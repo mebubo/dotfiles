@@ -10,7 +10,7 @@ in
   imports = [ "${home-manager-shapshot}/nixos" ];
 
   home-manager = {
-    useGlobalPkgs = false;
+    useGlobalPkgs = true;
     useUserPackages = true;
     users = {
       me = import ../home-manager/home.nix;
