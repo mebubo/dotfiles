@@ -67,8 +67,6 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.me = home-manager-module-nixos;
-            home-manager.users.dev = home-manager-module-nixos;
-            home-manager.users.dev2 = home-manager-module-nixos;
           }
           overlays
         ];
