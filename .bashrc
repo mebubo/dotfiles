@@ -2,7 +2,6 @@
 [[ $- != *i* ]] && return
 
 export EDITOR=vim
-export LANG=fr_FR.UTF-8
 export LESS="-r -F -X -j10"
 
 shopt -s histappend
