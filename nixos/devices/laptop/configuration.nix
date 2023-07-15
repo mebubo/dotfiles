@@ -1,3 +1,4 @@
+{ dotfiles-private }:
 { config, pkgs, lib, ... }:
 
 {
@@ -5,7 +6,7 @@
     [
       ./hardware-configuration.nix
       ./hardware-configuration-custom.nix
-      ./wireless.nix
+      (import ./wireless.nix { inherit dotfiles-private; })
       ../../modules/xserver.nix
       # ../../modules/prometheus.nix
       # ../../modules/grafana.nix
@@ -120,7 +121,7 @@
     useNetworkd = true;
     dhcpcd.enable = false;
     useDHCP = false;
-    extraHosts = (import ./private.nix).networking.extraHosts;
+    extraHosts = (import dotfiles-private).networking.extraHosts;
   };
 
   systemd = {

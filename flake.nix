@@ -14,7 +14,7 @@
       laptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./nixos/devices/laptop/configuration.nix
+          (import ./nixos/devices/laptop/configuration.nix { inherit dotfiles-private; })
         ];
       };
       fr = nixpkgs.lib.nixosSystem {

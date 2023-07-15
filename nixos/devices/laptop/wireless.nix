@@ -1,3 +1,4 @@
+{ dotfiles-private }:
 { pkgs, ... }:
 
 let
@@ -15,7 +16,7 @@ in
   networking.wireless = {
     enable = true;
     interfaces = [ "wlp3s0" ];
-    networks = (import ./private.nix).wireless.networks;
+    networks = (import dotfiles-private).wireless.networks;
     userControlled = {
       enable = true;
       group = "wireless";
