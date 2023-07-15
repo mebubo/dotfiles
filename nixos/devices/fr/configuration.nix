@@ -186,6 +186,7 @@ in
   environment = {
     systemPackages = with pkgs; [
       vim
+      git
       # curl
       # file
       # tmux
