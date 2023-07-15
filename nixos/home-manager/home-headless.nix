@@ -2,8 +2,6 @@
 
 let
 
-  home-manager-snapshot = import ./home-manager-snapshot.nix;
-
   haskell-sources-tags-nix = pkgs.fetchFromGitHub {
     owner = "mebubo";
     repo = "haskell-sources-tags-nix";
@@ -13,11 +11,6 @@ let
   };
 
   cabal-sources-tags = pkgs.callPackage (haskell-sources-tags-nix + "/cabal-sources-tags.nix") {};
-
-  hm = pkgs.writeShellScriptBin "hm" ''
-    # NIX_PATH=nixpkgs=$HOME/src/NixOS/nixpkgs:nixpkgs-overlays=$HOME/src/me/dotfiles/nixos/overlays ${pkgs.home-manager}/bin/home-manager -f $HOME/src/me/dotfiles/nixos/home-manager/home.nix "$@"
-    NIX_PATH=nixpkgs=$HOME/src/NixOS/nixpkgs ${pkgs.home-manager}/bin/home-manager -f $HOME/src/me/dotfiles/nixos/home-manager/home.nix "$@"
-  '';
 
 in
 
@@ -93,14 +86,12 @@ in
   ])
   ++ [
     cabal-sources-tags
-    hm
   ]
   ;
 
   programs = {
     home-manager = {
       enable = true;
-      path = "${home-manager-snapshot}";
     };
     git = {
       enable = true;

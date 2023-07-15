@@ -17,7 +17,6 @@ in
       ./hardware-configuration.nix
       ./me.nix
       m1-support
-      ./home-manager.nix
       ../../modules/wlroots-screen-share.nix
     ];
 
@@ -41,7 +40,6 @@ in
 
   nixpkgs.overlays = [
     (import ../../overlays/50-haskell.nix)
-    (import ../../overlays/50-home-manager.nix)
     (import ../../overlays/50-vim-plugins.nix)
     (import ../../overlays/50-st)
     (import ../../overlays/50-intellij.nix)
