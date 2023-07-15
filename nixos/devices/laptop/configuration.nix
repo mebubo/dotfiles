@@ -41,7 +41,7 @@ in
       "kernel.sysrq" = 1;
     };
     # kernelPackages = pkgs.linuxPackages_latest;
-    cleanTmpDir = true;
+    tmp.cleanOnBoot = true;
 
     binfmt.emulatedSystems = [ "aarch64-linux" ];
 
