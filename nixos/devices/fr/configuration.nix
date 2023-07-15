@@ -3,7 +3,7 @@
 
 let
 
-    wifi = "wlp166s0";
+  wifi = "wlp166s0";
 
 in
 
@@ -12,6 +12,7 @@ in
     [
       ./hardware-configuration.nix
       ../../modules/framework.nix
+      (import ../../modules/wireless.nix { inherit dotfiles-private; interface = wifi; })
       ../../modules/wlroots-screen-share.nix
       ../../modules/prometheus.nix
       ../../modules/grafana.nix
@@ -21,11 +22,6 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "fr";
-  networking.wireless = {
-    enable = true;
-    interfaces = [ wifi ];
-    networks = (import dotfiles-private).wireless.networks;
-  };
 
   time.timeZone = "Europe/Paris";
 

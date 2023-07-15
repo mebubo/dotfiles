@@ -1,12 +1,18 @@
 { dotfiles-private }:
 { config, pkgs, lib, ... }:
 
+let
+
+  wifi = "wlp3s0";
+
+in
+
 {
   imports =
     [
       ./hardware-configuration.nix
       ./hardware-configuration-custom.nix
-      (import ./wireless.nix { inherit dotfiles-private; })
+      (import ../../modules/wireless.nix { inherit dotfiles-private; interface = wifi; })
       ../../modules/xserver.nix
       # ../../modules/prometheus.nix
       # ../../modules/grafana.nix
@@ -120,7 +126,7 @@
     useNetworkd = true;
     dhcpcd.enable = false;
     useDHCP = false;
-    extraHosts = (import dotfiles-private).networking.extraHosts;
+    extraHosts = dotfiles-private.networking.extraHosts;
   };
 
   systemd = {

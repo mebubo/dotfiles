@@ -29,12 +29,15 @@
       ];
     };
 
+    # until I convert it to a flake
+    dot-private = import dotfiles-private;
+
   in {
     nixosConfigurations = {
       laptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          (import ./nixos/devices/laptop/configuration.nix { inherit dotfiles-private; })
+          (import ./nixos/devices/laptop/configuration.nix { dotfiles-private = dot-private; })
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -47,7 +50,7 @@
       fr = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          (import ./nixos/devices/fr/configuration.nix { inherit dotfiles-private; })
+          (import ./nixos/devices/fr/configuration.nix { dotfiles-private = dot-private; })
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
