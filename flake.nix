@@ -7,13 +7,17 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-apple-silicon = {
+      url = "github:tpwrules/nixos-apple-silicon";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     dotfiles-private = {
       url = "path:/home/me/src/me/dotfiles-private";
       flake = false;
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, dotfiles-private }:
+  outputs = { self, nixpkgs, home-manager, nixos-apple-silicon, dotfiles-private }:
 
   let
     home-manager-module-nixos = { ... }: {
@@ -58,6 +62,7 @@
         system = "aarch64-linux";
         modules = [
           (import ./nixos/devices/me/configuration.nix { dotfiles-private = dot-private; })
+          nixos-apple-silicon.nixosModules.apple-silicon-support
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

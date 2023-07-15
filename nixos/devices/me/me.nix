@@ -30,7 +30,7 @@ in
         isNormalUser = true;
         uid = 1002;
         packages = with pkgs; [
-          intellij
+          # intellij
         ];
       };
 
