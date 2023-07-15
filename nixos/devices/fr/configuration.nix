@@ -1,4 +1,3 @@
-{ dotfiles-private }:
 { config, pkgs, lib, ... }:
 
 let
@@ -12,11 +11,13 @@ in
     [
       ./hardware-configuration.nix
       ../../modules/framework.nix
-      (import ../../modules/wireless.nix { inherit dotfiles-private; interface = wifi; })
+      ../../modules/wireless.nix
       ../../modules/wlroots-screen-share.nix
       ../../modules/prometheus.nix
       ../../modules/grafana.nix
     ];
+
+  me.wifi-interface = wifi;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -24,7 +25,7 @@ in
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   networking.hostName = "fr";
-  networking.extraHosts = dotfiles-private.networking.extraHosts;
+  networking.extraHosts = config.me.private.networking.extraHosts;
 
   time.timeZone = "Europe/Paris";
 

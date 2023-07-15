@@ -1,15 +1,15 @@
-{ ... }:
+{ config, ... }:
 
 {
 
   users.users.root = {
-    openssh.authorizedKeys.keyFiles = [ ./key.pub ./key2.pub ];
+    openssh.authorizedKeys.keyFiles = config.me.private.keys;
   };
 
   users.users.me = {
     isNormalUser = true;
     uid = 1000;
-    openssh.authorizedKeys.keyFiles = [ ./key.pub ./key2.pub ];
+    openssh.authorizedKeys.keyFiles = config.me.private.keys;
   };
 
   services.openssh = {

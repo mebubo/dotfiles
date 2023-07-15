@@ -1,4 +1,3 @@
-{ dotfiles-private }:
 { config, pkgs, ... }:
 
 let
@@ -12,9 +11,11 @@ in
     [
       ./hardware-configuration.nix
       ./me.nix
-      (import ../../modules/wireless.nix { inherit dotfiles-private; interface = wifi; })
+      ../../modules/wireless.nix
       ../../modules/wlroots-screen-share.nix
     ];
+
+  me.wifi-interface = wifi;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.consoleMode = "0";

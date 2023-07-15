@@ -1,4 +1,3 @@
-{ dotfiles-private }:
 { config, pkgs, lib, ... }:
 
 let
@@ -12,13 +11,15 @@ in
     [
       ./hardware-configuration.nix
       ./hardware-configuration-custom.nix
-      (import ../../modules/wireless.nix { inherit dotfiles-private; interface = wifi; })
+      ../../modules/wireless.nix
       ../../modules/xserver.nix
       # ../../modules/prometheus.nix
       # ../../modules/grafana.nix
       ../../modules/wlroots-screen-share.nix
       ../../modules/podman.nix
     ];
+
+  me.wifi-interface = wifi;
 
   boot = {
     loader.grub = {
@@ -126,7 +127,7 @@ in
     useNetworkd = true;
     dhcpcd.enable = false;
     useDHCP = false;
-    extraHosts = dotfiles-private.networking.extraHosts;
+    extraHosts = config.me.private.networking.extraHosts;
   };
 
   systemd = {

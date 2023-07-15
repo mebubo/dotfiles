@@ -2,7 +2,7 @@
 
 let
 
-  router = (import ./private.nix).router;
+  router = config.me.private.router;
   ssid = router.ssid;
   wpaPassphrase = router.wpaPassphrase;
   countryCode = router.countryCode;

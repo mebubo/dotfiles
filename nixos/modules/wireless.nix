@@ -1,9 +1,8 @@
-{ dotfiles-private, interface }:
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 
 let
 
-  networks = dotfiles-private.wireless.networks;
+  networks = config.me.private.wireless.networks;
 
   script-line = ssid: network: ''
     test "$1" = "${ssid}" && ${pkgs.qrencode}/bin/qrencode -o - -t ANSI "WIFI:S:${ssid};T:WPA;P:${network.psk};;"
@@ -23,7 +22,7 @@ in
 {
   networking.wireless = {
     enable = true;
-    interfaces = [ interface ];
+    interfaces = [ config.me.wifi-interface ];
     inherit networks;
     userControlled = {
       enable = true;

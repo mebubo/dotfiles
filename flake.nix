@@ -42,12 +42,18 @@
     # until I convert it to a flake
     dot-private = import dotfiles-private;
 
+    private = {
+      me.private = dot-private;
+    };
+
   in {
     nixosConfigurations = {
       laptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          (import ./nixos/devices/laptop/configuration.nix { dotfiles-private = dot-private; })
+          private
+          ./nixos/modules/me.nix
+          ./nixos/devices/laptop/configuration.nix
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -61,7 +67,9 @@
       me = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         modules = [
-          (import ./nixos/devices/me/configuration.nix { dotfiles-private = dot-private; })
+          private
+          ./nixos/modules/me.nix
+          ./nixos/devices/me/configuration.nix
           nixos-apple-silicon.nixosModules.apple-silicon-support
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
@@ -71,10 +79,20 @@
           overlays
         ];
       };
+      raspberry = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        modules = [
+          private
+          ./nixos/modules/me.nix
+          ./nixos/devices/raspberry/configuration.nix
+        ];
+      };
       fr = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          (import ./nixos/devices/fr/configuration.nix { dotfiles-private = dot-private; })
+          private
+          ./nixos/modules/me.nix
+          ./nixos/devices/fr/configuration.nix
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

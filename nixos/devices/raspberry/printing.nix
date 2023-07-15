@@ -2,7 +2,7 @@
 
 let
 
-  printer = (import ./private.nix).printer;
+  printer = config.me.private.printer;
 
   printer-setup = pkgs.writeShellScriptBin "printer-setup" ''
     ${pkgs.cups}/bin/lpadmin -p lj2 -E -v ${printer.uri} -m ${printer.model} -o printer-is-shared=true

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 let
 
@@ -39,7 +39,7 @@ in
           urls = [ "http://localhost:8086" ];
           organization = "me";
           bucket = "me";
-          token = "";
+          token = config.me.private.influxdb.token;
         };
       };
     };

@@ -1,10 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   networking.wireless = {
     enable = true;
     interfaces = [ "wlan0" ];
-    networks = (import ./private.nix).wireless.networks;
+    networks = config.me.private.wireless.networks;
   };
 
   networking = {
