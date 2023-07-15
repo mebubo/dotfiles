@@ -1,3 +1,4 @@
+{ dotfiles-private }:
 { config, pkgs, ... }:
 
 let
@@ -9,13 +10,15 @@ let
 
   m1-support = nixos-m1 + "/apple-silicon-support";
 
+  wifi = "wlp1s0f0";
+
 in
 
 {
   imports =
     [
       ./hardware-configuration.nix
-      ./me.nix
+      (import ../../modules/wireless.nix { inherit dotfiles-private; interface = wifi; })
       m1-support
       ../../modules/wlroots-screen-share.nix
     ];
@@ -37,6 +40,14 @@ in
       tar xf ${./firmware.tar} -C $out/lib/firmware
     '')
   ];
+
+  networking = {
+    hostName = "me";
+    firewall.enable = true;
+    firewall.allowedTCPPorts = [ 8000 ];
+    useDHCP = true;
+    interfaces.${wifi}.useDHCP = true;
+  };
 
   system.stateVersion = "22.11";
 

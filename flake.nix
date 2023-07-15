@@ -54,6 +54,20 @@
           overlays
         ];
       };
+      me = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        modules = [
+          (import ./nixos/devices/me/configuration.nix { dotfiles-private = dot-private; })
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.me = home-manager-module-nixos;
+            home-manager.users.dev = home-manager-module-nixos;
+            home-manager.users.dev2 = home-manager-module-nixos;
+          }
+          overlays
+        ];
+      };
       fr = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [

@@ -50,24 +50,6 @@ in
     groups.wireless = {};
   };
 
-  networking.wireless = {
-    enable = true;
-    interfaces = [ "wlp1s0f0" ];
-    networks = (import ./private.nix).wireless.networks;
-    userControlled = {
-      enable = true;
-      group = "wireless";
-    };
-  };
-
-  networking = {
-    hostName = "me";
-    firewall.enable = true;
-    firewall.allowedTCPPorts = [ 8000 ];
-    useDHCP = true;
-    interfaces.wlp1s0f0.useDHCP = true;
-  };
-
   programs = {
     gnupg.agent = { enable = true; enableSSHSupport = false; };
     ssh.startAgent = true;
