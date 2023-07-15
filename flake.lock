@@ -1,5 +1,18 @@
 {
   "nodes": {
+    "dotfiles-private": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1689433231,
+        "narHash": "sha256-DrMiVDhQ6yga2YL2i6iSyxvoBl8K8KX5zoEiRjFbn7E=",
+        "path": "/home/me/src/me/dotfiles-private",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/me/src/me/dotfiles-private",
+        "type": "path"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1688500189,
@@ -18,6 +31,7 @@
     },
     "root": {
       "inputs": {
+        "dotfiles-private": "dotfiles-private",
         "nixpkgs": "nixpkgs"
       }
     }

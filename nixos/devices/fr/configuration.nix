@@ -1,3 +1,4 @@
+{ dotfiles-private }:
 { config, pkgs, lib, ... }:
 
 let
@@ -24,7 +25,7 @@ in
   networking.wireless = {
     enable = true;
     interfaces = [ wifi ];
-    networks = (import ./private.nix).wireless.networks;
+    networks = (import dotfiles-private).wireless.networks;
   };
 
   time.timeZone = "Europe/Paris";
