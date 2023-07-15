@@ -248,13 +248,6 @@ in
 
   nixpkgs.config.allowUnfree = true;
 
-  nixpkgs.overlays = [
-    (import ../../overlays/50-haskell.nix)
-    (import ../../overlays/50-vim-plugins.nix)
-    (import ../../overlays/50-st)
-    (import ../../overlays/50-intellij.nix)
-  ];
-
   system.stateVersion = "20.03";
 
 }

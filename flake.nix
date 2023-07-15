@@ -29,6 +29,12 @@
       ];
     };
 
+    overlays = { nixpkgs.overlays = [
+        (import ./nixos/overlays/50-vim-plugins.nix)
+        (import ./nixos/overlays/50-intellij.nix)
+      ];
+    };
+
     # until I convert it to a flake
     dot-private = import dotfiles-private;
 
@@ -45,6 +51,7 @@
             home-manager.users.dev = home-manager-module-nixos;
             home-manager.users.dev2 = home-manager-module-nixos;
           }
+          overlays
         ];
       };
       fr = nixpkgs.lib.nixosSystem {
@@ -56,6 +63,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.me = home-manager-module-nixos;
           }
+          overlays
         ];
       };
     };
@@ -63,11 +71,7 @@
       pkgs = nixpkgs.legacyPackages.aarch64-darwin;
       modules = [
         home-manager-module-darwin
-        { nixpkgs.overlays = [
-            (import ./nixos/overlays/50-vim-plugins.nix)
-            (import ./nixos/overlays/50-intellij.nix)
-          ];
-        }
+        overlays
       ];
 
     };

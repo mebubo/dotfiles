@@ -38,13 +38,6 @@ in
     '')
   ];
 
-  nixpkgs.overlays = [
-    (import ../../overlays/50-haskell.nix)
-    (import ../../overlays/50-vim-plugins.nix)
-    (import ../../overlays/50-st)
-    (import ../../overlays/50-intellij.nix)
-  ];
-
   system.stateVersion = "22.11";
 
   # nixpkgs.config.allowUnfree = true;
