@@ -31,5 +31,7 @@ in
     };
   };
 
+  users.groups.wireless = {};
+
   users.users.me.packages = [ qr ];
 }

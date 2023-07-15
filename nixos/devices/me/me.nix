@@ -47,7 +47,6 @@ in
       gid = 1000;
     };
 
-    groups.wireless = {};
   };
 
   programs = {

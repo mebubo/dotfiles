@@ -225,8 +225,6 @@ in
         vscode
       ];
     };
-
-    groups.wireless = {};
   };
 
   nix = {
