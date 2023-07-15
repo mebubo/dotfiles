@@ -3,8 +3,8 @@
     "dotfiles-private": {
       "flake": false,
       "locked": {
-        "lastModified": 1689433231,
-        "narHash": "sha256-DrMiVDhQ6yga2YL2i6iSyxvoBl8K8KX5zoEiRjFbn7E=",
+        "lastModified": 1689455273,
+        "narHash": "sha256-oA9l5rTc2VULcOMWXH4hEGysuxp6zUkLTnjpVaVcaUk=",
         "path": "/home/me/src/me/dotfiles-private",
         "type": "path"
       },
