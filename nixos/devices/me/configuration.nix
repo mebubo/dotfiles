@@ -31,7 +31,7 @@ in
   hardware.firmware = [
     (pkgs.runCommand "firmware-extract" {} ''
       mkdir -p $out/lib/firmware
-      tar xf ${dotfiles-private.firmware} -C $out/lib/firmware
+      tar xf ${config.me.private.firmware} -C $out/lib/firmware
     '')
   ];
 
