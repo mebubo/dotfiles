@@ -22,6 +22,7 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "fr";
+  networking.extraHosts = dotfiles-private.networking.extraHosts;
 
   time.timeZone = "Europe/Paris";
 
