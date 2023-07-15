@@ -11,7 +11,7 @@ in
     [
       ./hardware-configuration.nix
       ../../modules/home-manager.nix
-      ../../../../../NixOS/nixos-hardware/framework/12th-gen-intel
+      ../../modules/framework.nix
       ../../modules/wlroots-screen-share.nix
     ];
 
