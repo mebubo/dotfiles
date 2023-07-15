@@ -13,7 +13,23 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, dotfiles-private }: {
+  outputs = { self, nixpkgs, home-manager, dotfiles-private }:
+
+  let
+    home-manager-module-nixos = { ... }: {
+      imports = [
+        ./nixos/home-manager/home-headless.nix
+        ./nixos/home-manager/home-desktop.nix
+      ];
+    };
+    home-manager-module-darwin = { ... }: {
+      imports = [
+        ./nixos/home-manager/home-headless.nix
+        ./nixos/home-manager/home-darwin.nix
+      ];
+    };
+
+  in {
     nixosConfigurations = {
       laptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -22,9 +38,9 @@
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.me = import ./nixos/home-manager/home.nix;
-            home-manager.users.dev = import ./nixos/home-manager/home.nix;
-            home-manager.users.dev2 = import ./nixos/home-manager/home.nix;
+            home-manager.users.me = home-manager-module-nixos;
+            home-manager.users.dev = home-manager-module-nixos;
+            home-manager.users.dev2 = home-manager-module-nixos;
           }
         ];
       };
@@ -35,7 +51,7 @@
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.me = import ./nixos/home-manager/home.nix;
+            home-manager.users.me = home-manager-module-nixos;
           }
         ];
       };
@@ -43,7 +59,7 @@
     homeConfigurations.me = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.aarch64-darwin;
       modules = [
-        ./nixos/home-manager/home.nix
+        home-manager-module-darwin
       ];
 
     };
