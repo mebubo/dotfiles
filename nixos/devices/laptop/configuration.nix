@@ -12,7 +12,6 @@
       # ../../modules/grafana.nix
       ../../modules/wlroots-screen-share.nix
       ../../modules/podman.nix
-      ./home-manager.nix
     ];
 
   boot = {

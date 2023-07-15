@@ -19,6 +19,13 @@
         system = "x86_64-linux";
         modules = [
           (import ./nixos/devices/laptop/configuration.nix { inherit dotfiles-private; })
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.me = import ./nixos/home-manager/home.nix;
+            home-manager.users.dev = import ./nixos/home-manager/home.nix;
+            home-manager.users.dev2 = import ./nixos/home-manager/home.nix;
+          }
         ];
       };
       fr = nixpkgs.lib.nixosSystem {
