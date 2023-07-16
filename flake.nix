@@ -24,30 +24,38 @@
   outputs = { self, nixpkgs, home-manager, nixos-apple-silicon, nix-darwin, dotfiles-private }:
 
   let
-    home-manager-module-nixos = { ... }: {
+
+    home-manager-user-nixos = { ... }: {
       imports = [
         ./nixos/home-manager/home-headless.nix
         ./nixos/home-manager/home-desktop.nix
       ];
     };
-    home-manager-module-darwin = { ... }: {
+
+    home-manager-user-darwin = { ... }: {
       imports = [
         ./nixos/home-manager/home-headless.nix
         ./nixos/home-manager/home-darwin.nix
       ];
     };
 
-    overlays = { nixpkgs.overlays = [
+    home-manager-module = users: user-module: {
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        users = nixpkgs.lib.genAttrs users (u: user-module);
+      };
+    };
+
+    overlays = {
+      nixpkgs.overlays = [
         (import ./nixos/overlays/50-vim-plugins.nix)
         (import ./nixos/overlays/50-intellij.nix)
       ];
     };
 
-    # until I convert it to a flake
-    dot-private = import dotfiles-private;
-
     private = {
-      me.private = dot-private;
+      me.private = import dotfiles-private;
     };
 
   in {
@@ -59,13 +67,8 @@
           private
           ./nixos/modules/me.nix
           ./nixos/devices/laptop/configuration.nix
-          home-manager.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.me = home-manager-module-nixos;
-            home-manager.users.dev = home-manager-module-nixos;
-            home-manager.users.dev2 = home-manager-module-nixos;
-          }
+          home-manager.nixosModules.home-manager
+          (home-manager-module ["me" "dev" "dev2"] home-manager-user-nixos)
           overlays
         ];
       };
@@ -77,11 +80,8 @@
           ./nixos/modules/me.nix
           ./nixos/devices/me/configuration.nix
           nixos-apple-silicon.nixosModules.apple-silicon-support
-          home-manager.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.me = home-manager-module-nixos;
-          }
+          home-manager.nixosModules.home-manager
+          (home-manager-module ["me"] home-manager-user-nixos)
           overlays
         ];
       };
@@ -101,11 +101,8 @@
           private
           ./nixos/modules/me.nix
           ./nixos/devices/fr/configuration.nix
-          home-manager.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.me = home-manager-module-nixos;
-          }
+          home-manager.nixosModules.home-manager
+          (home-manager-module ["me"] home-manager-user-nixos)
           overlays
         ];
       };
@@ -115,7 +112,7 @@
     homeConfigurations.me = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.aarch64-darwin;
       modules = [
-        home-manager-module-darwin
+        home-manager-user-darwin
         overlays
       ];
 
