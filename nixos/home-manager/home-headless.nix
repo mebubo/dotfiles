@@ -171,6 +171,7 @@ in
     };
     bash = {
       enable = true;
+      enableCompletion = true;
       sessionVariables = {
         EDITOR = "vim";
         NIX_PATH = "nixpkgs=$HOME/src/NixOS/nixpkgs";
@@ -179,20 +180,6 @@ in
       };
       initExtra = ''
         ${builtins.readFile ../../.bashrc}
-
-        # https://github.com/NixOS/nixpkgs/blob/d510b23805c37a5b11b86dc3ba8723fcaa6f4539/nixos/modules/programs/bash/bash-completion.nix#L23-L34
-        if shopt -q progcomp &>/dev/null; then
-          . "${pkgs.bash-completion}/etc/profile.d/bash_completion.sh"
-          nullglobStatus=$(shopt -p nullglob)
-          shopt -s nullglob
-          for p in $NIX_PROFILES; do
-            for m in "$p/etc/bash_completion.d/"*; do
-              . "$m"
-            done
-          done
-          eval "$nullglobStatus"
-          unset nullglobStatus p m
-        fi
       '';
       shellAliases = {
         l = "${pkgs.exa}/bin/exa -la";
