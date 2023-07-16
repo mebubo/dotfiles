@@ -11,13 +11,17 @@
       url = "github:tpwrules/nixos-apple-silicon";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     dotfiles-private = {
       url = "path:/home/me/src/me/dotfiles-private";
       flake = false;
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-apple-silicon, dotfiles-private }:
+  outputs = { self, nixpkgs, home-manager, nixos-apple-silicon, nix-darwin, dotfiles-private }:
 
   let
     home-manager-module-nixos = { ... }: {
@@ -48,6 +52,7 @@
 
   in {
     nixosConfigurations = {
+
       laptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
@@ -64,6 +69,7 @@
           overlays
         ];
       };
+
       me = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         modules = [
@@ -79,6 +85,7 @@
           overlays
         ];
       };
+
       raspberry = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         modules = [
@@ -87,6 +94,7 @@
           ./nixos/devices/raspberry/configuration.nix
         ];
       };
+
       fr = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
@@ -101,7 +109,9 @@
           overlays
         ];
       };
+
     };
+
     homeConfigurations.me = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.aarch64-darwin;
       modules = [
@@ -110,5 +120,12 @@
       ];
 
     };
+
+    darwinConfigurations.mba = nix-darwin.lib.darwinSystem {
+      system = "aarch64-darwin";
+      modules = [ ./nixos/devices/mba/configuration.nix ];
+    };
+
+    packages."aarch64-darwin".darwin-rebuild = nix-darwin.packages."aarch64-darwin".darwin-rebuild;
   };
 }

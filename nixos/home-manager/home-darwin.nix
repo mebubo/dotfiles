@@ -16,6 +16,7 @@ in
 {
 
   home.packages = with pkgs; [
+    openssh
     jetbrains.idea-community-minimal
     qemu
     podman
