@@ -2,33 +2,73 @@
 
 {
 
-  system.defaults.NSGlobalDomain.AppleKeyboardUIMode = 3;
-  system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
-  system.defaults.NSGlobalDomain.InitialKeyRepeat = 10;
-  system.defaults.NSGlobalDomain.KeyRepeat = 1;
-  system.defaults.NSGlobalDomain.NSAutomaticCapitalizationEnabled = false;
-  system.defaults.NSGlobalDomain.NSAutomaticDashSubstitutionEnabled = false;
-  system.defaults.NSGlobalDomain.NSAutomaticPeriodSubstitutionEnabled = false;
-  system.defaults.NSGlobalDomain.NSAutomaticQuoteSubstitutionEnabled = false;
-  system.defaults.NSGlobalDomain.NSAutomaticSpellingCorrectionEnabled = false;
-  system.defaults.NSGlobalDomain.NSNavPanelExpandedStateForSaveMode = true;
-  system.defaults.NSGlobalDomain.NSNavPanelExpandedStateForSaveMode2 = true;
-  system.defaults.NSGlobalDomain._HIHideMenuBar = true;
+  users.users = {
+    dev = {
+      home = "/Users/dev";
+      shell = pkgs.bashInteractive;
+    };
+  };
 
-  system.defaults.dock.autohide = true;
-  system.defaults.dock.mru-spaces = false;
-  system.defaults.dock.orientation = "left";
-  system.defaults.dock.showhidden = true;
+  system.defaults = {
 
-  system.defaults.finder.AppleShowAllExtensions = true;
-  system.defaults.finder.QuitMenuItem = true;
-  system.defaults.finder.FXEnableExtensionChangeWarning = false;
+    dock.autohide = true;
+    dock.mru-spaces = false;
+    dock.minimize-to-application = true;
+    dock.show-recents = false;
 
-  system.defaults.trackpad.Clicking = true;
-  system.defaults.trackpad.TrackpadThreeFingerDrag = true;
+    dock.orientation = "left";
+    dock.showhidden = true;
 
-  system.keyboard.enableKeyMapping = true;
-  system.keyboard.remapCapsLockToControl = true;
+    spaces.spans-displays = false;
+    screencapture.location = "/tmp";
+
+    trackpad.Clicking = true;
+    trackpad.TrackpadThreeFingerDrag = true;
+
+    finder.AppleShowAllExtensions = true;
+    finder.FXEnableExtensionChangeWarning = false;
+    finder.CreateDesktop = false;
+    finder.FXPreferredViewStyle = "Nlsv"; # list view
+    finder.ShowPathbar = true;
+    finder.QuitMenuItem = true;
+
+    loginwindow.GuestEnabled = false;
+
+    CustomUserPreferences = {
+      # 3 finger dragging
+      "com.apple.AppleMultitouchTrackpad".DragLock = false;
+      "com.apple.AppleMultitouchTrackpad".Dragging = false;
+      "com.apple.AppleMultitouchTrackpad".TrackpadThreeFingerDrag = true;
+
+      # Finder's default location upon open
+      "com.apple.finder".NewWindowTargetPath = "file://${config.users.users.dev.home}/";
+    };
+
+    NSGlobalDomain.AppleICUForce24HourTime = true;
+    NSGlobalDomain.AppleInterfaceStyleSwitchesAutomatically = true;
+    NSGlobalDomain.AppleShowScrollBars = "WhenScrolling";
+    NSGlobalDomain."com.apple.mouse.tapBehavior" = 1;
+    NSGlobalDomain."com.apple.trackpad.scaling" = 3.0;
+
+    NSGlobalDomain.AppleKeyboardUIMode = 3;
+    NSGlobalDomain.ApplePressAndHoldEnabled = false;
+    NSGlobalDomain.InitialKeyRepeat = 10;
+    NSGlobalDomain.KeyRepeat = 1;
+    NSGlobalDomain.NSAutomaticCapitalizationEnabled = false;
+    NSGlobalDomain.NSAutomaticDashSubstitutionEnabled = false;
+    NSGlobalDomain.NSAutomaticPeriodSubstitutionEnabled = false;
+    NSGlobalDomain.NSAutomaticQuoteSubstitutionEnabled = false;
+    NSGlobalDomain.NSAutomaticSpellingCorrectionEnabled = false;
+    NSGlobalDomain.NSNavPanelExpandedStateForSaveMode = true;
+    NSGlobalDomain.NSNavPanelExpandedStateForSaveMode2 = true;
+    NSGlobalDomain._HIHideMenuBar = true;
+
+  };
+
+  system.keyboard = {
+    enableKeyMapping = true;
+    remapCapsLockToControl = true;
+  };
 
   environment.systemPackages =
     [
@@ -39,6 +79,8 @@
       pkgs.jq
       pkgs.ripgrep
     ];
+
+  security.pam.enableSudoTouchIdAuth = true;
 
   services.yabai.enable = true;
   services.yabai.package = pkgs.yabai;
