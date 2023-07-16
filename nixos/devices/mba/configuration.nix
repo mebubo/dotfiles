@@ -11,7 +11,7 @@
 
   system.defaults = {
 
-    dock.autohide = true;
+    dock.autohide = false;
     dock.mru-spaces = false;
     dock.minimize-to-application = true;
     dock.show-recents = false;
@@ -61,7 +61,7 @@
     NSGlobalDomain.NSAutomaticSpellingCorrectionEnabled = false;
     NSGlobalDomain.NSNavPanelExpandedStateForSaveMode = true;
     NSGlobalDomain.NSNavPanelExpandedStateForSaveMode2 = true;
-    NSGlobalDomain._HIHideMenuBar = true;
+    NSGlobalDomain._HIHideMenuBar = false;
 
   };
 
