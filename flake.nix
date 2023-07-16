@@ -120,7 +120,12 @@
 
     darwinConfigurations.mba = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
-      modules = [ ./nixos/devices/mba/configuration.nix ];
+      modules = [
+        ./nixos/devices/mba/configuration.nix
+        home-manager.darwinModules.home-manager
+        (home-manager-module ["dev"] home-manager-user-darwin)
+        overlays
+      ];
     };
 
     packages."aarch64-darwin".darwin-rebuild = nix-darwin.packages."aarch64-darwin".darwin-rebuild;
