@@ -226,7 +226,7 @@ in
 
   nix = {
     enable = true;
-    package = pkgs.nix;
+    package = lib.mkDefault pkgs.nix;
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
     };
