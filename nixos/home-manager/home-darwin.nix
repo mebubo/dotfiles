@@ -81,9 +81,5 @@
     };
   };
 
-  xdg.configFile = {
-    "youtube-dl/config".source = ../../.config/youtube-dl/config;
-  };
-
   targets.genericLinux.enable = lib.mkForce false;
 }

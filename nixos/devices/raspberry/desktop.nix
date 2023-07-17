@@ -20,7 +20,7 @@
         # pavucontrol
         # tigervnc
         xfce.xfce4-terminal
-        youtube-dl
+        yt-dlp
       ];
     };
 
