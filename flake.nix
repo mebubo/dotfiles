@@ -144,11 +144,15 @@
           darwin-activate-user = pkgs.writeShellScriptBin "darwin-activate-user" ''
             ${self.darwinConfigurations.mba.system}/activate-user
           '';
-          darwin-all = pkgs.linkFarmFromDrvs "darwin-all" [
-            darwin-activate
-            darwin-chsh-me
-            darwin-activate-user
-          ];
+          darwin-all = pkgs.buildEnv {
+            name = "darwin-all";
+            paths = [
+              darwin-activate
+              darwin-chsh-me
+              darwin-activate-user
+            ];
+            pathsToLink = [ "/bin" ];
+          };
         };
   };
 }
