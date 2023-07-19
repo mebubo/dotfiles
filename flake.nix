@@ -123,7 +123,7 @@
       modules = [
         ./nixos/devices/mba/configuration.nix
         home-manager.darwinModules.home-manager
-        (home-manager-module ["dev"] home-manager-user-darwin)
+        (home-manager-module ["me"] home-manager-user-darwin)
         overlays
       ];
     };

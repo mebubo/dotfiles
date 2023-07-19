@@ -3,8 +3,8 @@
 {
 
   users.users = {
-    dev = {
-      home = "/Users/dev";
+    me = {
+      home = "/Users/me";
       shell = pkgs.bashInteractive;
     };
   };
@@ -41,7 +41,7 @@
       "com.apple.AppleMultitouchTrackpad".TrackpadThreeFingerDrag = true;
 
       # Finder's default location upon open
-      "com.apple.finder".NewWindowTargetPath = "file://${config.users.users.dev.home}/";
+      "com.apple.finder".NewWindowTargetPath = "file://${config.users.users.me.home}/";
     };
 
     NSGlobalDomain.AppleICUForce24HourTime = true;

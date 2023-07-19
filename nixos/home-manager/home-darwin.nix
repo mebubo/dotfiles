@@ -13,8 +13,8 @@
   ];
 
   home = {
-    username = "dev";
-    homeDirectory = "/Users/dev";
+    username = "me";
+    homeDirectory = lib.mkForce "/Users/me";
   };
 
   programs = {
