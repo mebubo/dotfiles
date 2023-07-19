@@ -18,14 +18,15 @@
   };
 
   programs = {
+
     vscode = import ./vscode.nix pkgs pkgs.vscode;
-    zsh = {
-      enable = true;
-      loginExtra = ''
-        exec ${pkgs.bashInteractive}/bin/bash -l
+
+    bash = {
+      initExtra = ''
+        export PATH=/Users/me/.nix-profile/bin:/etc/profiles/per-user/me/bin:/run/current-system/sw/bin:/nix/var/nix/profiles/default/bin:$PATH
       '';
-      enableCompletion = false;
     };
+
     alacritty = {
       enable = true;
       settings = {
