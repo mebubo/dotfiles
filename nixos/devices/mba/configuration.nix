@@ -9,6 +9,11 @@
     };
   };
 
+  networking = {
+    computerName = "mba";
+    hostName = "mba";
+  };
+
   system.defaults = {
 
     dock.autohide = false;
