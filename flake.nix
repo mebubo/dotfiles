@@ -128,6 +128,27 @@
       ];
     };
 
-    packages."aarch64-darwin".darwin-rebuild = nix-darwin.packages."aarch64-darwin".darwin-rebuild;
+    packages."aarch64-darwin" =
+      let
+        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+      in
+        rec {
+          darwin-rebuild = nix-darwin.packages."aarch64-darwin".darwin-rebuild;
+          darwin-activate = pkgs.writeShellScriptBin "darwin-activate" ''
+            ${self.darwinConfigurations.mba.system}/activate
+            nix-env -p /nix/var/nix/profiles/system --set ${self.darwinConfigurations.mba.system}
+          '';
+          darwin-chsh-me = pkgs.writeShellScriptBin "darwin-chsh-me" ''
+            sudo chsh -s /run/current-system/sw/bin/bash me
+          '';
+          darwin-activate-user = pkgs.writeShellScriptBin "darwin-activate-user" ''
+            ${self.darwinConfigurations.mba.system}/activate-user
+          '';
+          darwin-all = pkgs.linkFarmFromDrvs "darwin-all" [
+            darwin-activate
+            darwin-chsh-me
+            darwin-activate-user
+          ];
+        };
   };
 }
