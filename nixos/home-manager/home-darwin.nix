@@ -17,6 +17,9 @@
   home = {
     username = "me";
     homeDirectory = lib.mkForce "/Users/me";
+    file = {
+      ".config/captive-brower.toml".source = ../../.config/captive-browser-mac-chrome.toml;
+    };
   };
 
   programs = {
