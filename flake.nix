@@ -144,6 +144,11 @@
           darwin-activate-user = pkgs.writeShellScriptBin "darwin-activate-user" ''
             ${self.darwinConfigurations.mba.system}/activate-user
           '';
+          # NIXPKGS_ALLOW_UNFREE=1 nix build --impure .#packages.aarch64-darwin.darwin-activate-user-home
+          darwin-activate-user-home = pkgs.writeShellScriptBin "darwin-activate-user-home" ''
+            ${self.homeConfigurations.me.activationPackage}/activate
+          '';
+          # nix build .#packages.aarch64-darwin.darwin-all
           darwin-all = pkgs.buildEnv {
             name = "darwin-all";
             paths = [
