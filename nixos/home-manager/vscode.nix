@@ -5,11 +5,11 @@ pkgs: package: {
   inherit package;
   extensions = with pkgs.vscode-extensions; [
     vscodevim.vim
-    ms-pyright.pyright
     bbenoist.nix
+    # ms-pyright.pyright
     # scalameta.metals
   ];
-  mutableExtensionsDir = false;
+  mutableExtensionsDir = true;
   userSettings = {
     "editor.cursorBlinking" = "solid";
     "editor.fontSize" = 11;
@@ -27,15 +27,13 @@ pkgs: package: {
         "<C-t>" = false;
     };
     "vim.hlsearch" = true;
-    "window.menuBarVisibility" = "classic";
     "window.restoreWindows" = "none";
     "window.titleBarStyle" = "custom";
-    # "window.experimental.useSandbox" = true;
     "workbench.activityBar.visible" = true;
-    # "workbench.colorTheme" = "Default Light+";
-    "workbench.editor.showTabs" = false;
-    "workbench.editor.tabCloseButton" = "off";
-    "workbench.tree.indent" = 16;
+    "workbench.colorTheme" = "Default Light Modern";
+    "workbench.editor.showTabs" = true;
+    "workbench.editor.tabCloseButton" = "on";
+    "workbench.tree.indent" = 24;
     "typescript.updateImportsOnFileMove.enabled" = "always";
   };
 }
