@@ -8,9 +8,11 @@
     jetbrains.idea-community-minimal
     qemu
     podman
+    lima
     m-cli
     alacritty
     utm
+    obsidian
     captive-browser
   ];
 
