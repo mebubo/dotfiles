@@ -24,6 +24,13 @@
     dock.orientation = "left";
     dock.showhidden = true;
 
+    dock.tilesize = 32;
+
+    dock.wvous-tr-corner = 1;
+    dock.wvous-br-corner = 1;
+    dock.wvous-tl-corner = 1;
+    dock.wvous-bl-corner = 1;
+
     spaces.spans-displays = false;
     screencapture.location = "/tmp";
 
@@ -50,10 +57,12 @@
     };
 
     NSGlobalDomain.AppleICUForce24HourTime = true;
-    NSGlobalDomain.AppleInterfaceStyleSwitchesAutomatically = true;
+    NSGlobalDomain.AppleInterfaceStyle = null;
+    NSGlobalDomain.AppleInterfaceStyleSwitchesAutomatically = false;
     NSGlobalDomain.AppleShowScrollBars = "WhenScrolling";
     NSGlobalDomain."com.apple.mouse.tapBehavior" = 1;
     NSGlobalDomain."com.apple.trackpad.scaling" = 3.0;
+    NSGlobalDomain."com.apple.swipescrolldirection" = false;
 
     NSGlobalDomain.AppleKeyboardUIMode = 3;
     NSGlobalDomain.ApplePressAndHoldEnabled = false;
