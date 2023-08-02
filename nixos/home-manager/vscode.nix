@@ -15,6 +15,7 @@ pkgs: package: {
     "editor.fontSize" = 11;
     "editor.lineHeight" = 15;
     "editor.minimap.enabled" = false;
+    "editor.inlineSuggest.enabled" = true;
     "explorer.confirmDelete" = false;
     "explorer.confirmDragAndDrop" = false;
     "extensions.autoUpdate" = false;
@@ -32,7 +33,7 @@ pkgs: package: {
     "workbench.activityBar.visible" = true;
     "workbench.colorTheme" = "Default Light Modern";
     "workbench.editor.showTabs" = true;
-    "workbench.editor.tabCloseButton" = "on";
+    "workbench.editor.tabCloseButton" = "right";
     "workbench.tree.indent" = 24;
     "typescript.updateImportsOnFileMove.enabled" = "always";
   };
