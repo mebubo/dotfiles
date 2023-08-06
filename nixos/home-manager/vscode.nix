@@ -35,6 +35,9 @@ pkgs: package: {
     "workbench.editor.showTabs" = true;
     "workbench.editor.tabCloseButton" = "right";
     "workbench.tree.indent" = 24;
+    "workbench.editorAssociations" = {
+      "*.md" = "vscode.markdown.preview.editor";
+    };
     "typescript.updateImportsOnFileMove.enabled" = "always";
   };
 }
