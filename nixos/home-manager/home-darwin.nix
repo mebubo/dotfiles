@@ -47,6 +47,7 @@
           { key = "K"; mods = "Alt"; chars = "\\x1bk"; }
           { key = "L"; mods = "Alt"; chars = "\\x1bl"; }
           { key = "B"; mods = "Alt"; chars = "\\x1bb"; }
+          { key = "F"; mods = "Alt"; chars = "\\x1bf"; }
         ];
       };
     };
