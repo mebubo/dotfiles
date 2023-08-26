@@ -39,5 +39,8 @@ pkgs: package: {
       "*.md" = "vscode.markdown.preview.editor";
     };
     "typescript.updateImportsOnFileMove.enabled" = "always";
+    "terminal.integrated.commandsToSkipShell" = [
+      "-workbench.action.quickOpen"
+    ];
   };
 }
