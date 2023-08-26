@@ -82,7 +82,7 @@ in
     nix-diff
     dhall
     dhall-json
-    dhall-lsp-server
+    # dhall-lsp-server
   ])
   ++ [
     cabal-sources-tags
