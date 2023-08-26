@@ -59,7 +59,7 @@ in
     ripgrep
     rsync
     sbt
-    spago
+    # spago
     sqlite
     tmux
     # tre
@@ -131,7 +131,7 @@ in
         # vim-grepper
 
         dhall-vim
-        purescript-vim
+        # purescript-vim
         # psc-ide-vim
         # vim-nix
         # vim-scala
