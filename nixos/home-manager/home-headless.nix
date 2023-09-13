@@ -23,7 +23,6 @@ in
     ctags
     curl
     diskus
-    exa
     fd
     feh
     file
@@ -183,16 +182,12 @@ in
         ${builtins.readFile ../../.bashrc}
       '';
       shellAliases = {
-        l = "${pkgs.exa}/bin/exa -la";
+        l = "ls -la";
       };
     };
     broot = {
       enable = false;
       enableBashIntegration = true;
-    };
-    exa = {
-      enable = true;
-      enableAliases = true;
     };
     fzf = {
       enable = true;
