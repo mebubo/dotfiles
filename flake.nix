@@ -55,6 +55,9 @@
     };
 
     private = {
+      imports = [
+        ./nixos/modules/me.nix
+      ];
       me.private = import dotfiles-private;
     };
 
@@ -65,7 +68,6 @@
         system = "x86_64-linux";
         modules = [
           private
-          ./nixos/modules/me.nix
           ./nixos/devices/laptop/configuration.nix
           home-manager.nixosModules.home-manager
           (home-manager-module ["me" "dev" "dev2"] home-manager-user-nixos)
@@ -77,7 +79,6 @@
         system = "aarch64-linux";
         modules = [
           private
-          ./nixos/modules/me.nix
           ./nixos/devices/me/configuration.nix
           nixos-apple-silicon.nixosModules.apple-silicon-support
           home-manager.nixosModules.home-manager
@@ -90,7 +91,6 @@
         system = "aarch64-linux";
         modules = [
           private
-          ./nixos/modules/me.nix
           ./nixos/devices/raspberry/configuration.nix
         ];
       };
@@ -99,7 +99,6 @@
         system = "x86_64-linux";
         modules = [
           private
-          ./nixos/modules/me.nix
           ./nixos/devices/fr/configuration.nix
           home-manager.nixosModules.home-manager
           (home-manager-module ["me"] home-manager-user-nixos)
