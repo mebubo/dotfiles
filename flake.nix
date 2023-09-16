@@ -106,6 +106,14 @@
         ];
       };
 
+      vm2 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          private
+          ./nixos/devices/vm2/configuration.nix
+        ];
+      };
+
     };
 
     homeConfigurations.me = home-manager.lib.homeManagerConfiguration {
@@ -158,5 +166,33 @@
             pathsToLink = [ "/bin" ];
           };
         };
+
+    packages."x86_64-linux" =
+      let
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        vm2-run = pkgs.callPackage (import ./nixos/devices/vm2/run.nix self.nixosConfigurations.vm2.config.system.build.qcow) {};
+
+        port = "2222";
+
+        ssh-vm = user: pkgs.writeShellScriptBin "ssh-vm-${user}" ''
+          ${pkgs.openssh}/bin/ssh -o StrictHostKeyChecking=no -p ${port} ${user}@localhost $@
+        '';
+
+        sshfs-vm = user: pkgs.writeShellScriptBin "sshfs-vm" ''
+          ${pkgs.sshfs}/bin/sshfs -o StrictHostKeyChecking=no -p ${port} ${user}@localhost:vm-home
+        '';
+      in {
+        vm2-all = pkgs.buildEnv {
+          name = "vm2-all";
+          paths = [
+            vm2-run
+            (ssh-vm "me")
+            (ssh-vm "root")
+            (sshfs-vm "me")
+          ];
+          pathsToLink = [ "/bin" ];
+        };
+      };
+
   };
 }
