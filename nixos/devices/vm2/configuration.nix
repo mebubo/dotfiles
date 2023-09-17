@@ -4,6 +4,7 @@
 
   imports = [
     "${modulesPath}/profiles/qemu-guest.nix"
+    ./dev.nix
   ];
 
   fileSystems."/" = {
@@ -28,7 +29,6 @@
 
   networking = {
     useDHCP = false;
-    useNetworkd = true;
     usePredictableInterfaceNames = false;
     interfaces.eth0.useDHCP = true;
     nameservers = [ "8.8.8.8" ];
