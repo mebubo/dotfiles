@@ -174,21 +174,27 @@
 
         port = "2222";
 
-        ssh-vm = user: pkgs.writeShellScriptBin "ssh-vm-${user}" ''
+        vm2-ssh = user: pkgs.writeShellScriptBin "vm2-ssh-${user}" ''
           ${pkgs.openssh}/bin/ssh -o StrictHostKeyChecking=no -p ${port} ${user}@localhost $@
         '';
 
-        sshfs-vm = user: pkgs.writeShellScriptBin "sshfs-vm" ''
+        vm2-sshfs = user: pkgs.writeShellScriptBin "vm2-sshfs" ''
           ${pkgs.sshfs}/bin/sshfs -o StrictHostKeyChecking=no -p ${port} ${user}@localhost:vm-home
         '';
+
+        vm2-redeploy = pkgs.writeShellScriptBin "vm2-redeploy" ''
+          nixos-rebuild switch --fast --flake .#vm2 --target-host vm2
+        '';
       in {
+        # nix build .#packages.x86_64-linux.vm2-all
         vm2-all = pkgs.buildEnv {
           name = "vm2-all";
           paths = [
             vm2-run
-            (ssh-vm "me")
-            (ssh-vm "root")
-            (sshfs-vm "me")
+            (vm2-ssh "me")
+            (vm2-ssh "root")
+            (vm2-sshfs "me")
+            vm2-redeploy
           ];
           pathsToLink = [ "/bin" ];
         };
