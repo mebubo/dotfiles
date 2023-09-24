@@ -2,7 +2,7 @@
 
 let
 
-  network-create = pkgs.writeShellScriptBin "gitlab-start" ''
+  network-create = pkgs.writeShellScriptBin "network-create" ''
     docker network create jenkins
   '';
 
@@ -68,6 +68,7 @@ in
   environment.systemPackages = [
     pkgs.k3s
     pkgs.kubernetes-helm
+    network-create
     gitlab-start
     gitlab-initial-password
     jenkins-dind-start
