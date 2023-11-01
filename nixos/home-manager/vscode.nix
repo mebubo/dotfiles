@@ -40,6 +40,7 @@ pkgs: package: {
     "workbench.editorAssociations" = {
       "*.md" = "vscode.markdown.preview.editor";
     };
+    "workbench.editor.enablePreview" = false;
     "typescript.updateImportsOnFileMove.enabled" = "always";
     "terminal.integrated.commandsToSkipShell" = [
       "-workbench.action.quickOpen"
