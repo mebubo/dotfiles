@@ -2,7 +2,7 @@ self: super:
 
 {
   vimPlugins = super.vimPlugins // {
-    vim-characterize = self.vimUtils.buildVimPluginFrom2Nix {
+    vim-characterize = self.vimUtils.buildVimPlugin {
       pname = "vim-characterize";
       version = "2019-11-13";
       src = self.fetchFromGitHub {
@@ -13,7 +13,7 @@ self: super:
       };
     };
 
-    vim-ctrlp-tjump = self.vimUtils.buildVimPluginFrom2Nix {
+    vim-ctrlp-tjump = self.vimUtils.buildVimPlugin {
       pname = "vim-ctrlp-tjump";
       version = "2018-03-14";
       src = self.fetchFromGitHub {
@@ -24,7 +24,7 @@ self: super:
       };
     };
 
-    nvim-metals = self.vimUtils.buildVimPluginFrom2Nix {
+    nvim-metals = self.vimUtils.buildVimPlugin {
       pname = "nvim-metals";
       version = "2021-07-18";
       src = self.fetchFromGitHub {
