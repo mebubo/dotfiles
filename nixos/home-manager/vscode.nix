@@ -31,9 +31,9 @@ pkgs: package: {
     "window.restoreWindows" = "none";
     "window.titleBarStyle" = "custom";
     "window.density.editorTabHeight" = "compact";
-    "workbench.activityBar.visible" = true;
+    "workbench.activityBar.location" = "top";
     "workbench.colorTheme" = "Default Light Modern";
-    "workbench.editor.showTabs" = true;
+    "workbench.editor.showTabs" = "multiple";
     "workbench.editor.tabCloseButton" = "right";
     "workbench.editor.pinnedTabsOnSeparateRow" = true;
     "workbench.tree.indent" = 24;
