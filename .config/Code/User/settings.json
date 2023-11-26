@@ -1,8 +1,10 @@
 {
     "editor.cursorBlinking": "solid",
     "editor.fontSize": 11,
+    "editor.formatOnSave": false,
     "editor.inlineSuggest.enabled": true,
     "editor.lineHeight": 15,
+    "editor.lineNumbers": "on",
     "editor.minimap.enabled": false,
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
@@ -17,11 +19,21 @@
     ],
     "typescript.updateImportsOnFileMove.enabled": "always",
     "update.mode": "none",
+    "vim.easymotion": true,
     "vim.handleKeys": {
         "<C-k>": false,
-        "<C-t>": false
+        "<C-t>": false,
+        "<C-p>": false,
     },
     "vim.hlsearch": true,
+    "vim.leader": "<Space>",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        { "before": ["<S-h>"], "commands": [":bprevious"] },
+        { "before": ["<S-l>"], "commands": [":bnext"] },
+        { "before": ["leader", "n", "e"], "commands": ["workbench.explorer.fileView.focus"] },
+    ],
+    "vim.sneak": true,
+    "vim.surround": true,
     "window.density.editorTabHeight": "compact",
     "window.restoreWindows": "none",
     "window.titleBarStyle": "custom",
