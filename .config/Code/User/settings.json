@@ -1,34 +1,38 @@
 {
     "editor.cursorBlinking": "solid",
-    "editor.fontSize": 13,
+    "editor.fontSize": 11,
+    "editor.inlineSuggest.enabled": true,
     "editor.lineHeight": 15,
     "editor.minimap.enabled": false,
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
+    "extensions.autoCheckUpdates": false,
     "extensions.autoUpdate": false,
     "files.autoSave": "onFocusChange",
     "files.trimTrailingWhitespace": true,
-    "purescript.addNpmPath": false,
-    "purescript.addSpagoSources": true,
-    "purescript.buildCommand": "spago build --purs-args --json-errors",
-    "purescript.trace.server": "messages",
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
-    "terminal.integrated.rendererType": "dom",
+    "terminal.integrated.commandsToSkipShell": [
+        "-workbench.action.quickOpen"
+    ],
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "update.mode": "none",
     "vim.handleKeys": {
         "<C-k>": false,
         "<C-t>": false
     },
     "vim.hlsearch": true,
-    "window.menuBarVisibility": "default",
+    "window.density.editorTabHeight": "compact",
     "window.restoreWindows": "none",
     "window.titleBarStyle": "custom",
-    "workbench.activityBar.visible": true,
-    "workbench.colorTheme": "Default Light+",
-    "workbench.editor.showTabs": false,
-    "workbench.editor.tabCloseButton": "off",
-    "workbench.tree.indent": 16,
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "hic.executablePath": "ghcide-nix",
-    "hic.arguments": "",
+    "workbench.activityBar.location": "top",
+    "workbench.colorTheme": "Default Light Modern",
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.pinnedTabsOnSeparateRow": true,
+    "workbench.editor.showTabs": "multiple",
+    "workbench.editor.tabCloseButton": "right",
+    "workbench.editorAssociations": {
+        "*.md": "vscode.markdown.preview.editor"
+    },
+    "workbench.tree.indent": 24
 }
