@@ -30,14 +30,9 @@ in
     git
     gnupg
     hexyl
-    hledger
-    hledger-ui
-    hledger-web
     htop
     jq
     man-pages
-    # metals
-    # miniserve
     moreutils
     mpv
     nix-prefetch-git
@@ -46,22 +41,18 @@ in
     nixos-shell
     nodejs
     openjdk
-    # p7zip
     pastel
     pciutils
     perl
     pstree
-    # purescript-pinned
     pwgen
     python3
     restic
     ripgrep
     rsync
     sbt
-    # spago
     sqlite
     tmux
-    # tre
     tree
     unzip
     wget
@@ -70,18 +61,15 @@ in
   ++ (with pkgs.haskellPackages; [
     cabal-install
     cabal2nix
-    # fast-tags
     ghc
     ghcid
     ghcide
     hasktags
     hpack
     nix-derivation
-    # purescript
     nix-diff
     dhall
     dhall-json
-    # dhall-lsp-server
   ])
   ++ [
     cabal-sources-tags
@@ -124,16 +112,6 @@ in
         ack-vim
         vim-indent-object
         vim-sneak
-        # auto-pairs
-        # ctrlp-vim
-        # vim-ctrlp-tjump
-        # vim-grepper
-
-        dhall-vim
-        # purescript-vim
-        # psc-ide-vim
-        # vim-nix
-        # vim-scala
 
         nvim-lspconfig
         nvim-metals
