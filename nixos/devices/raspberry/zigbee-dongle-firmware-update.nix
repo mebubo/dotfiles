@@ -27,5 +27,5 @@ let
 in
 
   writeShellScriptBin "zigbee-dongle-firmware-update" ''
-    ${py}/bin/python ${src}/cc2538-bsl.py -ewv -p /dev/ttyUSB0 --bootloader-sonoff-usb ${firmware-unpacked}/CC1352P2_CC2652P_launchpad_coordinator_20221226.hex
+    ${py}/bin/python ${src}/cc2538-bsl.py -ewv -p /dev/ttyUSB0 --bootloader-sonoff-usb ${firmware-unpacked}/CC1352P2_CC2652P_launchpad_coordinator_20230507.hex
   ''
