@@ -18,6 +18,7 @@
     tmux
     htop
     moreutils
+    git
   ];
 
   fileSystems = {
