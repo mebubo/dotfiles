@@ -20,10 +20,6 @@ in
           port = 8080;
         };
         permit_join = false;
-        availability = {
-          active.timeout = 10;
-          passive.timeout = 60;
-        };
       };
     };
     mosquitto = {
