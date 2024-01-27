@@ -4,12 +4,8 @@ Host lima
   GSSAPIAuthentication no
   PreferredAuthentications publickey
   Compression no
-  BatchMode yes
   IdentitiesOnly yes
   Ciphers "^aes128-gcm@openssh.com,aes256-gcm@openssh.com"
   User me
-  ControlMaster auto
-  ControlPath "/Users/me/.lima/default/ssh.sock"
-  ControlPersist 5m
   Hostname 127.0.0.1
   Port 60022

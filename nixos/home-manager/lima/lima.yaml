@@ -18,7 +18,7 @@ mounts:
   mountPoint: "/home/me.linux/src"
   writable: true
   sshfs:
-    cache: false
+    cache: true
     followSymlinks: false
     sftpDriver: "openssh-sftp-server"
 
