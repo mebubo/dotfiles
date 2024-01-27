@@ -94,6 +94,11 @@
       pkgs.ripgrep
     ];
 
+  fonts = {
+    fontDir.enable = true;
+    fonts = [ pkgs.monaspace ];
+  };
+
   security.pam.enableSudoTouchIdAuth = false;
 
   services.yabai.enable = false;
