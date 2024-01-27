@@ -16,7 +16,7 @@
 
   system.defaults = {
 
-    dock.autohide = false;
+    dock.autohide = true;
     dock.mru-spaces = false;
     dock.minimize-to-application = true;
     dock.show-recents = false;
