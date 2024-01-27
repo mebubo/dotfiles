@@ -13,7 +13,6 @@
     qemu
     podman
     m-cli
-    alacritty
     utm
     obsidian
     captive-browser
@@ -42,6 +41,13 @@
       settings = {
         window = {
           option_as_alt = "OnlyLeft";
+        };
+        font = {
+          size = 12;
+          normal = {
+            family = "Monaspace Neon";
+            style = "Regular";
+          };
         };
       };
     };
