@@ -16,6 +16,7 @@
     utm
     obsidian
     captive-browser
+    anki-bin
   ];
 
   home = {
