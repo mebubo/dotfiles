@@ -1,6 +1,8 @@
 {
     "editor.cursorBlinking": "solid",
     "editor.formatOnSave": false,
+    "editor.fontFamily": "'Monaspace Neon', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'calt', 'dlig'",
     "editor.inlineSuggest.enabled": true,
     "editor.lineHeight": 15,
     "editor.minimap.enabled": false,
@@ -55,5 +57,15 @@
     },
     "jupyter.interactiveWindow.creationMode": "perFile",
     "workbench.editor.tabActionLocation": "right",
-    "git.openRepositoryInParentFolders": "never"
+    "git.openRepositoryInParentFolders": "never",
+    "files.watcherExclude": {
+        "**/.bloop": true,
+        "**/.metals": true,
+        "**/.ammonite": true
+    },
+    "jupyter.interactiveWindow.textEditor.executeSelection": true,
+    // "github.copilot.advanced": {
+    //     "debug.testOverrideProxyUrl": "http://localhost:8080",
+    //     "debug.overrideProxyUrl": "http://localhost:8080"
+    // }
 }
