@@ -38,9 +38,9 @@
     "window.titleBarStyle": "custom",
     "workbench.activityBar.location": "top",
     "workbench.colorTheme": "Default Light Modern",
-    "workbench.editor.enablePreview": true,
+    "workbench.editor.enablePreview": false,
     "workbench.editor.pinnedTabsOnSeparateRow": true,
-    "workbench.editor.showTabs": "multiple",
+    "workbench.editor.showTabs": "single",
     "workbench.editor.tabCloseButton": "right",
     "workbench.editorAssociations": {
         "*.md": "vscode.markdown.preview.editor"
@@ -64,8 +64,10 @@
         "**/.ammonite": true
     },
     "jupyter.interactiveWindow.textEditor.executeSelection": true,
+    "notebook.output.textLineLimit": 100,
     // "github.copilot.advanced": {
     //     "debug.testOverrideProxyUrl": "http://localhost:8080",
     //     "debug.overrideProxyUrl": "http://localhost:8080"
     // }
+    "bookmarks.saveBookmarksInProject": true
 }
