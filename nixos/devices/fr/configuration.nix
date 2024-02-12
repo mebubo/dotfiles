@@ -204,4 +204,8 @@ in
       nameserver 1.1.1.1
     '';
   };
+
+  fonts.packages = with pkgs; [
+    monaspace
+  ];
 }
