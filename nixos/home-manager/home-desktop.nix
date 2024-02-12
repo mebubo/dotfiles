@@ -22,7 +22,7 @@ in
     tlaplus
     grim
     slurp
-    obsidian
+    # obsidian
   ];
 
   home.pointerCursor = {
