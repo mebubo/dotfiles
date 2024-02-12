@@ -66,7 +66,7 @@ in
       ];
     };
 
-    vscode = import ./vscode.nix pkgs pkgs.vscodium;
+    vscode = import ./vscode.nix pkgs pkgs.vscode;
 
   };
 

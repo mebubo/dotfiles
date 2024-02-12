@@ -101,7 +101,7 @@
           private
           ./nixos/devices/fr/configuration.nix
           home-manager.nixosModules.home-manager
-          (home-manager-module ["me"] home-manager-user-nixos)
+          (home-manager-module ["me" "dev"] home-manager-user-nixos)
           overlays
         ];
       };

@@ -69,8 +69,21 @@ in
     ];
   };
 
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  users.users.dev = {
+    isNormalUser = true;
+    group = "dev";
+    openssh.authorizedKeys.keyFiles = config.me.private.keys;
+  };
+
+  users.groups.dev = {};
+
+  services.openssh = {
+    enable = true;
+    settings = {
+      KbdInteractiveAuthentication = false;
+      PasswordAuthentication = false;
+    };
+  };
 
   networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts = [ 8000 8090 ];
@@ -92,6 +105,7 @@ in
   nixpkgs.config = {
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
       "obsidian"
+      "vscode"
     ];
   };
 
