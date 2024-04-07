@@ -16,5 +16,17 @@
     {
         "key": "cmd+n",
         "command": "opensshremotes.openEmptyWindowOnCurrentHost"
+    },
+    {
+        "key": "cmd+e",
+        "command": "workbench.action.showAllEditorsByMostRecentlyUsed"
+    },
+    {
+        "key": "cmd+k cmd+q",
+        "command": "-workbench.action.navigateToLastEditLocation"
+    },
+    {
+        "key": "cmd+k cmd+q",
+        "command": "workbench.action.navigateBackInEditLocations"
     }
 ]

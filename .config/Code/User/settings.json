@@ -11,7 +11,7 @@
     "extensions.autoCheckUpdates": false,
     "extensions.autoUpdate": false,
     "files.autoSave": "onFocusChange",
-    // "files.trimTrailingWhitespace": true,
+    "files.trimTrailingWhitespace": true,
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
     "terminal.integrated.commandsToSkipShell": [
@@ -38,10 +38,9 @@
     "window.titleBarStyle": "custom",
     "workbench.activityBar.location": "top",
     "workbench.colorTheme": "Default Light Modern",
-    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreview": true,
     "workbench.editor.pinnedTabsOnSeparateRow": true,
     "workbench.editor.showTabs": "single",
-    "workbench.editor.tabCloseButton": "right",
     "workbench.editorAssociations": {
         "*.md": "vscode.markdown.preview.editor"
     },
@@ -52,7 +51,7 @@
     "github.copilot.enable": {
         "*": true,
         "plaintext": false,
-        "markdown": false,
+        "markdown": true,
         "scminput": false
     },
     "jupyter.interactiveWindow.creationMode": "perFile",
@@ -69,5 +68,20 @@
     //     "debug.testOverrideProxyUrl": "http://localhost:8080",
     //     "debug.overrideProxyUrl": "http://localhost:8080"
     // }
-    "bookmarks.saveBookmarksInProject": true
+    "bookmarks.saveBookmarksInProject": true,
+    "jupyter.askForKernelRestart": false,
+    "extensions.ignoreRecommendations": true,
+    "python.analysis.diagnosticMode": "workspace",
+    "python.analysis.exclude": [
+        "result/**",
+        ".venv/**"
+    ]
+    // "python.analysis.userFileIndexingLimit": -1,
+    // "python.analysis.packageIndexDepths": [
+    //     {
+    //         "name": "datasets",
+    //         "depth": 5,
+    //         "includeAllSymbols": true
+    //     }
+    // ]
 }
