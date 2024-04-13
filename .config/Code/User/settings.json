@@ -75,7 +75,8 @@
     "python.analysis.exclude": [
         "result/**",
         ".venv/**"
-    ]
+    ],
+    "git.ignoreLimitWarning": true
     // "python.analysis.userFileIndexingLimit": -1,
     // "python.analysis.packageIndexDepths": [
     //     {
