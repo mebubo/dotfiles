@@ -16,6 +16,7 @@ order += "wireless wlan0"
 order += "wireless wlp3s0"
 order += "wireless wlp1s0f0"
 order += "wireless wlp166s0"
+order += "wireless wlp1s0"
 order += "ethernet eth0"
 order += "ethernet enp0s25"
 order += "ethernet bnep0"
@@ -44,6 +45,11 @@ wireless wlp1s0f0 {
 }
 
 wireless wlp166s0 {
+        format_up = "W %quality %essid %ip"
+        format_down = ""
+}
+
+wireless wlp1s0 {
         format_up = "W %quality %essid %ip"
         format_down = ""
 }

@@ -144,7 +144,10 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 
 bindsym $mod+p exec pavucontrol
-bindsym $mod+F2 exec swaylock -c 330033
+
+set $lock 'swaylock -f -c 330033'
+bindsym $mod+F2 exec $lock
+bindswitch lid:on exec $lock
 
 mode "passthrough" {
      bindsym $mod+Home mode "default"
@@ -152,14 +155,12 @@ mode "passthrough" {
 
 bindsym $mod+Home mode "passthrough"
 
-bindsym $mod+F3 output LVDS-1 enable
-bindsym $mod+F4 output LVDS-1 disable
-bindsym $mod+F5 output eDP-1 dpms toggle
+bindsym $mod+F9 output eDP-1 toggle
 
 input type:touchpad click_method clickfinger
 input type:touchpad tap enabled
-input type:keyboard xkb_layout us,ru
-input type:keyboard xkb_variant ,phonetic
+input type:keyboard xkb_layout us,fr,ru
+input type:keyboard xkb_variant ,,phonetic
 input type:keyboard xkb_options grp:rctrl_toggle,grp_led:caps,ctrl:nocaps,compose:ralt
 
 output eDP-1 scale 1.5
