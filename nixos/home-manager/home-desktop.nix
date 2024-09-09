@@ -135,6 +135,8 @@ in
 
   };
 
+  services.mpris-proxy.enable = true;
+
   xdg.configFile = {
     "sway/config".source = ../../.config/sway/config;
     # "i3/config".source = ../../.config/i3/config;
