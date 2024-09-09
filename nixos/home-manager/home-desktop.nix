@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, osConfig, ... }:
 
 let
 
@@ -102,6 +102,14 @@ in
                 "French (N/A)" = "fr";
                 "Russian (phonetic)" = "ru";
               };
+            }
+            {
+              block = "bluetooth";
+              mac = osConfig.me.private.bluetooth.headset;
+            }
+            {
+              block = "bluetooth";
+              mac = osConfig.me.private.bluetooth.mouse;
             }
             {
               block = "battery";
