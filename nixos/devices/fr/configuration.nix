@@ -2,7 +2,7 @@
 
 let
 
-  wifi = "wlp166s0";
+  wifi = "wlp1s0";
 
 in
 
@@ -10,11 +10,11 @@ in
   imports =
     [
       ./hardware-configuration.nix
-      ../../modules/framework.nix
+      # ../../modules/framework.nix
       ../../modules/wireless.nix
-      ../../modules/wlroots-screen-share.nix
-      ../../modules/prometheus.nix
-      ../../modules/grafana.nix
+      # ../../modules/wlroots-screen-share.nix
+      # ../../modules/prometheus.nix
+      # ../../modules/grafana.nix
     ];
 
   me.wifi-interface = wifi;
@@ -22,7 +22,7 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  # boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   networking.hostName = "fr";
   networking.extraHosts = config.me.private.networking.extraHosts;
@@ -71,11 +71,11 @@ in
 
   users.users.dev = {
     isNormalUser = true;
-    group = "dev";
+    # group = "users";
     openssh.authorizedKeys.keyFiles = config.me.private.keys;
   };
 
-  users.groups.dev = {};
+  # users.groups.dev = {};
 
   services.openssh = {
     enable = true;
@@ -106,6 +106,9 @@ in
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
       "obsidian"
       "vscode"
+      "chromium"
+      "chromium-unwrapped"
+      "widevine-cdm"
     ];
   };
 
@@ -122,12 +125,16 @@ in
     ssh.startAgent = true;
     sway = {
       enable = true;
-      extraPackages = with pkgs; [ xwayland swayidle swaylock i3status grim slurp wayvnc brightnessctl wl-clipboard ];
+      extraPackages = with pkgs; [ xwayland swayidle swaylock i3status i3status-rust wev grim slurp wayvnc brightnessctl wl-clipboard ];
       extraSessionCommands = ''
         export _JAVA_AWT_WM_NONREPARENTING=1
         export MOZ_ENABLE_WAYLAND=1
         export MOZ_USE_XINPUT2=1
       '';
+      wrapperFeatures = {
+        base = true;
+        gtk = true;
+      };
     };
     dconf.enable = false;
     less = {
@@ -207,5 +214,14 @@ in
 
   fonts.packages = with pkgs; [
     monaspace
+    font-awesome
+  ];
+
+  services.power-profiles-daemon.enable = true;
+
+  nixpkgs.overlays = [
+    (self: super: {
+      chromium = super.chromium.override { enableWideVine = true; };
+    })
   ];
 }
