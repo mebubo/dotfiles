@@ -85,13 +85,30 @@ in
               interval = 1;
             }
             {
-              block = "sound";
-            }
-            {
               block = "temperature";
+              format = " $icon $average $max ";
             }
             {
               block = "backlight";
+            }
+            {
+              block = "bluetooth";
+              format = " $icon $percentage ";
+              disconnected_format = " $icon ";
+              mac = osConfig.me.private.bluetooth.headset;
+            }
+            {
+              block = "bluetooth";
+              format = " $icon $percentage ";
+              disconnected_format = " $icon ";
+              mac = osConfig.me.private.bluetooth.mouse;
+            }
+            {
+              block = "battery";
+              format = " $icon $percentage $power $time ";
+            }
+            {
+              block = "sound";
             }
             {
               block = "keyboard_layout";
@@ -102,18 +119,6 @@ in
                 "French (N/A)" = "fr";
                 "Russian (phonetic)" = "ru";
               };
-            }
-            {
-              block = "bluetooth";
-              mac = osConfig.me.private.bluetooth.headset;
-            }
-            {
-              block = "bluetooth";
-              mac = osConfig.me.private.bluetooth.mouse;
-            }
-            {
-              block = "battery";
-              format = " $icon $percentage $power $time ";
             }
             {
               block = "time";
