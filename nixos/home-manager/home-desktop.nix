@@ -28,9 +28,11 @@ in
   home.pointerCursor = {
     gtk.enable = true;
     # package = pkgs.vanilla-dmz;
-    package = pkgs.apple-cursor;
+    package = pkgs.adwaita-icon-theme;
+    # package = pkgs.apple-cursor;
     # name = "Vanilla-DMZ";
-    name = "macOS-Monterey-White";
+    name = "Adwaita";
+    # name = "macOS-Monterey-White";
     size = 20;
   };
 
