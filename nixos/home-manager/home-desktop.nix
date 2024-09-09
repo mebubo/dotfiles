@@ -68,6 +68,56 @@ in
 
     vscode = import ./vscode.nix pkgs pkgs.vscode;
 
+    i3status-rust = {
+      enable = true;
+      bars = {
+        bottom = {
+          blocks = [
+            {
+              block = "net";
+              device = "^wlp.*";
+              format = " $ssid $signal_strength $ip ";
+            }
+            {
+              block = "cpu";
+              interval = 1;
+            }
+            {
+              block = "sound";
+            }
+            {
+              block = "temperature";
+            }
+            {
+              block = "backlight";
+            }
+            {
+              block = "keyboard_layout";
+              driver = "sway";
+              format = " $layout ";
+              mappings = {
+                "English (US)" = "en";
+                "French (N/A)" = "fr";
+                "Russian (phonetic)" = "ru";
+              };
+            }
+            {
+              block = "battery";
+              format = " $icon $percentage $power $time ";
+            }
+            {
+              block = "time";
+              format = "$timestamp.datetime(format:' %a %Y-%m-%d %H:%M:%S ')";
+              interval = 1;
+            }
+          ];
+          # settings = { };
+          icons = "emoji";
+          theme = "native";
+        };
+      };
+    };
+
   };
 
   xdg.configFile = {
