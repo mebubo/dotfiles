@@ -76,6 +76,10 @@ in
         bottom = {
           blocks = [
             {
+              block = "music";
+              format = " $icon $combo ";
+            }
+            {
               block = "net";
               device = "^wlp.*";
               format = " $ssid $signal_strength $ip ";
