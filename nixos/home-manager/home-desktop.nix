@@ -124,7 +124,7 @@ in
 
   xdg.configFile = {
     "sway/config".source = ../../.config/sway/config;
-    "i3/config".source = ../../.config/i3/config;
+    # "i3/config".source = ../../.config/i3/config;
     "i3status/config".source = ../../.config/i3status/config;
     "mpv/mpv.conf".source = ../../.config/mpv/mpv.conf;
   };
