@@ -144,6 +144,10 @@ bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle && k
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
 bindsym $mod+p exec pavucontrol
 
 set $lock 'swaylock -f -c 330033'
