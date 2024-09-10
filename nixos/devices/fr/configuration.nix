@@ -33,9 +33,7 @@ in
     isNormalUser = true;
     extraGroups = [ "systemd-journal" "libvirtd" "wireless" ];
     packages = with pkgs; [
-      # git
-      # tmux
-      # vim
+      google-chrome
     ];
   };
 
@@ -74,6 +72,7 @@ in
       "chromium"
       "chromium-unwrapped"
       "widevine-cdm"
+      "google-chrome"
     ];
   };
 
