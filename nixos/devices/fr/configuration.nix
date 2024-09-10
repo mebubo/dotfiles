@@ -73,6 +73,13 @@ in
     isNormalUser = true;
     # group = "users";
     openssh.authorizedKeys.keyFiles = config.me.private.keys;
+    packages = with pkgs; [
+      cmake
+      ninja
+      gnumake
+      pkg-config
+      gcc
+    ];
   };
 
   # users.groups.dev = {};
