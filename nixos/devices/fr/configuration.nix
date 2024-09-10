@@ -176,7 +176,7 @@ in
   services.power-profiles-daemon.enable = true;
 
   services.logind = {
-    lidSwitch = "ignore";
+    lidSwitch = "suspend";
     lidSwitchDocked = "ignore";
     lidSwitchExternalPower = "ignore";
     powerKey = "suspend";
