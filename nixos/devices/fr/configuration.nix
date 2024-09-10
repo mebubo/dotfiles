@@ -61,7 +61,7 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.me = {
     isNormalUser = true;
-    extraGroups = [ "systemd-journal" "libvirtd" ];
+    extraGroups = [ "systemd-journal" "libvirtd" "wireless" ];
     packages = with pkgs; [
       # git
       # tmux
