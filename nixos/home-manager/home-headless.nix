@@ -55,6 +55,7 @@ in
     tmux
     tree
     unzip
+    usbutils
     wget
     zip
   ])
