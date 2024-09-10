@@ -124,8 +124,8 @@ bindsym $mod+r mode "resize"
 
 bar {
         position bottom
-        # status_command i3status
         status_command i3status-rs config-bottom.toml
+        # tray_output none
         font pango:monospace, FontAwesome 9
         colors {
             statusline #ffffff
@@ -152,6 +152,8 @@ bindsym $mod+p exec pavucontrol
 
 set $lock 'swaylock -f -c 330033'
 bindsym $mod+F2 exec $lock
+bindsym $mod+q exec $lock
+bindsym XF86PowerOff exec $lock
 bindswitch lid:on exec $lock
 
 mode "passthrough" {
