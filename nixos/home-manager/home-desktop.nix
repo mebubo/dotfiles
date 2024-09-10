@@ -77,12 +77,12 @@ in
           blocks = [
             {
               block = "music";
-              format = " $icon $combo ";
+              format = " $icon {$combo|} ";
             }
             {
               block = "net";
               device = "^wlp.*";
-              format = " $ssid $signal_strength $ip ";
+              format = " {$ssid $signal_strength $bitrate.eng(w:3) $ip|Disconnected} ";
             }
             {
               block = "cpu";
