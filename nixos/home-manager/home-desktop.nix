@@ -60,6 +60,13 @@ in
     };
     foot = {
       enable = true;
+      settings = {
+        main = {
+          # dpi-aware = "yes";
+          word-delimiters = "`|";
+          font = "Monaspace Neon:size=9";
+        };
+      };
     };
     obs-studio = {
       enable = true;
