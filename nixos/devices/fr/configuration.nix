@@ -226,6 +226,14 @@ in
 
   services.power-profiles-daemon.enable = true;
 
+  services.logind = {
+    lidSwitch = "ignore";
+    lidSwitchDocked = "ignore";
+    lidSwitchExternalPower = "ignore";
+    powerKey = "suspend";
+    powerKeyLongPress = "poweroff";
+  };
+
   nixpkgs.overlays = [
     (self: super: {
       chromium = super.chromium.override { enableWideVine = true; };
