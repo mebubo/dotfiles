@@ -95,8 +95,7 @@
     ];
 
   fonts = {
-    fontDir.enable = true;
-    fonts = [ pkgs.monaspace ];
+    packages = [ pkgs.monaspace ];
   };
 
   security.pam.enableSudoTouchIdAuth = false;
