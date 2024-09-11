@@ -19,7 +19,6 @@ in
     pulseaudio
     pavucontrol
     wlr-randr
-    tlaplus
     grim
     slurp
     # obsidian
@@ -74,9 +73,6 @@ in
         # pkgs.obs-studio-plugins.wlrobs
       ];
     };
-
-    vscode = import ./vscode.nix pkgs pkgs.vscode;
-
     i3status-rust = {
       enable = true;
       bars = {

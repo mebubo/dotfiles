@@ -18,9 +18,6 @@ in
 
   home.packages = (with pkgs; [
     silver-searcher
-    alloy
-    coursier
-    ctags
     curl
     diskus
     fd
@@ -39,18 +36,14 @@ in
     nix-prefetch-github
     nixos-generators
     nixos-shell
-    nodejs
-    openjdk
     pastel
     pciutils
-    perl
     pstree
     pwgen
     python3
     restic
     ripgrep
     rsync
-    sbt
     sqlite
     tmux
     tree
