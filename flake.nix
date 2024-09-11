@@ -125,15 +125,56 @@
 
     };
 
-    darwinConfigurations.mba = nix-darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
-      modules = [
-        ./nixos/devices/mba/configuration.nix
-        home-manager.darwinModules.home-manager
-        (home-manager-module ["me"] home-manager-user-darwin)
-        overlays
-      ];
-    };
+    darwinConfigurations.mba =
+
+      let
+
+        system = "aarch64-darwin";
+        pkgs = nixpkgs.legacyPackages."${system}";
+        linuxSystem = builtins.replaceStrings [ "darwin" ] [ "linux" ] system;
+
+        darwin-builder = nixpkgs.lib.nixosSystem {
+          system = linuxSystem;
+          modules = [
+            "${nixpkgs}/nixos/modules/profiles/macos-builder.nix"
+            { virtualisation.host.pkgs = pkgs; }
+            { system.nixos.revision = nixpkgs.lib.mkForce null; }
+          ];
+        };
+
+        darwin-builder-module = {
+
+          nix.distributedBuilds = true;
+          nix.buildMachines = [{
+            hostName = "ssh://builder@localhost";
+            system = linuxSystem;
+            maxJobs = 4;
+            supportedFeatures = [ "kvm" "benchmark" "big-parallel" ];
+          }];
+
+          launchd.daemons.darwin-builder = {
+            command = "${darwin-builder.config.system.build.macos-builder-installer}/bin/create-builder";
+            serviceConfig = {
+              KeepAlive = true;
+              RunAtLoad = true;
+              StandardOutPath = "/var/log/darwin-builder.log";
+              StandardErrorPath = "/var/log/darwin-builder.log";
+            };
+          };
+        };
+
+      in
+
+        nix-darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          modules = [
+            ./nixos/devices/mba/configuration.nix
+            home-manager.darwinModules.home-manager
+            (home-manager-module ["me" "dev"] home-manager-user-darwin)
+            overlays
+            # darwin-builder-module
+          ];
+        };
 
     packages."aarch64-darwin" =
       let
