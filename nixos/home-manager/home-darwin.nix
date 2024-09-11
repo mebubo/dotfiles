@@ -52,6 +52,15 @@
         };
       };
     };
+    ssh = {
+      enable = true;
+      matchBlocks = {
+        "dev" = {
+          hostname = "localhost";
+          user = "dev";
+        };
+      };
+    };
   };
 
   targets.genericLinux.enable = lib.mkForce false;
