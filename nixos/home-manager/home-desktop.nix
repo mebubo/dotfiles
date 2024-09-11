@@ -117,6 +117,11 @@ in
             {
               block = "battery";
               format = " $icon $percentage $power $time ";
+              full_format = " $icon $percentage $power $time ";
+              charging_format = " $icon $percentage $power $time ";
+              empty_format = " $icon $percentage $power $time ";
+              not_charging_format = " $icon $percentage $power $time ";
+              missing_format = " $icon $percentage $power $time ";
             }
             {
               block = "sound";
