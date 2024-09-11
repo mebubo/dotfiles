@@ -177,8 +177,8 @@ in
 
   services.logind = {
     lidSwitch = "suspend";
-    lidSwitchDocked = "ignore";
-    lidSwitchExternalPower = "ignore";
+    lidSwitchDocked = "suspend";
+    lidSwitchExternalPower = "suspend";
     powerKey = "suspend";
     powerKeyLongPress = "poweroff";
   };
