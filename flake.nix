@@ -47,6 +47,14 @@
       };
     };
 
+    home-manager-module-per-user = user-imports: {
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        users = builtins.mapAttrs (k: v: { ... }: { imports = v; }) user-imports;
+      };
+    };
+
     overlays = {
       nixpkgs.overlays = [
         (import ./nixos/overlays/50-vim-plugins.nix)
@@ -101,7 +109,16 @@
           private
           ./nixos/devices/fr/configuration.nix
           home-manager.nixosModules.home-manager
-          (home-manager-module ["me" "dev"] home-manager-user-nixos)
+          (home-manager-module-per-user {
+            me = [
+              ./nixos/home-manager/home-headless.nix
+              ./nixos/home-manager/home-desktop.nix
+            ];
+            dev = [
+              ./nixos/home-manager/home-headless.nix
+              ./nixos/home-manager/home-dev.nix
+            ];
+          })
           overlays
         ];
       };
