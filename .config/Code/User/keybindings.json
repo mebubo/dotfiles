@@ -28,5 +28,9 @@
     {
         "key": "cmd+k cmd+q",
         "command": "workbench.action.navigateBackInEditLocations"
+    },
+    {
+        "key": "shift+cmd+t",
+        "command": "workbench.action.terminal.focus"
     }
 ]

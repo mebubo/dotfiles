@@ -4,6 +4,7 @@
     "editor.fontFamily": "'Monaspace Neon', Menlo, Monaco, 'Courier New', monospace",
     "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'calt', 'dlig'",
     "editor.inlineSuggest.enabled": true,
+    "editor.fontSize": 13,
     "editor.lineHeight": 15,
     "editor.minimap.enabled": false,
     "explorer.confirmDelete": false,
@@ -12,6 +13,7 @@
     "extensions.autoUpdate": false,
     "files.autoSave": "onFocusChange",
     "files.trimTrailingWhitespace": true,
+    "python.REPL.sendToNativeREPL": true,
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
     "terminal.integrated.commandsToSkipShell": [
@@ -42,7 +44,7 @@
     "workbench.editor.pinnedTabsOnSeparateRow": true,
     "workbench.editor.showTabs": "single",
     "workbench.editorAssociations": {
-        "*.md": "vscode.markdown.preview.editor"
+        // "*.md": "vscode.markdown.preview.editor"
     },
     "workbench.tree.indent": 24,
     "diffEditor.experimental.showMoves": true,
@@ -77,7 +79,12 @@
         ".venv/**"
     ],
     "git.ignoreLimitWarning": true,
-    "search.useGlobalIgnoreFiles": true
+    "search.useGlobalIgnoreFiles": true,
+    "github.copilot.editor.enableAutoCompletions": true,
+    "interactiveWindow.executeWithShiftEnter": true,
+    "python.analysis.ignore": [
+        ".venv/**"
+    ],
     // "python.analysis.userFileIndexingLimit": -1,
     // "python.analysis.packageIndexDepths": [
     //     {
@@ -86,4 +93,8 @@
     //         "includeAllSymbols": true
     //     }
     // ]
+    "workbench.experimental.enableNewProfilesUI": true,
+    "terminal.integrated.fontSize": 13,
+    "chat.editor.fontSize": 13,
+    "workbench.externalBrowser": "/home/dev/browser.sh"
 }
