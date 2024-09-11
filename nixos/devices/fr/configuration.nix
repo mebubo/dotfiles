@@ -40,7 +40,7 @@ in
   users.users.dev = {
     isNormalUser = true;
     # group = "users";
-    openssh.authorizedKeys.keyFiles = config.me.private.keys;
+    openssh.authorizedKeys.keyFiles = [ config.me.private.keys.me-fr ];
     packages = with pkgs; [
       cmake
       ninja
