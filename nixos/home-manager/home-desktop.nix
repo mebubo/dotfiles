@@ -22,6 +22,19 @@
   };
 
   programs = {
+    ssh = {
+      enable = true;
+      matchBlocks = {
+        "dev" = {
+          hostname = "localhost";
+          user = "dev";
+        };
+        "doc" = {
+          hostname = "localhost";
+          user = "doc";
+        };
+      };
+    };
     firefox = {
       enable = true;
       package = pkgs.firefox-wayland;
