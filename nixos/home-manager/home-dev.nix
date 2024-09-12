@@ -4,6 +4,11 @@
 {
 
   home.packages = with pkgs; [
+    cmake
+    ninja
+    gnumake
+    pkg-config
+    gcc
     alloy
     coursier
     ctags

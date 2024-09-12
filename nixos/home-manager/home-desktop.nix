@@ -1,27 +1,13 @@
 { config, pkgs, lib, osConfig, ... }:
 
-let
-
-  obsidian = pkgs.callPackage ../packages/obsidian.nix {};
-
-in
-
 {
 
   home.packages = with pkgs; [
     cage
     chromium
-    dmenu
-    i3
-    i3lock
-    i3status
-    st
+    google-chrome
     pulseaudio
     pavucontrol
-    wlr-randr
-    grim
-    slurp
-    # obsidian
   ];
 
   home.pointerCursor = {

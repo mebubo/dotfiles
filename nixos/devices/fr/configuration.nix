@@ -33,22 +33,12 @@ in
     isNormalUser = true;
     uid = 1000;
     extraGroups = [ "systemd-journal" "libvirtd" "wireless" ];
-    packages = with pkgs; [
-      google-chrome
-    ];
   };
 
   users.users.dev = {
     isNormalUser = true;
     uid = 1001;
     openssh.authorizedKeys.keyFiles = [ config.me.private.keys.me-fr ];
-    packages = with pkgs; [
-      cmake
-      ninja
-      gnumake
-      pkg-config
-      gcc
-    ];
   };
 
   # users.groups.dev = {};
@@ -85,7 +75,22 @@ in
     ssh.startAgent = true;
     sway = {
       enable = true;
-      extraPackages = with pkgs; [ xwayland swayidle swaylock i3status i3status-rust wev grim slurp wayvnc brightnessctl wl-clipboard playerctl ];
+      extraPackages = with pkgs; [
+        brightnessctl
+        dmenu
+        grim
+        i3status
+        i3status-rust
+        playerctl
+        slurp
+        swayidle
+        swaylock
+        wayvnc
+        wev
+        wl-clipboard
+        wlr-randr
+        xwayland
+      ];
       extraSessionCommands = ''
         export _JAVA_AWT_WM_NONREPARENTING=1
         export MOZ_ENABLE_WAYLAND=1
