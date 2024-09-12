@@ -41,7 +41,11 @@ in
     openssh.authorizedKeys.keyFiles = [ config.me.private.keys.me-fr ];
   };
 
-  # users.groups.dev = {};
+  users.users.doc = {
+    isNormalUser = true;
+    uid = 1002;
+    openssh.authorizedKeys.keyFiles = [ config.me.private.keys.me-fr ];
+  };
 
   services.openssh = {
     enable = true;
