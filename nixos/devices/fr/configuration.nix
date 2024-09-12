@@ -31,6 +31,7 @@ in
 
   users.users.me = {
     isNormalUser = true;
+    uid = 1000;
     extraGroups = [ "systemd-journal" "libvirtd" "wireless" ];
     packages = with pkgs; [
       google-chrome
@@ -39,7 +40,7 @@ in
 
   users.users.dev = {
     isNormalUser = true;
-    # group = "users";
+    uid = 1001;
     openssh.authorizedKeys.keyFiles = [ config.me.private.keys.me-fr ];
     packages = with pkgs; [
       cmake
