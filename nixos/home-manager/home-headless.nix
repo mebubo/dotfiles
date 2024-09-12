@@ -1,19 +1,5 @@
 { config, pkgs, lib, ... }:
 
-let
-
-  haskell-sources-tags-nix = pkgs.fetchFromGitHub {
-    owner = "mebubo";
-    repo = "haskell-sources-tags-nix";
-    rev = "9fdbfdc55de30933a209392d0fb320b2591b9d86";
-    sha256 = "12bmw3gisn9fbi89lbhph52k8zab2jfly774frm0ql48h7lmaqcz";
-    fetchSubmodules = false;
-  };
-
-  cabal-sources-tags = pkgs.callPackage (haskell-sources-tags-nix + "/cabal-sources-tags.nix") {};
-
-in
-
 {
 
   home.packages = (with pkgs; [
@@ -51,24 +37,7 @@ in
     usbutils
     wget
     zip
-  ])
-  ++ (with pkgs.haskellPackages; [
-    cabal-install
-    cabal2nix
-    ghc
-    ghcid
-    ghcide
-    hasktags
-    hpack
-    nix-derivation
-    nix-diff
-    dhall
-    dhall-json
-  ])
-  ++ [
-    cabal-sources-tags
-  ]
-  ;
+  ]);
 
   programs = {
     home-manager = {
