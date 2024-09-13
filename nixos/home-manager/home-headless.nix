@@ -158,7 +158,6 @@
   home.file = {
     ".inputrc".source = ../../.inputrc;
     ".tmux.conf".source = ../../.tmux.conf;
-    # ".gitconfig".source = ../../.gitconfig;
   };
 
   nix = {
