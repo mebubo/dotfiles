@@ -100,13 +100,13 @@
             {
               block = "bluetooth";
               format = " $icon $percentage ";
-              disconnected_format = " $icon ";
+              disconnected_format = "";
               mac = osConfig.me.private.bluetooth.headset;
             }
             {
               block = "bluetooth";
               format = " $icon $percentage ";
-              disconnected_format = " $icon ";
+              disconnected_format = "";
               mac = osConfig.me.private.bluetooth.mouse;
             }
             {
