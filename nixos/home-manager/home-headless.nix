@@ -27,6 +27,7 @@
     pstree
     pwgen
     python3
+    python3Packages.ipython
     restic
     ripgrep
     rsync
