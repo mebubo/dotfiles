@@ -116,10 +116,12 @@
             ];
             dev = [
               ./nixos/home-manager/home-headless.nix
+              ./nixos/home-manager/home-desktop.nix
               ./nixos/home-manager/home-dev.nix
             ];
             doc = [
               ./nixos/home-manager/home-headless.nix
+              ./nixos/home-manager/home-desktop.nix
               ./nixos/home-manager/home-doc.nix
             ];
           })
