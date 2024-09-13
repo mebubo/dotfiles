@@ -32,9 +32,27 @@
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  # networking.useDHCP = lib.mkDefault true;
+  networking.useDHCP = false;
   # networking.interfaces.enp193s0f3u2.useDHCP = lib.mkDefault true;
-  networking.interfaces.wlp1s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp1s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp1s0.useDHCP = false;
+
+
+  systemd.network = {
+    enable = true;
+    networks."10-wireless" = {
+      matchConfig.Name = "wlp1s0";
+      networkConfig.DHCP = "yes";
+      dhcpV4Config.RouteMetric = 600;
+    };
+    networks."20-ethernet" = {
+      matchConfig.Name = "enp*";
+      networkConfig.DHCP = "yes";
+      dhcpV4Config.RouteMetric = 100;
+    };
+  };
+
+  services.resolved.enable = false;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
