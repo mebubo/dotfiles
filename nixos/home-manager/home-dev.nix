@@ -16,6 +16,8 @@
     openjdk
     sbt
     tlaplus
+    pipx
+    aider-chat
   ];
 
   programs = {
