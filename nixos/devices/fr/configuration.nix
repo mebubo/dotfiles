@@ -13,8 +13,8 @@ in
       # ../../modules/framework.nix
       ../../modules/wireless.nix
       # ../../modules/wlroots-screen-share.nix
-      # ../../modules/prometheus.nix
-      # ../../modules/grafana.nix
+      ../../modules/prometheus.nix
+      ../../modules/grafana.nix
     ];
 
   me.wifi-interface = wifi;
