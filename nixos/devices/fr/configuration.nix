@@ -122,9 +122,9 @@ in
       extraOpts = {
         RestoreOnStartup = 1;
         HttpsOnlyMode = "force_enabled";
-        BrowserSignin = 0;
-        SyncDisabled = true;
-        PasswordManagerEnabled = false;
+        BrowserSignin = 1;
+        SyncDisabled = false;
+        PasswordManagerEnabled = true;
         # BuiltInDnsClientEnabled = false;
         MetricsReportingEnabled = false;
         SpellcheckEnabled = true;
