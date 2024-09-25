@@ -186,6 +186,12 @@ in
   fonts.packages = with pkgs; [
     monaspace
     font-awesome
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    dejavu_fonts
+    fira-code
+    fira-code-symbols
   ];
 
   services = {
