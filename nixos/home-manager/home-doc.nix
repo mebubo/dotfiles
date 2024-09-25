@@ -11,6 +11,15 @@ in
   home.packages = with pkgs; [
     obsidian
     anki-bin
+    foliate
+    maestral
+    maestral-gui
   ];
+
+  programs = {
+    sioyek = {
+      enable = true;
+    };
+  };
 
 }
