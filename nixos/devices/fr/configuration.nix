@@ -174,6 +174,7 @@ in
       vim
       git
       curl
+      hdparm
     ];
 
     etc."resolv.conf".text = ''
