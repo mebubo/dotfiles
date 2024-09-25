@@ -112,6 +112,7 @@
           (home-manager-module-per-user {
             me = [
               ./nixos/home-manager/home-headless.nix
+              ./nixos/home-manager/home-linux.nix
               ./nixos/home-manager/home-desktop.nix
             ];
             dev = [

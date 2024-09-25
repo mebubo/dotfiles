@@ -9,5 +9,5 @@
     v4l-utils
   ];
 
-  targets.genericLinux.enable = true;
+  # targets.genericLinux.enable = true;
 }
