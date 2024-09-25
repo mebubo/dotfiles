@@ -70,6 +70,7 @@ in
       "chromium-unwrapped"
       "widevine-cdm"
       "google-chrome"
+      "cursor"
     ];
   };
 

@@ -11,6 +11,8 @@
     gcc
     alloy
     coursier
+    metals
+    scala-cli
     ctags
     nodejs
     openjdk
@@ -18,6 +20,8 @@
     tlaplus
     pipx
     aider-chat
+    code-cursor
+    zed-editor.fhs
   ];
 
   programs = {
