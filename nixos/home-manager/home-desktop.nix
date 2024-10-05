@@ -157,6 +157,36 @@ in
 
   services.mpris-proxy.enable = true;
 
+  services.kanshi = {
+    enable = true;
+    settings = [
+      {
+        profile.name = "undocked";
+        profile.outputs = [
+          {
+            criteria = "eDP-1";
+            scale = 1.5;
+            status = "enable";
+          }
+        ];
+      }
+      {
+        profile.name = "docked";
+        profile.outputs = [
+          {
+            criteria = "eDP-1";
+            status = "disable";
+          }
+          {
+            criteria = "DP-3";
+            scale = 1.0;
+            status = "enable";
+          }
+        ];
+      }
+    ];
+  };
+
   xdg.configFile = {
     "sway/config".source = ../../.config/sway/config;
     # "i3/config".source = ../../.config/i3/config;
