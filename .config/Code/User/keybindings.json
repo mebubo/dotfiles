@@ -8,24 +8,6 @@
         "command": "workbench.action.showAllEditorsByMostRecentlyUsed"
     },
     {
-        "key": "cmd+k cmd+q",
-        "command": "-workbench.action.navigateToLastEditLocation"
-    },
-    {
-        "key": "cmd+k cmd+q",
-        "command": "workbench.action.navigateBackInEditLocations"
-    },
-    {
-        "key": "shift+space",
-        "command": "editor.action.triggerSuggest",
-        "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
-    },
-    {
-        "key": "ctrl+space",
-        "command": "-editor.action.triggerSuggest",
-        "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
-    },
-    {
         "key": "alt+h",
         "command": "workbench.action.previousEditor"
     },
