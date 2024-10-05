@@ -19,9 +19,12 @@
     sbt
     tlaplus
     pipx
-    aider-chat
+    # aider-chat
     code-cursor
     zed-editor.fhs
+    poetry
+    uv
+    ruff
   ];
 
   programs = {
