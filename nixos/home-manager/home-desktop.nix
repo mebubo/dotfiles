@@ -1,5 +1,13 @@
 { config, pkgs, lib, osConfig, ... }:
 
+let
+
+screenshot-copy = pkgs.writeShellScriptBin "screenshot-copy" ''
+    ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.wl-clipboard}/bin/wl-copy
+'';
+
+in
+
 {
 
   home.packages = with pkgs; [
@@ -8,6 +16,7 @@
     google-chrome
     pulseaudio
     pavucontrol
+    screenshot-copy
   ];
 
   home.pointerCursor = {

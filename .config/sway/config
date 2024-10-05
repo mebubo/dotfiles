@@ -150,6 +150,8 @@ bindsym XF86AudioPrev exec playerctl previous
 
 bindsym $mod+p exec pavucontrol
 
+bindsym $mod+Shift+s exec screenshot-copy
+
 set $lock 'swaylock -f -c 330033'
 bindsym $mod+F2 exec $lock
 bindsym $mod+q exec $lock
