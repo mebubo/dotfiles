@@ -117,8 +117,6 @@
         EDITOR = "vim";
         LESS = "-r -F -X -j10";
         NIX_PATH = "nixpkgs=$HOME/src/NixOS/nixpkgs";
-        JAVA_HOME = pkgs.jdk;
-        NIXOS_OZONE_WL = "1";
       };
       initExtra = ''
         ${builtins.readFile ../../.bashrc}

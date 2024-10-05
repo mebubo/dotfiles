@@ -26,6 +26,12 @@
 
   programs = {
     vscode = import ./vscode.nix pkgs pkgs.vscode;
+    bash = {
+      sessionVariables = {
+        JAVA_HOME = pkgs.jdk;
+        LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib/";
+      };
+    };
   };
 
 }
