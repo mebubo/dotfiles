@@ -122,7 +122,8 @@
         ${builtins.readFile ../../.bashrc}
       '';
       shellAliases = {
-        l = "ls -la";
+        l = "ls -lah";
+        ll = "ls -la";
       };
     };
     broot = {
