@@ -7,7 +7,7 @@ set $right l
 
 set $term foot
 
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu rofi -show drun -show-icons
 
 font pango:monospace 8
 
@@ -33,7 +33,6 @@ bindsym $mod+Shift+Return exec --no-startup-id st
 bindsym $mod+Shift+c kill
 
 bindsym $mod+d exec $menu
-bindsym $mod+Shift+d exec i3-dmenu-desktop
 
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down

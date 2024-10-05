@@ -84,7 +84,7 @@ in
       enable = true;
       extraPackages = with pkgs; [
         brightnessctl
-        dmenu
+        rofi-wayland
         grim
         i3status
         i3status-rust
