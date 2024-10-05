@@ -4,7 +4,11 @@
         "command": "workbench.action.terminal.moveToEditor"
     },
     {
-        "key": "cmd+e",
+        "key": "ctrl+e",
+        "command": "workbench.action.showAllEditorsByMostRecentlyUsed"
+    },
+    {
+        "key": "ctrl+k ctrl+e",
         "command": "workbench.action.showAllEditorsByMostRecentlyUsed"
     },
     {

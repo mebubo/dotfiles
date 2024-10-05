@@ -1,6 +1,7 @@
 {
     "bookmarks.saveBookmarksInProject": true,
     "chat.editor.fontSize": 13,
+    "debugpy.debugJustMyCode": false,
     "diffEditor.experimental.showMoves": true,
     "editor.cursorBlinking": "solid",
     "editor.fontFamily": "'Monaspace Neon', Menlo, Monaco, 'Courier New', monospace",
@@ -10,6 +11,7 @@
     "editor.inlineSuggest.enabled": true,
     "editor.lineHeight": 15,
     "editor.minimap.enabled": false,
+    "editor.stickyScroll.enabled": true,
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
     "extensions.autoCheckUpdates": false,
@@ -33,10 +35,12 @@
     },
     "interactiveWindow.executeWithShiftEnter": true,
     "jupyter.askForKernelRestart": false,
+    "jupyter.debugJustMyCode": false,
     "jupyter.interactiveWindow.creationMode": "perFile",
     "jupyter.interactiveWindow.textEditor.executeSelection": true,
     "notebook.lineNumbers": "off",
     "notebook.output.textLineLimit": 100,
+    "notebook.stickyScroll.enabled": true,
     "python.REPL.sendToNativeREPL": true,
     "python.analysis.diagnosticMode": "workspace",
     "python.analysis.exclude": [
@@ -46,14 +50,14 @@
     "python.analysis.ignore": [
         ".venv/**"
     ],
-    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.typeCheckingMode": "standard",
     "search.useGlobalIgnoreFiles": true,
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
+    "telemetry.telemetryLevel": "off",
     "terminal.integrated.commandsToSkipShell": [
         "-workbench.action.quickOpen"
     ],
     "terminal.integrated.fontSize": 13,
+    "terminal.integrated.stickyScroll.enabled": true,
     "typescript.updateImportsOnFileMove.enabled": "always",
     "update.mode": "manual",
     "vim.easymotion": true,
@@ -63,12 +67,15 @@
         "<C-k>": false,
         "<C-p>": false,
         "<C-t>": false,
+        "<C-w>": false,
     },
     "vim.hlsearch": true,
     "vim.leader": "<Space>",
     "vim.normalModeKeyBindingsNonRecursive": [
         { "before": [ "<S-h>" ], "commands": [ ":bprevious" ] },
         { "before": [ "<S-l>" ], "commands": [ ":bnext" ] },
+        { "before": [ "]", "d" ], "commands": [ "editor.action.mark.next" ] },
+        { "before": [ "[", "d" ], "commands": [ "editor.action.mark.prev" ] },
         { "before": [ "leader", "n", "e" ], "commands": [ "workbench.explorer.fileView.focus" ] },
     ],
     "vim.sneak": true,
@@ -84,5 +91,6 @@
     "workbench.editor.showTabs": "multiple",
     "workbench.editor.tabActionLocation": "right",
     "workbench.externalBrowser": "/home/dev/browser.sh",
+    "workbench.settings.editor": "json",
     "workbench.tree.indent": 24,
 }
