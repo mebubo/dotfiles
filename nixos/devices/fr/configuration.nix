@@ -3,7 +3,8 @@
 let
 
   wifi = "wlp1s0";
-  chrome-version = "129.0.6668.58";
+  chrome-version = "129.0.6668.70";
+  chrome-hash = "sha256-Be6fvHyxGG3pm5USIVO6SATUVRGwqA2E3L6eF1778ls=";
 
 in
 
@@ -230,7 +231,7 @@ in
         version = chrome-version;
         src = pkgs.fetchurl {
           url = "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${chrome-version}-1_amd64.deb";
-          hash = "sha256-lFYGwpdicvp+E4S+sw4+3uFQSwGKvhyFenBZMVgVnMo=";
+          hash = chrome-hash;
         };
       });
     })
