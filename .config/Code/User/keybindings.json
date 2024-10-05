@@ -4,20 +4,6 @@
         "command": "workbench.action.terminal.moveToEditor"
     },
     {
-        "key": "ctrl+n",
-        "command": "explorer.newFile",
-        "when": "explorerViewletFocus"
-    },
-    {
-        "key": "ctrl+shift+n",
-        "command": "explorer.newFolder",
-        "when": "explorerViewletFocus"
-    },
-    {
-        "key": "cmd+n",
-        "command": "opensshremotes.openEmptyWindowOnCurrentHost"
-    },
-    {
         "key": "cmd+e",
         "command": "workbench.action.showAllEditorsByMostRecentlyUsed"
     },
@@ -30,7 +16,21 @@
         "command": "workbench.action.navigateBackInEditLocations"
     },
     {
-        "key": "shift+cmd+t",
-        "command": "workbench.action.terminal.focus"
+        "key": "shift+space",
+        "command": "editor.action.triggerSuggest",
+        "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+space",
+        "command": "-editor.action.triggerSuggest",
+        "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+h",
+        "command": "workbench.action.previousEditor"
+    },
+    {
+        "key": "alt+l",
+        "command": "workbench.action.nextEditor"
     }
 ]

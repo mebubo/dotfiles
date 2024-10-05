@@ -25,6 +25,8 @@
         "<C-k>": false,
         "<C-t>": false,
         "<C-p>": false,
+        "<C-b>": false,
+        "<C-e>": false,
     },
     "vim.hlsearch": true,
     "vim.leader": "<Space>",
@@ -42,7 +44,7 @@
     "workbench.colorTheme": "Default Light Modern",
     "workbench.editor.enablePreview": true,
     "workbench.editor.pinnedTabsOnSeparateRow": true,
-    "workbench.editor.showTabs": "single",
+    "workbench.editor.showTabs": "multiple",
     "workbench.editorAssociations": {
         // "*.md": "vscode.markdown.preview.editor"
     },
@@ -96,5 +98,7 @@
     "workbench.experimental.enableNewProfilesUI": true,
     "terminal.integrated.fontSize": 13,
     "chat.editor.fontSize": 13,
-    "workbench.externalBrowser": "/home/dev/browser.sh"
+    "workbench.externalBrowser": "/home/dev/browser.sh",
+    "update.mode": "manual",
+    "window.customTitleBarVisibility": "auto"
 }
