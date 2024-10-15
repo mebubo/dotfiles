@@ -5,8 +5,8 @@ let
 vscode =
 
   let
-    version = "1.94.0";
-    sha256 = "sha256-yqS2J8R3LdjF/BLhlAi9llAR65lJagvHL4qMZEnVvKk=";
+    version = "1.94.2";
+    sha256 = "sha256-NktZowxWnt96Xa4Yxyv+oMmwHGylYIxFrpws/y0XhXA=";
   in
     pkgs.vscode.overrideAttrs (oldAttrs: {
       inherit version;
@@ -38,11 +38,12 @@ in
     tlaplus
     pipx
     # aider-chat
-    code-cursor
+    # code-cursor
     zed-editor.fhs
     poetry
     uv
     ruff
+    deno
   ];
 
   programs = {

@@ -3,8 +3,8 @@
 let
 
   wifi = "wlp1s0";
-  chrome-version = "129.0.6668.70";
-  chrome-hash = "sha256-Be6fvHyxGG3pm5USIVO6SATUVRGwqA2E3L6eF1778ls=";
+  chrome-version = "130.0.6723.58";
+  chrome-hash = "sha256-HWFC+9Op4ja/S3eP56N9hkOkMbCrbF+NHEcxSLb85Hg=";
 
 in
 
@@ -200,7 +200,7 @@ in
       enable = true;
     };
     open-webui = {
-      enable = true;
+      enable = false;
       environment = {
         ANONYMIZED_TELEMETRY = "False";
         DO_NOT_TRACK = "True";

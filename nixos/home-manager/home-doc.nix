@@ -13,7 +13,6 @@ in
     anki-bin
     foliate
     maestral
-    maestral-gui
   ];
 
   programs = {
