@@ -32,6 +32,7 @@
     ripgrep
     rsync
     sqlite
+    sshfs
     tmux
     tree
     unzip
