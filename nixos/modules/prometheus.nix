@@ -4,6 +4,7 @@
   services.prometheus = {
     enable = true;
     listenAddress = "localhost";
+    retentionTime = "10000d";
     exporters = {
       node = {
         enable = true;
