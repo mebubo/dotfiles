@@ -13,6 +13,7 @@
     ./printing.nix
     ./scanner.nix
     # ./wireless.nix
+    ./rpi-eeprom-update.nix
   ];
 
 }
