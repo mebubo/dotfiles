@@ -2,7 +2,7 @@
 
 let
 
-  script = pkgs.writeShellScriptBin "rpi-eeprom-update" ''
+  script = pkgs.writeShellScriptBin "rpi-eeprom-update-now" ''
     set -exu
     mount /dev/disk/by-label/FIRMWARE /mnt
     BOOTFS=/mnt FIRMWARE_RELEASE_STATUS=stable ${pkgs.raspberrypi-eeprom}/bin/rpi-eeprom-update -d -a
