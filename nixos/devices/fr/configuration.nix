@@ -35,7 +35,7 @@ in
   users.users.me = {
     isNormalUser = true;
     uid = 1000;
-    extraGroups = [ "systemd-journal" "libvirtd" "wireless" ];
+    extraGroups = [ "systemd-journal" "libvirtd" "wireless" "dialout" ];
   };
 
   users.users.dev = {
