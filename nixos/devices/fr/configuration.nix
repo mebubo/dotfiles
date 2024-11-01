@@ -3,8 +3,8 @@
 let
 
   wifi = "wlp1s0";
-  chrome-version = "130.0.6723.58";
-  chrome-hash = "sha256-HWFC+9Op4ja/S3eP56N9hkOkMbCrbF+NHEcxSLb85Hg=";
+  chrome-version = "130.0.6723.91";
+  chrome-hash = "sha256-30RwtLlU4GhqDhbHTZMqrih77d2yOFeIBiOG3CugvLo=";
 
 in
 
