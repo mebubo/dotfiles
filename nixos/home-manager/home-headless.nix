@@ -5,6 +5,7 @@
   home.packages = (with pkgs; [
     silver-searcher
     curl
+    dig
     diskus
     fd
     feh
@@ -16,6 +17,7 @@
     htop
     jq
     man-pages
+    minicom
     moreutils
     mpv
     nix-prefetch-git
