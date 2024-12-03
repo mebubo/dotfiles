@@ -5,8 +5,8 @@ let
 vscode =
 
   let
-    version = "1.95.1";
-    sha256 = "sha256-ZrTC/IMNgRTsdjGNmmBKs8joFlyVptDRRTtVqXz52rc=";
+    version = "1.95.3";
+    sha256 = "sha256-iBxtzp+bGL3qoAIBl1Ab44CMbiPCa6oLqQWwvIQXW0Y=";
   in
     pkgs.vscode.overrideAttrs (oldAttrs: {
       inherit version;
