@@ -234,7 +234,7 @@ in
   nixpkgs.overlays = [
     (self: super: {
       chromium = super.chromium.override { enableWideVine = true; };
-      google-chrome = google-chrome-overlay self super;
+      # google-chrome = google-chrome-overlay self super;
     })
   ];
 }
