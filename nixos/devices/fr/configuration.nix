@@ -3,8 +3,15 @@
 let
 
   wifi = "wlp1s0";
-  chrome-version = "131.0.6778.85";
-  chrome-hash = "sha256-Cn0fg6WI1kFdk8s0LCksMCMLSDkPImXBDNK+hNMlMpQ=";
+  chrome-version = "131.0.6778.204";
+  chrome-hash = "sha256-vAZUFufRfvkRsbXnqWD4zE3hgTWbhFqDlauXN7m6mIw=";
+  google-chrome-overlay = self: super: super.google-chrome.overrideAttrs (oldAttrs: {
+    version = chrome-version;
+    src = pkgs.fetchurl {
+      url = "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${chrome-version}-1_amd64.deb";
+      hash = chrome-hash;
+    };
+  });
 
 in
 
@@ -227,13 +234,7 @@ in
   nixpkgs.overlays = [
     (self: super: {
       chromium = super.chromium.override { enableWideVine = true; };
-      google-chrome = super.google-chrome.overrideAttrs (oldAttrs: {
-        version = chrome-version;
-        src = pkgs.fetchurl {
-          url = "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${chrome-version}-1_amd64.deb";
-          hash = chrome-hash;
-        };
-      });
+      google-chrome = google-chrome-overlay self super;
     })
   ];
 }
