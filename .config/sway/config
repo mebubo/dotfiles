@@ -167,8 +167,10 @@ bindsym $mod+F9 output eDP-1 toggle
 
 input type:touchpad click_method clickfinger
 input type:touchpad tap enabled
-input type:keyboard xkb_layout us,fr,ru
-input type:keyboard xkb_variant ,,phonetic
+# input type:keyboard xkb_layout us,fr,ru
+# input type:keyboard xkb_variant ,,phonetic
+input type:keyboard xkb_layout us,ru
+input type:keyboard xkb_variant ,phonetic
 input type:keyboard xkb_options grp:rctrl_toggle,grp_led:caps,ctrl:nocaps,compose:ralt
 
 output eDP-1 scale 1.5
