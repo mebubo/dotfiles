@@ -5,8 +5,8 @@ let
 vscode =
 
   let
-    version = "1.95.3";
-    sha256 = "sha256-iBxtzp+bGL3qoAIBl1Ab44CMbiPCa6oLqQWwvIQXW0Y=";
+    version = "1.97.2";
+    sha256 = "sha256-wXYD5gKSenkhheTenkQx3gB8lAGY2ru7YLWO3z7wQIU=";
   in
     pkgs.vscode.overrideAttrs (oldAttrs: {
       inherit version;
@@ -47,7 +47,7 @@ in
   ];
 
   programs = {
-    vscode = import ./vscode.nix pkgs pkgs.vscode;
+    vscode = import ./vscode.nix pkgs vscode;
     bash = {
       sessionVariables = {
         JAVA_HOME = pkgs.jdk;
