@@ -24,6 +24,7 @@ in
       # ../../modules/wlroots-screen-share.nix
       ../../modules/prometheus.nix
       ../../modules/grafana.nix
+      ../../modules/podman.nix
     ];
 
   me.wifi-interface = wifi;
