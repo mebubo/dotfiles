@@ -17,6 +17,7 @@ in
     pulseaudio
     pavucontrol
     screenshot-copy
+    ghostty
   ];
 
   home.pointerCursor = {
