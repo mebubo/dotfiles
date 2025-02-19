@@ -44,6 +44,8 @@ in
     uv
     ruff
     deno
+    gradle
+    files-to-prompt
   ];
 
   programs = {
