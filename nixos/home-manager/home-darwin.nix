@@ -31,9 +31,7 @@
   programs = {
 
     bash = {
-      initExtra = ''
-        export PATH=/Users/me/.nix-profile/bin:/etc/profiles/per-user/me/bin:/run/current-system/sw/bin:/nix/var/nix/profiles/default/bin:$PATH
-      '';
+      enable = true;
     };
 
     alacritty = {
