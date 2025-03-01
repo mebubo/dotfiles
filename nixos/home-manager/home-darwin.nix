@@ -1,5 +1,11 @@
 { config, pkgs, lib, ... }:
 
+let
+
+username = "me";
+
+in
+
 {
 
   imports = [
@@ -38,8 +44,8 @@
   ];
 
   home = {
-    username = "me";
-    homeDirectory = lib.mkForce "/Users/me";
+    inherit username;
+    homeDirectory = lib.mkForce "/Users/${username}";
     file = {
       ".config/captive-browser.toml".source = ../../.config/captive-browser-mac-chrome.toml;
     };
