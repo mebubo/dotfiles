@@ -18,6 +18,23 @@
     captive-browser
     anki-bin
     vscode
+    code-cursor
+    zed-editor
+    coursier
+    scala-cli
+    nodejs
+    openjdk
+    sbt
+    pipx
+    uv
+    ruff
+    deno
+    gradle
+    files-to-prompt
+    aichat
+    repomix
+    google-chrome
+    bun
   ];
 
   home = {
