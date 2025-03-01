@@ -46,6 +46,8 @@ in
     deno
     gradle
     files-to-prompt
+    aichat
+    repomix
   ];
 
   programs = {
