@@ -38,7 +38,6 @@
     tmux
     tree
     unzip
-    usbutils
     wget
     zip
   ]);
