@@ -2,7 +2,7 @@
 
 let
 
-vscode =
+my-vscode =
 
   let
     version = "1.97.2";
@@ -37,8 +37,7 @@ in
     sbt
     tlaplus
     pipx
-    # aider-chat
-    code-cursor
+    my-vscode
     zed-editor.fhs
     poetry
     uv
@@ -51,7 +50,6 @@ in
   ];
 
   programs = {
-    vscode = import ./vscode.nix pkgs vscode;
     bash = {
       sessionVariables = {
         JAVA_HOME = pkgs.jdk;

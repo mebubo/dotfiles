@@ -17,6 +17,7 @@
     obsidian
     captive-browser
     anki-bin
+    vscode
   ];
 
   home = {
@@ -28,8 +29,6 @@
   };
 
   programs = {
-
-    vscode = import ./vscode.nix pkgs pkgs.vscode;
 
     bash = {
       initExtra = ''
