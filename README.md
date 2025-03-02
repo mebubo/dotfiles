@@ -1,3 +1,15 @@
+NixOS build:
+
+```
+nixos-rebuild build --flake .#fr --print-build-logs --log-format bar-with-logs
+```
+
+NixOS install:
+
+```
+nixos-rebuild boot --flake .#fr
+```
+
 home-manager standalone (macos):
 
 ```sh
