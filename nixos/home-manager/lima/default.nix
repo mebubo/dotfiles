@@ -23,7 +23,6 @@ in
         extraOptions = {
           IdentityFile = "~/.lima/_config/user";
           NoHostAuthenticationForLocalhost = "yes";
-          GSSAPIAuthentication = "no";
           PreferredAuthentications = "publickey";
           Compression = "no";
           IdentitiesOnly = "yes";
