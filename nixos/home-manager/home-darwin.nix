@@ -41,6 +41,9 @@ in
     repomix
     google-chrome
     bun
+    monaspace
+    aerospace
+    discrete-scroll
   ];
 
   home = {
