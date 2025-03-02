@@ -58,6 +58,9 @@ in
 
     bash = {
       enable = true;
+      initExtra = ''
+        export PATH=$PATH:~/.local/bin
+      '';
     };
 
     alacritty = {
