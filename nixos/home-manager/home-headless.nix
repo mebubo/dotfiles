@@ -28,8 +28,8 @@
     pciutils
     pstree
     pwgen
-    python3
-    python3Packages.ipython
+    python313
+    python313Packages.ipython
     restic
     ripgrep
     rsync
