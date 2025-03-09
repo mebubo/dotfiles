@@ -6,6 +6,7 @@
   makeWrapper,
   writeScript,
   undmg,
+  sourcesOverride ? null,
 }:
 let
   pname = "cursor";
@@ -13,7 +14,7 @@ let
 
   inherit (stdenvNoCC) hostPlatform;
 
-  sources = {
+  defaultSources = {
     x86_64-linux = fetchurl {
       url = "https://download.todesktop.com/230313mzl4w4u92/cursor-0.45.14-build-250219jnihavxsz-x86_64.AppImage";
       hash = "sha256-5MGWJi8TP+13jZf6YMMUU5uYY/3OBTFxtGpirvgj8ZI=";
@@ -31,6 +32,8 @@ let
       hash = "sha256-A503TxDDFENqMnc1hy/lMMyIgC7YwwRYPJy+tp649Eg=";
     };
   };
+
+  sources = if sourcesOverride != null then sourcesOverride else defaultSources;
 
   source = sources.${hostPlatform.system};
 

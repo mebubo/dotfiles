@@ -16,3 +16,9 @@ home-manager standalone (macos):
 NIXPKGS_ALLOW_UNFREE=1 nix --extra-experimental-features 'nix-command flakes' build --impure '.#homeConfigurations.me.activationPackage'
 result/activate
 ```
+
+Remove old home-manager generations:
+
+```
+nix-env --profile ~/.local/state/nix/profiles/home-manager --delete-generations 1d
+```
