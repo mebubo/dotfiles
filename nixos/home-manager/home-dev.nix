@@ -67,6 +67,7 @@ in
     aichat
     repomix
     my-cursor
+    mise
   ];
 
   programs = {
