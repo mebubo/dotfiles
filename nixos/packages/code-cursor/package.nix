@@ -7,10 +7,11 @@
   writeScript,
   undmg,
   sourcesOverride ? null,
+  versionOverride ? null,
 }:
 let
   pname = "cursor";
-  version = "0.45.14";
+  version = if versionOverride != null then versionOverride else "0.45.14";
 
   inherit (stdenvNoCC) hostPlatform;
 
@@ -72,12 +73,10 @@ stdenvNoCC.mkDerivation {
     ${lib.optionalString hostPlatform.isLinux ''
       cp -r bin $out/bin
       mkdir -p $out/share/cursor
-      cp -a ${appimageContents}/locales $out/share/cursor
-      cp -a ${appimageContents}/resources $out/share/cursor
+      cp -a ${appimageContents}/usr/share/cursor/locales $out/share/cursor
+      cp -a ${appimageContents}/usr/share/cursor/resources $out/share/cursor
       cp -a ${appimageContents}/usr/share/icons $out/share/
-      install -Dm 644 ${appimageContents}/cursor.desktop -t $out/share/applications/
-
-      substituteInPlace $out/share/applications/cursor.desktop --replace-fail "AppRun" "cursor"
+      install -Dm 644 ${appimageContents}/usr/share/applications/cursor.desktop -t $out/share/applications/
 
       wrapProgram $out/bin/cursor \
         --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --enable-wayland-ime=true}} --no-update"

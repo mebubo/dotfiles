@@ -17,6 +17,25 @@ my-vscode =
       };
     });
 
+my-cursor =
+
+  let
+
+    version = "0.46.11";
+    url = "https://anysphere-binaries.s3.us-east-1.amazonaws.com/production/client/linux/x64/appimage/Cursor-0.46.11-ae378be9dc2f5f1a6a1a220c6e25f9f03c8d4e19.deb.glibc2.25-x86_64.AppImage";
+    hash = "sha256-JRkRYeh13k3ZeHLrcLZDyMzZYf4wRsdqm27HaV5awFw=";
+
+  in
+
+    pkgs.callPackage ../packages/code-cursor/package.nix {
+      sourcesOverride = {
+        x86_64-linux = pkgs.fetchurl {
+          inherit url hash;
+        };
+      };
+      versionOverride = version;
+    };
+
 in
 
 {
@@ -47,6 +66,7 @@ in
     files-to-prompt
     aichat
     repomix
+    my-cursor
   ];
 
   programs = {
