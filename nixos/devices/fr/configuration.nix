@@ -80,6 +80,7 @@ in
       "widevine-cdm"
       "google-chrome"
       "cursor"
+      "tokenizer.json"
     ];
   };
 

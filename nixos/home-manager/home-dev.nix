@@ -68,6 +68,7 @@ in
     repomix
     my-cursor
     mise
+    goose-cli
   ];
 
   programs = {
