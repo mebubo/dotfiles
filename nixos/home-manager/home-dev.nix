@@ -52,6 +52,7 @@ in
     scala-cli
     ctags
     nodejs
+    bun
     openjdk
     sbt
     tlaplus

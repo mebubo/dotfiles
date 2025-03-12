@@ -40,6 +40,7 @@
     unzip
     wget
     zip
+    kepubify
   ]);
 
   programs = {
