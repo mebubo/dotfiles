@@ -21,9 +21,9 @@ my-cursor =
 
   let
 
-    version = "0.46.11";
-    url = "https://anysphere-binaries.s3.us-east-1.amazonaws.com/production/client/linux/x64/appimage/Cursor-0.46.11-ae378be9dc2f5f1a6a1a220c6e25f9f03c8d4e19.deb.glibc2.25-x86_64.AppImage";
-    hash = "sha256-JRkRYeh13k3ZeHLrcLZDyMzZYf4wRsdqm27HaV5awFw=";
+    version = "0.47.1";
+    url = "https://downloads.cursor.com/production/client/linux/x64/appimage/Cursor-0.47.1-aafb3fe1326c939656bd06f325a9e17679aeec7f.deb.glibc2.25-x86_64.AppImage";
+    hash = "sha256-2niWU2beJgl42m+0Fgm/Yzikb476IeV+Md5ziEuV1Qs=";
 
   in
 
