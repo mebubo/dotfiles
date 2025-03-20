@@ -128,7 +128,10 @@ in
     chromium = {
       enable = true;
       extensions = [
-        "cjpalhdlnbpafiamejdnhcphjbkeiagm"
+        # UBO
+        # "cjpalhdlnbpafiamejdnhcphjbkeiagm"
+        # UBOL
+        "ddkjiahejlhfcafbddmgiahcphecmpfh"
         # "ogfcmafjalglgifnmanfmnieipoejdcf"
       ];
       extraOpts = {
