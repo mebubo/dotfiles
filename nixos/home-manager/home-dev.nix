@@ -59,7 +59,7 @@ in
     pipx
     my-vscode
     zed-editor.fhs
-    poetry
+    # poetry
     uv
     ruff
     deno
@@ -69,7 +69,7 @@ in
     repomix
     my-cursor
     mise
-    goose-cli
+    # goose-cli
   ];
 
   programs = {

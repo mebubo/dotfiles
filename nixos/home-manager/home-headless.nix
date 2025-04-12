@@ -9,6 +9,7 @@
     diskus
     fd
     feh
+    ffmpeg
     file
     fzf
     git

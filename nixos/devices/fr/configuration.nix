@@ -103,7 +103,7 @@ in
         slurp
         swayidle
         swaylock
-        wayvnc
+        # wayvnc
         wev
         wl-clipboard
         wlr-randr
@@ -216,7 +216,7 @@ in
       enable = true;
     };
     open-webui = {
-      enable = true;
+      enable = false;
       environment = {
         ANONYMIZED_TELEMETRY = "False";
         DO_NOT_TRACK = "True";
