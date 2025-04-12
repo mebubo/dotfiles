@@ -19,9 +19,13 @@
       url = "path:/home/me/src/me/dotfiles-private";
       flake = false;
     };
+    zimply = {
+      url = "github:mebubo/ZIMply";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-apple-silicon, nix-darwin, dotfiles-private }:
+  outputs = { self, nixpkgs, home-manager, nixos-apple-silicon, nix-darwin, dotfiles-private, zimply }:
 
   let
 
@@ -108,6 +112,7 @@
         modules = [
           private
           ./nixos/devices/fr/configuration.nix
+          zimply.nixosModules.default
           home-manager.nixosModules.home-manager
           (home-manager-module-per-user {
             me = [

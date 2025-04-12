@@ -240,6 +240,11 @@ in
     powerKeyLongPress = "poweroff";
   };
 
+  services.zimply = {
+    enable = true;
+    zimPath = "/home/zim";
+  };
+
   nixpkgs.overlays = [
     (self: super: {
       chromium = super.chromium.override { enableWideVine = true; };

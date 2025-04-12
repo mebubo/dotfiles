@@ -113,7 +113,8 @@
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
         "nixos-apple-silicon": "nixos-apple-silicon",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "zimply": "zimply"
       }
     },
     "rust-overlay": {
@@ -129,6 +130,26 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "zimply": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1744477367,
+        "narHash": "sha256-L2k5dVjw34by3FSzezzlFnfPDEpUrTat9gnmVQTY2xU=",
+        "owner": "mebubo",
+        "repo": "ZIMply",
+        "rev": "2d67f4e76d464e150879f84d0cf768d0a179d9ec",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mebubo",
+        "repo": "ZIMply",
         "type": "github"
       }
     }
