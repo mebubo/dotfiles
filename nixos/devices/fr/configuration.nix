@@ -25,6 +25,7 @@ in
       ../../modules/prometheus.nix
       ../../modules/grafana.nix
       ../../modules/podman.nix
+      ../../modules/laptop-ap.nix
     ];
 
   me.wifi-interface = wifi;
