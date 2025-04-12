@@ -156,6 +156,9 @@ in
       interface = wifi;
       dhcp-dns = "${pkgs.systemd}/bin/networkctl status ${wifi} | ${pkgs.gnugrep}/bin/grep -oP 'DNS: \\\\K[0-9.]+'";
     };
+    nix-ld = {
+      enable = true;
+    };
   };
 
   services.pipewire = {
