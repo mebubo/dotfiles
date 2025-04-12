@@ -52,8 +52,11 @@
     };
     networks."20-ethernet" = {
       matchConfig.Name = "enp*";
-      networkConfig.DHCP = "yes";
-      dhcpV4Config.RouteMetric = 100;
+      # networkConfig.DHCP = "yes";
+      # dhcpV4Config.RouteMetric = 100;
+      address = [
+        "10.50.0.2/24"
+      ];
     };
   };
 
