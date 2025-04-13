@@ -70,6 +70,7 @@ in
     my-cursor
     mise
     # goose-cli
+    claude-code
   ];
 
   programs = {

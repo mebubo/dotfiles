@@ -82,6 +82,7 @@ in
       "google-chrome"
       "cursor"
       "tokenizer.json"
+      "claude-code"
     ];
   };
 
