@@ -83,6 +83,7 @@ in
       "cursor"
       "tokenizer.json"
       "claude-code"
+      "windsurf"
     ];
   };
 

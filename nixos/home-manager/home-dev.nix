@@ -5,8 +5,8 @@ let
 my-vscode =
 
   let
-    version = "1.98.2";
-    sha256 = "sha256-YRzzQOB2g2gOoucH5kU7yVyT51rEONpKbmZgp6S8sl4=";
+    version = "1.100.1";
+    sha256 = "sha256-PR8ot4tiklAYZbF7zURuRqqM9dT+PGQ7D+ljEKrfCB8=";
   in
     pkgs.vscode.overrideAttrs (oldAttrs: {
       inherit version;
@@ -21,9 +21,9 @@ my-cursor =
 
   let
 
-    version = "0.48.9";
-    url = "https://downloads.cursor.com/production/61e99179e4080fecf9d8b92c6e2e3e00fbfb53f4/linux/x64/Cursor-0.48.9-x86_64.AppImage";
-    hash = "sha256-Rw96CIN+vL1bIj5o68gWkHeiqgxExzbjwcW4ad10M2I=";
+    version = "0.50.5";
+    url = "https://downloads.cursor.com/production/96e5b01ca25f8fbd4c4c10bc69b15f6228c80771/linux/x64/Cursor-0.50.5-x86_64.AppImage";
+    hash = "sha256-DUWIgQYD3Wj6hF7NBb00OGRynKmXcFldWFUA6W8CZeM=";
 
   in
 
@@ -70,7 +70,8 @@ in
     my-cursor
     mise
     # goose-cli
-    claude-code
+    # claude-code
+    windsurf
   ];
 
   programs = {
