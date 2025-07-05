@@ -17,6 +17,7 @@
     hexyl
     htop
     jq
+    jujutsu
     man-pages
     minicom
     moreutils
