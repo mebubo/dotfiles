@@ -84,6 +84,10 @@ in
       "tokenizer.json"
       "claude-code"
       "windsurf"
+      "steam"
+      "steam-original"
+      "steam-unwrapped"
+      "steam-run"
     ];
   };
 
@@ -159,6 +163,9 @@ in
       dhcp-dns = "${pkgs.systemd}/bin/networkctl status ${wifi} | ${pkgs.gnugrep}/bin/grep -oP 'DNS: \\\\K[0-9.]+'";
     };
     nix-ld = {
+      enable = true;
+    };
+    steam = {
       enable = true;
     };
   };
