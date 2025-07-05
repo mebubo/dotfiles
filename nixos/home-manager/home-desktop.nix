@@ -48,6 +48,14 @@ in
           hostname = "localhost";
           user = "doc";
         };
+        "game" = {
+          hostname = "localhost";
+          user = "game";
+        };
+        "scr" = {
+          hostname = "localhost";
+          user = "scr";
+        };
       };
     };
     firefox = {

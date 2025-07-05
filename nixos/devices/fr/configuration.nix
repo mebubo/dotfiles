@@ -59,6 +59,18 @@ in
     openssh.authorizedKeys.keyFiles = [ config.me.private.keys.me-fr ];
   };
 
+  users.users.game = {
+    isNormalUser = true;
+    uid = 1003;
+    openssh.authorizedKeys.keyFiles = [ config.me.private.keys.me-fr ];
+  };
+
+  users.users.scr = {
+    isNormalUser = true;
+    uid = 1004;
+    openssh.authorizedKeys.keyFiles = [ config.me.private.keys.me-fr ];
+  };
+
   services.openssh = {
     enable = true;
     settings = {

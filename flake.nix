@@ -130,6 +130,14 @@
               ./nixos/home-manager/home-desktop.nix
               ./nixos/home-manager/home-doc.nix
             ];
+            game = [
+              ./nixos/home-manager/home-headless.nix
+              ./nixos/home-manager/home-desktop.nix
+            ];
+            scr = [
+              ./nixos/home-manager/home-headless.nix
+              ./nixos/home-manager/home-desktop.nix
+            ];
           })
           overlays
         ];
