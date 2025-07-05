@@ -1,0 +1,5 @@
+window-decoration = false
+font-size = 10
+shell-integration-features = no-cursor
+cursor-style-blink = false
+gtk-single-instance = true
