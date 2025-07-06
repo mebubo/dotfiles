@@ -3,6 +3,7 @@
 let
 
   wifi = "wlp1s0";
+
   chrome-version = "131.0.6778.204";
   chrome-hash = "sha256-vAZUFufRfvkRsbXnqWD4zE3hgTWbhFqDlauXN7m6mIw=";
   google-chrome-overlay = self: super: super.google-chrome.overrideAttrs (oldAttrs: {
@@ -12,6 +13,15 @@ let
       hash = chrome-hash;
     };
   });
+
+  nixos-rebuild-fr = pkgs.writeShellScriptBin "nixos-rebuild-fr" ''
+    [[ "$PWD" != "/root" ]] && exit 1
+    ACTION=''${1:-boot}
+    rm -fr dotfiles/
+    cp -r /home/me/src/me/dotfiles .
+    nixos-rebuild $ACTION --flake ./dotfiles#fr --print-build-logs --log-format bar-with-logs
+  '';
+
 
 in
 
@@ -213,6 +223,7 @@ in
       git
       curl
       hdparm
+      nixos-rebuild-fr
     ];
 
     etc."resolv.conf".text = ''

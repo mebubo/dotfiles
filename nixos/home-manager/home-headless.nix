@@ -1,5 +1,16 @@
 { config, pkgs, lib, ... }:
 
+let
+
+me-nixos-rebuild-fr = pkgs.writeShellScriptBin "me-nixos-rebuild-fr" ''
+  nixos-rebuild build --flake .#fr --print-build-logs --log-format bar-with-logs
+'';
+
+me-home-manager-cleanup-old-generations = pkgs.writeShellScriptBin "me-home-manager-cleanup-old-generations" ''
+  nix-env --profile ~/.local/state/nix/profiles/home-manager --delete-generations 1d
+'';
+in
+
 {
 
   home.packages = (with pkgs; [
@@ -43,6 +54,8 @@
     wget
     zip
     kepubify
+    me-nixos-rebuild-fr
+    me-home-manager-cleanup-old-generations
   ]);
 
   programs = {
