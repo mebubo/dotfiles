@@ -54,6 +54,8 @@ in
     wget
     zip
     kepubify
+    qsv
+    xan
     me-nixos-rebuild-fr
     me-home-manager-cleanup-old-generations
   ]);

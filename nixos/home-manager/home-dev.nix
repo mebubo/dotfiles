@@ -53,6 +53,7 @@ in
     ctags
     nodejs
     bun
+    pnpm
     openjdk
     sbt
     tlaplus
