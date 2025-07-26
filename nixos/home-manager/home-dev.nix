@@ -75,6 +75,10 @@ in
     windsurf
   ];
 
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
+
   programs = {
     bash = {
       sessionVariables = {
