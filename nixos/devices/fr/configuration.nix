@@ -22,6 +22,20 @@ let
     nixos-rebuild $ACTION --flake /root/dotfiles#fr --print-build-logs --log-format bar-with-logs
   '';
 
+  chromium-customized-for-overlay = p: p.chromium.override {
+    enableWideVine = true;
+    commandLineArgs = [
+      "--password-store=gnome-libsecret"
+    ];
+  };
+
+  libsecretPath = pkgs.lib.makeLibraryPath [ pkgs.libsecret ];
+
+  chromium-with-libsecret = pkgs.writeShellScriptBin "c" ''
+    export LD_LIBRARY_PATH=${libsecretPath}:$LD_LIBRARY_PATH
+    exec ${pkgs.chromium}/bin/chromium "$@"
+  '';
+
 
 in
 
@@ -227,6 +241,7 @@ in
       curl
       hdparm
       nixos-rebuild-fr
+      chromium-with-libsecret
     ];
 
     # etc."resolv.conf".text = ''
@@ -287,7 +302,7 @@ in
 
   nixpkgs.overlays = [
     (self: super: {
-      chromium = super.chromium.override { enableWideVine = true; };
+      chromium = chromium-customized-for-overlay super;
       # google-chrome = google-chrome-overlay self super;
     })
   ];
