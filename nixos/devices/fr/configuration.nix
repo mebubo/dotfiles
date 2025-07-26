@@ -226,10 +226,10 @@ in
       nixos-rebuild-fr
     ];
 
-    etc."resolv.conf".text = ''
-      nameserver 8.8.8.8
-      nameserver 1.1.1.1
-    '';
+    # etc."resolv.conf".text = ''
+    #   nameserver 8.8.8.8
+    #   nameserver 1.1.1.1
+    # '';
   };
 
   fonts.packages = with pkgs; [
