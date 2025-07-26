@@ -19,7 +19,7 @@ let
     ACTION=''${1:-boot}
     rm -fr dotfiles/
     cp -r /home/me/src/me/dotfiles .
-    nixos-rebuild $ACTION --flake ./dotfiles#fr --print-build-logs --log-format bar-with-logs
+    nixos-rebuild $ACTION --flake /root/dotfiles#fr --print-build-logs --log-format bar-with-logs
   '';
 
 
