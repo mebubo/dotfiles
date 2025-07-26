@@ -176,6 +176,9 @@ in
         CloudPrintSubmitEnabled = false;
       };
     };
+    seahorse = {
+      enable = true;
+    };
     bandwhich = {
       enable = true;
     };
@@ -276,6 +279,11 @@ in
     enable = true;
     zimPath = "/home/zim";
   };
+
+  services.gnome.gnome-keyring.enable = true;
+  services.gnome.gcr-ssh-agent.enable = false;
+  security.pam.services.login.enableGnomeKeyring = true;
+
 
   nixpkgs.overlays = [
     (self: super: {
