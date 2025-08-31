@@ -5,8 +5,8 @@ let
 my-vscode =
 
   let
-    version = "1.103.1";
-    sha256 = "sha256-0zM9dyK226l4RgF1H81ojp5HC25snaN5K1QCnWIw/nw=";
+    version = "1.103.2";
+    sha256 = "sha256-vlmvPk2ljwdDklGygdxmtodPzGB+gNjwEaaVp3N+fQI=";
   in
     pkgs.vscode.overrideAttrs (oldAttrs: {
       inherit version;
@@ -21,9 +21,9 @@ my-cursor =
 
   let
 
-    version = "1.5.3";
-    url = "https://downloads.cursor.com/production/aece02022292184bb34fa0c899a97928489b7b78/linux/x64/Cursor-1.5.3-x86_64.AppImage";
-    hash = "sha256-+PnK2wHjcew+IwqZHgROqHIdk/VgdmZ0xqn9ZUTZg9o=";
+    version = "1.5.7";
+    url = "https://downloads.cursor.com/production/6aa7b3af0d578b9a3aa3ab443571e1a51ebb4e83/linux/x64/Cursor-1.5.7-x86_64.AppImage";
+    hash = "sha256-1bSndTGH8C4VanZ86MBsk5PXWPs6cwjnFvfuACODCvM=";
 
   in
 
