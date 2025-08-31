@@ -27,6 +27,7 @@ in
     gnupg
     hexyl
     htop
+    btop
     jq
     jujutsu
     man-pages
