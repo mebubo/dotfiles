@@ -259,6 +259,7 @@ in
     dejavu_fonts
     fira-code
     fira-code-symbols
+    nerd-fonts.caskaydia-mono
   ];
 
   services = {
