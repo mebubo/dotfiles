@@ -20,6 +20,8 @@
     allowDiscards = true;
   };
 
+  boot.initrd.systemd.enable = true;
+
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/9a918edd-35ea-4a60-acde-da39ff065f1a";
       fsType = "ext4";
