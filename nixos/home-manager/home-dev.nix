@@ -2,6 +2,11 @@
 
 let
 
+dev-home-manager-rebuild = pkgs.writeShellScriptBin "dev-home-manager-rebuild" ''
+  nix build '.#homeConfigurations.dev.activationPackage'
+  result/activate
+'';
+
 my-vscode =
 
   let
@@ -73,6 +78,7 @@ in
     # goose-cli
     # claude-code
     windsurf
+    dev-home-manager-rebuild
   ];
 
   home.sessionPath = [

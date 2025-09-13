@@ -154,7 +154,7 @@
     };
 
     homeConfigurations = {
-      me = home-manager.lib.homeManagerConfiguration {
+      mb = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.aarch64-darwin;
         modules = [
           home-manager-user-darwin
@@ -162,7 +162,7 @@
         ];
       };
 
-      fr-me =
+      me =
         let
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
         in
@@ -178,6 +178,33 @@
                 home.homeDirectory = "/home/me";
                 nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
                   "google-chrome"
+                ];
+              }
+            ];
+      };
+
+      dev =
+        let
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        in
+          home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+            modules = [
+              ./nixos/home-manager/home-headless.nix
+              ./nixos/home-manager/home-linux.nix
+              ./nixos/home-manager/home-desktop.nix
+              ./nixos/home-manager/home-dev.nix
+              overlays
+              {
+                home.username = "dev";
+                home.homeDirectory = "/home/dev";
+                nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
+                  "google-chrome"
+                  "vscode"
+                  "code"
+                  "cursor"
+                  "zed-editor"
+                  "windsurf"
                 ];
               }
             ];
@@ -253,7 +280,7 @@
           '';
           # NIXPKGS_ALLOW_UNFREE=1 nix build --impure .#packages.aarch64-darwin.darwin-activate-user-home
           darwin-activate-user-home = pkgs.writeShellScriptBin "darwin-activate-user-home" ''
-            ${self.homeConfigurations.me.activationPackage}/activate
+            ${self.homeConfigurations.mb.activationPackage}/activate
           '';
           # nix build .#packages.aarch64-darwin.darwin-all
           darwin-all = pkgs.buildEnv {

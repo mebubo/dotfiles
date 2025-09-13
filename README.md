@@ -13,7 +13,7 @@ nixos-rebuild boot --flake .#fr
 home-manager standalone (macos):
 
 ```sh
-NIXPKGS_ALLOW_UNFREE=1 nix --extra-experimental-features 'nix-command flakes' build --impure '.#homeConfigurations.me.activationPackage'
+NIXPKGS_ALLOW_UNFREE=1 nix --extra-experimental-features 'nix-command flakes' build --impure '.#homeConfigurations.mb.activationPackage'
 result/activate
 ```
 
