@@ -33,7 +33,7 @@ let
 
   chromium-with-libsecret = pkgs.writeShellScriptBin "c" ''
     export LD_LIBRARY_PATH=${libsecretPath}:$LD_LIBRARY_PATH
-    exec ${pkgs.chromium}/bin/chromium "$@"
+    exec ${pkgs.chromium}/bin/chromium --user-data-dir="$HOME/chromium-10" "$@"
   '';
 
 
