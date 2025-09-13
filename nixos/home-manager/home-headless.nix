@@ -9,6 +9,11 @@ me-nixos-rebuild-fr = pkgs.writeShellScriptBin "me-nixos-rebuild-fr" ''
 me-home-manager-cleanup-old-generations = pkgs.writeShellScriptBin "me-home-manager-cleanup-old-generations" ''
   nix-env --profile ~/.local/state/nix/profiles/home-manager --delete-generations 1d
 '';
+
+me-home-manager-rebuild-fr = pkgs.writeShellScriptBin "me-home-manager-rebuild-fr" ''
+  nix build '.#homeConfigurations.fr-me.activationPackage'
+  result/activate
+'';
 in
 
 {
@@ -59,6 +64,7 @@ in
     xan
     me-nixos-rebuild-fr
     me-home-manager-cleanup-old-generations
+    me-home-manager-rebuild-fr
   ]);
 
   programs = {

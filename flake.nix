@@ -153,13 +153,35 @@
 
     };
 
-    homeConfigurations.me = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-      modules = [
-        home-manager-user-darwin
-        overlays
-      ];
+    homeConfigurations = {
+      me = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+        modules = [
+          home-manager-user-darwin
+          overlays
+        ];
+      };
 
+      fr-me =
+        let
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        in
+          home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+            modules = [
+              ./nixos/home-manager/home-headless.nix
+              ./nixos/home-manager/home-linux.nix
+              ./nixos/home-manager/home-desktop.nix
+              overlays
+              {
+                home.username = "me";
+                home.homeDirectory = "/home/me";
+                nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
+                  "google-chrome"
+                ];
+              }
+            ];
+      };
     };
 
     darwinConfigurations.mba =
