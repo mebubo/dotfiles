@@ -1,4 +1,4 @@
-{ config, pkgs, lib, osConfig, ... }:
+{ config, pkgs, lib, ... }:
 
 let
 
@@ -119,18 +119,6 @@ in
             }
             {
               block = "backlight";
-            }
-            {
-              block = "bluetooth";
-              format = " $icon $percentage ";
-              disconnected_format = "";
-              mac = osConfig.me.private.bluetooth.headset;
-            }
-            {
-              block = "bluetooth";
-              format = " $icon $percentage ";
-              disconnected_format = "";
-              mac = osConfig.me.private.bluetooth.mouse;
             }
             {
               block = "battery";
