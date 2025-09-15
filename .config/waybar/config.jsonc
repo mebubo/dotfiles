@@ -1,0 +1,179 @@
+{
+  "reload_style_on_change": true,
+  "layer": "top",
+  "position": "top",
+  "spacing": 10,
+  "height": 26,
+  "modules-left": ["hyprland/workspaces", "hyprland/window"],
+  "modules-center": [],
+  "modules-right": [
+    "tray",
+    "bluetooth",
+    "network",
+    "pulseaudio",
+    "backlight",
+    "cpu",
+    "battery",
+    "power-profiles-daemon",
+    "privacy",
+    "clock"
+  ],
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "default": "",
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "active": "󱓻"
+    },
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": []
+    }
+  },
+  "hyprland/window": {
+    "icon": true,
+    "icon-size": 16
+  },
+  "cpu": {
+    "interval": 5,
+    "format": "󰍛 {usage}%",
+    "on-click": "alacritty -e btop"
+  },
+  "clock": {
+    "interval": 1,
+    "format": "{:L%a %Y-%m-%d %H:%M:%S}",
+    "format-alt": "{:L%d %B W%V %Y}",
+    "tooltip": true,
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+          "months":     "<span color='#ffead3'><b>{}</b></span>",
+          "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+          "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+          "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+          "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    }
+  },
+  "network": {
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format": "{icon}",
+    "format-wifi": "{icon} {essid}",
+    "format-ethernet": "󰀂",
+    "format-disconnected": "󰖪",
+    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 3,
+    "spacing": 1,
+    "on-click": "alacritty --class=Impala -e impala"
+  },
+  "battery": {
+    "format": "{icon} {power:.0f}W {time} {capacity}%",
+    "format-discharging": "{icon} {power:.0f}W {time} {capacity}%",
+    "format-charging": "{icon} {power:.0f}W {time} {capacity}%",
+    "format-plugged": "",
+    "format-icons": {
+      "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
+      "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+    "format-full": "󰂅",
+    "format-time": "{H}:{m}",
+    "interval": 3,
+    "states": {
+      "warning": 20,
+      "critical": 10
+    }
+  },
+  "bluetooth": {
+    "format": " {num_connections}",
+    "format-disabled": "󰂲",
+    "format-connected": " {num_connections}",
+    "format-connected-battery": " {num_connections}",
+    "tooltip-format": "Devices connected: {num_connections}",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "on-click": "alacritty --class=Wiremix -e wiremix",
+    "on-click-right": "pamixer -t",
+    "tooltip-format": "Playing at {volume}%",
+    "scroll-step": 5,
+    "format-muted": "󰝟 {volume}%",
+    "format-icons": {
+      // "default": ["", "", ""]
+      "default": [""]
+    }
+  },
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": [""]
+  },
+  "tray": {
+    "icon-size": 12,
+    "spacing": 12
+  },
+  "privacy": {
+	"icon-spacing": 4,
+	"icon-size": 18,
+	"transition-duration": 250,
+	"modules": [
+		{
+			"type": "screenshare",
+			"tooltip": true,
+			"tooltip-icon-size": 24
+		},
+		{
+			"type": "audio-out",
+			"tooltip": true,
+			"tooltip-icon-size": 24
+		},
+		{
+			"type": "audio-in",
+			"tooltip": true,
+			"tooltip-icon-size": 24
+		}
+	],
+	"ignore-monitor": true,
+	"ignore": [
+		{
+			"type": "audio-in",
+			"name": "cava"
+		},
+		{
+			"type": "screenshare",
+			"name": "obs"
+		}
+	]
+  },
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
+  }
+}

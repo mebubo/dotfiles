@@ -1,0 +1,29 @@
+@define-color foreground #ffffff;
+@define-color background #000000;
+
+* {
+  background-color: @background;
+  color: @foreground;
+
+  font-family: CaskaydiaMono Nerd Font;
+  font-size: 12px;
+}
+
+#workspaces button {
+  all: initial;
+  padding: 0 6px;
+  margin: 0 1.5px;
+  min-width: 9px;
+}
+
+#workspaces button.empty {
+  opacity: 0.5;
+}
+
+#power-profiles-daemon {
+  margin-right: 4px;
+}
+
+tooltip {
+  margin: 0;
+}
