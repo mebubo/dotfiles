@@ -85,7 +85,7 @@ in
         main = {
           # dpi-aware = "yes";
           word-delimiters = "`|";
-          font = "Monaspace Neon:size=9";
+          font = "CaskaydiaMono Nerd Font:size=9";
         };
       };
     };
