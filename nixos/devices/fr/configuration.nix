@@ -207,6 +207,16 @@ in
     steam = {
       enable = true;
     };
+    hyprland = {
+      enable = true;
+      withUWSM = true;
+    };
+    hyprlock = {
+      enable = true;
+    };
+    waybar = {
+      enable = true;
+    };
   };
 
   services.pipewire = {
@@ -232,6 +242,7 @@ in
   xdg.portal = {
     enable = true;
     wlr.enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
   };
 
   environment = {
