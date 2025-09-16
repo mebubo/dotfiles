@@ -14,6 +14,18 @@ me-home-manager-rebuild = pkgs.writeShellScriptBin "me-home-manager-rebuild" ''
   nix build '.#homeConfigurations.me.activationPackage'
   result/activate
 '';
+
+me-loudnorm = pkgs.writeShellScriptBin "me-loudnorm" ''
+  set -euo pipefail
+
+  if [ "$#" -eq 0 ]; then
+    echo "Usage: me-loudnorm FILE..." >&2
+    exit 1
+  fi
+
+  mkdir -p norm
+  ${pkgs.parallel}/bin/parallel -j16 -q ${pkgs.ffmpeg}/bin/ffmpeg -i "{}" -vn -af loudnorm=I=-11:LRA=5:TP=-1.2 -c:a libmp3lame -q:a 2 "norm/{.}.mp3" ::: "$@"
+'';
 in
 
 {
@@ -65,6 +77,7 @@ in
     me-nixos-rebuild-fr
     me-home-manager-cleanup-old-generations
     me-home-manager-rebuild
+    me-loudnorm
   ]);
 
   programs = {
