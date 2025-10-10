@@ -10,10 +10,12 @@
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  # boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
-  boot.kernelParams = [ "amd_pstate=active" ];
+  # boot.kernelParams = [ "amd_pstate=active" ];
+  boot.kernelParams = [ "mem_sleep_default=deep" ];
 
   boot.initrd.luks.devices."root" = {
     device = "/dev/disk/by-uuid/48b5a0da-b66c-490d-bd96-d16690153a51";
@@ -51,7 +53,7 @@
   systemd.network = {
     enable = true;
     networks."10-wireless" = {
-      matchConfig.Name = "wlp1s0";
+      matchConfig.Name = "wlp*";
       networkConfig.DHCP = "yes";
       dhcpV4Config.RouteMetric = 600;
     };

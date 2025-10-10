@@ -2,7 +2,8 @@
 
 let
 
-  wifi = "wlp1s0";
+  # wifi = "wlp1s0";
+  wifi = "wlp166s0";
 
   chrome-version = "131.0.6778.204";
   chrome-hash = "sha256-vAZUFufRfvkRsbXnqWD4zE3hgTWbhFqDlauXN7m6mIw=";
