@@ -24,7 +24,7 @@ me-loudnorm = pkgs.writeShellScriptBin "me-loudnorm" ''
   fi
 
   mkdir -p norm
-  ${pkgs.parallel}/bin/parallel -j16 -q ${pkgs.ffmpeg}/bin/ffmpeg -i "{}" -vn -af loudnorm=I=-11:LRA=5:TP=-1.2 -c:a libmp3lame -q:a 2 "norm/{.}.mp3" ::: "$@"
+  ${pkgs.parallel}/bin/parallel -j12 -q ${pkgs.ffmpeg}/bin/ffmpeg -i "{}" -vn -af loudnorm=I=-12:LRA=5:TP=-1.2 -c:a libmp3lame -q:a 2 "norm/{.}.mp3" ::: "$@"
 '';
 in
 
