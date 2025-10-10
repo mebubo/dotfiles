@@ -312,6 +312,9 @@ in
   services.gnome.gcr-ssh-agent.enable = false;
   security.pam.services.login.enableGnomeKeyring = true;
 
+  security.polkit = {
+    enable = true;
+  };
 
   nixpkgs.overlays = [
     (self: super: {
