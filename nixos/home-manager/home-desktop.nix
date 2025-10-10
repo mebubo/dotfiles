@@ -167,7 +167,7 @@ in
         profile.outputs = [
           {
             criteria = "eDP-1";
-            scale = 1.5;
+            scale = 2.0;
             status = "enable";
           }
         ];
