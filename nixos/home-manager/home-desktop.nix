@@ -180,7 +180,7 @@ in
             status = "disable";
           }
           {
-            criteria = "DP-3";
+            criteria = "DP-4";
             scale = 1.0;
             status = "enable";
           }
