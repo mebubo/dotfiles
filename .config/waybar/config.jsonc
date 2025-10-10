@@ -7,6 +7,8 @@
   "modules-left": ["hyprland/workspaces", "hyprland/window"],
   "modules-center": [],
   "modules-right": [
+    "privacy",
+    // "mpris",
     "tray",
     "bluetooth",
     "network",
@@ -15,7 +17,6 @@
     "cpu",
     "battery",
     "power-profiles-daemon",
-    "privacy",
     "clock"
   ],
   "hyprland/workspaces": {
@@ -72,11 +73,11 @@
     }
   },
   "network": {
-    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format-icons": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "],
     "format": "{icon}",
-    "format-wifi": "{icon} {essid}",
-    "format-ethernet": "󰀂",
-    "format-disconnected": "󰖪",
+    "format-wifi": "{icon}{essid}",
+    "format-ethernet": "󰀂 ",
+    "format-disconnected": "󰖪 ",
     "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
     "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
     "tooltip-format-disconnected": "Disconnected",
@@ -85,9 +86,9 @@
     "on-click": "alacritty --class=Impala -e impala"
   },
   "battery": {
-    "format": "{icon} {power:.0f}W {time} {capacity}%",
-    "format-discharging": "{icon} {power:.0f}W {time} {capacity}%",
-    "format-charging": "{icon} {power:.0f}W {time} {capacity}%",
+    "format": "{icon} {capacity}% {time} {power:.0f}W",
+    "format-charging": "{icon} {capacity}% {time} {power:.0f}W",
+    "format-discharging": "{icon} {capacity}% {time} {power:.0f}W",
     "format-plugged": "",
     "format-icons": {
       "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
@@ -103,7 +104,7 @@
   },
   "bluetooth": {
     "format": " {num_connections}",
-    "format-disabled": "󰂲",
+    "format-disabled": "󰂲 ",
     "format-connected": " {num_connections}",
     "format-connected-battery": " {num_connections}",
     "tooltip-format": "Devices connected: {num_connections}",
@@ -164,6 +165,17 @@
 			"name": "obs"
 		}
 	]
+  },
+  "mpris": {
+	"format": "{player_icon}",
+	"format-paused": "{status_icon}",
+	"player-icons": {
+		"default": "▶",
+		"mpv": "🎵"
+	},
+	"status-icons": {
+		"paused": "⏸ "
+	}
   },
   "power-profiles-daemon": {
     "format": "{icon}",

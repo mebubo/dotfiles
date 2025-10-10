@@ -27,3 +27,7 @@
 tooltip {
   margin: 0;
 }
+
+#clock {
+  padding-right: 5px;
+}
