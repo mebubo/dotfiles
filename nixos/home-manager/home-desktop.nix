@@ -39,6 +39,7 @@ in
     };
     ssh = {
       enable = true;
+      enableDefaultConfig = false;
       matchBlocks = {
         "dev" = {
           hostname = "localhost";
