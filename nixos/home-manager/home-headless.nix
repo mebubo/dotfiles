@@ -219,6 +219,9 @@ in
         output  = "%(uploader)s--%(upload_date)s--%(title)s--%(id)s.%(ext)s";
       };
     };
+    helix = {
+      enable = true;
+    };
   };
 
   home.file = {
