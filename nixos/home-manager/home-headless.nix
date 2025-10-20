@@ -31,7 +31,6 @@ in
 {
 
   home.packages = (with pkgs; [
-    silver-searcher
     curl
     dig
     diskus
