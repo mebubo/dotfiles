@@ -21,19 +21,9 @@
 	diff = auto
 	interactive = auto
 	status = auto
-[sendemail]
-	smtpserver = smtp.gmail.com
-	smtpserverport = 587
-	smtpencryption = tls
-	smtpuser = dolgovs@gmail.com
 [push]
 	default = simple
 [pull]
 	ff = only
 [core]
 	quotepath = false
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
