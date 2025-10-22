@@ -119,7 +119,7 @@ in
           trash = "!git add . && git commit -m 'trash' && git reset --hard HEAD^";
           serve = "!git daemon --reuseaddr --verbose --base-path=. --export-all --port=8000 ./.git";
           news = "log -p HEAD@{1}..HEAD@{0}";
-          clonep = ''"!f() { git clone $1 $(echo $1 | sed 's;.*[/:]\\([^/]*/[^/]*\\).git;\\1;'); }; f"'';
+          clonep = "!f() { git clone $1 $(echo $1 | sed 's;.*[/:]\\([^/]*/[^/]*\\).git;\\1;'); }; f";
         };
         difftool.prompt = false;
         color = {
