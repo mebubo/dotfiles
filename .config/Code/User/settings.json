@@ -5,7 +5,7 @@
     "debugpy.debugJustMyCode": false,
     "diffEditor.experimental.showMoves": true,
     "editor.cursorBlinking": "solid",
-    "editor.fontFamily": "'Monaspace Neon', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontFamily": "'CaskaydiaMono Nerd Font', 'Monaspace Neon', Menlo, Monaco, 'Courier New', monospace",
     "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'calt', 'dlig'",
     "editor.fontSize": 13,
     "editor.fontWeight": 500,
@@ -94,4 +94,12 @@
     "workbench.externalBrowser": "/home/dev/browser.sh",
     "workbench.settings.editor": "json",
     "workbench.tree.indent": 24,
+    "github.copilot.chat.codesearch.enabled": true,
+    "github.copilot.chat.newWorkspaceCreation.enabled": true,
+    "remote.defaultExtensionsIfInstalledLocally": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "GitHub.vscode-pull-request-github"
+    ],
+    "github.copilot.nextEditSuggestions.enabled": true,
 }
