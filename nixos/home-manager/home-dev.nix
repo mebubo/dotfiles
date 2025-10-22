@@ -78,7 +78,7 @@ in
     mise
     # goose-cli
     # claude-code
-    windsurf
+    # windsurf
     helix
     dev-home-manager-rebuild
   ];
