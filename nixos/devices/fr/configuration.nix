@@ -225,10 +225,14 @@ in
     };
   };
 
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    pulse.enable = true;
+  services = {
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      pulse.enable = true;
+    };
+    xserver.enable = false;
+    fstrim.enable = true;
   };
 
   nix = {
@@ -238,11 +242,6 @@ in
       experimental-features = nix-command flakes
     '';
     settings.sandbox = true;
-  };
-
-  services = {
-    xserver.enable = false;
-    fstrim.enable = true;
   };
 
   xdg.portal = {
