@@ -26,6 +26,19 @@ me-loudnorm = pkgs.writeShellScriptBin "me-loudnorm" ''
   mkdir -p norm
   ${pkgs.parallel}/bin/parallel -j12 -q ${pkgs.ffmpeg}/bin/ffmpeg -i "{}" -vn -af loudnorm=I=-12:LRA=5:TP=-1.2 -c:a libmp3lame -q:a 2 "norm/{.}.mp3" ::: "$@"
 '';
+
+me-wayland-connect = pkgs.writeShellScriptBin "me-wayland-connect" ''
+  export WAYLAND_DISPLAY=/run/user/1000/wayland-1
+  export XDG_SESSION_TYPE=wayland
+  export NIXOS_OZONE_WL=1
+  exec "$@"
+'';
+
+me-wayland-xorg-connect = pkgs.writeShellScriptBin "me-wayland-xorg-connect" ''
+  export DISPLAY=:1
+  exec ${me-wayland-connect}/bin/me-wayland-connect "$@"
+'';
+
 in
 
 {
@@ -77,6 +90,8 @@ in
     me-home-manager-cleanup-old-generations
     me-home-manager-rebuild
     me-loudnorm
+    me-wayland-connect
+    me-wayland-xorg-connect
   ]);
 
   programs = {

@@ -190,6 +190,31 @@ in
     ];
   };
 
+  systemd.user.services.wayland-share-permissions = {
+    Unit = {
+      Description = "Set Wayland socket permissions for group access";
+      After = [ "graphical-session.target" ];
+    };
+
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+
+    Service = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = pkgs.writeShellScript "wayland-permissions" ''
+        while [ ! -S "$XDG_RUNTIME_DIR/wayland-1" ]; do
+          ${pkgs.coreutils}/bin/sleep 1
+        done
+
+        ${pkgs.coreutils}/bin/chmod g+rx "$XDG_RUNTIME_DIR"
+        ${pkgs.coreutils}/bin/chmod g+rwx "$XDG_RUNTIME_DIR/wayland-1"
+        ${pkgs.coreutils}/bin/chmod g+rw "$XDG_RUNTIME_DIR/wayland-1.lock"
+      '';
+    };
+  };
+
   xdg.configFile = {
     "sway/config".source = ../../.config/sway/config;
     # "i3/config".source = ../../.config/i3/config;
