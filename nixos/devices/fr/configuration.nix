@@ -233,6 +233,7 @@ in
     };
     xserver.enable = false;
     fstrim.enable = true;
+    hypridle.enable = lib.mkForce false;
   };
 
   nix = {
