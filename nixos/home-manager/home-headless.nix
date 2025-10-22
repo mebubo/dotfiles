@@ -208,6 +208,10 @@ in
         ll = "ls -la";
       };
     };
+    zoxide = {
+      enable = true;
+      enableBashIntegration = true;
+    };
     broot = {
       enable = false;
       enableBashIntegration = true;
