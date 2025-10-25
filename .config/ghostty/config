@@ -3,6 +3,8 @@ font-size = 10
 shell-integration-features = no-cursor
 cursor-style-blink = false
 gtk-single-instance = true
+window-inherit-working-directory = false
+working-directory = home
 
 font-family = ""
 font-family = "CaskaydiaMono Nerd Font"
