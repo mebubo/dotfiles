@@ -143,6 +143,42 @@
         ];
       };
 
+      fw3 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          private
+          ./nixos/devices/fw3/configuration.nix
+          zimply.nixosModules.default
+          home-manager.nixosModules.home-manager
+          (home-manager-module-per-user {
+            me = [
+              ./nixos/home-manager/home-headless.nix
+              ./nixos/home-manager/home-linux.nix
+              ./nixos/home-manager/home-desktop.nix
+            ];
+            dev = [
+              ./nixos/home-manager/home-headless.nix
+              ./nixos/home-manager/home-desktop.nix
+              ./nixos/home-manager/home-dev.nix
+            ];
+            doc = [
+              ./nixos/home-manager/home-headless.nix
+              ./nixos/home-manager/home-desktop.nix
+              ./nixos/home-manager/home-doc.nix
+            ];
+            game = [
+              ./nixos/home-manager/home-headless.nix
+              ./nixos/home-manager/home-desktop.nix
+            ];
+            scr = [
+              ./nixos/home-manager/home-headless.nix
+              ./nixos/home-manager/home-desktop.nix
+            ];
+          })
+          overlays
+        ];
+      };
+
       vm2 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
