@@ -305,6 +305,7 @@ in
     HandleLidSwitchExternalPower = "suspend";
     HandlePowerKey = "suspend";
     HandlePowerKeyLongPress = "poweroff";
+    KillUserProcesses = true;
   };
 
   services.zimply = {
