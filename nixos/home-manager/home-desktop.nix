@@ -190,6 +190,19 @@ in
     ];
   };
 
+  services.hypridle = {
+    enable = true;
+    settings = {
+      general = {
+        lock_cmd = "hyprlock";
+        # before_sleep_cmd = "loginctl lock-session";
+        before_sleep_cmd = "hyprlock";
+        after_sleep_cmd = "hyprctl dispatch dpms on";
+        inhibit_sleep = 3;
+      };
+    };
+  };
+
   systemd.user.services.wayland-share-permissions = {
     Unit = {
       Description = "Set Wayland socket permissions for group access";
