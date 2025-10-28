@@ -121,18 +121,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bar {
-        position bottom
-        status_command i3status-rs config-bottom.toml
-        # tray_output none
-        font pango:monospace, FontAwesome 9
-        colors {
-            statusline #ffffff
-            background #323232
-            inactive_workspace #32323200 #32323200 #5c5c5c
-        }
-}
-
 bindsym $mod+x [urgent=latest] focus
 
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && killall -USR1 i3status-rs
