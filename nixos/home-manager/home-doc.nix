@@ -13,6 +13,7 @@ in
     anki-bin
     foliate
     maestral
+    koreader
   ];
 
   programs = {
