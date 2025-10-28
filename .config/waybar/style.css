@@ -5,7 +5,7 @@
   background-color: @background;
   color: @foreground;
 
-  font-family: CaskaydiaMono Nerd Font;
+  font-family: JetBrains Mono;
   font-size: 12px;
 }
 
