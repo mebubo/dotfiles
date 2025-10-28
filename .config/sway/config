@@ -161,6 +161,6 @@ input type:keyboard xkb_layout us,ru
 input type:keyboard xkb_variant ,phonetic
 input type:keyboard xkb_options grp:rctrl_toggle,grp_led:caps,ctrl:nocaps,compose:ralt
 
-output eDP-1 scale 1.5
+# output eDP-1 scale 1.5
 
 include /etc/sway/config.d/*
