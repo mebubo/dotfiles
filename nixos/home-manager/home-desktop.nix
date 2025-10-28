@@ -174,7 +174,21 @@ in
         ];
       }
       {
-        profile.name = "docked";
+        profile.name = "docked3";
+        profile.outputs = [
+          {
+            criteria = "eDP-1";
+            status = "disable";
+          }
+          {
+            criteria = "DP-3";
+            scale = 1.0;
+            status = "enable";
+          }
+        ];
+      }
+      {
+        profile.name = "docked4";
         profile.outputs = [
           {
             criteria = "eDP-1";
