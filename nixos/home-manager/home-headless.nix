@@ -2,8 +2,9 @@
 
 let
 
-me-nixos-rebuild-fr = pkgs.writeShellScriptBin "me-nixos-rebuild-fr" ''
-  nixos-rebuild build --flake .#fr --print-build-logs --log-format bar-with-logs
+me-nixos-rebuild = pkgs.writeShellScriptBin "me-nixos-rebuild" ''
+  set -u
+  nixos-rebuild build --flake .#$1 --print-build-logs --log-format bar-with-logs
 '';
 
 me-home-manager-cleanup-old-generations = pkgs.writeShellScriptBin "me-home-manager-cleanup-old-generations" ''
@@ -86,7 +87,7 @@ in
     kepubify
     qsv
     xan
-    me-nixos-rebuild-fr
+    me-nixos-rebuild
     me-home-manager-cleanup-old-generations
     me-home-manager-rebuild
     me-loudnorm
