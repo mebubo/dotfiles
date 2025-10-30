@@ -5,6 +5,7 @@ cursor-style-blink = false
 gtk-single-instance = true
 window-inherit-working-directory = false
 working-directory = home
+link-previews = false
 
 font-family = ""
 font-family = "JetBrains Mono"

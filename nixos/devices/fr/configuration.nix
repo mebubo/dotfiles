@@ -277,6 +277,7 @@ in
     fira-code
     fira-code-symbols
     nerd-fonts.caskaydia-mono
+    jetbrains-mono
   ];
 
   services = {
