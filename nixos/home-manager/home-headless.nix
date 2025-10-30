@@ -59,7 +59,6 @@ in
     htop
     btop
     jq
-    jujutsu
     man-pages
     minicom
     moreutils
@@ -247,6 +246,14 @@ in
           true-color = true;
         };
       };
+    };
+    jujutsu = {
+      enable = true;
+    };
+    delta = {
+      enable = true;
+      enableGitIntegration = true;
+      enableJujutsuIntegration = true;
     };
   };
 
