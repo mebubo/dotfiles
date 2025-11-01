@@ -255,6 +255,10 @@ in
       enableGitIntegration = true;
       enableJujutsuIntegration = true;
     };
+    fzf = {
+      enable = true;
+      enableBashIntegration = true;
+    };
   };
 
   home.file = {
