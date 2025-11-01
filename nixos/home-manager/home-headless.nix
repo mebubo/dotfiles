@@ -52,7 +52,6 @@ in
     feh
     ffmpeg
     file
-    fzf
     git
     gnupg
     hexyl
@@ -254,10 +253,6 @@ in
       enable = true;
       enableGitIntegration = true;
       enableJujutsuIntegration = true;
-    };
-    fzf = {
-      enable = true;
-      enableBashIntegration = true;
     };
   };
 
