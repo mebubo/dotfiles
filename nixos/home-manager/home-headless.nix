@@ -217,7 +217,7 @@ in
     };
     fzf = {
       enable = true;
-      enableBashIntegration = false;
+      enableBashIntegration = true;
     };
     mcfly = {
       enable = false;
