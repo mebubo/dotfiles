@@ -14,7 +14,7 @@
     "network",
     "pulseaudio",
     "backlight",
-    "cpu",
+    // "cpu",
     "battery",
     "power-profiles-daemon",
     "sway/language",
