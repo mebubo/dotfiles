@@ -3,7 +3,7 @@
 let
 
 me-nixos-rebuild = pkgs.writeShellScriptBin "me-nixos-rebuild" ''
-  set -u
+  set -euo pipefail
   nixos-rebuild build --flake .#$1 --print-build-logs --log-format bar-with-logs
 '';
 
@@ -12,6 +12,7 @@ me-home-manager-cleanup-old-generations = pkgs.writeShellScriptBin "me-home-mana
 '';
 
 me-home-manager-rebuild = pkgs.writeShellScriptBin "me-home-manager-rebuild" ''
+  set -euo pipefail
   nix build '.#homeConfigurations.me.activationPackage'
   result/activate
 '';
