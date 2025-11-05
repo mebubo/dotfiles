@@ -138,41 +138,24 @@ in
       plugins = with pkgs.vimPlugins; [
         vim-sensible
         vim-commentary
-        vim-surround
-        vim-unimpaired
-        vim-fugitive
-        vim-repeat
-        vim-rsi
-        vim-sleuth
-        vim-vinegar
-        vim-characterize
-        vim-eunuch
-        vim-abolish
-        vim-obsession
 
         base16-vim
+        tokyonight-nvim
 
-        fzf-vim
-        nerdtree
-        ack-vim
-        vim-indent-object
-        vim-sneak
-
-        nvim-lspconfig
-        nvim-metals
         (nvim-treesitter.withPlugins (p: [
-          p.tree-sitter-nix
-          p.tree-sitter-scala
+          p.tree-sitter-bash
           p.tree-sitter-haskell
-          p.tree-sitter-rust
-          p.tree-sitter-lua
           p.tree-sitter-java
           p.tree-sitter-javascript
-          p.tree-sitter-typescript
-          p.tree-sitter-python
-          p.tree-sitter-markdown
-          p.tree-sitter-bash
           p.tree-sitter-json
+          p.tree-sitter-lua
+          p.tree-sitter-markdown
+          p.tree-sitter-nix
+          p.tree-sitter-python
+          p.tree-sitter-rust
+          p.tree-sitter-scala
+          p.tree-sitter-typescript
+          p.tree-sitter-vim
           p.tree-sitter-yaml
         ]))
         # treesitter playground
@@ -182,6 +165,7 @@ in
 
       ];
       extraConfig = builtins.readFile ../../.vimrc;
+      extraLuaConfig = builtins.readFile ../../.config/nvim/init.lua;
       withNodeJs = false;
       withPython3 = false;
       withRuby = false;
