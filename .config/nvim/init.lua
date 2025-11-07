@@ -15,6 +15,24 @@ end, { silent = true, desc = 'Edit current file dir' })
 vim.keymap.set('n', '<leader>w', ':write<CR>')
 vim.keymap.set('n', '<leader>l', ':ls<CR>:b ')
 
+local diagnostic_goto = function(next, severity)
+  return function()
+    vim.diagnostic.jump({
+      count = (next and 1 or -1) * vim.v.count1,
+      severity = severity and vim.diagnostic.severity[severity] or nil,
+      float = true,
+    })
+  end
+end
+
+vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+vim.keymap.set("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
+vim.keymap.set("n", "[d", diagnostic_goto(false), { desc = "Prev Diagnostic" })
+vim.keymap.set("n", "]e", diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
+vim.keymap.set("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
+vim.keymap.set("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
+vim.keymap.set("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
+
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
@@ -49,22 +67,92 @@ require("nvim-treesitter.configs").setup{
   playground = { enable = true },
 }
 
-require('telescope').setup{
-  pickers = {
-    buffers = {
-      sort_lastused = true
-    }
-  }
-}
+local Snacks = require('snacks')
+Snacks.setup({
+    bigfile = { enabled = true },
+    explorer = { enabled = true },
+    picker = { enabled = true }
+})
 
-local tb = require('telescope.builtin')
-vim.keymap.set('n', '<leader>sh', tb.help_tags, { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>sk', tb.keymaps, { desc = '[S]earch [K]eymaps' })
-vim.keymap.set('n', '<leader>sf', tb.find_files, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>ss', tb.builtin, { desc = '[S]earch [S]elect Telescope' })
-vim.keymap.set('n', '<leader>sw', tb.grep_string, { desc = '[S]earch current [W]ord' })
-vim.keymap.set('n', '<leader>sg', tb.live_grep, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>sd', tb.diagnostics, { desc = '[S]earch [D]iagnostics' })
-vim.keymap.set('n', '<leader>sr', tb.resume, { desc = '[S]earch [R]esume' })
-vim.keymap.set('n', '<leader>s.', tb.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-vim.keymap.set('n', '<leader><leader>', tb.buffers, { desc = '[ ] Find existing buffers' })
+local function apply_mappings(default_mode, specs)
+  for _, spec in ipairs(specs) do
+    local lhs = spec[1]
+    local rhs = spec[2]
+    local opts = {}
+    for k, v in pairs(spec) do
+      if type(k) ~= "number" then
+        opts[k] = v
+      end
+    end
+    local mode = opts.mode or default_mode
+    opts.mode = nil
+
+    if type(mode) == "table" then
+      for _, m in ipairs(mode) do
+        vim.keymap.set(m, lhs, rhs, opts)
+      end
+    else
+      vim.keymap.set(mode, lhs, rhs, opts)
+    end
+  end
+end
+
+apply_mappings("n", {
+
+    { "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
+    { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep (Root Dir)" },
+    { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
+    { "<leader><space>", function() Snacks.picker.files() end, desc = "Find Files (Root Dir)" },
+    { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
+
+    { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
+    { "<leader>fB", function() Snacks.picker.buffers({ hidden = true, nofile = true }) end, desc = "Buffers (all)" },
+    { "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files (Root Dir)" },
+    { "<leader>fF", function() Snacks.picker.files({ root = false }) end, desc = "Find Files (cwd)" },
+    { "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Files (git-files)" },
+    { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
+    { "<leader>fR", function() Snacks.picker.recent({ filter = { cwd = true }}) end, desc = "Recent (cwd)" },
+    { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
+
+    { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
+    { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
+    { "<leader>sg", function() Snacks.picker.grep() end, desc = "Grep (Root Dir)" },
+    { "<leader>sG", function() Snacks.picker.grep({ root = false }) end, desc = "Grep (cwd)" },
+    { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word (Root Dir)", mode = { "n", "x" } },
+    { "<leader>sW", function() Snacks.picker.grep_word({ root = false }) end, desc = "Visual selection or word (cwd)", mode = { "n", "x" } },
+
+    { '<leader>s"', function() Snacks.picker.reisters() end, desc = "Registers" },
+    { '<leader>s/', function() Snacks.picker.search_history() end, desc = "Search History" },
+    { "<leader>sa", function() Snacks.picker.autocmds() end, desc = "Autocmds" },
+    { "<leader>sc", function() Snacks.picker.command_history() end, desc = "Command History" },
+    { "<leader>sC", function() Snacks.picker.commands() end, desc = "Commands" },
+    { "<leader>sd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
+    { "<leader>sD", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" },
+    { "<leader>sh", function() Snacks.picker.help() end, desc = "Help Pages" },
+    { "<leader>sH", function() Snacks.picker.highlights() end, desc = "Highlights" },
+    { "<leader>si", function() Snacks.picker.icons() end, desc = "Icons" },
+    { "<leader>sj", function() Snacks.picker.jumps() end, desc = "Jumps" },
+    { "<leader>sk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
+    { "<leader>sl", function() Snacks.picker.loclist() end, desc = "Location List" },
+    { "<leader>sM", function() Snacks.picker.man() end, desc = "Man Pages" },
+    { "<leader>sm", function() Snacks.picker.marks() end, desc = "Marks" },
+    { "<leader>sR", function() Snacks.picker.resume() end, desc = "Resume" },
+    { "<leader>sq", function() Snacks.picker.qflist() end, desc = "Quickfix List" },
+    { "<leader>su", function() Snacks.picker.undo() end, desc = "Undotree" },
+
+    { "<leader>uC", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" },
+
+    { "<leader>fe", function() Snacks.explorer() end, desc = "Explorer (cwd)", },
+    { "<leader>fE", function() Snacks.explorer.reveal() end, desc = "Explorer reveal", },
+
+})
+
+require('which-key').setup({
+    preset = 'helix'
+})
+
+vim.lsp.config('ty', {
+  cmd = { pkgs_ty, 'server' },
+  filetypes = { 'python' },
+  root_markers = { 'ty.toml', 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', '.git', '.venv' },
+})
