@@ -265,6 +265,12 @@ local pkgs_markdown_oxide = '${pkgs.markdown-oxide}/bin/markdown-oxide'
     ".tmux.conf".source = ../../.tmux.conf;
   };
 
+  xdg.configFile."fd/ignore" = {
+    text = ''
+.git/
+'';
+  };
+
   nix = {
     enable = true;
     package = lib.mkDefault pkgs.nix;
