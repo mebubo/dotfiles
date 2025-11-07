@@ -175,7 +175,14 @@ in
         which-key-nvim
       ];
       extraConfig = builtins.readFile ../../.vimrc;
-      extraLuaConfig = builtins.readFile ../../.config/nvim/init.lua;
+      extraLuaConfig = ''
+local pkgs_ty = '${pkgs.ty}/bin/ty'
+local pkgs_nil = '${pkgs.nil}/bin/nil'
+local pkgs_typescript_language_server = '${pkgs.typescript-language-server}/bin/typescript-language-server'
+local pkgs_metals = '${pkgs.metals}/bin/metals'
+local pkgs_harper_ls = '${pkgs.harper}/bin/harper-ls'
+local pkgs_markdown_oxide = '${pkgs.markdown-oxide}/bin/markdown-oxide'
+'' + (builtins.readFile ../../.config/nvim/init.lua);
       withNodeJs = false;
       withPython3 = false;
       withRuby = false;
