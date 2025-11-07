@@ -277,6 +277,7 @@ in
     fira-code
     fira-code-symbols
     nerd-fonts.caskaydia-mono
+    nerd-fonts.symbols-only
     jetbrains-mono
   ];
 
