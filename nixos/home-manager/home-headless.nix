@@ -171,8 +171,8 @@ in
         # treesitter playground
         playground
 
-        telescope-nvim
-
+        snacks-nvim
+        which-key-nvim
       ];
       extraConfig = builtins.readFile ../../.vimrc;
       extraLuaConfig = builtins.readFile ../../.config/nvim/init.lua;
