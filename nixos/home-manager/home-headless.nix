@@ -79,7 +79,6 @@ in
     python313
     python313Packages.ipython
     restic
-    ripgrep
     rsync
     sqlite
     sshfs
@@ -254,6 +253,10 @@ local pkgs_markdown_oxide = '${pkgs.markdown-oxide}/bin/markdown-oxide'
       enable = true;
       enableGitIntegration = true;
       enableJujutsuIntegration = true;
+    };
+    ripgrep = {
+      enable = true;
+      arguments = [ "--sort=path" ];
     };
   };
 
