@@ -6,6 +6,10 @@ screenshot-copy = pkgs.writeShellScriptBin "screenshot-copy" ''
     ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.wl-clipboard}/bin/wl-copy
 '';
 
+screenshot-edit = pkgs.writeShellScriptBin "screenshot-edit" ''
+    ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" -t ppm - | ${pkgs.satty}/bin/satty --filename - --output-filename ~/Documents/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png
+'';
+
 in
 
 {
@@ -17,6 +21,7 @@ in
     pulseaudio
     pavucontrol
     screenshot-copy
+    screenshot-edit
     ghostty
   ];
 
