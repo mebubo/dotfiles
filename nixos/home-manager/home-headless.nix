@@ -41,6 +41,11 @@ me-wayland-xorg-connect = pkgs.writeShellScriptBin "me-wayland-xorg-connect" ''
   exec ${me-wayland-connect}/bin/me-wayland-connect "$@"
 '';
 
+me-fd = pkgs.writeShellApplication {
+  name = "fd";
+  text = ''${pkgs.fd}/bin/fd --hidden "$@"'';
+};
+
 in
 
 {
@@ -49,10 +54,10 @@ in
     curl
     dig
     diskus
-    fd
     feh
     ffmpeg
     file
+    me-fd
     git
     gnupg
     hexyl
