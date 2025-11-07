@@ -23,6 +23,7 @@ in
     screenshot-copy
     screenshot-edit
     ghostty
+    bluetui
   ];
 
   home.pointerCursor = {
