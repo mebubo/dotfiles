@@ -150,7 +150,9 @@ in
 
         (nvim-treesitter.withPlugins (p: [
           p.tree-sitter-bash
+          p.tree-sitter-css
           p.tree-sitter-haskell
+          p.tree-sitter-html
           p.tree-sitter-java
           p.tree-sitter-javascript
           p.tree-sitter-json
@@ -158,8 +160,10 @@ in
           p.tree-sitter-markdown
           p.tree-sitter-nix
           p.tree-sitter-python
+          p.tree-sitter-regex
           p.tree-sitter-rust
           p.tree-sitter-scala
+          p.tree-sitter-tsx
           p.tree-sitter-typescript
           p.tree-sitter-vim
           p.tree-sitter-yaml
