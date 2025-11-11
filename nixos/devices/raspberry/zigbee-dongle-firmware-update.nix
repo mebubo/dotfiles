@@ -14,8 +14,8 @@ let
   py = python3.withPackages (p: [ p.pyserial p.intelhex ]);
 
   firmware = builtins.fetchurl {
-    url = "https://github.com/Koenkk/Z-Stack-firmware/raw/master/coordinator/Z-Stack_3.x.0/bin/CC1352P2_CC2652P_launchpad_coordinator_20230507.zip";
-    sha256 = "sha256:1d6f667ykrlz7077b6yy3wm6cxd0fyaqdhvbq7acpdm8dhxjwivq";
+    url = "https://github.com/Koenkk/Z-Stack-firmware/releases/download/Z-Stack_3.x.0_coordinator_20250321/CC1352P2_CC2652P_launchpad_coordinator_20250321.zip";
+    sha256 = "sha256:0fi70idxjjxl04dlsskk0zbkjpjjb6wlfsns6d8kg99c1k9d7xb6";
   };
 
   firmware-unpacked = runCommand "firmare-unpack" {} ''
@@ -27,5 +27,5 @@ let
 in
 
   writeShellScriptBin "zigbee-dongle-firmware-update" ''
-    ${py}/bin/python ${src}/cc2538-bsl.py -ewv -p /dev/ttyUSB0 --bootloader-sonoff-usb ${firmware-unpacked}/CC1352P2_CC2652P_launchpad_coordinator_20230507.hex
+    ${py}/bin/python ${src}/cc2538-bsl.py -ewv -p /dev/ttyUSB0 --bootloader-sonoff-usb ${firmware-unpacked}/CC1352P2_CC2652P_launchpad_coordinator_20250321.hex
   ''

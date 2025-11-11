@@ -9,6 +9,7 @@
   users.users.me = {
     isNormalUser = true;
     uid = 1000;
+    extraGroups = [ "dialout" ];
     openssh.authorizedKeys.keyFiles = config.me.private.keys;
   };
 
