@@ -12,6 +12,8 @@ in
     zigbee2mqtt = {
       enable = true;
       settings = {
+        # homeassistant = config.services.home-assistant.enable;
+        homeassistant.enable = true;
         serial = {
           port = "/dev/ttyUSB0";
         };

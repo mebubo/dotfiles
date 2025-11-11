@@ -14,6 +14,8 @@
     ./scanner.nix
     # ./wireless.nix
     ./rpi-eeprom-update.nix
+    # ./home-assistant.nix
+    ./home-assistant-upstream.nix
   ];
 
 }
