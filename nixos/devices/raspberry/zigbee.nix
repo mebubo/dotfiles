@@ -13,7 +13,7 @@ in
       enable = true;
       settings = {
         # homeassistant = config.services.home-assistant.enable;
-        homeassistant.enable = true;
+        homeassistant.enabled = true;
         serial = {
           port = "/dev/ttyUSB0";
         };
@@ -22,6 +22,7 @@ in
           port = 8080;
         };
         permit_join = false;
+        availability.enabled = true;
       };
     };
     mosquitto = {
