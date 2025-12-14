@@ -12,6 +12,7 @@
     # required for rootless user namespaces
     subUidRanges = [{ startUid = 100000; count = 65536; }];
     subGidRanges = [{ startGid = 100000; count = 65536; }];
+    linger = false;
   };
   users.groups.podman-home-assistant = {};
 
