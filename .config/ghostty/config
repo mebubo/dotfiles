@@ -4,8 +4,21 @@ shell-integration-features = no-cursor
 cursor-style-blink = false
 gtk-single-instance = true
 window-inherit-working-directory = false
-working-directory = home
+# working-directory = home
 link-previews = false
 
 font-family = ""
 font-family = "JetBrains Mono"
+
+keybind = alt+l=next_tab
+keybind = alt+h=previous_tab
+keybind = alt+shift+h=move_tab:-1
+keybind = alt+shift+l=move_tab:1
+
+keybind = alt+j=goto_split:next
+keybind = alt+k=goto_split:previous
+
+keybind = ctrl+a>shift+backslash=new_split:right
+keybind = ctrl+a>minus=new_split:down
+keybind = ctrl+a>z=toggle_split_zoom
+keybind = ctrl+a>c=new_tab
