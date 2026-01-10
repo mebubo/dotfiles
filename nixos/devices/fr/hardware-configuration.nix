@@ -14,8 +14,11 @@
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
+  # maybe needed on amd
   # boot.kernelParams = [ "amd_pstate=active" ];
-  boot.kernelParams = [ "mem_sleep_default=deep" ];
+
+  # maybe helps on intel 12th
+  # boot.kernelParams = [ "mem_sleep_default=deep" ];
 
   boot.initrd.luks.devices."root" = {
     device = "/dev/disk/by-uuid/48b5a0da-b66c-490d-bd96-d16690153a51";
