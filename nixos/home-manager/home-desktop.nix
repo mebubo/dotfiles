@@ -92,7 +92,7 @@ in
         main = {
           # dpi-aware = "yes";
           word-delimiters = "`|";
-          font = "CaskaydiaMono Nerd Font:size=9";
+          font = "JetBrains Mono:size=9";
         };
       };
     };
