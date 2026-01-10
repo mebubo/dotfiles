@@ -256,7 +256,7 @@ local pkgs_markdown_oxide = '${pkgs.markdown-oxide}/bin/markdown-oxide'
     };
     ripgrep = {
       enable = true;
-      arguments = [ "--sort=path" ];
+      arguments = [ "--sort=path" "--hidden" ];
     };
   };
 
