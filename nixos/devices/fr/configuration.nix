@@ -32,11 +32,14 @@ let
 
   libsecretPath = pkgs.lib.makeLibraryPath [ pkgs.libsecret ];
 
-  chromium-with-libsecret = pkgs.writeShellScriptBin "c" ''
+  chromium-with-libsecret = pkgs.writeShellScriptBin "chr" ''
     export LD_LIBRARY_PATH=${libsecretPath}:$LD_LIBRARY_PATH
-    exec ${pkgs.chromium}/bin/chromium --user-data-dir="$HOME/chromium-10" "$@"
+    exec ${pkgs.chromium}/bin/chromium "$@"
   '';
 
+  chromium-with-profile = pkgs.writeShellScriptBin "c" ''
+    exec ${chromium-with-libsecret}/bin/chr --user-data-dir="$HOME/chromium-10" "$@"
+  '';
 
 in
 
@@ -259,6 +262,7 @@ in
       hdparm
       nixos-rebuild-fr
       chromium-with-libsecret
+      chromium-with-profile
     ];
 
     # etc."resolv.conf".text = ''
