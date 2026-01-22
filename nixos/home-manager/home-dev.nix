@@ -11,8 +11,8 @@ dev-home-manager-rebuild = pkgs.writeShellScriptBin "dev-home-manager-rebuild" '
 my-vscode =
 
   let
-    version = "1.107.1";
-    sha256 = "sha256-qaGeIN0Jxh7Br31n2d7CRVAE0PvTUSD+HSRYjBI/lHQ=";
+    version = "1.108.1";
+    sha256 = "sha256-qYthiZlioD6fWCyDPfg7Yfo5PqCHzcenk8NjgobLW7c=";
   in
     pkgs.vscode.overrideAttrs (oldAttrs: {
       inherit version;
@@ -27,9 +27,9 @@ my-cursor =
 
   let
 
-    version = "2.3.33";
-    url = "https://downloads.cursor.com/production/c68681c13bdb0dea7fb85526bcc3202d20233faa/linux/x64/Cursor-2.3.33-x86_64.AppImage";
-    hash = "sha256-APnI3mhux7jgwH0PTZ8bSW/mTEMFwnPVNivb6Zk0d08=";
+    version = "2.4.20";
+    url = "https://downloads.cursor.com/production/20b56586b0785b8843487045393c57c6d89b7103/linux/x64/Cursor-2.4.20-x86_64.AppImage";
+    hash = "sha256-GshrvxQJUcDE/gOYcB2DgCZXl8jg2ZCWBOF95+4aYTE=";
 
   in
 
