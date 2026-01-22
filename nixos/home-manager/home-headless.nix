@@ -167,8 +167,6 @@ in
           p.tree-sitter-vim
           p.tree-sitter-yaml
         ]))
-        # treesitter playground
-        playground
 
         snacks-nvim
         which-key-nvim
