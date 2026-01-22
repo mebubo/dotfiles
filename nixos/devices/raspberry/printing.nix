@@ -33,7 +33,7 @@ in
     listenAddresses = [ "*:631" ];
     defaultShared = true;
     allowFrom = [ "localhost" "192.168.1.*" ];
-    logLevel = "debug";
+    logLevel = "info";
     extraConf = pkgs.lib.mkOverride 0 ''
       <Location />
         Order allow,deny
