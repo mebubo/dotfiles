@@ -6,6 +6,9 @@ let
   ssid = router.ssid;
   wpaPassphrase = router.wpaPassphrase;
   countryCode = router.countryCode;
+  apAddress = "10.10.10.1";
+  apDhcpRange = "10.10.10.100,10.10.10.200,24h";
+  upstreamRouter = "192.168.1.254";
 
   qr = pkgs.writeShellScriptBin "qr" ''
     ${pkgs.qrencode}/bin/qrencode -o - -t ANSI "WIFI:S:${ssid};T:WPA;P:${wpaPassphrase};;"
@@ -20,36 +23,44 @@ in
 
   services.hostapd = {
     enable = true;
-    interface = "wlan0";
-    hwMode = "g";
-    # hwMode = "a";
-    # channel = 46;
-    inherit ssid wpaPassphrase;
-    extraConfig = ''
-      country_code=${countryCode}
-      ieee80211d=1
-      wpa=2
-      auth_algs=1
-      wpa_key_mgmt=WPA-PSK
-      wpa_pairwise=CCMP
-      rsn_pairwise=CCMP
-    '';
+    radios.wlan0 = {
+      band = "2g";
+      inherit countryCode;
+      wifi4.enable = true;
+      wifi5.enable = false;
+      networks.wlan0 = {
+        inherit ssid;
+        authentication = {
+          mode = "wpa2-sha256";
+          wpaPassword = wpaPassphrase;
+        };
+      };
+    };
   };
 
   services.dnsmasq = {
     enable = true;
-    extraConfig = ''
-      interface=wlan0
-      bind-interfaces
-      dhcp-range=172.18.18.10,172.18.18.50,24h
-    '';
+    settings = {
+      interface = "wlan0";
+      bind-interfaces = true;
+      dhcp-range = apDhcpRange;
+      dhcp-option = [
+        "option:router,${apAddress}"
+        "option:dns-server,${apAddress}"
+      ];
+      no-resolv = true;
+    };
   };
 
   # services.nscd.enable = false;
 
+  boot.kernel.sysctl = {
+    "net.ipv4.ip_forward" = 1;
+  };
+
   networking = {
     interfaces.wlan0.ipv4.addresses = [{
-      address = "172.18.18.1";
+      address = apAddress;
       prefixLength = 24;
     }];
     interfaces.eth0.ipv4.addresses = [{
@@ -57,27 +68,66 @@ in
       prefixLength = 24;
     }];
     defaultGateway = {
-      address = "192.168.1.254";
+      address = upstreamRouter;
     };
     nameservers = [ "8.8.8.8" ];
     dhcpcd.enable = false;
     useDHCP = false;
-    # useNetworkd = true;
-    nat = {
-      enable = true;
-      internalInterfaces = [ "wlan0" ];
-      # internalIPs = [ "172.18.18.1/24" ];
-      externalInterface = "eth0";
-      extraCommands = ''
-        iptables -A FORWARD -d 10.0.0.0/8 -j DROP
-        # iptables -A FORWARD -d 172.16.0.0/12 -j DROP
-        iptables -A FORWARD -d 192.168.1.0/16 -j DROP
-      '';
-    };
-    firewall = {
-      enable = true;
-      interfaces.wlan0.allowedUDPPorts = [ 53 67 ];
-      allowedTCPPorts = [ 22 ];
-    };
   };
+
+  networking.nftables = {
+    enable = true;
+    ruleset = ''
+      table inet filter {
+        chain input {
+          type filter hook input priority 0; policy drop;
+
+          iif "lo" accept
+          ct state established,related accept
+
+          # Allow DHCP and DNS from WiFi clients
+          iifname "wlan0" udp dport { 53, 67 } accept
+
+          # Allow SSH (adjust as needed)
+          tcp dport 22 accept
+
+          # Allow ping
+          icmp type echo-request accept
+        }
+
+        chain forward {
+          type filter hook forward priority 0; policy drop;
+
+          ct state established,related accept
+
+          # Block DNS to the upstream router
+          iifname "wlan0" ip daddr ${upstreamRouter} udp dport 53 drop
+          iifname "wlan0" ip daddr ${upstreamRouter} tcp dport 53 drop
+
+          # Allow WiFi clients to reach the home network (RFC1918 ranges)
+          iifname "wlan0" ip daddr 192.168.0.0/16 accept
+          iifname "wlan0" ip daddr 10.0.0.0/8 accept
+          iifname "wlan0" ip daddr 172.16.0.0/12 accept
+
+          # Everything else from wlan0 is dropped (no internet)
+        }
+
+        chain output {
+          type filter hook output priority 0; policy accept;
+        }
+      }
+
+      table inet nat {
+        chain postrouting {
+          type nat hook postrouting priority 100;
+
+          # NAT for traffic going to home network
+          oifname "eth0" masquerade
+        }
+      }
+    '';
+  };
+
+  # Disable default firewall since we're using nftables directly
+  networking.firewall.enable = false;
 }
