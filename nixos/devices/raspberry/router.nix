@@ -25,14 +25,22 @@ in
     enable = true;
     radios.wlan0 = {
       band = "2g";
-      inherit countryCode;
-      wifi4.enable = true;
+      channel = 1;
+      wifi4.enable = false;
       wifi5.enable = false;
+      settings = {
+        country_code = countryCode;
+        ieee80211d = true;
+      };
       networks.wlan0 = {
         inherit ssid;
         authentication = {
-          mode = "wpa2-sha256";
+          mode = "wpa2-sha1";
           wpaPassword = wpaPassphrase;
+          pairwiseCiphers = [ "CCMP" ];
+        };
+        settings = {
+          auth_algs = 1;
         };
       };
     };
