@@ -24,13 +24,8 @@ in
     enable = true;
     interfaces = [ config.me.wifi-interface ];
     inherit networks;
-    userControlled = {
-      enable = true;
-      group = "wireless";
-    };
+    userControlled = true;
   };
-
-  users.groups.wireless = {};
 
   users.users.me.packages = [ qr ];
 }

@@ -77,7 +77,7 @@ in
   users.users.me = {
     isNormalUser = true;
     uid = 1000;
-    extraGroups = [ "systemd-journal" "libvirtd" "wireless" "dialout" ];
+    extraGroups = [ "systemd-journal" "libvirtd" "wpa_supplicant" "dialout" ];
   };
 
   users.users.dev = {
