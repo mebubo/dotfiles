@@ -61,12 +61,6 @@ vim.api.nvim_create_autocmd('BufRead', {
   end,
 })
 
-require("nvim-treesitter.configs").setup{
-  highlight = { enable = true },
-  indent = { enable = true },
-  playground = { enable = true },
-}
-
 local Snacks = require('snacks')
 Snacks.setup({
     bigfile = { enabled = true },
