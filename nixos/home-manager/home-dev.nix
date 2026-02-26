@@ -11,8 +11,8 @@ dev-home-manager-rebuild = pkgs.writeShellScriptBin "dev-home-manager-rebuild" '
 my-vscode =
 
   let
-    version = "1.109.0";
-    sha256 = "sha256-N8dBXYpBbaymuGWFb8+77/4yJ6Meo5eqoYpnlsjGlN8=";
+    version = "1.109.5";
+    sha256 = "sha256-cBYBA8DdpQ9lGjfuJ6ZammSmk4c0zxoLzUnYNhK9sac=";
   in
     pkgs.vscode.overrideAttrs (oldAttrs: {
       inherit version;
