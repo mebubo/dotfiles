@@ -66,20 +66,14 @@ in
     pipx
     my-vscode
     zed-editor.fhs
-    # poetry
     uv
     ruff
     deno
     gradle
-    files-to-prompt
     aichat
     repomix
     my-cursor
     mise
-    # goose-cli
-    # claude-code
-    # windsurf
-    helix
     dev-home-manager-rebuild
   ];
 
