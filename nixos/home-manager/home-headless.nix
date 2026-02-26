@@ -172,7 +172,7 @@ in
         which-key-nvim
       ];
       extraConfig = builtins.readFile ../../.vimrc;
-      extraLuaConfig = ''
+      initLua = ''
 local pkgs_ty = '${pkgs.ty}/bin/ty'
 local pkgs_nil = '${pkgs.nil}/bin/nil'
 local pkgs_typescript_language_server = '${pkgs.typescript-language-server}/bin/typescript-language-server'
