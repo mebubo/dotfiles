@@ -3,6 +3,10 @@
 {
   services.grafana = {
     enable = true;
-    settings = { };
+    settings = {
+      security = {
+        secret_key = "abc";
+      };
+    };
   };
 }
