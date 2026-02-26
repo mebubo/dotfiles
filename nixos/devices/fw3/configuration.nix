@@ -321,6 +321,13 @@ in
     enable = true;
   };
 
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+    ];
+  };
+
   nixpkgs.overlays = [
     (self: super: {
       chromium = chromium-customized-for-overlay super;
