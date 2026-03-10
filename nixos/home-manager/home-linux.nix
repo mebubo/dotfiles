@@ -7,6 +7,7 @@
     libinput
     usbutils
     v4l-utils
+    android-tools
   ];
 
   # targets.genericLinux.enable = true;
