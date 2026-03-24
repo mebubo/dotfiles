@@ -52,7 +52,6 @@ in
     gnumake
     pkg-config
     gcc
-    alloy
     coursier
     metals
     scala-cli
@@ -62,18 +61,14 @@ in
     pnpm
     openjdk
     sbt
-    tlaplus
-    pipx
-    my-vscode
-    zed-editor.fhs
+    # zed-editor.fhs
     uv
     ruff
     deno
     gradle
-    aichat
-    repomix
-    my-cursor
     mise
+    my-vscode
+    my-cursor
     dev-home-manager-rebuild
   ];
 
