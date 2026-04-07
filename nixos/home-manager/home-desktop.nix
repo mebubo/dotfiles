@@ -63,6 +63,10 @@ in
           hostname = "localhost";
           user = "scr";
         };
+        "dev2" = {
+          hostname = "localhost";
+          user = "dev2";
+        };
       };
     };
     firefox = {

@@ -104,6 +104,12 @@ in
     openssh.authorizedKeys.keyFiles = [ config.me.private.keys.me-fr ];
   };
 
+  users.users.dev2 = {
+    isNormalUser = true;
+    uid = 1005;
+    openssh.authorizedKeys.keyFiles = [ config.me.private.keys.me-fr ];
+  };
+
   services.openssh = {
     enable = true;
     settings = {
