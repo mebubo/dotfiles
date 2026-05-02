@@ -22,3 +22,11 @@ Remove old home-manager generations:
 ```
 nix-env --profile ~/.local/state/nix/profiles/home-manager --delete-generations 1d
 ```
+
+why-depends:
+
+```
+SYS=$(nix eval --raw .#nixosConfigurations.fr.config.system.build.toplevel.drvPath)
+nix-store -qR "$SYS" | grep rusty
+nix why-depends --derivation $SYS /nix/store/4sj3ibfxnfzj3m4g1ljwiyg76h9dpd4b-rusty-v8-147.2.1.drv
+```
