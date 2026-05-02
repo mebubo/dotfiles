@@ -7,11 +7,6 @@ set show-all-if-ambiguous on
 
 "\M-s": menu-complete
 
-"\e[A": ""
-"\e[B": ""
-"\e[C": ""
-"\e[D": ""
-
 "\C-p": history-search-backward
 "\C-n": history-search-forward
 
