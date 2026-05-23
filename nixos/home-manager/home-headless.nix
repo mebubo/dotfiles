@@ -58,7 +58,6 @@ in
     ffmpeg
     file
     me-fd
-    git
     gnupg
     hexyl
     htop
@@ -136,6 +135,7 @@ in
         pull.ff = "only";
         core.quotepath = false;
       };
+      signing.format = null;
     };
     neovim = {
       enable = true;
