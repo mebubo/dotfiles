@@ -81,6 +81,7 @@ in
           '';
         };
       };
+      configPath = "${config.xdg.configHome}/mozilla/firefox";
     };
     alacritty = {
       enable = true;
