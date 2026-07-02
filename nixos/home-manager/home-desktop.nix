@@ -10,6 +10,16 @@ screenshot-edit = pkgs.writeShellScriptBin "screenshot-edit" ''
     ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" -t ppm - | ${pkgs.satty}/bin/satty --filename - --output-filename ~/Documents/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png
 '';
 
+# Send ctrl+<key> to the active window; terminals get ctrl+shift+<key>
+# so super+c/super+v don't turn into SIGINT / literal input there.
+macos-key = pkgs.writeShellScriptBin "macos-key" ''
+    mods=CTRL
+    case "$(hyprctl activewindow)" in
+      *"class: com.mitchellh.ghostty"*) mods="CTRL SHIFT" ;;
+    esac
+    hyprctl dispatch sendshortcut "$mods, $1,"
+'';
+
 in
 
 {
@@ -22,6 +32,7 @@ in
     pavucontrol
     screenshot-copy
     screenshot-edit
+    macos-key
     ghostty
     bluetui
   ];
