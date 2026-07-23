@@ -15,19 +15,6 @@ let
     };
   });
 
-  hyprland-version = "0.55.4";
-  hyprland-hash = "sha256-IuT0HnOr/0rAw+GXr+OwWx89FjA4Og1FqP7vywEwRJM=";
-  my-hyprland = pkgs.hyprland.overrideAttrs (oldAttrs: {
-    version = hyprland-version;
-    src = pkgs.fetchFromGitHub {
-      owner = "hyprwm";
-      repo = "hyprland";
-      fetchSubmodules = true;
-      tag = "v${hyprland-version}";
-      hash = hyprland-hash;
-    };
-  });
-
   nixos-rebuild-fr = pkgs.writeShellScriptBin "nixos-rebuild-fr" ''
     [[ "$PWD" != "/root" ]] && exit 1
     ACTION=''${1:-boot}
@@ -239,7 +226,6 @@ in
     hyprland = {
       enable = true;
       withUWSM = true;
-      package = my-hyprland;
     };
     hyprlock = {
       enable = true;
