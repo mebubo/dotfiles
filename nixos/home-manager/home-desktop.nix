@@ -38,6 +38,7 @@ in
   ];
 
   home.pointerCursor = {
+    enable = true;
     gtk.enable = true;
     # package = pkgs.vanilla-dmz;
     package = pkgs.adwaita-icon-theme;
@@ -57,26 +58,26 @@ in
     ssh = {
       enable = true;
       enableDefaultConfig = false;
-      matchBlocks = {
+      settings = {
         "dev" = {
-          hostname = "localhost";
-          user = "dev";
+          HostName = "localhost";
+          User = "dev";
         };
         "doc" = {
-          hostname = "localhost";
-          user = "doc";
+          HostName = "localhost";
+          User = "doc";
         };
         "game" = {
-          hostname = "localhost";
-          user = "game";
+          HostName = "localhost";
+          User = "game";
         };
         "scr" = {
-          hostname = "localhost";
-          user = "scr";
+          HostName = "localhost";
+          User = "scr";
         };
         "dev2" = {
-          hostname = "localhost";
-          user = "dev2";
+          HostName = "localhost";
+          User = "dev2";
         };
       };
     };
