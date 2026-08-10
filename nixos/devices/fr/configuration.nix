@@ -15,17 +15,6 @@ let
     };
   });
 
-  my-hyprland = pkgs.hyprland.overrideAttrs (oldAttrs: {
-    postPatch = ''
-           # Relax glaze dependency
-           # FIXME: this shouldn't be needed once the upstream code will adopt it
-           substituteInPlace CMakeLists.txt start/CMakeLists.txt hyprpm/CMakeLists.txt \
-             --replace-fail "glaze 7...<8" "glaze"
-
-       ''
-       + (oldAttrs.postPatch or "");
-  });
-
   nixos-rebuild-fr = pkgs.writeShellScriptBin "nixos-rebuild-fr" ''
     [[ "$PWD" != "/root" ]] && exit 1
     ACTION=''${1:-boot}
@@ -238,7 +227,7 @@ in
     hyprland = {
       enable = true;
       withUWSM = true;
-      package = my-hyprland;
+      # package = my-hyprland;
     };
     hyprlock = {
       enable = true;
