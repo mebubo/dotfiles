@@ -176,6 +176,7 @@ in
         wev
         wl-clipboard
         wlr-randr
+        wtype
         xwayland
       ];
       extraSessionCommands = ''

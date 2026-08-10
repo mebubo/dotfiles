@@ -35,6 +35,7 @@ in
     macos-key
     ghostty
     bluetui
+    handy
   ];
 
   home.pointerCursor = {
