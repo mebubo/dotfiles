@@ -89,6 +89,7 @@ in
     kepubify
     qsv
     xan
+    uv
     me-nixos-rebuild
     me-home-manager-cleanup-old-generations
     me-home-manager-rebuild

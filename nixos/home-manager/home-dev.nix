@@ -48,6 +48,8 @@ in
     deno
     gradle
     mise
+    bubblewrap
+    socat
     my-vscode
     dev-home-manager-rebuild
   ];

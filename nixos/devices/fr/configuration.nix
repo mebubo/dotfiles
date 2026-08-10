@@ -177,7 +177,7 @@ in
         wl-clipboard
         wlr-randr
         wtype
-        xwayland
+        # xwayland
       ];
       extraSessionCommands = ''
         export _JAVA_AWT_WM_NONREPARENTING=1
