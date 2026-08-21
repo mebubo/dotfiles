@@ -117,6 +117,9 @@ in
         ];
       };
     };
+    herdr = {
+      enable = true;
+    };
   };
 
 }
