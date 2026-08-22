@@ -124,7 +124,23 @@ local Snacks = require('snacks')
 Snacks.setup({
     bigfile = { enabled = true },
     explorer = { enabled = true },
-    picker = { enabled = true },
+    picker = {
+        enabled = true,
+        -- Route vim.ui.select through the picker instead of the numbered prompt.
+        ui_select = true,
+        win = {
+            input = {
+                keys = {
+                    -- Close on the first Esc rather than dropping the input
+                    -- field into normal mode. Snacks suggests exactly this in
+                    -- its own defaults; its default binds Esc to cancel in
+                    -- normal mode only, which is why the first press just left
+                    -- insert. <C-c> stays bound to cancel.
+                    ["<Esc>"] = { "close", mode = { "n", "i" } },
+                },
+            },
+        },
+    },
     notifier = { enabled = true }
 })
 
