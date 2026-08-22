@@ -180,7 +180,9 @@ local pkgs_typescript_language_server = '${pkgs.typescript-language-server}/bin/
 local pkgs_metals = '${pkgs.metals}/bin/metals'
 local pkgs_harper_ls = '${pkgs.harper}/bin/harper-ls'
 local pkgs_markdown_oxide = '${pkgs.markdown-oxide}/bin/markdown-oxide'
-'' + (builtins.readFile ../../.config/nvim/init.lua);
+''
++ (builtins.readFile ../../.config/nvim/init.lua)
++ (builtins.readFile ../../.config/nvim/lsp.lua);
       withNodeJs = false;
       withPython3 = false;
       withRuby = false;
