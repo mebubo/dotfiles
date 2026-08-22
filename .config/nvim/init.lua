@@ -33,11 +33,18 @@ vim.keymap.set("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error"
 vim.keymap.set("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
 vim.keymap.set("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
 
+local osc52 = require('vim.ui.clipboard.osc52')
+
 vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  desc = 'Highlight yanked text, and mirror real yanks to the terminal clipboard',
+  group = vim.api.nvim_create_augroup('me-highlight-yank', { clear = true }),
   callback = function()
     vim.hl.on_yank()
+    -- Only 'y': deletes and changes fill registers too, and shouldn't clobber
+    -- the system clipboard.
+    if vim.v.event.operator == 'y' then
+      osc52.copy('+')(vim.v.event.regcontents)
+    end
   end,
 })
 
