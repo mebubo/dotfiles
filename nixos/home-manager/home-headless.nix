@@ -145,9 +145,6 @@ in
         vim-sensible
         vim-commentary
 
-        base16-vim
-        tokyonight-nvim
-
         (nvim-treesitter.withPlugins (p: [
           p.tree-sitter-bash
           p.tree-sitter-css
