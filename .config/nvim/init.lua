@@ -142,6 +142,12 @@ Snacks.setup({
     notifier = { enabled = true }
 })
 
+-- Snacks has no root option of its own -- every source scopes to opts.cwd, or
+-- vim's cwd when that is absent. So "root" has to be an explicit cwd we pass
+-- in. Resolved once at startup rather than per call: vim.fs.root(0, ...) is
+-- buffer-relative, which would make the root shift as you move between files.
+local project_root = vim.fs.root(assert(vim.uv.cwd()), { '.git' }) or assert(vim.uv.cwd())
+
 -- Pick a directory anywhere in the project, then find files under just that
 -- one. Snacks ships no dirs source, and its files finder hardcodes
 -- `--type f --type l`, which fd ORs with anything we append -- so this drives
@@ -151,6 +157,7 @@ local function pick_dir_then_files()
   Snacks.picker.pick({
     title = 'Directories',
     format = 'file',
+    cwd = project_root,
     win = { preview = { minimal = true } },
     finder = function(opts, ctx)
       local cwd = vim.fs.normalize(opts.cwd or assert(vim.uv.cwd()))
@@ -204,16 +211,16 @@ apply_mappings("n", {
     -- current = false drops this buffer from the list; combined with the
     -- default sort_lastused that puts the alternate file under the cursor.
     { "<leader>b", function() Snacks.picker.buffers({ current = false }) end, desc = "Buffers" },
-    { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep (Root Dir)" },
+    { "<leader>/", function() Snacks.picker.grep({ cwd = project_root }) end, desc = "Grep (Root Dir)" },
     { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
-    { "<leader><space>", function() Snacks.picker.files() end, desc = "Find Files (Root Dir)" },
+    { "<leader><space>", function() Snacks.picker.files({ cwd = project_root }) end, desc = "Find Files (Root Dir)" },
     { "<leader>e", function() Snacks.picker.files({ cwd = vim.fn.expand('%:p:h') }) end, desc = "Find Files (current file dir)" },
     { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
 
     { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
     { "<leader>fB", function() Snacks.picker.buffers({ hidden = true, nofile = true }) end, desc = "Buffers (all)" },
-    { "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files (Root Dir)" },
-    { "<leader>fF", function() Snacks.picker.files({ root = false }) end, desc = "Find Files (cwd)" },
+    { "<leader>ff", function() Snacks.picker.files({ cwd = project_root }) end, desc = "Find Files (Root Dir)" },
+    { "<leader>fF", function() Snacks.picker.files() end, desc = "Find Files (cwd)" },
     { "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Files (git-files)" },
     { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
     { "<leader>fR", function() Snacks.picker.recent({ filter = { cwd = true }}) end, desc = "Recent (cwd)" },
@@ -222,10 +229,10 @@ apply_mappings("n", {
 
     { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
     { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
-    { "<leader>sg", function() Snacks.picker.grep() end, desc = "Grep (Root Dir)" },
-    { "<leader>sG", function() Snacks.picker.grep({ root = false }) end, desc = "Grep (cwd)" },
-    { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word (Root Dir)", mode = { "n", "x" } },
-    { "<leader>sW", function() Snacks.picker.grep_word({ root = false }) end, desc = "Visual selection or word (cwd)", mode = { "n", "x" } },
+    { "<leader>sg", function() Snacks.picker.grep({ cwd = project_root }) end, desc = "Grep (Root Dir)" },
+    { "<leader>sG", function() Snacks.picker.grep() end, desc = "Grep (cwd)" },
+    { "<leader>sw", function() Snacks.picker.grep_word({ cwd = project_root }) end, desc = "Visual selection or word (Root Dir)", mode = { "n", "x" } },
+    { "<leader>sW", function() Snacks.picker.grep_word() end, desc = "Visual selection or word (cwd)", mode = { "n", "x" } },
 
     { '<leader>s"', function() Snacks.picker.registers() end, desc = "Registers" },
     { '<leader>s/', function() Snacks.picker.search_history() end, desc = "Search History" },
