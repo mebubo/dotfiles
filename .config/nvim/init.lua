@@ -201,7 +201,9 @@ end
 
 apply_mappings("n", {
 
-    { "<leader>b", function() Snacks.picker.buffers() end, desc = "Buffers" },
+    -- current = false drops this buffer from the list; combined with the
+    -- default sort_lastused that puts the alternate file under the cursor.
+    { "<leader>b", function() Snacks.picker.buffers({ current = false }) end, desc = "Buffers" },
     { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep (Root Dir)" },
     { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
     { "<leader><space>", function() Snacks.picker.files() end, desc = "Find Files (Root Dir)" },
