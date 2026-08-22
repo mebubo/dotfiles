@@ -123,7 +123,7 @@ apply_mappings("n", {
     { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word (Root Dir)", mode = { "n", "x" } },
     { "<leader>sW", function() Snacks.picker.grep_word({ root = false }) end, desc = "Visual selection or word (cwd)", mode = { "n", "x" } },
 
-    { '<leader>s"', function() Snacks.picker.reisters() end, desc = "Registers" },
+    { '<leader>s"', function() Snacks.picker.registers() end, desc = "Registers" },
     { '<leader>s/', function() Snacks.picker.search_history() end, desc = "Search History" },
     { "<leader>sa", function() Snacks.picker.autocmds() end, desc = "Autocmds" },
     { "<leader>sc", function() Snacks.picker.command_history() end, desc = "Command History" },
