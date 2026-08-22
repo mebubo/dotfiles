@@ -110,6 +110,16 @@ vim.api.nvim_create_autocmd('BufRead', {
   end,
 })
 
+-- Parsers are installed by home-headless.nix, but installing one does not
+-- attach it: highlighting needs an explicit start per buffer. pcall because it
+-- throws for filetypes with no parser.
+vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('me-treesitter', { clear = true }),
+  callback = function()
+    pcall(vim.treesitter.start)
+  end,
+})
+
 local Snacks = require('snacks')
 Snacks.setup({
     bigfile = { enabled = true },
