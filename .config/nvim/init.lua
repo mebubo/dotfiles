@@ -126,6 +126,11 @@ Snacks.setup({
         enabled = true,
         -- Route vim.ui.select through the picker instead of the numbered prompt.
         ui_select = true,
+        -- 0 means full in snacks' layout system. Keeps the default preset's
+        -- height, position and right-hand preview.
+        layout = {
+            layout = { width = 0 },
+        },
         win = {
             input = {
                 keys = {
