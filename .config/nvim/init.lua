@@ -3,6 +3,48 @@ vim.opt.mouse = 'a'
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- One statusline for the whole window, not one per split.
+vim.o.laststatus = 3
+
+local function statusline_diagnostics()
+  local counts = vim.diagnostic.count(0)
+  local out = {}
+  for _, level in ipairs({ 'ERROR', 'WARN' }) do
+    local n = counts[vim.diagnostic.severity[level]]
+    if n then
+      out[#out + 1] = level:sub(1, 1) .. n
+    end
+  end
+  return #out > 0 and (' ' .. table.concat(out, ' ')) or ''
+end
+
+-- LSP is off until asked for, so the client list doubles as the indicator of
+-- whether anything is running in this buffer.
+local function statusline_lsp()
+  local names = {}
+  for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
+    names[#names + 1] = client.name
+  end
+  if #names == 0 then
+    return ''
+  end
+  table.sort(names)
+  return ' [' .. table.concat(names, ' ') .. ']'
+end
+
+-- Global because 'statusline' reaches it through v:lua.
+function _G.me_statusline()
+  return table.concat({
+    ' %<%f %m%r',
+    '%=',
+    statusline_diagnostics(),
+    statusline_lsp(),
+    ' %y %l:%c %P ',
+  })
+end
+
+vim.o.statusline = '%!v:lua.me_statusline()'
+
 vim.keymap.set('i', '<F3>', function()
   return vim.fn.strftime('%Y-%m-%d')
 end, { expr = true, silent = true, desc = 'Insert date' })
