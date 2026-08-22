@@ -54,7 +54,6 @@ vim.keymap.set('i', '<F3>', function()
 end, { expr = true, silent = true, desc = 'Insert date' })
 
 vim.keymap.set('n', '<leader>w', ':write<CR>')
-vim.keymap.set('n', '<leader>l', ':ls<CR>:b ')
 
 local diagnostic_goto = function(next, severity)
   return function()
