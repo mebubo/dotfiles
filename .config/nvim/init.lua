@@ -1,4 +1,4 @@
-vim.opt.mouse = ''
+vim.opt.mouse = 'a'
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
