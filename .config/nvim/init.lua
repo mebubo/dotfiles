@@ -72,7 +72,8 @@ local Snacks = require('snacks')
 Snacks.setup({
     bigfile = { enabled = true },
     explorer = { enabled = true },
-    picker = { enabled = true }
+    picker = { enabled = true },
+    notifier = { enabled = true }
 })
 
 local function apply_mappings(default_mode, specs)
