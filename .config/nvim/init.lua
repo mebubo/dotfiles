@@ -139,6 +139,40 @@ Snacks.setup({
     notifier = { enabled = true }
 })
 
+-- Pick a directory anywhere in the project, then find files under just that
+-- one. Snacks ships no dirs source, and its files finder hardcodes
+-- `--type f --type l`, which fd ORs with anything we append -- so this drives
+-- fd through the same proc finder files uses, mirroring the zoxide source for
+-- how directory items are rendered.
+local function pick_dir_then_files()
+  Snacks.picker.pick({
+    title = 'Directories',
+    format = 'file',
+    win = { preview = { minimal = true } },
+    finder = function(opts, ctx)
+      local cwd = vim.fs.normalize(opts.cwd or assert(vim.uv.cwd()))
+      return require('snacks.picker.source.proc').proc(
+        ctx:opts({
+          cmd = 'fd',
+          args = { '--type', 'd', '--color', 'never', '--hidden', '-E', '.git' },
+          transform = function(item)
+            item.cwd = cwd
+            item.file = item.text
+            item.dir = true
+          end,
+        }),
+        ctx
+      )
+    end,
+    confirm = function(picker, item)
+      picker:close()
+      if item then
+        Snacks.picker.files({ cwd = vim.fs.joinpath(item.cwd, item.file) })
+      end
+    end,
+  })
+end
+
 local function apply_mappings(default_mode, specs)
   for _, spec in ipairs(specs) do
     local lhs = spec[1]
@@ -179,6 +213,7 @@ apply_mappings("n", {
     { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
     { "<leader>fR", function() Snacks.picker.recent({ filter = { cwd = true }}) end, desc = "Recent (cwd)" },
     { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
+    { "<leader>fd", pick_dir_then_files, desc = "Find Files (pick a dir first)" },
 
     { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
     { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
