@@ -28,4 +28,4 @@ if executable('rg')
   set grepprg=rg\ --vimgrep\ --no-heading
 endif
 
-colorscheme tokyonight-night
+colorscheme catppuccin
