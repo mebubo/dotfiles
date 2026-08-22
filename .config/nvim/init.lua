@@ -1,5 +1,9 @@
 vim.opt.mouse = 'a'
 
+-- Default border for floats that don't set their own. Hover, signature help
+-- and diagnostic popups all read as detached from the buffer without one.
+vim.o.winborder = 'rounded'
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
