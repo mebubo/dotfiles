@@ -49,11 +49,6 @@ vim.keymap.set('i', '<F3>', function()
   return vim.fn.strftime('%Y-%m-%d')
 end, { expr = true, silent = true, desc = 'Insert date' })
 
-vim.keymap.set('n', '<leader>e', function()
-  local dir = vim.fn.expand('%:p:h') .. '/'
-  vim.api.nvim_feedkeys(':edit ' .. dir, 'n', false)
-end, { silent = true, desc = 'Edit current file dir' })
-
 vim.keymap.set('n', '<leader>w', ':write<CR>')
 vim.keymap.set('n', '<leader>l', ':ls<CR>:b ')
 
@@ -173,6 +168,7 @@ apply_mappings("n", {
     { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep (Root Dir)" },
     { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
     { "<leader><space>", function() Snacks.picker.files() end, desc = "Find Files (Root Dir)" },
+    { "<leader>e", function() Snacks.picker.files({ cwd = vim.fn.expand('%:p:h') }) end, desc = "Find Files (current file dir)" },
     { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
 
     { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
