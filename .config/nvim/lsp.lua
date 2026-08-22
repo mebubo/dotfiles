@@ -2,7 +2,7 @@
 -- Lua chunk: pkgs_*, Snacks and apply_mappings are still in scope here.
 
 -- Servers are registered here but never enabled at startup: LSP is off until
--- <leader>cs, :LspStart or :LspStop says otherwise.
+-- <leader>ls, :LspStart or :LspStop says otherwise.
 local lsp_servers = {
   ty = {
     cmd = { pkgs_ty, 'server' },
@@ -94,13 +94,16 @@ local lsp_keys = {
   { 'gd', function() Snacks.picker.lsp_definitions() end, desc = 'Goto Definition' },
   { 'gD', function() Snacks.picker.lsp_declarations() end, desc = 'Goto Declaration' },
   { 'gy', function() Snacks.picker.lsp_type_definitions() end, desc = 'Goto Type Definition' },
-  { '<leader>ss', function() Snacks.picker.lsp_symbols() end, desc = 'LSP Symbols' },
-  { '<leader>sS', function() Snacks.picker.lsp_workspace_symbols() end, desc = 'LSP Workspace Symbols' },
+  -- Capital is the narrower scope here, matching sd/sD and ff/fF.
+  { '<leader>ss', function() Snacks.picker.lsp_workspace_symbols() end, desc = 'Symbols (Workspace)' },
+  { '<leader>sS', function() Snacks.picker.lsp_symbols() end, desc = 'Symbols (Buffer)' },
 
   -- K and insert-mode <C-s> are already nvim defaults, as are grn and gra.
   { 'gK', vim.lsp.buf.signature_help, desc = 'Signature Help' },
   { '<leader>ca', vim.lsp.buf.code_action, mode = { 'n', 'x' }, desc = 'Code Action' },
   { '<leader>cr', vim.lsp.buf.rename, desc = 'Rename' },
+  { '<leader>ci', function() Snacks.picker.lsp_incoming_calls() end, desc = 'Incoming Calls' },
+  { '<leader>co', function() Snacks.picker.lsp_outgoing_calls() end, desc = 'Outgoing Calls' },
   { '<leader>cc', vim.lsp.codelens.run, desc = 'Run Code Lens' },
   { '<leader>cC', vim.lsp.codelens.refresh, desc = 'Refresh Code Lens' },
   { '<leader>uh', function()
@@ -140,7 +143,9 @@ vim.api.nvim_create_autocmd('LspDetach', {
 
 -- Global, not buffer-local like lsp_keys: these have to work before any client
 -- has attached.
-vim.keymap.set('n', '<leader>cs', function() lsp_start({}) end, { desc = 'Start LSP (filetype)' })
-vim.keymap.set('n', '<leader>cS', function() lsp_stop({}) end, { desc = 'Stop LSP (all attached)' })
-vim.keymap.set('n', '<leader>ci', '<cmd>checkhealth vim.lsp<cr>', { desc = 'LSP Status' })
-vim.keymap.set('n', '<leader>cl', function() Snacks.picker.lsp_config() end, { desc = 'LSP Config' })
+-- <leader>l is the server itself: start, stop, inspect. <leader>c stays for
+-- things that act on the code under the cursor.
+vim.keymap.set('n', '<leader>ls', function() lsp_start({}) end, { desc = 'Start LSP (filetype)' })
+vim.keymap.set('n', '<leader>lS', function() lsp_stop({}) end, { desc = 'Stop LSP (all attached)' })
+vim.keymap.set('n', '<leader>li', '<cmd>checkhealth vim.lsp<cr>', { desc = 'LSP Status' })
+vim.keymap.set('n', '<leader>ll', function() Snacks.picker.lsp_config() end, { desc = 'LSP Config' })
