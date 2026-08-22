@@ -238,15 +238,6 @@ local pkgs_markdown_oxide = '${pkgs.markdown-oxide}/bin/markdown-oxide'
         output  = "%(uploader)s--%(upload_date)s--%(title)s--%(id)s.%(ext)s";
       };
     };
-    helix = {
-      enable = true;
-      settings = {
-        theme = "base16_default_dark";
-        editor = {
-          true-color = true;
-        };
-      };
-    };
     jujutsu = {
       enable = true;
     };
