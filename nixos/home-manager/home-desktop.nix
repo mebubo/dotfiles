@@ -20,6 +20,10 @@ macos-key = pkgs.writeShellScriptBin "macos-key" ''
     hyprctl dispatch sendshortcut "$mods, $1,"
 '';
 
+# Link straight into the working tree rather than the store, so edits take
+# effect without a rebuild.
+dotfile = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/src/me/dotfiles/${path}";
+
 in
 
 {
@@ -276,6 +280,8 @@ in
     # "i3/config".source = ../../.config/i3/config;
     "i3status/config".source = ../../.config/i3status/config;
     "mpv/mpv.conf".source = ../../.config/mpv/mpv.conf;
+    "hypr/hyprland.lua".source = dotfile ".config/hypr/hyprland.lua";
+    "hypr/hyprlock.conf".source = dotfile ".config/hypr/hyprlock.conf";
   };
 
   targets.genericLinux.enable = lib.mkForce false;
