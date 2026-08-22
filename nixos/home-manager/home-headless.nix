@@ -13,7 +13,7 @@ me-home-manager-cleanup-old-generations = pkgs.writeShellScriptBin "me-home-mana
 
 me-home-manager-rebuild = pkgs.writeShellScriptBin "me-home-manager-rebuild" ''
   set -euo pipefail
-  nix build '.#homeConfigurations.me.activationPackage'
+  nix build '.#homeConfigurations.${config.home.username}.activationPackage'
   result/activate
 '';
 

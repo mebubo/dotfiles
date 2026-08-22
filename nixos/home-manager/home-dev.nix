@@ -2,12 +2,6 @@
 
 let
 
-dev-home-manager-rebuild = pkgs.writeShellScriptBin "dev-home-manager-rebuild" ''
-  set -eu
-  nix build '.#homeConfigurations.dev.activationPackage'
-  result/activate
-'';
-
 my-vscode =
 
   let
@@ -51,7 +45,6 @@ in
     bubblewrap
     socat
     my-vscode
-    dev-home-manager-rebuild
   ];
 
   home.sessionPath = [
