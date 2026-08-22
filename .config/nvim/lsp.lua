@@ -19,6 +19,15 @@ local lsp_servers = {
       compilerOptions = { snippetAutoIndent = false },
     },
   },
+  ts_ls = {
+    cmd = { pkgs_typescript_language_server, '--stdio' },
+    filetypes = {
+      'javascript', 'javascriptreact', 'javascript.jsx',
+      'typescript', 'typescriptreact', 'typescript.tsx',
+    },
+    root_markers = { 'tsconfig.json', 'jsconfig.json', 'package.json', '.git' },
+    init_options = { hostInfo = 'neovim' },
+  },
 }
 
 for name, config in pairs(lsp_servers) do
