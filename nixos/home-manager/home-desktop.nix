@@ -282,6 +282,7 @@ in
     "mpv/mpv.conf".source = ../../.config/mpv/mpv.conf;
     "hypr/hyprland.lua".source = dotfile ".config/hypr/hyprland.lua";
     "hypr/hyprlock.conf".source = dotfile ".config/hypr/hyprlock.conf";
+    "ghostty/config".source = dotfile ".config/ghostty/config";
   };
 
   targets.genericLinux.enable = lib.mkForce false;
