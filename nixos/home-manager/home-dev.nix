@@ -17,9 +17,15 @@ my-vscode =
       };
     });
 
+dotfile = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/src/me/dotfiles/${path}";
+
 in
 
 {
+
+  xdg.configFile = {
+    "herdr/config.toml".source = dotfile ".config/herdr/config.toml";
+  };
 
   home.packages = with pkgs; [
     cmake
